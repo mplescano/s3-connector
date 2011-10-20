@@ -168,9 +168,9 @@
         <div id="nav-panels">
           <div id="resize-packages-nav">
             <div id="packages-nav">
-              <div id="index-links"><nobr>
+              <div id="index-links">
                 <a href="../../../../../java/packages.html"  >Package Index</a> |
-                <a href="../../../../../java/classes.html" >Class Index</a></nobr>
+                <a href="../../../../../java/classes.html" >Class Index</a>
               </div>
               <ul>
                 
@@ -213,9 +213,9 @@
           </div><!-- end classes -->
         </div><!-- end nav-panels -->
         <div id="nav-tree" style="display:none">
-          <div id="index-links"><nobr>
+          <div id="index-links">
             <a href="../../../../../packages.html"  >Package Index</a> | 
-            <a href="../../../../../classes.html" >Class Index</a></nobr>
+            <a href="../../../../../classes.html" >Class Index</a>
           </div>
         </div><!-- end nav-tree -->
       </div><!-- end swapper -->
@@ -1681,31 +1681,31 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>sourceBucketName</td>
-          <td>the source object's bucket</td>
+          <td>The source object's bucket</td>
         </tr>
         <tr>
           <th>sourceKey</td>
-          <td>the source object's key</td>
+          <td>The source object's key</td>
         </tr>
         <tr>
           <th>sourceVersionId</td>
-          <td>the specific version of the source object to copy, if
+          <td>The specific version of the source object to copy, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
         </tr>
         <tr>
           <th>destinationBucketName</td>
-          <td>the destination object's bucket. If none
+          <td>The destination object's bucket. If none
             provided, a local copy is performed, that is, it is copied within
             the same bucket.</td>
         </tr>
         <tr>
           <th>destinationKey</td>
-          <td>the destination object's key</td>
+          <td>The destination object's key</td>
         </tr>
         <tr>
           <th>destinationAcl</td>
-          <td>the acl of the destination object.</td>
+          <td>The acl of the destination object.</td>
         </tr>
         <tr>
           <th>destinationStorageClass</td>
@@ -1713,7 +1713,7 @@ From class
         </tr>
         <tr>
           <th>destinationUserMetadata</td>
-          <td>the new metadata of the destination object,
+          <td>The new metadata of the destination object,
             that if specified, overrides that copied from the source object</td>
         </tr>
         <tr>
@@ -1789,11 +1789,11 @@ From class
         </tr>
         <tr>
           <th>region</td>
-          <td>the region where to create the new bucket</td>
+          <td>The region where to create the new bucket</td>
         </tr>
         <tr>
           <th>acl</td>
-          <td>the access control list of the new bucket</td>
+          <td>The access control list of the new bucket</td>
         </tr>
       </table>
   </div>
@@ -1841,11 +1841,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the object's bucket</td>
+          <td>The object's bucket</td>
         </tr>
         <tr>
           <th>key</td>
-          <td>the object's key</td>
+          <td>The object's key</td>
         </tr>
         <tr>
           <th>content</td>
@@ -1853,7 +1853,7 @@ From class
         </tr>
         <tr>
           <th>contentLength</td>
-          <td>the content length. If content is a InputStream,
+          <td>The content length. If content is a InputStream,
             this parameter should be specified, as not doing so will
             introduce a performance loss as the contents will have to be persisted on disk before being uploaded. 
             Otherwise, it is ignored. An exception to this 
@@ -1863,24 +1863,24 @@ From class
         </tr>
         <tr>
           <th>contentMd5</td>
-          <td>the content md5, encoded in base 64. If content is a file,
+          <td>The content md5, encoded in base 64. If content is a file,
             it is ignored.</td>
         </tr>
         <tr>
           <th>contentType</td>
-          <td>the content type of the new object.</td>
+          <td>The content type of the new object.</td>
         </tr>
         <tr>
           <th>acl</td>
-          <td>the access control list of the new object</td>
+          <td>The access control list of the new object</td>
         </tr>
         <tr>
           <th>storageClass</td>
-          <td>the storage class of the new object</td>
+          <td>The storage class of the new object</td>
         </tr>
         <tr>
           <th>userMetadata</td>
-          <td>a map of arbitrary object properties keys and values</td>
+          <td>A map of arbitrary object properties keys and values</td>
         </tr>
       </table>
   </div>
@@ -1929,15 +1929,15 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the object's bucket</td>
+          <td>The object's bucket</td>
         </tr>
         <tr>
           <th>key</td>
-          <td>the object's key</td>
+          <td>The object's key</td>
         </tr>
         <tr>
           <th>versionId</td>
-          <td>the specific version of the object to create the URI, if
+          <td>The specific version of the object to create the URI, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
         </tr>
@@ -2009,7 +2009,7 @@ From class
         </tr>
         <tr>
           <th>useDefaultServer</td>
-          <td>if the default US Amazon server subdomain should be
+          <td>If the default US Amazon server subdomain should be
             used in the URI regardless of the region.</td>
         </tr>
         <tr>
@@ -2065,11 +2065,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the bucket to delete</td>
+          <td>The bucket to delete</td>
         </tr>
         <tr>
           <th>force</td>
-          <td>optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
+          <td>Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
 </td>
         </tr>
       </table>
@@ -2114,7 +2114,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the bucket whose policy to delete
+          <td>The bucket whose policy to delete
 </td>
         </tr>
       </table>
@@ -2163,7 +2163,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the bucket whose policy to delete
+          <td>The bucket whose policy to delete
 </td>
         </tr>
       </table>
@@ -2212,15 +2212,15 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the object's bucket</td>
+          <td>The object's bucket</td>
         </tr>
         <tr>
           <th>key</td>
-          <td>the object's key</td>
+          <td>The object's key</td>
         </tr>
         <tr>
           <th>versionId</td>
-          <td>the specific version of the object to delete, if versioning
+          <td>The specific version of the object to delete, if versioning
             is enabled. Left unspecified if the latest version is desired, or
             versioning is not enabled.
 </td>
@@ -2298,7 +2298,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the bucket whose policy to retrieve</td>
+          <td>The bucket whose policy to retrieve</td>
         </tr>
       </table>
   </div>
@@ -2403,15 +2403,15 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the object's bucket</td>
+          <td>The object's bucket</td>
         </tr>
         <tr>
           <th>key</td>
-          <td>the object's key</td>
+          <td>The object's key</td>
         </tr>
         <tr>
           <th>versionId</td>
-          <td>the specific version of the object to get its contents, if
+          <td>The specific version of the object to get its contents, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
         </tr>
@@ -2476,15 +2476,15 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the object's bucket</td>
+          <td>The object's bucket</td>
         </tr>
         <tr>
           <th>key</td>
-          <td>the object's key</td>
+          <td>The object's key</td>
         </tr>
         <tr>
           <th>versionId</td>
-          <td>the specific version of the object to get its contents, if
+          <td>The specific version of the object to get its contents, if
             versioning is enabled, left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
         </tr>
@@ -2547,15 +2547,15 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the object's bucket</td>
+          <td>The object's bucket</td>
         </tr>
         <tr>
           <th>key</td>
-          <td>the object's key</td>
+          <td>The object's key</td>
         </tr>
         <tr>
           <th>versionId</td>
-          <td>the object metadata for the given bucketName and key</td>
+          <td>The object metadata for the given bucketName and key</td>
         </tr>
       </table>
   </div>
@@ -2770,7 +2770,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the target bucket's name</td>
+          <td>The target bucket's name</td>
         </tr>
       </table>
   </div>
@@ -2819,11 +2819,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the target bucket's name</td>
+          <td>The target bucket's name</td>
         </tr>
         <tr>
           <th>prefix</td>
-          <td>the prefix of the objects to be listed. If unspecified, all
+          <td>The prefix of the objects to be listed. If unspecified, all
             objects are listed</td>
         </tr>
       </table>
@@ -2874,11 +2874,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the bucket name</td>
+          <td>The bucket name</td>
         </tr>
         <tr>
           <th>policyText</td>
-          <td>the policy text
+          <td>The policy text
 </td>
         </tr>
       </table>
@@ -2924,11 +2924,11 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the target bucket name</td>
+          <td>The target bucket name</td>
         </tr>
         <tr>
           <th>versioningStatus</td>
-          <td>the version status to set
+          <td>The version status to set
 </td>
         </tr>
       </table>
@@ -2975,7 +2975,7 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the target bucket's name</td>
+          <td>The target bucket's name</td>
         </tr>
         <tr>
           <th>suffix</td>
@@ -2984,7 +2984,7 @@ From class
         </tr>
         <tr>
           <th>errorDocument</td>
-          <td>the full path to error document the bucket will use as
+          <td>The full path to error document the bucket will use as
             error page for 4XX errors
 </td>
         </tr>
@@ -3071,15 +3071,15 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td>the object's bucket name</td>
+          <td>The object's bucket name</td>
         </tr>
         <tr>
           <th>key</td>
-          <td>the object's key</td>
+          <td>The object's key</td>
         </tr>
         <tr>
           <th>storageClass</td>
-          <td>the storage class to set
+          <td>The storage class to set
 </td>
         </tr>
       </table>

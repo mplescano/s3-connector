@@ -649,77 +649,64 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>sourceBucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the source object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The source object's bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>sourceKey</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the source object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The source object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>sourceVersionId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the specific version of the source object to copy, if
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the source object to copy, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationBucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the destination object's bucket. If none
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The destination object's bucket. If none
             provided, a local copy is performed, that is, it is copied within
             the same bucket.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationKey</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the destination object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The destination object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationAcl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the acl of the destination object.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The acl of the destination object.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationStorageClass</nobr></td>
@@ -728,21 +715,17 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationUserMetadata</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the new metadata of the destination object,
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The new metadata of the destination object,
             that if specified, overrides that copied from the source object<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
@@ -753,9 +736,7 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
@@ -766,8 +747,22 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -846,7 +841,6 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
@@ -855,30 +849,40 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>region</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the region where to create the new bucket<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The region where to create the new bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>acl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the access control list of the new bucket<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new bucket<br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -932,29 +936,24 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>content</nobr></td>
@@ -963,14 +962,12 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>contentLength</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the content length. If content is a InputStream,
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The content length. If content is a InputStream,
             this parameter should be specified, as not doing so will
             introduce a performance loss as the contents will have to be persisted on disk before being uploaded. 
             Otherwise, it is ignored. An exception to this 
@@ -980,64 +977,68 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>contentMd5</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the content md5, encoded in base 64. If content is a file,
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The content md5, encoded in base 64. If content is a file,
             it is ignored.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>contentType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the content type of the new object.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The content type of the new object.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>acl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the access control list of the new object<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new object<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>storageClass</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the storage class of the new object<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The storage class of the new object<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>userMetadata</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>a map of arbitrary object properties keys and values<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>A map of arbitrary object properties keys and values<br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1104,42 +1105,35 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>versionId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the specific version of the object to create the URI, if
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to create the URI, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>expiration</nobr></td>
@@ -1148,9 +1142,7 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>method</nobr></td>
@@ -1159,8 +1151,22 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1224,7 +1230,6 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
@@ -1233,9 +1238,7 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
@@ -1244,21 +1247,17 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>useDefaultServer</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>if the default US Amazon server subdomain should be
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>If the default US Amazon server subdomain should be
             used in the URI regardless of the region.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>secure</nobr></td>
@@ -1267,8 +1266,22 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1327,29 +1340,40 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the bucket to delete<br/></td>
+                    <td class="jd-descrcol" width="100%">The bucket to delete<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>force</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1397,18 +1421,31 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the bucket whose policy to delete
+                    <td class="jd-descrcol" width="100%">The bucket whose policy to delete
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1458,18 +1495,31 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the bucket whose policy to delete
+                    <td class="jd-descrcol" width="100%">The bucket whose policy to delete
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1519,42 +1569,51 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>versionId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the specific version of the object to delete, if versioning
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to delete, if versioning
             is enabled. Left unspecified if the latest version is desired, or
             versioning is not enabled.
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1604,17 +1663,30 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the bucket whose policy to retrieve<br/></td>
+                    <td class="jd-descrcol" width="100%">The bucket whose policy to retrieve<br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1667,7 +1739,6 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
@@ -1676,8 +1747,22 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1733,42 +1818,35 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>versionId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the specific version of the object to get its contents, if
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
@@ -1779,9 +1857,7 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
@@ -1792,8 +1868,22 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1854,42 +1944,35 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>versionId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the specific version of the object to get its contents, if
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
             versioning is enabled, left unspecified if the latest version is
             desired, or versioning is not enabled.<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
@@ -1900,9 +1983,7 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
@@ -1913,8 +1994,22 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -1973,39 +2068,48 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>versionId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the object metadata for the given bucketName and key<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The object metadata for the given bucketName and key<br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2061,6 +2165,21 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2110,17 +2229,30 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the target bucket's name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2171,29 +2303,40 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the target bucket's name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>prefix</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the prefix of the objects to be listed. If unspecified, all
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The prefix of the objects to be listed. If unspecified, all
             objects are listed<br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2247,29 +2390,40 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the bucket name<br/></td>
+                    <td class="jd-descrcol" width="100%">The bucket name<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>policyText</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the policy text
+                    <td class="jd-descrcol" width="100%">The policy text
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2318,29 +2472,40 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the target bucket name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket name<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>versioningStatus</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the version status to set
+                    <td class="jd-descrcol" width="100%">The version status to set
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2391,18 +2556,15 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the target bucket's name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>suffix</nobr></td>
@@ -2412,21 +2574,33 @@ resolution.</p>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>errorDocument</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>the full path to error document the bucket will use as
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The full path to error document the bucket will use as
             error page for 4XX errors
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
@@ -2477,40 +2651,49 @@ resolution.</p>
       <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's bucket name<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket name<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
-            
           
-            
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>storageClass</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">the storage class to set
+                    <td class="jd-descrcol" width="100%">The storage class to set
 <br/></td>
                 </tr>
                 
                 
-            
           
+        
+            <tr class="alt-color api apilevel-" >
+                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
+            <tr class=" api apilevel-" >
+                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                <td class="jd-descrcol"></td>
+                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+            </tr>
+        
+        
       </table>
   </div>
   <div class="jd-tagdata">
