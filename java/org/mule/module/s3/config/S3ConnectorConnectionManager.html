@@ -216,7 +216,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/RegionEnumTransformer.html">RegionEnumTransformer</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorCapabilitiesAdapter.html">S3ConnectorCapabilitiesAdapter</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.html">S3ConnectorConnectionManager</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/SetBucketPolicyMessageProcessor.html">SetBucketPolicyMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/config/SetBucketVersioningStatusMessageProcessor.html">SetBucketVersioningStatusMessageProcessor</a></li>
@@ -457,7 +457,7 @@ Summary:
         
         
         class</nobr></td>
-      <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a></td>
+      <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a></td>
       <td class="jd-descrcol" width="100%">&nbsp;</td>
     </tr>
     
@@ -581,6 +581,17 @@ org.mule.api.lifecycle.Initialisable
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
+          static
+          
+          Logger</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/config/S3ConnectorConnectionManager.html#logger">logger</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
           
           
           MuleContext</nobr></td>
@@ -591,7 +602,7 @@ org.mule.api.lifecycle.Initialisable
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -602,7 +613,7 @@ org.mule.api.lifecycle.Initialisable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -613,7 +624,7 @@ org.mule.api.lifecycle.Initialisable
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -624,7 +635,7 @@ org.mule.api.lifecycle.Initialisable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -635,7 +646,7 @@ org.mule.api.lifecycle.Initialisable
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -700,7 +711,7 @@ org.mule.api.lifecycle.Initialisable
             <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/config/S3ConnectorConnectionManager.html#acquireConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionKey)">acquireConnection</a></span>(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a> key)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/config/S3ConnectorConnectionManager.html#acquireConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionParameters)">acquireConnection</a></span>(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a> key)</nobr>
         
   </td></tr>
 
@@ -716,7 +727,7 @@ org.mule.api.lifecycle.Initialisable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/config/S3ConnectorConnectionManager.html#destroyConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionKey, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)">destroyConnection</a></span>(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/config/S3ConnectorConnectionManager.html#destroyConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionParameters, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)">destroyConnection</a></span>(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</nobr>
         
   </td></tr>
 
@@ -908,7 +919,7 @@ org.mule.api.lifecycle.Initialisable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/config/S3ConnectorConnectionManager.html#releaseConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionKey, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)">releaseConnection</a></span>(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/config/S3ConnectorConnectionManager.html#releaseConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionParameters, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)">releaseConnection</a></span>(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</nobr>
         
   </td></tr>
 
@@ -1637,6 +1648,36 @@ From interface
 
 
 
+<A NAME="logger"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+         
+        Logger
+      </span>
+        logger
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
 <A NAME="muleContext"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1874,7 +1915,7 @@ From interface
 
 
 
-<A NAME="acquireConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionKey)"></A>
+<A NAME="acquireConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionParameters)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1887,7 +1928,7 @@ From interface
         <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a>
       </span>
       <span class="sympad">acquireConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a> key)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a> key)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1923,7 +1964,7 @@ From interface
 </div>
 
 
-<A NAME="destroyConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionKey, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)"></A>
+<A NAME="destroyConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionParameters, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1936,7 +1977,7 @@ From interface
         void
       </span>
       <span class="sympad">destroyConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2280,7 +2321,7 @@ From interface
 </div>
 
 
-<A NAME="releaseConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionKey, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)"></A>
+<A NAME="releaseConnection(org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionParameters, org.mule.module.s3.config.S3ConnectorLifecycleAdapter)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2293,7 +2334,7 @@ From interface
         void
       </span>
       <span class="sympad">releaseConnection</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html">S3ConnectorConnectionManager.ConnectionParameters</a> key, <a href="../../../../../../java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a> connection)</span>
     </h4>
       <div class="api-level">
         <div>

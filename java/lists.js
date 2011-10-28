@@ -43,7 +43,7 @@ var DATA = [
       { id:41, label:"org.mule.module.s3.config.RegionEnumTransformer", link:"java/org/mule/module/s3/config/RegionEnumTransformer.html", type:"class" },
       { id:42, label:"org.mule.module.s3.config.S3ConnectorCapabilitiesAdapter", link:"java/org/mule/module/s3/config/S3ConnectorCapabilitiesAdapter.html", type:"class" },
       { id:43, label:"org.mule.module.s3.config.S3ConnectorConnectionManager", link:"java/org/mule/module/s3/config/S3ConnectorConnectionManager.html", type:"class" },
-      { id:44, label:"org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionKey", link:"java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionKey.html", type:"class" },
+      { id:44, label:"org.mule.module.s3.config.S3ConnectorConnectionManager.ConnectionParameters", link:"java/org/mule/module/s3/config/S3ConnectorConnectionManager.ConnectionParameters.html", type:"class" },
       { id:45, label:"org.mule.module.s3.config.S3ConnectorLifecycleAdapter", link:"java/org/mule/module/s3/config/S3ConnectorLifecycleAdapter.html", type:"class" },
       { id:46, label:"org.mule.module.s3.config.SetBucketPolicyMessageProcessor", link:"java/org/mule/module/s3/config/SetBucketPolicyMessageProcessor.html", type:"class" },
       { id:47, label:"org.mule.module.s3.config.SetBucketVersioningStatusMessageProcessor", link:"java/org/mule/module/s3/config/SetBucketVersioningStatusMessageProcessor.html", type:"class" },
