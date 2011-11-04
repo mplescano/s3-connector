@@ -718,7 +718,7 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationStorageClass</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>One of <br/><code><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></code> enumerated values, defaults to <br/><code><a href="../java/org/mule/module/s3/StorageClass.html#STANDARD">STANDARD</a></code></td>
                 </tr>
                 
                 
@@ -981,7 +981,7 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>content</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">The content to be uploaded to S3, capable of creating a <br/>PutObjectRequest.<br/></td>
                 </tr>
                 
                 
@@ -1126,7 +1126,7 @@ attribute on each operation.</p>
  can be shared to other users, allowing access to the resource without
  providing an account's AWS security credentials.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>INCLUDE_ERROR</pre></div></p></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-presigned-uri bucketName="my-bucket" key="bar.xml" method="GET" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1273,7 +1273,7 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
                 </tr>
                 
                 
@@ -1282,7 +1282,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
                 </tr>
                 
                 
@@ -1301,7 +1301,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>secure</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Whether to use http or https<br/></td>
                 </tr>
                 
                 
@@ -1830,7 +1830,7 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
                 </tr>
                 
                 
@@ -2613,7 +2613,7 @@ attribute on each operation.</p>
  Suspended. By default, new buckets are in the Off state. Once versioning is
  enabled for a bucket the status can never be reverted to Off.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>INCLUDE_ERROR</pre></div></p></div>
+ <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-versioning-status bucketName="my-bucket" versioningStatus="SUSPENDED" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
