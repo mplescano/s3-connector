@@ -111,15 +111,19 @@
       <span id="masthead-title">Mule S3 Connector</span>
     
     <ul id="header-tabs" class="mule">
+    
     	<li id="guide"><a href="../guide/install.html">
 	    	<span class="en">Install Guide</span>
     	</a></li>
+    
     	<li id="java"><a href="../java/packages.html">
-	    	<span class="en">Java API</span>
+	    	<span class="en">Java API Reference</span>
     	</a></li>
+    
     	<li id="mule"><a href="../mule/modules.html">
-	    	<span class="en">Mule API</span>
+	    	<span class="en">Mule API Reference</span>
     	</a></li>
+    
     </ul>
     </div>
     <div id="headerRight">
@@ -222,7 +226,7 @@ Summary:
 
 <h2>Module Overview</h2>
 <p>Amazon S3 (Simple Storage Service) is an online storage web service offered by Amazon Web Services. Amazon S3 
- provides storage through web services interfaces (REST, SOAP, and BitTorrent).<br/></p>
+ provides storage through web services interfaces (REST, SOAP, and BitTorrent).</p>
 
 
 </div><!-- jd-descr -->
@@ -594,13 +598,13 @@ resolution.</p>
     
       <tr class=" api apilevel-" >
           <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-          <td class="jd-descrcol" width="100%">The access key provided by Amazon, needed for non annoynous operations<br/></td>
+          <td class="jd-descrcol" width="100%">The access key provided by Amazon, needed for non annoynous operations</td>
       </tr>
       
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-          <td class="jd-descrcol" width="100%">The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
+          <td class="jd-descrcol" width="100%">The secrete key provided by Amazon, needed for non annoynous operations</td>
       </tr>
       
     
@@ -612,6 +616,8 @@ attribute on each operation.</p>
 <pre>
     ... retryMax="3"/&gt;
 </pre>
+
+
 
 
 
@@ -645,22 +651,24 @@ attribute on each operation.</p>
  and, unless another ACL specified, PRIVATE is assumed. If no destination
  bucket is specified, the same that the source bucket is used - local copy.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:copy-object sourceBucketName="my-bucket" sourceKey="foo.gzip" destinationKey="bar.gzip"
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:copy-object sourceBucketName="my-bucket" sourceKey="foo.gzip" destinationKey="bar.gzip"
                 destinationStorageClass="Private" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>sourceBucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The source object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The source object's bucket</td>
                 </tr>
                 
                 
@@ -669,7 +677,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>sourceKey</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The source object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The source object's key</td>
                 </tr>
                 
                 
@@ -680,7 +688,7 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the source object to copy, if
             versioning is enabled. Left unspecified if the latest version is
-            desired, or versioning is not enabled.<br/></td>
+            desired, or versioning is not enabled.</td>
                 </tr>
                 
                 
@@ -691,7 +699,7 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The destination object's bucket. If none
             provided, a local copy is performed, that is, it is copied within
-            the same bucket.<br/></td>
+            the same bucket.</td>
                 </tr>
                 
                 
@@ -700,7 +708,7 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationKey</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The destination object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The destination object's key</td>
                 </tr>
                 
                 
@@ -709,7 +717,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationAcl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The acl of the destination object.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The acl of the destination object.</td>
                 </tr>
                 
                 
@@ -718,72 +726,69 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationStorageClass</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>One of <br/><code><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></code> enumerated values, defaults to <br/><code><a href="../java/org/mule/module/s3/StorageClass.html#STANDARD">STANDARD</a></code></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>One of <code><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></code> enumerated values, defaults to <code><a href="../java/org/mule/module/s3/StorageClass.html#STANDARD">STANDARD</a></code></td>
                 </tr>
                 
                 
           
                 
+          
+                
                 <tr class="alt-color api apilevel-" >
-                    <td class="jd-linkcol"><nobr>destinationUserMetadata</nobr></td>
+                    <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The new metadata of the destination object,
-            that if specified, overrides that copied from the source object<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
+            executing only if the object has been modified after the specified
+            date. This constraint is specified but does not match, no copy is performed</td>
                 </tr>
                 
                 
           
                 
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
-                    <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
-            executing only if the object has been modified after the specified
-            date. This constraint is specified but does not match, no copy is performed<br/></td>
-                </tr>
-                
-                
-          
-                
-                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
             to executing only if the object has not been modified after this
-            date. This constraint is specified but does not match, no copy is performed<br/></td>
+            date. This constraint is specified but does not match, no copy is performed</td>
                 </tr>
                 
                 
           
           
-            <tr class=" api apilevel-" >
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -800,6 +805,10 @@ attribute on each operation.</p>
           
             
           
+            
+            <tr><th colspan="12"><nobr>&lt;s3:destinationUserMetadata&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>The new metadata of the destination object,
+            that if specified, overrides that copied from the source object</span></th></tr>
+            
             
           
             
@@ -813,8 +822,10 @@ attribute on each operation.</p>
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>the version id of the new object, or null, if versioning is not
          enabled
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -846,21 +857,23 @@ attribute on each operation.</p>
  make bucket create or delete calls in the high availability code path of an
  application. Create or delete buckets in a separate initialization or setup.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-bucket bucketName="my-bucket" acl="Private"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-bucket bucketName="my-bucket" acl="Private"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The bucket to create. It must not exist yet.<br/></td>
+                    <td class="jd-descrcol" width="100%">The bucket to create. It must not exist yet.</td>
                 </tr>
                 
                 
@@ -869,7 +882,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>region</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The region where to create the new bucket<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The region where to create the new bucket</td>
                 </tr>
                 
                 
@@ -878,12 +891,32 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>acl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new bucket<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new bucket</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -891,27 +924,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -926,8 +944,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>the non null, new Bucket
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -949,21 +969,23 @@ attribute on each operation.</p>
   <div class="jd-tagdata jd-tagdescr"><p>Uploads an object to S3. Supported contents are InputStreams, Strings, byte
  arrays and Files.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object bucketName="my-bucket" key="helloWorld.txt" contentType="text/plain" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object bucketName="my-bucket" key="helloWorld.txt" contentType="text/plain" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket</td>
                 </tr>
                 
                 
@@ -972,7 +994,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -981,7 +1003,7 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>content</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The content to be uploaded to S3, capable of creating a <br/>PutObjectRequest.<br/></td>
+                    <td class="jd-descrcol" width="100%">The content to be uploaded to S3, capable of creating a PutObjectRequest.</td>
                 </tr>
                 
                 
@@ -996,7 +1018,7 @@ attribute on each operation.</p>
             Otherwise, it is ignored. An exception to this 
             rule are InputStreams returned by Mule Http Connector: if stream has Content-Length 
             information, it will be used. 
-            In any case a content length of 0 is interpreted as an unspecified content length<br/></td>
+            In any case a content length of 0 is interpreted as an unspecified content length</td>
                 </tr>
                 
                 
@@ -1006,7 +1028,7 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>contentMd5</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The content md5, encoded in base 64. If content is a file,
-            it is ignored.<br/></td>
+            it is ignored.</td>
                 </tr>
                 
                 
@@ -1015,7 +1037,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>contentType</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The content type of the new object.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The content type of the new object.</td>
                 </tr>
                 
                 
@@ -1024,7 +1046,7 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>acl</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new object<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new object</td>
                 </tr>
                 
                 
@@ -1033,49 +1055,47 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>storageClass</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The storage class of the new object<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The storage class of the new object</td>
                 </tr>
                 
                 
           
                 
+          
+          
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
                 <tr class=" api apilevel-" >
-                    <td class="jd-linkcol"><nobr>userMetadata</nobr></td>
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>A map of arbitrary object properties keys and values<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
                 </tr>
                 
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
                 
+            
           
           
-            <tr class="alt-color api apilevel-" >
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
+            <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1094,6 +1114,9 @@ attribute on each operation.</p>
           
             
           
+            
+            <tr><th colspan="12"><nobr>&lt;s3:userMetadata&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>A map of arbitrary object properties keys and values</span></th></tr>
+            
             
           
       </table>
@@ -1102,8 +1125,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>the id of the created object, or null, if versioning is not enabled
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -1126,21 +1151,23 @@ attribute on each operation.</p>
  can be shared to other users, allowing access to the resource without
  providing an account's AWS security credentials.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-presigned-uri bucketName="my-bucket" key="bar.xml" method="GET" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-presigned-uri bucketName="my-bucket" key="bar.xml" method="GET" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket</td>
                 </tr>
                 
                 
@@ -1149,7 +1176,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -1160,7 +1187,7 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to create the URI, if
             versioning is enabled. Left unspecified if the latest version is
-            desired, or versioning is not enabled.<br/></td>
+            desired, or versioning is not enabled.</td>
                 </tr>
                 
                 
@@ -1169,7 +1196,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>expiration</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The time at which the returned pre-signed URL will expire.<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The time at which the returned pre-signed URL will expire.</td>
                 </tr>
                 
                 
@@ -1178,12 +1205,32 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>method</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The HTTP method verb to use for this URL<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The HTTP method verb to use for this URL</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1191,27 +1238,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1232,8 +1264,10 @@ attribute on each operation.</p>
       <ul class="nolist"><li>A non null pre-signed URI that can be used to access an Amazon S3
          resource without requiring the user of the URL to know the account's
          AWS security credentials.
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -1259,21 +1293,23 @@ attribute on each operation.</p>
  URL to the resource have unnecessary latency penalties for standard regions
  other than US_STANDARD.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-uri bucketName="my-bucket" key="baz.bin"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-uri bucketName="my-bucket" key="baz.bin"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket</td>
                 </tr>
                 
                 
@@ -1282,7 +1318,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -1292,7 +1328,7 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>useDefaultServer</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>If the default US Amazon server subdomain should be
-            used in the URI regardless of the region.<br/></td>
+            used in the URI regardless of the region.</td>
                 </tr>
                 
                 
@@ -1301,12 +1337,32 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>secure</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Whether to use http or https<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Whether to use http or https</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1314,27 +1370,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1352,8 +1393,10 @@ attribute on each operation.</p>
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>a non secure http URI to the object. Unlike the presigned URI, object
          must have PUBLIC_READ or PUBLIC_READ_WRITE permission
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -1377,21 +1420,23 @@ attribute on each operation.</p>
  itself can be deleted; this restriction can be relaxed by specifying the 
  attribute  force="true".
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket bucketName="my-bucket" force="true"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket bucketName="my-bucket" force="true"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The bucket to delete<br/></td>
+                    <td class="jd-descrcol" width="100%">The bucket to delete</td>
                 </tr>
                 
                 
@@ -1401,12 +1446,32 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>force</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1414,27 +1479,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1443,6 +1493,8 @@ attribute on each operation.</p>
           
       </table>
   </div>
+  
+    
   
 
     </div>
@@ -1466,14 +1518,16 @@ attribute on each operation.</p>
  bucket policy. Bucket policies provide access control management at the bucket
  level for both the bucket resource and contained object resources.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-policy bucketName="my-bucket"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-policy bucketName="my-bucket"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
@@ -1481,12 +1535,32 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">The bucket whose policy to delete
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1494,33 +1568,20 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
           
       </table>
   </div>
+  
+    
   
 
     </div>
@@ -1548,14 +1609,16 @@ attribute on each operation.</p>
  permission. Calling this operation on a bucket with no website configuration
  does not fail, but calling this operation a bucket that does not exist does.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-website-configuration bucketName="my-bucket"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-website-configuration bucketName="my-bucket"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
@@ -1563,12 +1626,32 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">The bucket whose policy to delete
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1576,33 +1659,20 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
           
       </table>
   </div>
+  
+    
   
 
     </div>
@@ -1630,21 +1700,23 @@ attribute on each operation.</p>
  does not exist, Amazon S3 will return a success message instead of an error
  message.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-object bucketName="my-bucket" key="foo.gzip"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-object bucketName="my-bucket" key="foo.gzip"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket</td>
                 </tr>
                 
                 
@@ -1653,7 +1725,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -1665,12 +1737,32 @@ attribute on each operation.</p>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to delete, if versioning
             is enabled. Left unspecified if the latest version is desired, or
             versioning is not enabled.
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1678,27 +1770,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1709,6 +1786,8 @@ attribute on each operation.</p>
           
       </table>
   </div>
+  
+    
   
 
     </div>
@@ -1732,26 +1811,48 @@ attribute on each operation.</p>
  retrieve it. If no policy has been set for the bucket, then a null policy text
  field will be returned.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-policy bucketName="my-bucket"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-policy bucketName="my-bucket"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The bucket whose policy to retrieve<br/></td>
+                    <td class="jd-descrcol" width="100%">The bucket whose policy to retrieve</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1759,27 +1860,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1790,8 +1876,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>the bucket policy, or null, if not set
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -1816,26 +1904,48 @@ attribute on each operation.</p>
  read the website configuration by writing a bucket policy granting them the
  GetBucketWebsite permission.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-website-configuration bucketName="my-bucket" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-website-configuration bucketName="my-bucket" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1843,27 +1953,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -1874,8 +1969,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>a non null com.amazonaws.services.s3.model.BucketWebsiteConfiguration
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -1896,28 +1993,30 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Gets the object stored in Amazon S3 under the specified bucket and key.
  Returns null if the specified constraints weren't met. To get an object from
- Amazon S3, the caller must have <br/><code><a href="null#Read">Read</a></code> access to the object.
+ Amazon S3, the caller must have <code><a href="null#Read">Read</a></code> access to the object.
  Callers should be very careful when using this method; the returned Amazon S3
  object contains a direct stream of data from the HTTP connection. The
  underlying HTTP connection cannot be closed until the user finishes reading
  the data and closes the stream. Regarding conditional get constraints, Amazon
  S3 will ignore any dates occurring in the future.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object bucketName="my-bucket" key="bar.xml"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object bucketName="my-bucket" key="bar.xml"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket</td>
                 </tr>
                 
                 
@@ -1926,7 +2025,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -1937,7 +2036,7 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
             versioning is enabled. Left unspecified if the latest version is
-            desired, or versioning is not enabled.<br/></td>
+            desired, or versioning is not enabled.</td>
                 </tr>
                 
                 
@@ -1948,7 +2047,7 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
             executing only if the object has been modified after the specified
-            date.<br/></td>
+            date.</td>
                 </tr>
                 
                 
@@ -1959,12 +2058,32 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
             to executing only if the object has not been modified after this
-            date.<br/></td>
+            date.</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -1972,27 +2091,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2011,8 +2115,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>the S3Object, or null, if conditional get constraints did not match
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -2033,25 +2139,27 @@ attribute on each operation.</p>
       
   <div class="jd-tagdata jd-tagdescr"><p>Gets the content of an object stored in Amazon S3 under the specified bucket
  and key. Returns null if the specified constraints weren't met. To get an
- object's content from Amazon S3, the caller must have <br/><code><a href="null#Read">Read</a></code>
+ object's content from Amazon S3, the caller must have <code><a href="null#Read">Read</a></code>
  access to the object. Regarding conditional get constraints, Amazon S3 will
  ignore any dates occurring in the future.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-content bucketName="my-bucket" key="bar.xml"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-content bucketName="my-bucket" key="bar.xml"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket</td>
                 </tr>
                 
                 
@@ -2060,7 +2168,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -2071,7 +2179,7 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
             versioning is enabled, left unspecified if the latest version is
-            desired, or versioning is not enabled.<br/></td>
+            desired, or versioning is not enabled.</td>
                 </tr>
                 
                 
@@ -2082,7 +2190,7 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
             executing only if the object has been modified after the specified
-            date.<br/></td>
+            date.</td>
                 </tr>
                 
                 
@@ -2093,12 +2201,32 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
             to executing only if the object has not been modified after this
-            date.<br/></td>
+            date.</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2106,27 +2234,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2145,8 +2258,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>an input stream to the objects contents
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -2169,21 +2284,23 @@ attribute on each operation.</p>
  the object itself. This is useful in obtaining only the object metadata, and
  avoids wasting bandwidth on fetching the object data.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-metadata bucketName="my-bucket" key="baz.bin" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-metadata bucketName="my-bucket" key="baz.bin" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket</td>
                 </tr>
                 
                 
@@ -2192,7 +2309,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -2201,12 +2318,32 @@ attribute on each operation.</p>
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>versionId</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The object metadata for the given bucketName and key<br/></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The object metadata for the given bucketName and key</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2214,27 +2351,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2249,8 +2371,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>the non null object metadata
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -2274,17 +2398,39 @@ attribute on each operation.</p>
  registered with Amazon S3. Anonymous requests cannot list buckets, and users
  cannot list buckets that they did not create.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-buckets /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-buckets /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2292,27 +2438,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
       </table>
@@ -2321,8 +2452,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>a non null list of com.amazonaws.services.s3.model.Bucket
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -2346,26 +2479,48 @@ attribute on each operation.</p>
  the number of objects, such listing can retrieve an arbitrary amount of
  object versions, and may need to perform extra calls to the api while it is iterated.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-object-versions bucketName="my-bucket" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-object-versions bucketName="my-bucket" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2373,27 +2528,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2404,8 +2544,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>An iterable
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -2428,21 +2570,23 @@ attribute on each operation.</p>
  the number of objects, such listing can retrieve an arbitrary amount of
  objects, and may need to perform extra calls to the api while it is iterated.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-objects bucketName="my-bucket" prefix="mk" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-objects bucketName="my-bucket" prefix="mk" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name</td>
                 </tr>
                 
                 
@@ -2452,12 +2596,32 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>prefix</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The prefix of the objects to be listed. If unspecified, all
-            objects are listed<br/></td>
+            objects are listed</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2465,27 +2629,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2498,8 +2647,10 @@ attribute on each operation.</p>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Return Payload</h5>
       <ul class="nolist"><li>An iterable
-<br/></li></ul>
+</li></ul>
   </div>
+    
+  
 
     </div>
 </div>
@@ -2523,21 +2674,23 @@ attribute on each operation.</p>
  management at the bucket level for both the bucket resource and contained
  object resources. Only one policy can be specified per-bucket.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-policy bucketName="my-bucket" policyText="your policy" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-policy bucketName="my-bucket" policyText="your policy" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The bucket name<br/></td>
+                    <td class="jd-descrcol" width="100%">The bucket name</td>
                 </tr>
                 
                 
@@ -2547,12 +2700,32 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>policyText</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">The policy text
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2560,27 +2733,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2589,6 +2747,8 @@ attribute on each operation.</p>
           
       </table>
   </div>
+  
+    
   
 
     </div>
@@ -2613,21 +2773,23 @@ attribute on each operation.</p>
  Suspended. By default, new buckets are in the Off state. Once versioning is
  enabled for a bucket the status can never be reverted to Off.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-versioning-status bucketName="my-bucket" versioningStatus="SUSPENDED" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-versioning-status bucketName="my-bucket" versioningStatus="SUSPENDED" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The target bucket name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket name</td>
                 </tr>
                 
                 
@@ -2637,12 +2799,32 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>versioningStatus</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">The version status to set
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class=" api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2650,27 +2832,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2679,6 +2846,8 @@ attribute on each operation.</p>
           
       </table>
   </div>
+  
+    
   
 
     </div>
@@ -2704,22 +2873,24 @@ attribute on each operation.</p>
  to set the website configuration by writing a bucket policy granting them the
  S3:PutBucketWebsite permission.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-website-configuration bucketName="my-bucket" suffix="index.html"
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-website-configuration bucketName="my-bucket" suffix="index.html"
                                      errorDocument="errorDocument.html" /&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The target bucket's name<br/></td>
+                    <td class="jd-descrcol" width="100%">The target bucket's name</td>
                 </tr>
                 
                 
@@ -2729,7 +2900,7 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>suffix</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">The document to serve when a directory is specified, relative to
-            the requested resource<br/></td>
+            the requested resource</td>
                 </tr>
                 
                 
@@ -2740,12 +2911,32 @@ attribute on each operation.</p>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The full path to error document the bucket will use as
             error page for 4XX errors
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2753,27 +2944,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2784,6 +2960,8 @@ attribute on each operation.</p>
           
       </table>
   </div>
+  
+    
   
 
     </div>
@@ -2808,21 +2986,23 @@ attribute on each operation.</p>
  version of the object with the new storage class. The existing version of the
  object preservers the previous storage class.
 
- <br/><div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-object-storage-class bucketName="my-bucket" key="foo.gzip" storageClass="REDUCED_REDUNDANCY"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-object-storage-class bucketName="my-bucket" key="foo.gzip" storageClass="REDUCED_REDUNDANCY"/&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
-      <table class="jd-tagtable">
-      <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-      <td class="jd-descrcol"></td>
-      <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td></tr>
           
           
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>bucketName</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's bucket name<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's bucket name</td>
                 </tr>
                 
                 
@@ -2831,7 +3011,7 @@ attribute on each operation.</p>
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>key</nobr></td>
                     <td class="jd-descrcol"></td>
-                    <td class="jd-descrcol" width="100%">The object's key<br/></td>
+                    <td class="jd-descrcol" width="100%">The object's key</td>
                 </tr>
                 
                 
@@ -2841,12 +3021,32 @@ attribute on each operation.</p>
                     <td class="jd-linkcol"><nobr>storageClass</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%">The storage class to set
-<br/></td>
+</td>
                 </tr>
                 
                 
           
           
+          <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+            
+                <tr class="alt-color api apilevel-" >
+                    <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+                <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                </tr>
+                
+            
+          
+          
+          
+            <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
             <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
@@ -2854,27 +3054,12 @@ attribute on each operation.</p>
             </tr>
             
           
-        
-            <tr class=" api apilevel-" >
-                <td class="jd-linkcol"><nobr>accessKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-            <tr class="alt-color api apilevel-" >
-                <td class="jd-linkcol"><nobr>secretKey</nobr></td>
-                <td class="jd-descrcol"></td>
-                <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations<br/></td>
-            </tr>
-        
-        
-      </table>
+          
+        </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Child Elements</h5>
-
-      <table class="jd-tagtable">
+        <table id="lconfig" class="jd-sumtable">
           
           
             
@@ -2885,6 +3070,8 @@ attribute on each operation.</p>
           
       </table>
   </div>
+  
+    
   
 
     </div>
