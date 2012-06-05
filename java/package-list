@@ -1,7 +1,10 @@
 org.mule.module.s3
+org.mule.module.s3.adapters
 org.mule.module.s3.config
 org.mule.module.s3.config.spring
+org.mule.module.s3.processors
 org.mule.module.s3.simpleapi
 org.mule.module.s3.simpleapi.content
+org.mule.module.s3.transformers
 org.mule.module.s3.util
 

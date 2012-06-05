@@ -64,6 +64,8 @@
 
 
 
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -85,6 +87,7 @@
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
 <script src="../assets/search_autocomplete.js" type="text/javascript"></script>
 <script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
 <script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
 <script src="../assets/prettify.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -101,6 +104,27 @@
     #resize-packages-nav{border-bottom:3px solid #666;}
   </style>
 </noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule S3 Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
 </head>
 
 <body class="">
@@ -196,7 +220,6 @@ Summary:
 <div id="jd-header">
     org.mule.modules
 <h1>mule-module-s3</h1>
-    2.1-SNAPSHOT
 
 </div><!-- end header -->
 
@@ -205,15 +228,17 @@ Summary:
 <div id="jd-content" class="api apilevel-">
 
 
+<br/>
+
 <div class="jd-tagdata">
       <table class="jd-tagtable">
         <tbody><tr>
           <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/s3</td>
         </tr><tr>
-          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/s3/2.0/mule-s3.xsd</td>
+          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/s3/current/mule-s3.xsd&nbsp;&nbsp;(<a href="s3-schema.html">View Schema</a>)</td>
         </tr>
 <tr>
-          <th>Version</th><td>2.0</td>
+          <th>Schema Version</th><td>2.0</td>
         </tr>
 <tr>
           <th>Minimum Mule Version</th><td>3.2</td>
@@ -274,7 +299,7 @@ Summary:
         
         <div class="jd-descrdiv">Copies a source object to a new destination; to copy an object, the caller's
  account must have read access to the source object and write access to the
- destination bucket.<br/></div>
+ destination bucket.</div>
         
   </td></tr>
 
@@ -285,7 +310,7 @@ Summary:
         <span class="sympad"><a href="../mule/s3.html#create-bucket">&lt;s3:create-bucket&gt;</a></nobr>
         
         <div class="jd-descrdiv">Creates a new bucket; connector must not be configured as anonymous for this
- operation to succeed.<br/></div>
+ operation to succeed.</div>
         
   </td></tr>
 
@@ -295,7 +320,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#create-object">&lt;s3:create-object&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Uploads an object to S3.<br/></div>
+        <div class="jd-descrdiv">Uploads an object to S3.</div>
         
   </td></tr>
 
@@ -305,7 +330,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#create-object-presigned-uri">&lt;s3:create-object-presigned-uri&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Returns a pre-signed URL for accessing an Amazon S3 object.<br/></div>
+        <div class="jd-descrdiv">Returns a pre-signed URL for accessing an Amazon S3 object.</div>
         
   </td></tr>
 
@@ -315,7 +340,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#create-object-uri">&lt;s3:create-object-uri&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Creates an http URI for the given object id.<br/></div>
+        <div class="jd-descrdiv">Creates an http URI for the given object id.</div>
         
   </td></tr>
 
@@ -325,7 +350,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#delete-bucket">&lt;s3:delete-bucket&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Deletes the specified bucket.<br/></div>
+        <div class="jd-descrdiv">Deletes the specified bucket.</div>
         
   </td></tr>
 
@@ -335,7 +360,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#delete-bucket-policy">&lt;s3:delete-bucket-policy&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Deletes the bucket's policy.<br/></div>
+        <div class="jd-descrdiv">Deletes the bucket's policy.</div>
         
   </td></tr>
 
@@ -346,7 +371,7 @@ Summary:
         <span class="sympad"><a href="../mule/s3.html#delete-bucket-website-configuration">&lt;s3:delete-bucket-website-configuration&gt;</a></nobr>
         
         <div class="jd-descrdiv">Removes the website configuration for a bucket; this operation requires the
- DeleteBucketWebsite permission.<br/></div>
+ DeleteBucketWebsite permission.</div>
         
   </td></tr>
 
@@ -357,7 +382,7 @@ Summary:
         <span class="sympad"><a href="../mule/s3.html#delete-object">&lt;s3:delete-object&gt;</a></nobr>
         
         <div class="jd-descrdiv">Deletes a given object, only the owner of the bucket containing the version
- can perform this operation.<br/></div>
+ can perform this operation.</div>
         
   </td></tr>
 
@@ -367,7 +392,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#get-bucket-policy">&lt;s3:get-bucket-policy&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Answers the policy for the given bucket.<br/></div>
+        <div class="jd-descrdiv">Answers the policy for the given bucket.</div>
         
   </td></tr>
 
@@ -377,7 +402,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#get-bucket-website-configuration">&lt;s3:get-bucket-website-configuration&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Answers the website of the given bucket.<br/></div>
+        <div class="jd-descrdiv">Answers the website of the given bucket.</div>
         
   </td></tr>
 
@@ -387,7 +412,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#get-object">&lt;s3:get-object&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Gets the object stored in Amazon S3 under the specified bucket and key.<br/></div>
+        <div class="jd-descrdiv">Gets the object stored in Amazon S3 under the specified bucket and key.</div>
         
   </td></tr>
 
@@ -398,7 +423,7 @@ Summary:
         <span class="sympad"><a href="../mule/s3.html#get-object-content">&lt;s3:get-object-content&gt;</a></nobr>
         
         <div class="jd-descrdiv">Gets the content of an object stored in Amazon S3 under the specified bucket
- and key.<br/></div>
+ and key.</div>
         
   </td></tr>
 
@@ -409,7 +434,7 @@ Summary:
         <span class="sympad"><a href="../mule/s3.html#get-object-metadata">&lt;s3:get-object-metadata&gt;</a></nobr>
         
         <div class="jd-descrdiv">Gets the metadata for the specified Amazon S3 object without actually fetching
- the object itself.<br/></div>
+ the object itself.</div>
         
   </td></tr>
 
@@ -420,7 +445,7 @@ Summary:
         <span class="sympad"><a href="../mule/s3.html#list-buckets">&lt;s3:list-buckets&gt;</a></nobr>
         
         <div class="jd-descrdiv">Answers a list of all Amazon S3 buckets that the authenticated sender of the
- request owns.<br/></div>
+ request owns.</div>
         
   </td></tr>
 
@@ -430,7 +455,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#list-object-versions">&lt;s3:list-object-versions&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning enabled.<br/></div>
+        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning enabled.</div>
         
   </td></tr>
 
@@ -440,7 +465,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#list-objects">&lt;s3:list-objects&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Lazily lists all objects for a given prefix.<br/></div>
+        <div class="jd-descrdiv">Lazily lists all objects for a given prefix.</div>
         
   </td></tr>
 
@@ -450,7 +475,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#set-bucket-policy">&lt;s3:set-bucket-policy&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Sets the bucket's policy, overriding any previously set.<br/></div>
+        <div class="jd-descrdiv">Sets the bucket's policy, overriding any previously set.</div>
         
   </td></tr>
 
@@ -460,7 +485,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#set-bucket-versioning-status">&lt;s3:set-bucket-versioning-status&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Sets the versioning status for the given bucket.<br/></div>
+        <div class="jd-descrdiv">Sets the versioning status for the given bucket.</div>
         
   </td></tr>
 
@@ -470,7 +495,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#set-bucket-website-configuration">&lt;s3:set-bucket-website-configuration&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Sets the given bucket's website configuration.<br/></div>
+        <div class="jd-descrdiv">Sets the given bucket's website configuration.</div>
         
   </td></tr>
 
@@ -480,7 +505,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3.html#set-object-storage-class">&lt;s3:set-object-storage-class&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Sets the Amazon S3 storage class for the given object.<br/></div>
+        <div class="jd-descrdiv">Sets the Amazon S3 storage class for the given object.</div>
         
   </td></tr>
 
@@ -498,7 +523,6 @@ Summary:
 </div><!-- jd-descr (summary) -->
 
 
-
 <!-- ========= CONFIGURATION DETAIL ======== -->
 <A NAME="config"></A>
 <h2>Configuration</h2>
@@ -512,14 +536,15 @@ similar to the following:</p>
                http://www.mulesoft.org/schema/mule/core
                http://www.mulesoft.org/schema/mule/core/current/mule.xsd
                http://www.mulesoft.org/schema/mule/s3
-               http://www.mulesoft.org/schema/mule/s3/2.0/mule-s3.xsd"&gt;
+               http://www.mulesoft.org/schema/mule/s3/current/mule-s3.xsd"&gt;
 
       &lt;!-- here goes your flows and configuration elements --&gt;
 
 &lt;/mule&gt;
 </pre>
+
 <p>This module is configured using the <i>config</i> element. This element must be placed outside of your flows and at
-the root of your Mule application. You can create as many configurations as you deem necesary as long as each carries
+the root of your Mule application. You can create as many configurations as you deem necessary as long as each carries
 its own name.</p>
 <p>Each message processor, message source or transformer carries a <i>config-ref</i> attribute that allows the invoker to
 specify which configuration to use.</p>
@@ -573,6 +598,7 @@ specify which configuration to use.</p>
       
     
 </table>
+
 
 
 
@@ -716,7 +742,7 @@ attribute on each operation.</p>
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationAcl</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">PRIVATE</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The acl of the destination object.</td>
                 </tr>
                 
@@ -725,7 +751,7 @@ attribute on each operation.</p>
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>destinationStorageClass</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">STANDARD</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>One of <code><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></code> enumerated values, defaults to <code><a href="../java/org/mule/module/s3/StorageClass.html#STANDARD">STANDARD</a></code></td>
                 </tr>
                 
@@ -806,7 +832,7 @@ attribute on each operation.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;s3:destinationUserMetadata&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>The new metadata of the destination object,
+            <tr><th colspan="12"><nobr>&lt;s3:destination-user-metadata&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>The new metadata of the destination object,
             that if specified, overrides that copied from the source object</span></th></tr>
             
             
@@ -881,7 +907,7 @@ attribute on each operation.</p>
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>region</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">US_STANDARD</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The region where to create the new bucket</td>
                 </tr>
                 
@@ -890,7 +916,7 @@ attribute on each operation.</p>
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>acl</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">PRIVATE</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new bucket</td>
                 </tr>
                 
@@ -1045,7 +1071,7 @@ attribute on each operation.</p>
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>acl</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">PRIVATE</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new object</td>
                 </tr>
                 
@@ -1054,7 +1080,7 @@ attribute on each operation.</p>
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>storageClass</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">STANDARD</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The storage class of the new object</td>
                 </tr>
                 
@@ -1115,7 +1141,7 @@ attribute on each operation.</p>
             
           
             
-            <tr><th colspan="12"><nobr>&lt;s3:userMetadata&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>A map of arbitrary object properties keys and values</span></th></tr>
+            <tr><th colspan="12"><nobr>&lt;s3:user-metadata&gt;</nobr></br><span style="font-weight: normal;"><i>Optional.&nbsp;</i>A map of arbitrary object properties keys and values</span></th></tr>
             
             
           
@@ -1204,7 +1230,7 @@ attribute on each operation.</p>
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>method</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">PUT</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The HTTP method verb to use for this URL</td>
                 </tr>
                 
@@ -1326,7 +1352,7 @@ attribute on each operation.</p>
                 
                 <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>useDefaultServer</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">false</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>If the default US Amazon server subdomain should be
             used in the URI regardless of the region.</td>
                 </tr>
@@ -1336,7 +1362,7 @@ attribute on each operation.</p>
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>secure</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">false</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Whether to use http or https</td>
                 </tr>
                 
@@ -1444,7 +1470,7 @@ attribute on each operation.</p>
                 
                 <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>force</nobr></td>
-                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol">false</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
 </td>
                 </tr>
