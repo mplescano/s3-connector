@@ -30,21 +30,18 @@ import com.amazonaws.services.s3.model.S3VersionSummary;
 import com.amazonaws.services.s3.model.SetBucketVersioningConfigurationRequest;
 import com.amazonaws.services.s3.model.StorageClass;
 import com.amazonaws.services.s3.model.VersionListing;
+import org.apache.commons.lang.Validate;
 
+import javax.validation.constraints.NotNull;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.AbstractCollection;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import javax.validation.constraints.NotNull;
-
-import org.apache.commons.lang.Validate;
 
 public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
 {
