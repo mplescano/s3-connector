@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="S3ConnectorStudioDemo">
+    <global-element type="http://www.springframework.org/schema/context/property-placeholder" name="Property Placeholder" entity-id="54ad8393-878f-4db4-8787-8eed157bfaef">
+        <properties>
+            <property value="classpath:s3Demo.properties" name="location"/>
+        </properties>
+    </global-element>
+    <global-element type="http://www.mulesoft.org/schema/mule/s3/config" name="S3" entity-id="66163a02-815d-4279-8a28-e98014cf95b0">
+        <properties>
+            <property value="S3Config" name="name"/>
+            <property value="${s3.accessKey}" name="accessKey"/>
+            <property value="${s3.secretKey}" name="secretKey"/>
+            <property name="proxyUsername"/>
+            <property name="proxyPort"/>
+            <property name="proxyHost"/>
+            <property name="proxyPassword"/>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="GetAndStore">
+        <properties>
+            <property value="" name="processingStrategy2"/>
+        </properties>
+        <description>Simple flow to get an image from a site and store it on Amazon S3.
+To trigger it, contact the first endpoint. You can assert the results in Amazon AWS Console.</description>
+        <lane hadOnlyOneElement="false" entity-id="76521b09-9f51-4a12-b299-67536f0a53dc">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP Acquire File Name" entity-id="bc34bb54-c486-43ae-a5b5-71af5942e017">
+                <properties>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="httpLabel"/>
+                    <property value="localhost" name="host"/>
+                    <property value="8081" name="port"/>
+                    <property value="getFile" name="path"/>
+                    <property name="method"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                </properties>
+            </endpoint>
+            <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP File Download" entity-id="dad92092-82e7-4725-953a-626fcc097208">
+                <properties>
+                    <property value="one-way" name="exchange-pattern"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="httpLabel"/>
+                    <property value="www.mulesoft.com" name="host"/>
+                    <property value="80" name="port"/>
+                    <property value="images/index/front-esb.jpg" name="path"/>
+                    <property value="GET" name="method"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="address"/>
+                    <property name="encoding"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="mimeType"/>
+                    <property name="responseTimeout"/>
+                    <property name="followRedirects"/>
+                    <property name="connector-ref"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="user"/>
+                    <property name="password"/>
+                    <property name="contentType"/>
+                    <property name="keep-alive"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/s3/s3-connector" name="S3 Create Object" entity-id="ca264137-345a-415c-9bd3-84a7bb8c90af">
+                <properties>
+                    <property value="" name=""/>
+                    <property value="" name="accessKey"/>
+                    <property value="" name="secretKey"/>
+                    <property value="STANDARD" name="storageClass"/>
+                    <property value="PUBLIC_READ" name="acl"/>
+                    <property value="http://www.mulesoft.org/schema/mule/s3/create-object" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="" name="contentType"/>
+                    <property value="" name="contentMd5"/>
+                    <property value="" name="contentLength"/>
+                    <property value="${s3.bucketName}" name="bucketName"/>
+                    <property value="S3Config" name="config-ref"/>
+                    <property value="mulelogo.jpg" name="key"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/s3/create-object-user-metadatas;1"/>
+                </properties>
+                <description></description>
+            </pattern>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

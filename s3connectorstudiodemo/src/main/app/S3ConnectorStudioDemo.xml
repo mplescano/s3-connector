@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:context="http://www.springframework.org/schema/context" xmlns:s3="http://www.mulesoft.org/schema/mule/s3" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:debugger="http://www.mulesoft.org/schema/mule/debugger" xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="CE-3.3.0" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/2.0/mule-s3.xsd 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
+http://www.mulesoft.org/schema/mule/debugger http://www.mulesoft.org/schema/mule/debugger/current/mule-debugger.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd ">
+    <context:property-placeholder location="classpath:s3Demo.properties"/>
+    <s3:config name="S3Config" accessKey="${s3.accessKey}" secretKey="${s3.secretKey}" doc:name="S3"/>
+    <flow name="GetAndStore" doc:name="GetAndStore" doc:description="Simple flow to get an image from a site and store it on Amazon S3.
+To trigger it, contact the first endpoint. You can assert the results in Amazon AWS Console.">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="getFile" doc:name="HTTP Acquire File Name"/>
+        <http:outbound-endpoint exchange-pattern="request-response" host="www.mulesoft.com" port="80" path="images/index/front-esb.jpg" method="GET" doc:name="HTTP File Download"/>
+        <s3:create-object config-ref="S3Config" bucketName="${s3.bucketName}" key="mulelogo.jpg" acl="PUBLIC_READ" doc:name="S3 Create Object"/>
+    </flow>
+</mule>
