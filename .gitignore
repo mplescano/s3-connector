@@ -2,8 +2,9 @@ target
 *.iws
 *.ipr
 *.iml
-.settings
-.classpath
-.project
+./.settings
+./.classpath
+./.project
 .checkstyle
 .springBeans
+.idea

@@ -96,6 +96,11 @@ public class S3TestDriver
         // op2
         String objectVersion = connector.createObject(bucketName, "anObject", "hello world!", null, null,
             "text/plain", PRIVATE, StorageClass.STANDARD, null);
+
+        // op3
+
+
+
         // pos2
         assertNull(objectVersion);
         assertTrue(connector.listObjects(bucketName, "").iterator().hasNext());
