@@ -126,7 +126,8 @@ public interface SimpleAmazonS3
      * @param objectId the id of the object to be created. If its versioned, its
      *            version is ignored
      * @param content
-     * @param metadata
+     * @param contentType
+     * @param contentDisposition
      * @param acl
      * @param storageClass
      * @param userMetadata
@@ -135,6 +136,7 @@ public interface SimpleAmazonS3
     String createObject(@NotNull S3ObjectId objectId,
                         @NotNull S3ObjectContent content,
                         String contentType,
+                        String contentDisposition,
                         CannedAccessControlList acl,
                         StorageClass storageClass,
                         Map<String, String> userMetadata);

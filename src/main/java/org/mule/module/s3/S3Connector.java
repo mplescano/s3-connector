@@ -326,6 +326,7 @@ public class S3Connector
      * @param contentMd5 the content md5, encoded in base 64. If content is a file,
      *            it is ignored.
      * @param contentType the content type of the new object.
+     * @param contentDisposition the content disposition of the new object.
      * @param acl the access control list of the new object
      * @param storageClass the storage class of the new object
      * @param userMetadata a map of arbitrary object properties keys and values
@@ -338,12 +339,13 @@ public class S3Connector
                                @Optional Long contentLength,
                                @Optional String contentMd5,
                                @Optional String contentType,
+                               @Optional String contentDisposition,
                                @Optional @Default("PRIVATE") AccessControlList acl,
                                @Optional @Default("STANDARD") StorageClass storageClass,
                                @Optional Map<String, String> userMetadata)
     {
         return client.createObject(new S3ObjectId(bucketName, key), S3ContentUtils.createContent(content,
-            contentLength, contentMd5), contentType, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
+            contentLength, contentMd5), contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
             userMetadata);
     }
 

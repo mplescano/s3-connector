@@ -57,7 +57,7 @@ public class S3TestDriver
     {
         connector.createBucket(bucketName, Region.US_STANDARD, AccessControlList.PRIVATE);
         connector.createObject(bucketName, "myObject", "hello world", null, null, "text/plain",
-            AccessControlList.PUBLIC_READ, StorageClass.STANDARD, null);
+            null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, null);
         URI uri = connector.createObjectPresignedUri(bucketName, "myObject", null, null, "GET");
         assertTrue(uri.toString().startsWith(
             String.format("https://%s.s3.amazonaws.com/%s", bucketName, "myObject")));
@@ -67,7 +67,7 @@ public class S3TestDriver
     public void testDeleteNoForce() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
-        connector.createObject(bucketName, "anObject", "hello world", null, null, null, PRIVATE,
+        connector.createObject(bucketName, "anObject", "hello world", null, null, null, null, PRIVATE,
             StorageClass.STANDARD, null);
         connector.deleteBucket(bucketName, false);
     }
@@ -95,7 +95,7 @@ public class S3TestDriver
 
         // op2
         String objectVersion = connector.createObject(bucketName, "anObject", "hello world!", null, null,
-            "text/plain", PRIVATE, StorageClass.STANDARD, null);
+            "text/plain", null, PRIVATE, StorageClass.STANDARD, null);
 
         // op3
 
@@ -115,10 +115,10 @@ public class S3TestDriver
     {
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
         connector.setBucketVersioningStatus(bucketName, VersioningStatus.ENABLED);
-        String versionId1 = connector.createObject(bucketName, "anObject", "hello", null, null, null,
+        String versionId1 = connector.createObject(bucketName, "anObject", "hello", null, null, null, null,
             PRIVATE, StorageClass.STANDARD, null);
         assertNotNull(versionId1);
-        String versionId2 = connector.createObject(bucketName, "anObject", "hello world", null, null, null,
+        String versionId2 = connector.createObject(bucketName, "anObject", "hello world", null, null, null, null,
             PRIVATE, StorageClass.STANDARD, null);
         assertNotNull(versionId2);
         assertFalse(versionId1.equals(versionId2));

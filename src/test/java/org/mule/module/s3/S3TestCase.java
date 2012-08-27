@@ -144,7 +144,7 @@ public class S3TestCase
         PutObjectRequestMatcher matcher = new PutObjectRequestMatcher(CannedAccessControlList.Private, com.amazonaws.services.s3.model.StorageClass.ReducedRedundancy);
         when(client.putObject(argThat(matcher))).thenReturn(new PutObjectResult());
 
-        assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, "have a nice release", null, null, null,
+        assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, "have a nice release", null, null, null, null,
                 PRIVATE, org.mule.module.s3.StorageClass.REDUCED_REDUNDANCY, null));
     }
 
@@ -155,7 +155,7 @@ public class S3TestCase
         when(
             client.putObject(argThat(new ContentMetadataMatcher(content.length(), "A5B69...", "text/plain")))).thenReturn(
             new PutObjectResult());
-        assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, content, null, "A5B69...", "text/plain",
+        assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, content, null, "A5B69...", "text/plain", null,
             PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null));
     }
 
@@ -165,7 +165,7 @@ public class S3TestCase
         byte[] content = "hello".getBytes();
         when(client.putObject(argThat(new ContentMetadataMatcher(content.length, "A5B69...", null)))).thenReturn(
             new PutObjectResult());
-        assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, content, null, "A5B69...", null,
+        assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, content, null, "A5B69...", null, null,
             PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null));
     }
 
@@ -176,7 +176,7 @@ public class S3TestCase
         when(client.putObject(argThat(new ContentMetadataMatcher(contentLength, "A5B69...", "text/plain")))).thenReturn(
             new PutObjectResult());
         assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, new NullInputStream(0), contentLength,
-            "A5B69...", "text/plain", PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null));
+            "A5B69...", "text/plain", "attachment; filename=database.dat", PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null));
     }
 
     @Test
@@ -190,7 +190,7 @@ public class S3TestCase
         PutObjectRequestMatcher matcher = new PutObjectRequestMatcher(CannedAccessControlList.PublicRead, com.amazonaws.services.s3.model.StorageClass.Standard);
         when(client.putObject(argThat(matcher))).thenReturn(new PutObjectResult());
         assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, "have a nice release", null, null,
-                "text/plain", PUBLIC_READ, org.mule.module.s3.StorageClass.STANDARD, null));
+                "text/plain", "attachment; filename=database.dat", PUBLIC_READ, org.mule.module.s3.StorageClass.STANDARD, null));
     }
 
     @Test

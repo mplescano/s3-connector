@@ -152,6 +152,7 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
     public String createObject(@NotNull S3ObjectId objectId,
                                @NotNull S3ObjectContent content,
                                String contentType,
+                               String contentDisposition,
                                CannedAccessControlList acl,
                                StorageClass storageClass,
                                Map<String, String> userMetadata)
@@ -161,6 +162,7 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         if (request.getMetadata() != null)
         {
             request.getMetadata().setContentType(contentType);
+            request.getMetadata().setContentDisposition(contentDisposition);
         }
         request.getMetadata().setUserMetadata(userMetadata);
         request.setBucketName(objectId.getBucketName());
