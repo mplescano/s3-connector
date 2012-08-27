@@ -546,7 +546,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, CannedAccessControlList acl, StorageClass storageClass, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, String contentDisposition, CannedAccessControlList acl, StorageClass storageClass, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
         
         <div class="jd-descrdiv">Creates an object, uploading its contents, and optionally setting its
  CannedAccessControlList and StorageClass</div>
@@ -1079,7 +1079,7 @@ Summary:
 </div>
 
 
-<A NAME="createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.util.Map<java.lang.String, java.lang.String>)"></A>
+<A NAME="createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.util.Map<java.lang.String, java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1092,7 +1092,7 @@ Summary:
         String
       </span>
       <span class="sympad">createObject</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, CannedAccessControlList acl, StorageClass storageClass, Map&lt;String,&nbsp;String&gt; userMetadata)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, String contentDisposition, CannedAccessControlList acl, StorageClass storageClass, Map&lt;String,&nbsp;String&gt; userMetadata)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1120,6 +1120,10 @@ Summary:
         </tr>
         <tr>
           <th>contentType</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>contentDisposition</td>
           <td></td>
         </tr>
         <tr>

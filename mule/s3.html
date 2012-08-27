@@ -1070,6 +1070,15 @@ attribute on each operation.</p>
           
                 
                 <tr class=" api apilevel-" >
+                    <td class="jd-linkcol"><nobr>contentDisposition</nobr></td>
+                    <td class="jd-descrcol"></td>
+                    <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The content disposition of the new object.</td>
+                </tr>
+                
+                
+          
+                
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>acl</nobr></td>
                     <td class="jd-descrcol">PRIVATE</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access control list of the new object</td>
@@ -1078,7 +1087,7 @@ attribute on each operation.</p>
                 
           
                 
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>storageClass</nobr></td>
                     <td class="jd-descrcol">STANDARD</td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The storage class of the new object</td>
@@ -1091,14 +1100,14 @@ attribute on each operation.</p>
           
           <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
             
-                <tr class=" api apilevel-" >
+                <tr class="alt-color api apilevel-" >
                     <td class="jd-linkcol"><nobr>accessKey</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
                 </tr>
                 
             
-                <tr class="alt-color api apilevel-" >
+                <tr class=" api apilevel-" >
                     <td class="jd-linkcol"><nobr>secretKey</nobr></td>
                     <td class="jd-descrcol"></td>
                     <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
@@ -1109,7 +1118,7 @@ attribute on each operation.</p>
           
           
             <tr><th colspan="12">Retry and Reconnect<br/><span style="font-weight: 200;">This message processor supports automatic retry and reconnect. If the API call fail for a known error then the API will be automatically retried. This does not happen on every type of error, only a few that has been selected and are known to be recoverable from.</span></th></tr>
-            <tr class=" api apilevel-" >
+            <tr class="alt-color api apilevel-" >
                 <td class="jd-linkcol"><nobr>retryMax</nobr></td>
                 <td class="jd-descrcol">1</td>
                 <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify how many times this operation can be retried automatically</td>
@@ -1123,6 +1132,8 @@ attribute on each operation.</p>
       <h5 class="jd-tagtitle">Child Elements</h5>
         <table id="lconfig" class="jd-sumtable">
           
+          
+            
           
             
           
