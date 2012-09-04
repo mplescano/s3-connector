@@ -1,5 +1,5 @@
 <!-- BEGIN_INCLUDE(s3:create-bucket) -->
-<s3:create-bucket bucketName="my-bucket" acl="Private"/>
+<s3:create-bucket bucketName="my-bucket" acl="PRIVATE"/>
 <!-- END_INCLUDE(s3:create-bucket) -->
 <!-- BEGIN_INCLUDE(s3:delete-bucket) -->
 <s3:delete-bucket bucketName="my-bucket" force="true"/>
@@ -40,7 +40,7 @@
 <!-- END_INCLUDE(s3:delete-object) -->
 <!-- BEGIN_INCLUDE(s3:copy-object) -->
 <s3:copy-object sourceBucketName="my-bucket" sourceKey="foo.gzip" destinationKey="bar.gzip"
-                destinationStorageClass="Private" />
+                destinationStorageClass="STANDARD" />
 <!-- END_INCLUDE(s3:copy-object) -->
 <!-- BEGIN_INCLUDE(s3:set-object-storage-class) -->
 <s3:set-object-storage-class bucketName="my-bucket" key="foo.gzip" storageClass="REDUCED_REDUNDANCY"/>
