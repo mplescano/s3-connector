@@ -207,15 +207,23 @@
     <li class="selected api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/adapters/package-summary.html">org.mule.module.s3.adapters</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/agents/package-summary.html">org.mule.module.s3.agents</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/connectivity/package-summary.html">org.mule.module.s3.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/process/package-summary.html">org.mule.module.s3.process</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/processors/package-summary.html">org.mule.module.s3.processors</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/simpleapi/package-summary.html">org.mule.module.s3.simpleapi</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/simpleapi/content/package-summary.html">org.mule.module.s3.simpleapi.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/simpleapi/transformers/package-summary.html">org.mule.module.s3.simpleapi.transformers</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/transformers/package-summary.html">org.mule.module.s3.transformers</a></li>
     <li class="api apilevel-">
@@ -230,9 +238,12 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorCapabilitiesAdapter.html">S3ConnectorCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionManager.html">S3ConnectorConnectionManager</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorMetadataAdapater.html">S3ConnectorMetadataAdapater</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorProcessAdapter.html">S3ConnectorProcessAdapter</a></li>
       </ul>
     </li>
               
@@ -386,7 +397,7 @@ Summary:
       
         Capabilities 
       
-        ConnectionManager&lt;K,&nbsp;C&gt; 
+        ConnectionManager&lt;K,&nbsp;C&nbsp;extends&nbsp;Connection&gt; 
       
         MuleContextAware 
       
@@ -1429,6 +1440,38 @@ From interface
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad">getConnectionPoolingProfile</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            K</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getDefaultConnectionKey</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            RetryPolicyTemplate</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getRetryPolicyTemplate</span>()</nobr>
         
   </td></tr>
 
