@@ -336,8 +336,8 @@ public class S3Connector
                                @Payload Object content,
                                @Optional Long contentLength,
                                @Optional String contentMd5,
-                               @Optional String contentType,
-                               @Optional String contentDisposition,
+                               @Optional @Default("") String contentType,
+                               @Optional @Default("") String contentDisposition,
                                @Optional @Default("PRIVATE") AccessControlList acl,
                                @Optional @Default("STANDARD") StorageClass storageClass,
                                @Optional Map<String, String> userMetadata)
