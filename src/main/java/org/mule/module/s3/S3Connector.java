@@ -57,7 +57,7 @@ import static org.mule.module.s3.util.InternalUtils.coalesce;
  * 
  * @author MuleSoft, Inc.
  */
-@Connector(name = "s3", schemaVersion = "2.0")
+@Connector(name = "s3", schemaVersion = "2.0", friendlyName = "Amazon S3")
 public class S3Connector
 {
     /**
@@ -336,8 +336,8 @@ public class S3Connector
                                @Payload Object content,
                                @Optional Long contentLength,
                                @Optional String contentMd5,
-                               @Optional @Default("") String contentType,
-                               @Optional @Default("") String contentDisposition,
+                               @Optional String contentType,
+                               @Optional String contentDisposition,
                                @Optional @Default("PRIVATE") AccessControlList acl,
                                @Optional @Default("STANDARD") StorageClass storageClass,
                                @Optional Map<String, String> userMetadata)

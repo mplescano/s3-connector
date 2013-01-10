@@ -25,6 +25,7 @@ import java.util.Map;
 
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 
 public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
@@ -160,7 +161,9 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         if (request.getMetadata() != null)
         {
             request.getMetadata().setContentType(contentType);
-            request.getMetadata().setContentDisposition(contentDisposition);
+            if (StringUtils.isNotBlank(contentDisposition)) {
+                request.getMetadata().setContentDisposition(contentDisposition);
+            }
         }
         request.getMetadata().setUserMetadata(userMetadata);
         request.setBucketName(objectId.getBucketName());
