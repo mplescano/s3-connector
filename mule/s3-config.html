@@ -634,7 +634,7 @@ create one. That lookup mechanism is done in the connection pool via the use of 
 <p>The user of the connector can configure the pool by adding a <code>connection-pooling-profile</code> to the connector configuration like this:</p>
 <pre>
     &lt;s3:connection-pooling-profile maxActive="10" maxIdle="10"
-                             exhaustedAction="WHEN_EXHAUSTED_GROW" maxWait="120"/&gt;
+                             exhaustedAction="WHEN_EXHAUSTED_GROW" maxWait="120" minEvictionMillis="60000" evictionCheckIntervalMillis="30000"/&gt;
 </pre>
 <p>The following is a list of connection attributes, each connection attribute can be configured at the config element level or
 they can also be added to each processor. If they are used at the processor level they get the benefit of full expression
