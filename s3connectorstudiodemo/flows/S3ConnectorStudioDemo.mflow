@@ -1,99 +1,316 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="S3ConnectorStudioDemo">
-    <global-element type="http://www.springframework.org/schema/context/property-placeholder" name="Property Placeholder" entity-id="54ad8393-878f-4db4-8787-8eed157bfaef">
+    <global-element type="http://www.springframework.org/schema/context/property-placeholder" name="Property Placeholder" entity-id="Property Placeholder#1">
         <properties>
             <property value="classpath:s3Demo.properties" name="location"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <global-element type="http://www.mulesoft.org/schema/mule/s3/config" name="S3" entity-id="66163a02-815d-4279-8a28-e98014cf95b0">
+    <global-element type="http://www.mulesoft.org/schema/mule/s3/config" name="Amazon S3" entity-id="Amazon S3#1">
         <properties>
             <property value="S3Config" name="name"/>
+            <property value="2" name="auxiliary;index"/>
             <property value="${s3.accessKey}" name="accessKey"/>
             <property value="${s3.secretKey}" name="secretKey"/>
+            <property value="2" name="auxiliary;index"/>
             <property name="proxyUsername"/>
             <property name="proxyPort"/>
             <property name="proxyHost"/>
             <property name="proxyPassword"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="GetAndStore">
+    <flow SubFlow="false" name="GetAndStore" entity-id="7143868a-742c-4157-b9b4-0beb0f483597">
         <properties>
-            <property value="" name="processingStrategy2"/>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property value="3" name="auxiliary;index"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="3" name="auxiliary;index"/>
+            <property value="3" name="auxiliary;index"/>
+            <property value="3" name="auxiliary;index"/>
         </properties>
-        <description>Simple flow to get an image from a site and store it on Amazon S3.
-To trigger it, contact the first endpoint. You can assert the results in Amazon AWS Console.</description>
-        <lane hadOnlyOneElement="false" entity-id="76521b09-9f51-4a12-b299-67536f0a53dc">
-            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP Acquire File Name" entity-id="bc34bb54-c486-43ae-a5b5-71af5942e017">
+        <description>Simple flow to get an image from a site and store it on Amazon S3. To trigger it, contact the first endpoint. You can assert the results in Amazon AWS Console.</description>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP Acquire File Name" entity-id="HTTP#1">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="request-response" name="exchange-pattern"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property name="httpLabel"/>
                     <property value="localhost" name="host"/>
                     <property value="8081" name="port"/>
                     <property value="getFile" name="path"/>
                     <property name="method"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
                     <property name="responseTimeout"/>
                     <property name="followRedirects"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property name="user"/>
                     <property name="password"/>
+                    <property value="4" name="auxiliary;index"/>
                     <property name="contentType"/>
                     <property name="keep-alive"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property value="4" name="auxiliary;index"/>
                 </properties>
             </endpoint>
-            <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP File Download" entity-id="dad92092-82e7-4725-953a-626fcc097208">
+            <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP File Download" entity-id="HTTP#2">
                 <properties>
-                    <property value="one-way" name="exchange-pattern"/>
-                    <property value="request-response" name="exchange-pattern"/>
-                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property name="httpLabel"/>
-                    <property value="www.mulesoft.com" name="host"/>
                     <property value="80" name="port"/>
-                    <property value="images/index/front-esb.jpg" name="path"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="" name="contentType"/>
+                    <property value="" name="password"/>
+                    <property value="false" name="tracking:enable-default-events"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="" name="encoding"/>
+                    <property value="sites/all/themes/mulesoft_community/logo.png" name="path"/>
+                    <property value="" name="responseTransformer-refs"/>
+                    <property value="" name="responseTimeout"/>
+                    <property value="" name="mimeType"/>
+                    <property value="true" name="auxiliary;erased;contentType"/>
+                    <property value="www.mulesoft.org" name="host"/>
+                    <property value="" name="businessEventsLabel"/>
+                    <property value="false" name="followRedirects"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="false" name="keep-alive"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="httpLabel"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="address"/>
                     <property value="GET" name="method"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="address"/>
-                    <property name="encoding"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="mimeType"/>
-                    <property name="responseTimeout"/>
-                    <property name="followRedirects"/>
-                    <property name="connector-ref"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="user"/>
-                    <property name="password"/>
-                    <property name="contentType"/>
-                    <property name="keep-alive"/>
+                    <property value="" name="user"/>
+                    <property value="" name="connector-ref"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property name="updated"/>
                 </properties>
+                <description></description>
             </endpoint>
-            <pattern type="http://www.mulesoft.org/schema/mule/s3/s3-connector" name="S3 Create Object" entity-id="ca264137-345a-415c-9bd3-84a7bb8c90af">
+            <pattern type="http://www.mulesoft.org/schema/mule/s3/s3-connector" name="S3 Create Object" entity-id="Amazon S3#2">
+                <properties>
+                    <property value="" name=""/>
+                    <property value="" name="accessKey"/>
+                    <property value="PUBLIC_READ" name="acl"/>
+                    <property value="http://www.mulesoft.org/schema/mule/s3/create-object" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="" name="contentType"/>
+                    <property value="${s3.bucketName}" name="bucketName"/>
+                    <property value="content" name="contentDisposition"/>
+                    <property value="STANDARD" name="storageClass"/>
+                    <property value="" name="secretKey"/>
+                    <property value="" name="contentMd5"/>
+                    <property value="S3Config" name="config-ref"/>
+                    <property value="" name="contentLength"/>
+                    <property value="mulelogo2.jpg" name="key"/>
+                    <property value="6" name="auxiliary;index"/>
+                    <property name="updated"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/s3/create-object-user-metadatas;1"/>
+                </properties>
+                <description></description>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="ListObjects" entity-id="462f4734-b6e9-403c-87ae-8f1334439efa">
+        <properties>
+            <property value="" name="processingStrategy2"/>
+            <property value="" name="bussinessEventsLabel"/>
+            <property value="false" name="tracking:enable-default-events"/>
+            <property value="true" name="auxiliary;erased;processingStrategy2"/>
+            <property name="updated"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;1870197276"/>
+        </properties>
+        <description></description>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="2315c276-7b9a-4986-87d8-53a8f3c52ebe">
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/https/endpoint" name="HTTP" entity-id="ccd8f734-37e6-45fb-baa2-8247c8f7d269">
+                <properties>
+                    <property value="true" name="auxiliary;erased;contentType"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="8081" name="port"/>
+                    <property value="localhost" name="host"/>
+                    <property value="" name="businessEventsLabel"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="false" name="keep-alive"/>
+                    <property value="" name="contentType"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="" name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="false" name="tracking:enable-default-events"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="httpLabel"/>
+                    <property value="" name="address"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="listObjects" name="path"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="responseTransformer-refs"/>
+                    <property value="" name="user"/>
+                    <property value="" name="mimeType"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="" name="connector-ref"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/s3/s3-connector" name="Amazon S3" entity-id="05f03943-38f7-4997-993f-e9c2743402bc">
                 <properties>
                     <property value="" name=""/>
                     <property value="" name="accessKey"/>
                     <property value="" name="secretKey"/>
-                    <property value="STANDARD" name="storageClass"/>
-                    <property value="PUBLIC_READ" name="acl"/>
-                    <property value="http://www.mulesoft.org/schema/mule/s3/create-object" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
-                    <property value="" name="contentType"/>
-                    <property value="" name="contentMd5"/>
-                    <property value="" name="contentLength"/>
+                    <property value="" name="prefix"/>
+                    <property value="http://www.mulesoft.org/schema/mule/s3/list-objects" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="${s3.bucketName}" name="bucketName"/>
                     <property value="S3Config" name="config-ref"/>
-                    <property value="mulelogo.jpg" name="key"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/s3/create-object-user-metadatas;1"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="d03bcd13-35b6-4892-87fe-bc73c9b5ffee"/>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="CreateBucket" entity-id="311f6426-fe2c-47d3-ab10-b1d8f2a2e4f9">
+        <properties>
+            <property value="" name="processingStrategy2"/>
+            <property value="" name="bussinessEventsLabel"/>
+            <property value="false" name="tracking:enable-default-events"/>
+            <property value="true" name="auxiliary;erased;processingStrategy2"/>
+            <property name="updated"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/transaction;697639066"/>
+        </properties>
+        <description></description>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="1b98cff9-e2a7-4271-8fd8-c9bf50991cd1">
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/https/endpoint" name="HTTP" entity-id="3a75b6da-a424-4fe6-b411-40e342fccd69">
+                <properties>
+                    <property value="true" name="auxiliary;erased;contentType"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="8081" name="port"/>
+                    <property value="localhost" name="host"/>
+                    <property value="" name="businessEventsLabel"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="false" name="keep-alive"/>
+                    <property value="" name="contentType"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="" name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="false" name="tracking:enable-default-events"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="httpLabel"/>
+                    <property value="" name="address"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="createBucket" name="path"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="responseTransformer-refs"/>
+                    <property value="" name="user"/>
+                    <property value="" name="mimeType"/>
+                    <property value="10000" name="responseTimeout"/>
+                    <property value="" name="connector-ref"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/s3/s3-connector" name="Amazon S3" entity-id="fad67554-f209-4e15-9f2d-2170948c098b">
+                <properties>
+                    <property value="" name=""/>
+                    <property value="US_STANDARD" name="region"/>
+                    <property value="" name="accessKey"/>
+                    <property value="" name="secretKey"/>
+                    <property value="PRIVATE" name="acl"/>
+                    <property value="http://www.mulesoft.org/schema/mule/s3/create-bucket" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="${s3.newbucketName}" name="bucketName"/>
+                    <property value="S3Config" name="config-ref"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/json/object-to-json-transformer" name="Object to JSON" entity-id="a75c0f83-40ec-4bfe-810a-6ef1c86ea4b9"/>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="GetObject" entity-id="3ae71a1c-09c5-4874-ac9c-fdc8aa99428b">
+        <properties>
+            <property name="processingStrategy2"/>
+            <property name="processingStrategy"/>
+            <property value="7" name="auxiliary;index"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property value="7" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
+            <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#3">
+                <properties>
+                    <property value="true" name="auxiliary;erased;contentType"/>
+                    <property value="true" name="auxiliary;erased;mimeType"/>
+                    <property value="8081" name="port"/>
+                    <property value="localhost" name="host"/>
+                    <property value="" name="businessEventsLabel"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="false" name="keep-alive"/>
+                    <property value="" name="contentType"/>
+                    <property value="false" name="disableTransportTransformer"/>
+                    <property value="" name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property value="false" name="tracking:enable-default-events"/>
+                    <property value="" name="ref"/>
+                    <property value="" name="transformer-refs"/>
+                    <property value="" name="httpLabel"/>
+                    <property value="" name="address"/>
+                    <property value="true" name="auxiliary;erased;encoding"/>
+                    <property value="downloadFile" name="path"/>
+                    <property value="" name="encoding"/>
+                    <property value="" name="responseTransformer-refs"/>
+                    <property value="" name="user"/>
+                    <property value="" name="mimeType"/>
+                    <property value="" name="responseTimeout"/>
+                    <property value="" name="connector-ref"/>
+                    <property value="8" name="auxiliary;index"/>
+                    <property name="updated"/>
+                </properties>
+                <description></description>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/s3/s3-connector" name="Amazon S3" entity-id="Amazon S3#3">
+                <properties>
+                    <property value="" name=""/>
+                    <property value="" name="accessKey"/>
+                    <property value="" name="unmodifiedSince"/>
+                    <property value="" name="secretKey"/>
+                    <property value="" name="modifiedSince"/>
+                    <property value="http://www.mulesoft.org/schema/mule/s3/get-object-content" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property value="" name="versionId"/>
+                    <property value="${s3.bucketName}" name="bucketName"/>
+                    <property value="S3Config" name="config-ref"/>
+                    <property value="mulelogo2.jpg" name="key"/>
+                    <property value="9" name="auxiliary;index"/>
+                    <property name="updated"/>
                 </properties>
                 <description></description>
             </pattern>
