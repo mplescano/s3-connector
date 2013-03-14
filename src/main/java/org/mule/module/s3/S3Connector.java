@@ -25,17 +25,10 @@ import com.amazonaws.services.s3.model.S3VersionSummary;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.mule.api.ConnectionException;
-import org.mule.api.annotations.Configurable;
-import org.mule.api.annotations.Connect;
-import org.mule.api.annotations.ConnectionIdentifier;
-import org.mule.api.annotations.Connector;
-import org.mule.api.annotations.Disconnect;
-import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.ValidateConnection;
+import org.mule.api.annotations.*;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
-import org.mule.api.annotations.param.Payload;
 import org.mule.module.s3.simpleapi.ConditionalConstraints;
 import org.mule.module.s3.simpleapi.Region;
 import org.mule.module.s3.simpleapi.S3ObjectId;
@@ -57,7 +50,7 @@ import static org.mule.module.s3.util.InternalUtils.coalesce;
  * 
  * @author MuleSoft, Inc.
  */
-@Connector(name = "s3", schemaVersion = "2.0", friendlyName = "Amazon S3", minMuleVersion = "3.4")
+@Connector(name = "s3", schemaVersion = "2.0", friendlyName = "Amazon S3", minMuleVersion = "3.4", metaData = MetaDataSwitch.OFF)
 public class S3Connector
 {
     /**
@@ -333,7 +326,7 @@ public class S3Connector
     @Processor
     public String createObject(String bucketName,
                                String key,
-                               @Payload Object content,
+                               @Optional @Default("#[payload]") Object content,
                                @Optional Long contentLength,
                                @Optional String contentMd5,
                                @Optional String contentType,
