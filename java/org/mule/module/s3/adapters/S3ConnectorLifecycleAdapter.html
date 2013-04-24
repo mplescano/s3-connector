@@ -892,6 +892,18 @@ org.mule.api.lifecycle.Stoppable
           private
           
           
+          Integer</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/S3Connector.html#connectionTimeout">connectionTimeout</a></td>
+          <td class="jd-descrcol" width="100%">The amount of time to wait (in milliseconds) when initially establishing
+ a connection before giving up and timing out.</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
           String</nobr></td>
           <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/S3Connector.html#proxyHost">proxyHost</a></td>
           <td class="jd-descrcol" width="100%">The optional  proxy port
@@ -899,7 +911,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -911,7 +923,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -923,7 +935,7 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -932,6 +944,18 @@ org.mule.api.lifecycle.Stoppable
           <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/S3Connector.html#proxyUsername">proxyUsername</a></td>
           <td class="jd-descrcol" width="100%">The optional proxy username
 </td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Integer</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/S3Connector.html#socketTimeout">socketTimeout</a></td>
+          <td class="jd-descrcol" width="100%">The amount of time to wait (in milliseconds) for data to be transfered
+ over an established, open connection before the connection is timed out.</td>
       </tr>
       
     
@@ -1501,6 +1525,22 @@ From class
             
             
             
+            Integer</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#getConnectionTimeout()">getConnectionTimeout</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
             S3Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1512,7 +1552,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1531,7 +1571,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1550,7 +1590,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1566,7 +1606,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1582,7 +1622,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1598,7 +1638,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1609,6 +1649,22 @@ From class
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#getProxyUsername()">getProxyUsername</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Integer</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#getSocketTimeout()">getSocketTimeout</a></span>()</nobr>
         
   </td></tr>
 
@@ -1765,6 +1821,22 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#setConnectionTimeout(java.lang.Integer)">setConnectionTimeout</a></span>(Integer connectionTimeout)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#setObjectStorageClass(java.lang.String, java.lang.String, org.mule.module.s3.StorageClass)">setObjectStorageClass</a></span>(String bucketName, String key, <a href="../../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass)</nobr>
         
         <div class="jd-descrdiv">Sets the Amazon S3 storage class for the given object.</div>
@@ -1773,7 +1845,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1789,7 +1861,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1805,7 +1877,7 @@ From class
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1821,7 +1893,7 @@ From class
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1832,6 +1904,22 @@ From class
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#setProxyUsername(java.lang.String)">setProxyUsername</a></span>(String proxyUsername)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#setSocketTimeout(java.lang.Integer)">setSocketTimeout</a></span>(Integer socketTimeout)</nobr>
         
   </td></tr>
 
