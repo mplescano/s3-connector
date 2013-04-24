@@ -77,7 +77,27 @@ public class S3Connector
      */
     @Configurable
     @Optional
-    private String proxyHost;   
+    private String proxyHost;
+
+    /**
+     * The amount of time to wait (in milliseconds) for data to be transfered
+     * over an established, open connection before the connection is timed out.
+     * A value of 0 means infinity, and is not recommended.
+     */
+    @Configurable
+    @Optional
+    @Default("50000")
+    private Integer socketTimeout;
+
+    /**
+     * The amount of time to wait (in milliseconds) when initially establishing
+     * a connection before giving up and timing out. A value of 0 means
+     * infinity, and is not recommended.
+     */
+    @Configurable
+    @Optional
+    @Default("50000")
+    private Integer connectionTimeout;
     
     private SimpleAmazonS3 client;
 
@@ -674,6 +694,15 @@ public class S3Connector
         {
             clientConfig.setProxyHost(proxyHost);
         }
+        if (connectionTimeout != null)
+        {
+            clientConfig.setConnectionTimeout(connectionTimeout);
+        }
+        if (socketTimeout != null)
+        {
+            clientConfig.setSocketTimeout(socketTimeout);
+        }
+
         return new AmazonS3Client(createCredentials(accessKey, secretKey),
             clientConfig);
     }
@@ -732,4 +761,19 @@ public class S3Connector
         this.proxyHost = proxyHost;
     }
 
+    public Integer getSocketTimeout() {
+        return socketTimeout;
+    }
+
+    public void setSocketTimeout(Integer socketTimeout) {
+        this.socketTimeout = socketTimeout;
+    }
+
+    public Integer getConnectionTimeout() {
+        return connectionTimeout;
+    }
+
+    public void setConnectionTimeout(Integer connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
+    }
 }
