@@ -13,7 +13,7 @@
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.2/mule.xsd
         http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/2.0/mule-s3.xsd">
 
-    <s3:config accessKey="xxx" secretKey="yyy"/>
+    <s3:config accessKey="xxx" secretKey="yyy" socketTimeout="100000"/>
 
     <flow name="ListBucketsFlow">
         <s3:list-buckets/>
