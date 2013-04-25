@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+
+	<!--  usermetadata key values should be lowercase  -->
+
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd HH:mm:ss" />
+	</bean>
+
+	<bean id="currentDate" factory-bean="dateFormat" factory-method="parse">
+		<constructor-arg>
+			<bean factory-bean="dateFormat" factory-method="format">
+				<constructor-arg>
+					<bean class="java.util.Date" />
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<!-- create-bucket -->
+	
+	<util:map id="createBucketTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="region" value="US_WEST" />
+		<entry key="acl" value="PUBLIC_READ" />
+	</util:map>
+	
+	<!-- delete-bucket -->
+	
+	<util:map id="deleteBucketUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="deleteBucketUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="deleteBucketTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="deleteBucketUserMetadata" />		
+	</util:map>
+
+	<!-- bucket-policy -->	
+	
+	<util:map id="bucketPolicyTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="policyTemplate" value="{&quot;Version&quot;:&quot;2008-10-17&quot;,&quot;Statement&quot;:[{&quot;Sid&quot;:&quot;AddPerm&quot;,&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;AWS&quot;:&quot;*&quot;},&quot;Action&quot;:&quot;s3:GetObject&quot;,&quot;Resource&quot;:&quot;arn:aws:s3:::test_bucket_name/*&quot;}]}" />
+	</util:map>
+	
+	<!-- website-configuration -->	
+	
+	<util:map id="bucketWebsiteConfigurationTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="suffix" value="index.html" />
+		<entry key="errorDocument" value="404.html" />
+	</util:map>
+
+	<!-- list-buckets -->	
+	
+	<util:map id="listBucketsTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="bucketAmount" value="3" />
+	</util:map>
+
+	<!-- create-object -->	
+	
+	<!-- create-object input-stream -->
+	
+	<util:map id="createInputStreamObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="createInputStreamObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="mulelogo2.jpg" />
+		<entry key="userMetadata" value-ref="createInputStreamObjectUserMetadata" />
+		<entry key="acl" value="PUBLIC_READ" />
+		<entry key="storageClass" value="REDUCED_REDUNDANCY" />
+		<entry key="contentDisposition" value="inline" />
+		<entry key="contentType" value="image/png" />	
+	</util:map>
+	
+	<!-- create-object byte-array -->
+	
+	<util:map id="createByteArrayObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="createByteArrayObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="createByteArrayObjectUserMetadata" />
+		<entry key="acl" value="PUBLIC_READ" />
+		<entry key="storageClass" value="REDUCED_REDUNDANCY" />
+		<entry key="contentDisposition" value="attachment" />
+		<entry key="contentLength" value="#[null]" />
+		<entry key="contentType" value="text/plain" />				
+	</util:map>
+	
+	<!-- create-object string -->
+	
+	<util:map id="createStringObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="createStringObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="createStringObjectUserMetadata" />	
+		<entry key="acl" value="PUBLIC_READ" />
+		<entry key="storageClass" value="REDUCED_REDUNDANCY" />
+		<entry key="contentDisposition" value="attachment" />
+		<entry key="contentType" value="text/plain" />			
+	</util:map>
+	
+	<!-- create-object file -->
+	
+	<util:map id="createFileObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="createFileObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="createFileObjectUserMetadata" />			
+	</util:map>
+	
+	<!-- create-object-presigned-uri -->	
+
+	<!-- create-object-presigned-uri input-stream -->
+	
+	<util:map id="createInputStreamObjectPresignedURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="mulelogo2.jpg" />
+		<entry key="expiration" value-ref="currentDate" />
+		<entry key="method" value="POST" />		
+	</util:map>
+	
+	<!-- create-object-presigned-uri byte-array -->
+	
+	<util:map id="createByteArrayObjectPresignedURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="expiration" value-ref="currentDate" />
+		<entry key="method" value="POST" />				
+	</util:map>
+	
+	<!-- create-object-presigned-uri string -->
+	
+	<util:map id="createStringObjectPresignedURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />	
+		<entry key="expiration" value-ref="currentDate" />
+		<entry key="method" value="POST" />			
+	</util:map>
+	
+	<!-- create-object-presigned-uri file -->
+	
+	<util:map id="createFileObjectPresignedURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />	
+		<entry key="expiration" value-ref="currentDate" />
+		<entry key="method" value="POST" />			
+	</util:map>
+	
+	<!-- create-object-uri -->	
+
+	<!-- create-object-uri input-stream -->
+	
+	<util:map id="createInputStreamObjectURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="mulelogo2.jpg" />
+	</util:map>
+	
+	<!-- create-object-uri byte-array -->
+	
+	<util:map id="createByteArrayObjectURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />			
+	</util:map>
+	
+	<!-- create-object-uri string -->
+	
+	<util:map id="createStringObjectURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />			
+	</util:map>
+	
+	<!-- create-object-uri file -->
+	
+	<util:map id="createFileObjectURITestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />			
+	</util:map>
+	
+	<!-- get-object -->	
+	
+	<!-- get-object input-stream -->
+	
+	<util:map id="getInputStreamObjectUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getInputStreamObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getInputStreamObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="photos/sample.jpg" />
+		<entry key="userMetadata" value-ref="getInputStreamObjectUserMetadata" />
+	</util:map>
+	
+	<!-- get-object byte-array -->
+	
+	<util:map id="getByteArrayObjectUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getByteArrayObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getByteArrayObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="getByteArrayObjectUserMetadata" />		
+	</util:map>
+	
+	<!-- get-object string -->
+	
+	<util:map id="getStringObjectUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getStringObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getStringObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="getStringObjectUserMetadata" />	
+	</util:map>
+	
+	<!-- get-object file -->
+	
+	<util:map id="getFileObjectUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getFileObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getFileObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="getFileObjectUserMetadata" />			
+	</util:map>
+
+	<!-- get-object-content -->	
+	
+	<!-- get-object-content input-stream -->
+	
+	<util:map id="getInputStreamObjectContentUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getInputStreamObjectContentUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getInputStreamObjectContentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="photos/sample.jpg" />
+		<entry key="userMetadata" value-ref="getInputStreamObjectContentUserMetadata" />
+	</util:map>
+	
+	<!-- get-object-content byte-array -->
+	
+	<util:map id="getByteArrayObjectContentUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getByteArrayObjectContentUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getByteArrayObjectContentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="getByteArrayObjectContentUserMetadata" />		
+	</util:map>
+	
+	<!-- get-object-content string -->
+	
+	<util:map id="getStringObjectContentUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getStringObjectContentUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getStringObjectContentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="getStringObjectContentUserMetadata" />	
+	</util:map>
+	
+	<!-- get-object-content file -->
+	
+	<util:map id="getFileObjectContentUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getFileObjectContentUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getFileObjectContentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="getFileObjectContentUserMetadata" />			
+	</util:map>
+
+	<!-- get-object-metadata -->	
+	
+	<!-- get-object-metadata input-stream -->
+	
+	<util:map id="getInputStreamObjectMetadataUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getInputStreamObjectMetadataUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getInputStreamObjectMetadataTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="photos/sample.jpg" />
+		<entry key="userMetadata" value-ref="getInputStreamObjectMetadataUserMetadata" />
+	</util:map>
+	
+	<!-- get-object-metadata byte-array -->
+	
+	<util:map id="getByteArrayObjectMetadataUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getByteArrayObjectMetadataUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getByteArrayObjectMetadataTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="getByteArrayObjectMetadataUserMetadata" />		
+	</util:map>
+	
+	<!-- get-object-metadata string -->
+	
+	<util:map id="getStringObjectUpdatedMetadataUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getStringObjectMetadataUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getStringObjectMetadataTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="getStringObjectMetadataUserMetadata" />	
+	</util:map>
+	
+	<!-- get-object-metadata file -->
+	
+	<util:map id="getFileObjectMetadataUpdatedUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="getFileObjectMetadataUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="getFileObjectMetadataTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="getFileObjectMetadataUserMetadata" />			
+	</util:map>
+
+	<!-- copy-object -->	
+	
+	<!-- copy-object input-stream -->
+	
+	<util:map id="copyInputStreamObjectDestinationUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyInputStreamObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyInputStreamObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="photos/sample.jpg" />
+		<entry key="userMetadata" value-ref="copyInputStreamObjectUserMetadata" />
+		<entry key="destinationUserMetadata" value-ref="copyInputStreamObjectDestinationUserMetadata" />
+	</util:map>
+	
+	<!-- copy-object byte-array -->
+	
+	<util:map id="copyByteArrayObjectDestinationUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyByteArrayObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyByteArrayObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="copyByteArrayObjectUserMetadata" />
+		<entry key="destinationUserMetadata" value-ref="copyByteArrayObjectDestinationUserMetadata" />		
+	</util:map>
+	
+	<!-- copy-object string -->
+	
+	<util:map id="copyStringObjectDestinationUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyStringObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyStringObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="copyStringObjectUserMetadata" />
+		<entry key="destinationUserMetadata" value-ref="copyStringObjectDestinationUserMetadata" />	
+	</util:map>
+	
+	<!-- copy-object file -->
+	
+	<util:map id="copyFileObjectDestinationUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="updatedUserMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyFileObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="copyFileObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="copyFileObjectUserMetadata" />		
+		<entry key="destinationUserMetadata" value-ref="copyFileObjectDestinationUserMetadata" />		
+	</util:map>
+
+	<!-- list-objects -->	
+	
+	<util:map id="listObjectsTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="prefix" value="prefix/" />
+		<entry key="expectedResults" value="2" />
+	</util:map>
+	
+	<!-- list-objects input-stream -->
+	
+	<util:map id="listObjectsInputStreamObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectsInputStreamObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="prefix/mulelogo2.jpg" />
+		<entry key="userMetadata" value-ref="listObjectsInputStreamObjectUserMetadata" />
+	</util:map>
+	
+	<!-- list-objects byte-array -->
+	
+	<util:map id="listObjectsByteArrayObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectsByteArrayObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="listObjectsByteArrayObjectUserMetadata" />			
+	</util:map>
+	
+	<!-- list-objects string -->
+	
+	<util:map id="listObjectsStringObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectsStringObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="prefix/stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="listObjectsStringObjectUserMetadata" />			
+	</util:map>
+	
+	<!-- list-objects file -->
+	
+	<util:map id="listObjectsFileObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectsFileObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="listObjectsFileObjectUserMetadata" />			
+	</util:map>
+
+	<!-- list-objects-versions -->	
+	
+	<util:map id="listObjectVersionsTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="prefix" value="prefix/" />
+		<entry key="expectedResults" value="2" />
+	</util:map>
+	
+	<!-- list-object-versions input-stream -->
+	
+	<util:map id="listObjectVersionsInputStreamObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectVersionsInputStreamObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="prefix/mulelogo2.jpg" />
+		<entry key="userMetadata" value-ref="listObjectVersionsInputStreamObjectUserMetadata" />
+	</util:map>
+	
+	<!-- list-object-versions byte-array -->
+	
+	<util:map id="listObjectVersionsByteArrayObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectVersionsByteArrayObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="listObjectVersionsByteArrayObjectUserMetadata" />			
+	</util:map>
+	
+	<!-- list-object-versions string -->
+	
+	<util:map id="listObjectVersionsStringObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectVersionsStringObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="prefix/stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="listObjectVersionsStringObjectUserMetadata" />			
+	</util:map>
+	
+	<!-- list-object-versions file -->
+	
+	<util:map id="listObjectVersionsFileObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="listObjectVersionsFileObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="listObjectVersionsFileObjectUserMetadata" />			
+	</util:map>
+
+	<!-- set-object-storage-class -->	
+	
+	<!-- set-object-storage-class input-stream -->
+
+	<util:map id="setInputStreamObjectStorageClassTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="prefix/mulelogo2.jpg" />
+	</util:map>
+	
+	<!-- set-object-storage-class byte-array -->
+	
+	<util:map id="setByteArrayObjectStorageClassTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />		
+	</util:map>
+	
+	<!-- set-object-storage-class string -->
+	
+	<util:map id="setStringObjectStorageClassTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="prefix/stringKey" />
+		<entry key="contentRef" value="stringValue" />	
+	</util:map>
+	
+	<!-- set-object-storage-class file -->
+	
+	<util:map id="setFileObjectStorageClassTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />		
+	</util:map>
+	
+	<!-- delete-object -->	
+	
+	<!-- delete-object input-stream -->
+	
+	<util:map id="deleteInputStreamObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="deleteInputStreamObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="host" value="www.mulesoft.org" />
+		<entry key="path" value="sites/all/themes/mulesoft_community/logo.png" />
+		<entry key="key" value="mulelogo2.jpg" />
+		<entry key="userMetadata" value-ref="deleteInputStreamObjectUserMetadata" />
+	</util:map>
+	
+	<!-- delete-object byte-array -->
+	
+	<util:map id="deleteByteArrayObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="deleteByteArrayObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="deleteByteArrayObjectUserMetadata" />			
+	</util:map>
+	
+	<!-- delete-object string -->
+	
+	<util:map id="deleteStringObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="deleteStringObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="stringKey" />
+		<entry key="contentRef" value="stringValue" />
+		<entry key="userMetadata" value-ref="deleteStringObjectUserMetadata" />		
+	</util:map>
+	
+	<!-- delete-object file -->
+	
+	<util:map id="deleteFileObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="deleteFileObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="fileKey" />
+		<entry key="userMetadata" value-ref="deleteFileObjectUserMetadata" />			
+	</util:map>
+	
+	<!-- set-bucket-versioning-status -->
+	
+	<util:map id="setBucketVersioningStatusObjectUserMetadata" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="usermetadatakey" value="userMetadataValue" />
+	</util:map>
+	
+	<util:map id="setBucketVersioningStatusObjectTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="key" value="byteArrayKey" />
+		<entry key="userMetadata" value-ref="setBucketVersioningStatusObjectUserMetadata" />			
+	</util:map>
+
+</beans>

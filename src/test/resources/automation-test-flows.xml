@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:s3="http://www.mulesoft.org/schema/mule/s3" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/2.0/mule-s3.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+    
+    <context:property-placeholder location="${S3_CREDENTIALS}" />
+    
+    <s3:config name="Amazon_S3" accessKey="${s3.accessKey}" secretKey="${s3.secretKey}" doc:name="Amazon S3">
+        <s3:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
+    </s3:config>
+    
+    <flow name="create-bucket" doc:name="create-bucket">
+        <s3:create-bucket config-ref="Amazon_S3" bucketName="#[payload.bucketName]" doc:name="Create bucket"/>
+    </flow>
+    
+    <flow name="create-bucket-optional-attributes" doc:name="create-bucket-optional-attributes">
+        <s3:create-bucket config-ref="Amazon_S3" bucketName="#[payload.bucketName]" acl="#[payload.acl]" region="#[payload.region]" doc:name="Create bucket"/>
+    </flow>
+    
+    <flow name="delete-bucket" doc:name="delete-bucket">
+        <s3:delete-bucket config-ref="Amazon_S3" bucketName="#[payload.bucketName]" doc:name="Delete bucket"/>
+    </flow>
+    
+    <flow name="delete-bucket-optional-attributes" doc:name="delete-bucket-optional-attributes">
+        <s3:delete-bucket config-ref="Amazon_S3" bucketName="#[payload.bucketName]" doc:name="Delete bucket" force="true"/>
+    </flow>
+    
+    <flow name="set-bucket-policy" doc:name="set-bucket-policy">
+        <s3:set-bucket-policy config-ref="Amazon_S3" bucketName="#[payload.bucketName]" policyText="#[payload.policyText]" doc:name="Set bucket policy"/>
+    </flow>
+    
+    <flow name="get-bucket-policy" doc:name="get-bucket-policy">
+        <s3:get-bucket-policy config-ref="Amazon_S3" bucketName="#[payload.bucketName]"  doc:name="Get bucket policy"/>
+    </flow>
+    
+    <flow name="delete-bucket-policy" doc:name="delete-bucket-policy">
+        <s3:delete-bucket-policy config-ref="Amazon_S3" bucketName="#[payload.bucketName]"  doc:name="Delete bucket policy"/>
+    </flow>
+    
+    <flow name="set-bucket-website-configuration" doc:name="set-bucket-website-configuration">
+        <s3:set-bucket-website-configuration config-ref="Amazon_S3" bucketName="#[payload.bucketName]" suffix="#[payload.suffix]" doc:name="Set bucket website configuration"/>
+    </flow>
+    
+    <flow name="set-bucket-website-configuration-optional-attributes" doc:name="set-bucket-website-configuration-optional-attributes">
+        <s3:set-bucket-website-configuration config-ref="Amazon_S3" bucketName="#[payload.bucketName]" suffix="#[payload.suffix]" doc:name="Set bucket website configuration" errorDocument="#[payload.errorDocument]"/>
+    </flow>
+    
+    <flow name="delete-bucket-website-configuration" doc:name="delete-bucket-website-configuration">
+        <s3:delete-bucket-website-configuration config-ref="Amazon_S3" bucketName="#[payload.bucketName]"  doc:name="Delete bucket website configuration"/>
+    </flow>
+    
+    <flow name="list-buckets" doc:name="list-buckets">
+        <s3:list-buckets config-ref="Amazon_S3"   doc:name="List buckets"/>
+    </flow>
+    
+    <flow name="get-bucket-website-configuration" doc:name="get-bucket-website-configuration">
+        <s3:get-bucket-website-configuration config-ref="Amazon_S3"   doc:name="Get bucket website configuration" bucketName="#[payload.bucketName]"/>
+    </flow>
+    
+    <flow name="set-bucket-versioning-status" doc:name="set-bucket-versioning-status">
+        <s3:set-bucket-versioning-status config-ref="Amazon_S3"   doc:name="Set bucket versioning status" bucketName="#[payload.bucketName]" versioningStatus="#[payload.versioningStatus]"/>
+    </flow>
+    
+    <flow name="create-object-child-elements-none" doc:name="create-object-child-elements-none">
+        <s3:create-object config-ref="Amazon_S3"   doc:name="Create object" bucketName="#[payload.bucketName]" key="#[payload.key]" content-ref="#[payload.contentRef]"/>
+    </flow>
+    
+    <flow name="create-object-child-elements-from-message" doc:name="create-object-child-elements-from-message">
+        <s3:create-object config-ref="Amazon_S3"   doc:name="Create object" bucketName="#[payload.bucketName]" key="#[payload.key]" content-ref="#[payload.contentRef]" >
+            <s3:user-metadata ref="#[payload.userMetadata]"/>
+        </s3:create-object>
+    </flow>
+    
+    <flow name="create-object-child-elements-create-object-manually" doc:name="create-object-child-elements-create-object-manually">
+        <s3:create-object config-ref="Amazon_S3"   doc:name="Create object" bucketName="#[payload.bucketName]" key="#[payload.key]" content-ref="#[payload.contentRef]" >
+            <s3:user-metadata>
+                <s3:user-metadatum key="usermetadatakey">userMetadataValue</s3:user-metadatum>
+            </s3:user-metadata>
+        </s3:create-object>
+    </flow>
+    
+    <flow name="create-object-optional-attributes" doc:name="create-object-optional-attributes">
+        <s3:create-object config-ref="Amazon_S3"   doc:name="Create object" bucketName="#[payload.bucketName]" acl="#[payload.acl]" key="#[payload.key]" storageClass="#[payload.storageClass]" content-ref="#[payload.contentRef]" contentDisposition="#[payload.contentDisposition]" contentLength="#[payload.contentLength]" contentMd5="#[payload.contentMd5]" contentType="#[payload.contentType]"/>
+    </flow>
+    
+    <flow name="delete-object" doc:name="delete-object">
+        <s3:delete-object config-ref="Amazon_S3"   doc:name="Delete object" bucketName="#[payload.bucketName]" key="#[payload.key]"/>
+    </flow>
+    
+    <flow name="delete-object-optional-attributes" doc:name="delete-object-optional-attributes">
+        <s3:delete-object config-ref="Amazon_S3"   doc:name="Delete object" bucketName="#[payload.bucketName]" key="#[payload.key]" versionId="#[payload.versionId]"/>
+    </flow>
+    
+    <flow name="create-object-presigned-uri" doc:name="create-object-presigned-uri">
+        <s3:create-object-presigned-uri config-ref="Amazon_S3"   doc:name="Create object presigned uri" bucketName="#[payload.bucketName]" key="#[payload.key]"/>
+    </flow>
+    
+    <flow name="create-object-presigned-uri-optional-attributes" doc:name="create-object-presigned-uri-optional-attributes">
+        <s3:create-object-presigned-uri config-ref="Amazon_S3"   doc:name="Create object presigned uri" bucketName="#[payload.bucketName]" key="#[payload.key]" expiration="#[payload.expiration]" method="#[payload.method]" versionId="#[payload.versionId]"/>
+    </flow>
+    
+    <flow name="create-object-uri" doc:name="create-object-uri">
+        <s3:create-object-uri config-ref="Amazon_S3"   doc:name="Create object uri" bucketName="#[payload.bucketName]" key="#[payload.key]"/>
+    </flow>
+    
+    <flow name="create-object-uri-optional-attributes" doc:name="create-object-uri-optional-attributes">
+        <s3:create-object-uri config-ref="Amazon_S3"   doc:name="Create object uri" bucketName="#[payload.bucketName]" key="#[payload.key]" secure="true" useDefaultServer="true"/>
+    </flow>
+    
+    <flow name="get-object" doc:name="get-object">
+        <s3:get-object config-ref="Amazon_S3"   doc:name="Get object" bucketName="#[payload.bucketName]" key="#[payload.key]"/>
+    </flow>
+    
+    <flow name="get-object-optional-attributes-version-id" doc:name="get-object-optional-attributes">
+        <s3:get-object config-ref="Amazon_S3"   doc:name="Get object" bucketName="#[payload.bucketName]" key="#[payload.key]" versionId="#[payload.versionId]" />
+    </flow>
+    
+     <flow name="get-object-optional-attributes-modified-since" doc:name="get-object-optional-attributes-modified-since">
+        <s3:get-object config-ref="Amazon_S3"   doc:name="Get object" bucketName="#[payload.bucketName]" key="#[payload.key]" modifiedSince="#[payload.modifiedSince]" />
+    </flow>
+    
+     <flow name="get-object-optional-attributes-unmodified-since" doc:name="get-object-optional-attributes-unmodified-since">
+        <s3:get-object config-ref="Amazon_S3"   doc:name="Get object" bucketName="#[payload.bucketName]" key="#[payload.key]" unmodifiedSince="#[payload.unmodifiedSince]" />
+    </flow>
+    
+    <flow name="get-object-content" doc:name="get-object-content">
+        <s3:get-object-content config-ref="Amazon_S3"   doc:name="Get object content" bucketName="#[payload.bucketName]" key="#[payload.key]"/>
+    </flow>
+    
+    <flow name="get-object-content-optional-attributes-version-id" doc:name="get-object-content-optional-version-id">
+        <s3:get-object-content config-ref="Amazon_S3"   doc:name="Get object content" bucketName="#[payload.bucketName]" key="#[payload.key]" versionId="#[payload.versionId]"/>
+    </flow>
+    
+    <flow name="get-object-content-optional-attributes-modified-since" doc:name="get-object-content-optional-modified-since">
+        <s3:get-object-content config-ref="Amazon_S3"   doc:name="Get object content" bucketName="#[payload.bucketName]" key="#[payload.key]" modifiedSince="#[payload.modifiedSince]" />
+    </flow>
+    
+    <flow name="get-object-content-optional-attributes-unmodified-since" doc:name="get-object-content-optional-unmodified-since">
+        <s3:get-object-content config-ref="Amazon_S3"   doc:name="Get object content" bucketName="#[payload.bucketName]" key="#[payload.key]" unmodifiedSince="#[payload.unmodifiedSince]"/>
+    </flow>
+    
+    <flow name="get-object-metadata" doc:name="get-object-metadata">
+        <s3:get-object-metadata config-ref="Amazon_S3"   doc:name="Get object metadata" bucketName="#[payload.bucketName]" key="#[payload.key]"/>
+    </flow>
+    
+    <flow name="get-object-metadata-optional-attributes-version-id" doc:name="get-object-metadata-optional-attributes">
+        <s3:get-object-metadata config-ref="Amazon_S3"   doc:name="Get object metadata" bucketName="#[payload.bucketName]" key="#[payload.key]" versionId="#[payload.versionId]"/>
+    </flow>
+    
+    <flow name="copy-object-child-elements-none" doc:name="copy-object">
+        <s3:copy-object config-ref="Amazon_S3" destinationKey="#[payload.destinationKey]" sourceBucketName="#[payload.sourceBucketName]" sourceKey="#[payload.sourceKey]" doc:name="Copy object"/>
+    </flow>
+    
+    <flow name="copy-object-child-elements-from-message" doc:name="copy-object-optional-attributes">
+        <s3:copy-object config-ref="Amazon_S3" destinationKey="#[payload.destinationKey]" sourceBucketName="#[payload.sourceBucketName]" sourceKey="#[payload.sourceKey]" doc:name="Copy object">
+            <s3:destination-user-metadata ref="#[payload.destinationUserMetadata]"/>
+        </s3:copy-object>
+    </flow>
+    
+    <flow name="copy-object-child-elements-create-object-manually" doc:name="copy-object-optional-attributes-create-object-manually">
+        <s3:copy-object config-ref="Amazon_S3" destinationKey="#[payload.destinationKey]" sourceBucketName="#[payload.sourceBucketName]" sourceKey="#[payload.sourceKey]" doc:name="Copy object">
+            <s3:destination-user-metadata>
+                <s3:destination-user-metadatum key="usermetadatakey">destinationUserMetadataValue</s3:destination-user-metadatum>
+            </s3:destination-user-metadata>
+        </s3:copy-object>
+    </flow>  
+    
+    <flow name="copy-object-optional-attributes-destination-bucket" doc:name="copy-object-optional-attributes-destination-bucket">
+        <s3:copy-object config-ref="Amazon_S3" destinationKey="#[payload.destinationKey]" sourceBucketName="#[payload.sourceBucketName]" sourceKey="#[payload.sourceKey]" destinationBucketName="#[payload.destinationBucketName]" doc:name="Copy object">
+            <s3:destination-user-metadata ref="#[payload.destinationUserMetadata]"/>
+        </s3:copy-object>
+    </flow>
+    
+    <flow name="copy-object-optional-attributes-source-version-id" doc:name="copy-object-optional-attributes-source-version-id">
+        <s3:copy-object config-ref="Amazon_S3" destinationKey="#[payload.destinationKey]" sourceBucketName="#[payload.sourceBucketName]" sourceKey="#[payload.sourceKey]" sourceVersionId="#[payload.sourceVersionId]" doc:name="Copy object">
+            <s3:destination-user-metadata ref="#[payload.destinationUserMetadata]"/>
+        </s3:copy-object>
+    </flow>
+    
+    <flow name="copy-object-optional-attributes-unmodified-since" doc:name="copy-object-optional-attributes-unmodified-since">
+        <s3:copy-object config-ref="Amazon_S3" destinationKey="#[payload.destinationKey]" sourceBucketName="#[payload.sourceBucketName]" sourceKey="#[payload.sourceKey]" unmodifiedSince="#[payload.unmodifiedSince]" doc:name="Copy object">
+            <s3:destination-user-metadata ref="#[payload.destinationUserMetadata]"/>
+        </s3:copy-object>
+    </flow>
+    
+    <flow name="copy-object-optional-attributes-modified-since" doc:name="copy-object-optional-attributes-modified-since">
+        <s3:copy-object config-ref="Amazon_S3" destinationKey="#[payload.destinationKey]" sourceBucketName="#[payload.sourceBucketName]" sourceKey="#[payload.sourceKey]" modifiedSince="#[payload.modifiedSince]" doc:name="Copy object">
+            <s3:destination-user-metadata ref="#[payload.destinationUserMetadata]"/>
+        </s3:copy-object>
+    </flow>
+    
+    <flow name="list-objects" doc:name="list-objects">
+        <s3:list-objects config-ref="Amazon_S3"    doc:name="List objects" bucketName="#[payload.bucketName]" />
+    </flow>
+    
+    <flow name="list-objects-optional-attributes" doc:name="list-objects-optional-attributes">
+        <s3:list-objects config-ref="Amazon_S3"    doc:name="List objects" bucketName="#[payload.bucketName]" prefix="#[payload.prefix]"/>
+    </flow>
+    
+    <flow name="list-object-versions" doc:name="list-objects-versions">
+        <s3:list-object-versions config-ref="Amazon_S3"    doc:name="List object versions" bucketName="#[payload.bucketName]">
+        </s3:list-object-versions>
+    </flow>
+    
+    <flow name="set-object-storage-class" doc:name="set-object-storage-class">
+        <s3:set-object-storage-class config-ref="Amazon_S3"    doc:name="Set object storage class" bucketName="#[payload.bucketName]" key="#[payload.key]" storageClass="#[payload.storageClass]">
+        </s3:set-object-storage-class>
+    </flow>
+    
+</mule>
