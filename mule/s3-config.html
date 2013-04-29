@@ -390,6 +390,16 @@ Summary:
 	 
     <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/s3-config.html#delete-objects">&lt;s3:delete-objects&gt;</a></nobr>
+        
+        <div class="jd-descrdiv">Deletes multiple objects in a single bucket from S3.</div>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-bucket-policy">&lt;s3:get-bucket-policy&gt;</a></nobr>
         
         <div class="jd-descrdiv">Answers the policy for the given bucket.</div>
@@ -398,7 +408,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-bucket-website-configuration">&lt;s3:get-bucket-website-configuration&gt;</a></nobr>
         
@@ -408,7 +418,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-object">&lt;s3:get-object&gt;</a></nobr>
         
@@ -418,7 +428,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-object-content">&lt;s3:get-object-content&gt;</a></nobr>
         
@@ -429,7 +439,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-object-metadata">&lt;s3:get-object-metadata&gt;</a></nobr>
         
@@ -440,7 +450,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#list-buckets">&lt;s3:list-buckets&gt;</a></nobr>
         
@@ -451,7 +461,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#list-object-versions">&lt;s3:list-object-versions&gt;</a></nobr>
         
@@ -461,7 +471,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#list-objects">&lt;s3:list-objects&gt;</a></nobr>
         
@@ -471,7 +481,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-bucket-policy">&lt;s3:set-bucket-policy&gt;</a></nobr>
         
@@ -481,7 +491,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-bucket-versioning-status">&lt;s3:set-bucket-versioning-status&gt;</a></nobr>
         
@@ -491,7 +501,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-bucket-website-configuration">&lt;s3:set-bucket-website-configuration&gt;</a></nobr>
         
@@ -501,7 +511,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-object-storage-class">&lt;s3:set-object-storage-class&gt;</a></nobr>
         
@@ -2009,6 +2019,140 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
   
     
   
+
+    </div>
+</div>
+
+
+<A NAME="delete-objects"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;s3:delete-objects&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Deletes multiple objects in a single bucket from S3. Version of the keys is optional.
+ <p>
+ In some cases, some objects will be successfully deleted, while some
+ attempts will cause an error. If any object in the request cannot be
+ deleted, this method throws a com.amazonaws.services.s3.model.MultiObjectDeleteException with
+ details of the error.
+
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-objects bucketName="my-bucket"&gt;
+    &lt;s3:keys&gt;
+        &lt;s3:key value="foo.gzip"/&gt;
+        &lt;s3:key value="bar.gzip"/&gt;
+    &lt;/s3:keys&gt;
+&lt;/s3:delete-objects&gt;</pre></div></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">The objects bucket name</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+          
+          
+              <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                    
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                    
+                
+          
+          
+        </table>
+  </div>
+  
+      <div class="jd-tagdata">
+          <h5 class="jd-tagtitle">Child Elements</h5>
+            <table id="lconfig" class="jd-sumtable">
+              
+              <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th></td>
+              
+                
+              
+                
+                    <tr>
+                        <td><nobr>&lt;s3:keys&gt;</nobr></td>
+                        <td></td>
+                        <td>The objects keys, version is optional</td>
+                        <td>List&lt;<a href="../java/org/mule/module/s3/simpleapi/KeyVersion.html">KeyVersion</a>&gt;</td>
+                    </tr>
+                
+                
+              
+          </table>
+      </div>
+  
+  
+    
+  
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
+        <tr>
+            <td>MultiObjectDeleteException</td>
+            <td>if one or more of the objects couldn't be deleted.</td>
+        </tr>
+        <tr>
+            <td>AmazonClientException</td>
+            <td>If any errors are encountered in the client while making the
+             request or handling the response.</td>
+        </tr>
+        <tr>
+            <td>AmazonServiceException</td>
+            <td>If any errors occurred in Amazon S3 while processing the
+             request.
+</td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>

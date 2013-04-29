@@ -235,6 +235,8 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/simpleapi/content/package-summary.html">org.mule.module.s3.simpleapi.content</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/simpleapi/holders/package-summary.html">org.mule.module.s3.simpleapi.holders</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/simpleapi/transformers/package-summary.html">org.mule.module.s3.simpleapi.transformers</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/transformers/package-summary.html">org.mule.module.s3.transformers</a></li>
@@ -256,6 +258,7 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/simpleapi/ConditionalConstraints.html">ConditionalConstraints</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/simpleapi/KeyVersion.html">KeyVersion</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3AmazonDevKitImpl.html">SimpleAmazonS3AmazonDevKitImpl</a></li>
       </ul>
@@ -706,13 +709,31 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#deleteObject(org.mule.module.s3.simpleapi.S3ObjectId)">deleteObject</a></span>(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId)</nobr>
         
-        <div class="jd-descrdiv">Deletes and object.</div>
+        <div class="jd-descrdiv">Deletes an object.</div>
   
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#deleteObjects(java.lang.String, java.util.List<org.mule.module.s3.simpleapi.KeyVersion>)">deleteObjects</a></span>(String bucketName, List&lt;<a href="../../../../../../java/org/mule/module/s3/simpleapi/KeyVersion.html">KeyVersion</a>&gt; keys)</nobr>
+        
+        <div class="jd-descrdiv">Deletes all objects</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -730,7 +751,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -746,7 +767,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -764,7 +785,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -782,7 +803,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -800,7 +821,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -816,7 +837,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -832,7 +853,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -848,7 +869,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -864,7 +885,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -880,7 +901,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -898,7 +919,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -1509,13 +1530,77 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Deletes and object.</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Deletes an object.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>objectId</td>
           <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="deleteObjects(java.lang.String, java.util.List<org.mule.module.s3.simpleapi.KeyVersion>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">deleteObjects</span>
+      <span class="normal">(String bucketName, List&lt;<a href="../../../../../../java/org/mule/module/s3/simpleapi/KeyVersion.html">KeyVersion</a>&gt; keys)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Deletes all objects</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>bucketName</td>
+          <td>Mandatory bucket name</td>
+        </tr>
+        <tr>
+          <th>keys</td>
+          <td>Keys to delete, with optional version</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>MultiObjectDeleteException</td>
+            <td>if one or more of the objects couldn't be deleted.</td>
+        </tr>  
+        <tr>
+            <th>AmazonClientException</td>
+            <td>If any errors are encountered in the client while making the
+             request or handling the response.</td>
+        </tr>  
+        <tr>
+            <th>AmazonServiceException</td>
+            <td>If any errors occurred in Amazon S3 while processing the
+             request.
+</td>
         </tr>
       </table>
   </div>

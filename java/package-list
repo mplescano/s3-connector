@@ -14,6 +14,7 @@ org.mule.module.s3.process
 org.mule.module.s3.processors
 org.mule.module.s3.simpleapi
 org.mule.module.s3.simpleapi.content
+org.mule.module.s3.simpleapi.holders
 org.mule.module.s3.simpleapi.transformers
 org.mule.module.s3.transformers
 org.mule.module.s3.util
