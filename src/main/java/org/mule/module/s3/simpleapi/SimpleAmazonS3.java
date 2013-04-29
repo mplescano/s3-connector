@@ -140,11 +140,28 @@ public interface SimpleAmazonS3
                         Map<String, String> userMetadata);
 
     /**
-     * Deletes and object.
+     * Deletes an object.
      * 
      * @param objectId
      */
     void deleteObject(@NotNull S3ObjectId objectId);
+
+    /**
+     * Deletes all objects
+     *
+     * @param bucketName mandatory bucket name
+     * @param keys keys to delete, with optional version
+     *
+     * @throws com.amazonaws.services.s3.model.MultiObjectDeleteException
+     *             if one or more of the objects couldn't be deleted.
+     * @throws com.amazonaws.AmazonClientException
+     *             If any errors are encountered in the client while making the
+     *             request or handling the response.
+     * @throws com.amazonaws.AmazonServiceException
+     *             If any errors occurred in Amazon S3 while processing the
+     *             request.
+     */
+    void deleteObjects(@NotNull String bucketName, List<KeyVersion> keys);
 
     void setObjectStorageClass(@NotNull S3ObjectId objectId, @NotNull StorageClass newStorageClass);
 

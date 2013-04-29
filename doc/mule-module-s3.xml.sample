@@ -38,6 +38,14 @@
 <!-- BEGIN_INCLUDE(s3:delete-object) -->
 <s3:delete-object bucketName="my-bucket" key="foo.gzip"/>
 <!-- END_INCLUDE(s3:delete-object) -->
+<!-- BEGIN_INCLUDE(s3:delete-objects) -->
+<s3:delete-objects bucketName="my-bucket">
+    <s3:keys>
+        <s3:key value="foo.gzip"/>
+        <s3:key value="bar.gzip"/>
+    </s3:keys>
+</s3:delete-objects>
+<!-- END_INCLUDE(s3:delete-objects) -->
 <!-- BEGIN_INCLUDE(s3:copy-object) -->
 <s3:copy-object sourceBucketName="my-bucket" sourceKey="foo.gzip" destinationKey="bar.gzip"
                 destinationStorageClass="STANDARD" />

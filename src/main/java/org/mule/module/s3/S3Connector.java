@@ -29,12 +29,7 @@ import org.mule.api.annotations.*;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
-import org.mule.module.s3.simpleapi.ConditionalConstraints;
-import org.mule.module.s3.simpleapi.Region;
-import org.mule.module.s3.simpleapi.S3ObjectId;
-import org.mule.module.s3.simpleapi.SimpleAmazonS3;
-import org.mule.module.s3.simpleapi.SimpleAmazonS3AmazonDevKitImpl;
-import org.mule.module.s3.simpleapi.VersioningStatus;
+import org.mule.module.s3.simpleapi.*;
 
 import java.io.InputStream;
 import java.net.URI;
@@ -387,6 +382,35 @@ public class S3Connector
     }
 
     /**
+     * Deletes multiple objects in a single bucket from S3. Version of the keys is optional.
+     * <p>
+     * In some cases, some objects will be successfully deleted, while some
+     * attempts will cause an error. If any object in the request cannot be
+     * deleted, this method throws a {@link com.amazonaws.services.s3.model.MultiObjectDeleteException} with
+     * details of the error.
+     *
+     * {@sample.xml ../../../doc/mule-module-s3.xml.sample s3:delete-objects}
+     *
+     * @param bucketName the objects bucket name
+     * @param keys the objects keys, version is optional
+     * @throws com.amazonaws.services.s3.model.MultiObjectDeleteException
+     *             if one or more of the objects couldn't be deleted.
+     * @throws com.amazonaws.AmazonClientException
+     *             If any errors are encountered in the client while making the
+     *             request or handling the response.
+     * @throws com.amazonaws.AmazonServiceException
+     *             If any errors occurred in Amazon S3 while processing the
+     *             request.
+     */
+    @Processor
+    public void deleteObjects(String bucketName,
+                              List<KeyVersion> keys)
+    {
+        client.deleteObjects(bucketName, keys);
+    }
+
+
+    /**
      * Sets the Amazon S3 storage class for the given object. Changing the storage
      * class of an object in a bucket that has enabled versioning creates a new
      * version of the object with the new storage class. The existing version of the
@@ -487,7 +511,7 @@ public class S3Connector
                                         @Optional @Default("PUT") String method)
     {
         return client.createObjectPresignedUri(new S3ObjectId(bucketName, key, versionId), expiration,
-            toHttpMethod(method));
+                toHttpMethod(method));
     }
 
     private HttpMethod toHttpMethod(String method)

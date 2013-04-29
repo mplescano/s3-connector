@@ -16,12 +16,7 @@ import com.amazonaws.services.s3.model.*;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.AbstractCollection;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.validation.constraints.NotNull;
 
@@ -188,6 +183,21 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         {
             s3.deleteObject(objectId.getBucketName(), objectId.getKey());
         }
+    }
+
+    public void deleteObjects(@NotNull String bucketName, @NotNull List<KeyVersion> keys)
+    {
+        Validate.notNull(bucketName);
+        Validate.notNull(keys);
+        Validate.notEmpty(keys);
+        DeleteObjectsRequest deleteObjectsRequest = new DeleteObjectsRequest(bucketName);
+        List<DeleteObjectsRequest.KeyVersion> deleteKeysRequest = new ArrayList<DeleteObjectsRequest.KeyVersion>();
+        for(KeyVersion key : keys)
+        {
+            deleteKeysRequest.add(new DeleteObjectsRequest.KeyVersion(key.getValue(), key.getVersion()));
+        }
+        deleteObjectsRequest.setKeys(deleteKeysRequest);
+        s3.deleteObjects(deleteObjectsRequest);
     }
 
     // 4.4
