@@ -204,28 +204,14 @@
                 
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/package-summary.html">org.mule.module.s3</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/adapter/package-summary.html">org.mule.module.s3.adapter</a></li>
     <li class="selected api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/adapters/package-summary.html">org.mule.module.s3.adapters</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/agents/package-summary.html">org.mule.module.s3.agents</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/basic/package-summary.html">org.mule.module.s3.basic</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connectivity/package-summary.html">org.mule.module.s3.connectivity</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/devkit/package-summary.html">org.mule.module.s3.devkit</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/oauth/package-summary.html">org.mule.module.s3.oauth</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/process/package-summary.html">org.mule.module.s3.process</a></li>
     <li class="api apilevel-">
@@ -253,8 +239,6 @@
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorCapabilitiesAdapter.html">S3ConnectorCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionManager.html">S3ConnectorConnectionManager</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorMetadataAdapater.html">S3ConnectorMetadataAdapater</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorProcessAdapter.html">S3ConnectorProcessAdapter</a></li>
@@ -414,7 +398,7 @@ Summary:
   
       implements 
       
-        <a href="../../../../../../java/org/mule/module/s3/basic/MetadataAware.html">MetadataAware</a> 
+        MetadataAware 
       
   
   
@@ -528,7 +512,7 @@ Summary:
   <table class="jd-sumtable-expando">
         <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a></td>
-              <td class="jd-descrcol" width="100%">A <code>S3ConnectorConnectionIdentifierAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code> that implements org.mule.devkit.dynamic.api.helper.Connection interface.&nbsp;</td>
+              <td class="jd-descrcol" width="100%">A <code>S3ConnectorConnectionIdentifierAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code> that implements org.mule.api.Connection interface.&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorProcessAdapter.html">S3ConnectorProcessAdapter</a></td>
@@ -803,9 +787,6 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorMetadataAdapater.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the build of the DevKit used to create this module
-</div>
-  
   </td></tr>
 
 
@@ -822,9 +803,6 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorMetadataAdapater.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the version of the DevKit used to create this module
-</div>
-  
   </td></tr>
 
 
@@ -841,9 +819,6 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorMetadataAdapater.html#getModuleName()">getModuleName</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the user-friendly name of this module
-</div>
-  
   </td></tr>
 
 
@@ -860,9 +835,6 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorMetadataAdapater.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the version of this module
-</div>
-  
   </td></tr>
 
 
@@ -911,7 +883,7 @@ From class
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.module.s3.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../java/org/mule/module/s3/basic/Capability.html">Capability</a> capability)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.api.Capability)">isCapableOf</a></span>(Capability capability)</nobr>
         
         <div class="jd-descrdiv">Returns true if this module implements such capability
  
@@ -1835,19 +1807,19 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.s3.basic.Capabilities" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.module.s3.basic.Capabilities-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.Capabilities" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.Capabilities-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  <a href="../../../../../../org/mule/module/s3/basic/Capabilities.html">org.mule.module.s3.basic.Capabilities</a>
+  org.mule.api.Capabilities
 
-<div id="inherited-methods-org.mule.module.s3.basic.Capabilities">
-  <div id="inherited-methods-org.mule.module.s3.basic.Capabilities-list"
+<div id="inherited-methods-org.mule.api.Capabilities">
+  <div id="inherited-methods-org.mule.api.Capabilities-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.module.s3.basic.Capabilities-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.api.Capabilities-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1863,11 +1835,8 @@ From interface
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/basic/Capabilities.html#isCapableOf(org.mule.module.s3.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../java/org/mule/module/s3/basic/Capability.html">Capability</a> capability)</nobr>
+        <span class="sympad">isCapableOf</span>(Capability arg0)</nobr>
         
-        <div class="jd-descrdiv">Returns true if this module implements such
- capability</div>
-  
   </td></tr>
 
 
@@ -1880,19 +1849,19 @@ From interface
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.s3.basic.MetadataAware" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.module.s3.basic.MetadataAware-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.MetadataAware" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.MetadataAware-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  <a href="../../../../../../org/mule/module/s3/basic/MetadataAware.html">org.mule.module.s3.basic.MetadataAware</a>
+  org.mule.api.MetadataAware
 
-<div id="inherited-methods-org.mule.module.s3.basic.MetadataAware">
-  <div id="inherited-methods-org.mule.module.s3.basic.MetadataAware-list"
+<div id="inherited-methods-org.mule.api.MetadataAware">
+  <div id="inherited-methods-org.mule.api.MetadataAware-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.module.s3.basic.MetadataAware-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.api.MetadataAware-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1908,11 +1877,8 @@ From interface
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/basic/MetadataAware.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
+        <span class="sympad">getDevkitBuild</span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the build of the DevKit used to create this module
-</div>
-  
   </td></tr>
 
 
@@ -1927,11 +1893,8 @@ From interface
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/basic/MetadataAware.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
+        <span class="sympad">getDevkitVersion</span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the version of the DevKit used to create this module
-</div>
-  
   </td></tr>
 
 
@@ -1946,11 +1909,8 @@ From interface
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/basic/MetadataAware.html#getModuleName()">getModuleName</a></span>()</nobr>
+        <span class="sympad">getModuleName</span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the user-friendly name of this module
-</div>
-  
   </td></tr>
 
 
@@ -1965,11 +1925,8 @@ From interface
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/basic/MetadataAware.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
+        <span class="sympad">getModuleVersion</span>()</nobr>
         
-        <div class="jd-descrdiv">Returns the version of this module
-</div>
-  
   </td></tr>
 
 
@@ -2037,7 +1994,7 @@ From interface
         <span class="jd-tagtitle">Constant Value: </span>
         <span>
             
-                "UNKNOWN_BUILDNUMBER"
+                "UNNAMED.1373.24989b8"
             
         </span>
         </div>
@@ -2076,7 +2033,7 @@ From interface
         <span class="jd-tagtitle">Constant Value: </span>
         <span>
             
-                "3.4.0"
+                "3.3.2"
             
         </span>
         </div>
@@ -2154,7 +2111,7 @@ From interface
         <span class="jd-tagtitle">Constant Value: </span>
         <span>
             
-                "2.6-SNAPSHOT"
+                "3.3.2-SNAPSHOT"
             
         </span>
         </div>
@@ -2247,8 +2204,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Returns the build of the DevKit used to create this module
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
@@ -2279,8 +2235,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Returns the version of the DevKit used to create this module
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
@@ -2311,8 +2266,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Returns the user-friendly name of this module
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
@@ -2343,8 +2297,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Returns the version of this module
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     </div>
 </div>
