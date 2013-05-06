@@ -205,13 +205,27 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/package-summary.html">org.mule.module.s3</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/adapter/package-summary.html">org.mule.module.s3.adapter</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/adapters/package-summary.html">org.mule.module.s3.adapters</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/agents/package-summary.html">org.mule.module.s3.agents</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/basic/package-summary.html">org.mule.module.s3.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connectivity/package-summary.html">org.mule.module.s3.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/devkit/package-summary.html">org.mule.module.s3.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/oauth/package-summary.html">org.mule.module.s3.oauth</a></li>
     <li class="selected api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/process/package-summary.html">org.mule.module.s3.process</a></li>
     <li class="api apilevel-">
@@ -234,6 +248,14 @@
           <div id="classes-nav">
             <ul>
               
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/process/ProcessAdapter.html">ProcessAdapter</a>&lt;O&gt;</li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt;</li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/process/ProcessInterceptor.html">ProcessInterceptor</a>&lt;T,&nbsp;O&gt;</li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/process/ProcessTemplate.html">ProcessTemplate</a>&lt;T,&nbsp;O&gt;</li>
+      </ul>
+    </li>
               
     <li><h2>Classes</h2>
       <ul>
@@ -360,7 +382,7 @@ Summary:
   
       implements 
       
-        ProcessInterceptor&lt;T,&nbsp;O&gt; 
+        <a href="../../../../../../java/org/mule/module/s3/process/ProcessInterceptor.html">ProcessInterceptor</a>&lt;T,&nbsp;O&gt; 
       
   
   
@@ -492,7 +514,7 @@ Summary:
             T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/ProcessCallbackProcessInterceptor.html#execute(org.mule.api.process.ProcessCallback<T, O>, O, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)">execute</a></span>(ProcessCallback&lt;T,&nbsp;O&gt; processCallback, O object, MessageProcessor messageProcessor, MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/ProcessCallbackProcessInterceptor.html#execute(org.mule.module.s3.process.ProcessCallback<T, O>, O, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)">execute</a></span>(<a href="../../../../../../java/org/mule/module/s3/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt; processCallback, O object, Filter filter, MuleMessage message)</nobr>
         
   </td></tr>
 
@@ -508,7 +530,7 @@ Summary:
             T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/ProcessCallbackProcessInterceptor.html#execute(org.mule.api.process.ProcessCallback<T, O>, O, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)">execute</a></span>(ProcessCallback&lt;T,&nbsp;O&gt; processCallback, O object, Filter filter, MuleMessage message)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/ProcessCallbackProcessInterceptor.html#execute(org.mule.module.s3.process.ProcessCallback<T, O>, O, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)">execute</a></span>(<a href="../../../../../../java/org/mule/module/s3/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt; processCallback, O object, MessageProcessor messageProcessor, MuleEvent event)</nobr>
         
   </td></tr>
 
@@ -732,19 +754,19 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.process.ProcessInterceptor" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.process.ProcessInterceptor-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.s3.process.ProcessInterceptor" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.s3.process.ProcessInterceptor-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  org.mule.api.process.ProcessInterceptor
+  <a href="../../../../../../org/mule/module/s3/process/ProcessInterceptor.html">org.mule.module.s3.process.ProcessInterceptor</a>
 
-<div id="inherited-methods-org.mule.api.process.ProcessInterceptor">
-  <div id="inherited-methods-org.mule.api.process.ProcessInterceptor-list"
+<div id="inherited-methods-org.mule.module.s3.process.ProcessInterceptor">
+  <div id="inherited-methods-org.mule.module.s3.process.ProcessInterceptor-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.api.process.ProcessInterceptor-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.module.s3.process.ProcessInterceptor-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -760,7 +782,7 @@ From interface
             T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">execute</span>(ProcessCallback&lt;T,&nbsp;O&gt; arg0, O arg1, MessageProcessor arg2, MuleEvent arg3)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/ProcessInterceptor.html#execute(org.mule.module.s3.process.ProcessCallback<T, O>, O, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)">execute</a></span>(<a href="../../../../../../java/org/mule/module/s3/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt; callback, O under, Filter filter, MuleMessage message)</nobr>
         
   </td></tr>
 
@@ -776,7 +798,7 @@ From interface
             T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">execute</span>(ProcessCallback&lt;T,&nbsp;O&gt; arg0, O arg1, Filter arg2, MuleMessage arg3)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/ProcessInterceptor.html#execute(org.mule.module.s3.process.ProcessCallback<T, O>, O, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)">execute</a></span>(<a href="../../../../../../java/org/mule/module/s3/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt; callback, O under, MessageProcessor messageProcessor, MuleEvent event)</nobr>
         
   </td></tr>
 
@@ -867,7 +889,7 @@ From interface
 
 
 
-<A NAME="execute(org.mule.api.process.ProcessCallback<T, O>, O, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)"></A>
+<A NAME="execute(org.mule.module.s3.process.ProcessCallback<T, O>, O, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -880,68 +902,7 @@ From interface
         T
       </span>
       <span class="sympad">execute</span>
-      <span class="normal">(ProcessCallback&lt;T,&nbsp;O&gt; processCallback, O object, MessageProcessor messageProcessor, MuleEvent event)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>processCallback</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>object</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>messageProcessor</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>event</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="execute(org.mule.api.process.ProcessCallback<T, O>, O, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        T
-      </span>
-      <span class="sympad">execute</span>
-      <span class="normal">(ProcessCallback&lt;T,&nbsp;O&gt; processCallback, O object, Filter filter, MuleMessage message)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt; processCallback, O object, Filter filter, MuleMessage message)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -971,6 +932,67 @@ From interface
         </tr>
         <tr>
           <th>message</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="execute(org.mule.module.s3.process.ProcessCallback<T, O>, O, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        T
+      </span>
+      <span class="sympad">execute</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt; processCallback, O object, MessageProcessor messageProcessor, MuleEvent event)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>processCallback</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>object</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>messageProcessor</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>event</td>
           <td></td>
         </tr>
       </table>
