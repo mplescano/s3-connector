@@ -443,4 +443,9 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         }
     }
 
+    @Override
+    public BucketVersioningConfiguration getBucketVersioningConfiguration(@NotNull String bucketName){
+    	Validate.notNull(bucketName);
+    	return s3.getBucketVersioningConfiguration(bucketName);
+    }
 }

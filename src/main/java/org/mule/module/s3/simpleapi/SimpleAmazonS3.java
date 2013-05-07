@@ -11,6 +11,7 @@ package org.mule.module.s3.simpleapi;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.BucketVersioningConfiguration;
 import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
@@ -103,6 +104,12 @@ public interface SimpleAmazonS3
 
     void deleteBucketWebsiteConfiguration(@NotNull String bucketName);
 
+    /**
+     * Returns the versioning configuration for the specified bucket.
+     * 
+     * @param bucketName The bucket whose versioning configuration will be retrieved.
+     * @return The bucket versioning configuration for the specified bucket.
+     */
     @NotNull
     BucketWebsiteConfiguration getBucketWebsiteConfiguration(@NotNull String bucketName);
 
@@ -257,5 +264,13 @@ public interface SimpleAmazonS3
          */
         PutObjectRequest createPutObjectRequest();
     }
+    /**
+     * Returns the bucket versioning configuration for the specified bucket.
+     * 
+     * @param bucketName The bucket versioning configuration for the specified bucket.
+     * @return The bucket versioning configuration for the specified bucket.
+     */
+	public BucketVersioningConfiguration getBucketVersioningConfiguration(
+			@NotNull String bucketName);
 
 }

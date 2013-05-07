@@ -72,6 +72,9 @@
 <!-- BEGIN_INCLUDE(s3:set-bucket-versioning-status) -->
 <s3:set-bucket-versioning-status bucketName="my-bucket" versioningStatus="SUSPENDED" />
 <!-- END_INCLUDE(s3:set-bucket-versioning-status) -->
+<!-- BEGIN_INCLUDE(s3:get-bucket-versioning-configuration) -->
+<s3:get-bucket-versioning-configuration bucketName="my-bucket"/>
+<!-- END_INCLUDE(s3:get-bucket-versioning-configuration) -->
 <!-- BEGIN_INCLUDE(s3:create-object-uri) -->
 <s3:create-object-uri bucketName="my-bucket" key="baz.bin"/>
 <!-- END_INCLUDE(s3:create-object-uri) -->

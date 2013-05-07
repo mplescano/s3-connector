@@ -15,6 +15,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.Bucket;
+import com.amazonaws.services.s3.model.BucketVersioningConfiguration;
 import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.Permission;
@@ -626,6 +627,36 @@ public class S3Connector
         client.setBucketVersioningStatus(bucketName, versioningStatus);
     }
 
+    /**
+     * <p>
+     * Returns the versioning configuration for the specified bucket.
+     * </p>
+     * <p>
+     * A bucket's versioning configuration can be in one of three possible
+     * states:
+     *  <ul>
+     *      <li>{@link BucketVersioningConfiguration#OFF}
+     *      <li>{@link BucketVersioningConfiguration#ENABLED}
+     *      <li>{@link BucketVersioningConfiguration#SUSPENDED}
+     *  </ul>
+     * </p>
+     * <p>
+     * By default, new buckets are in the
+     * {@link BucketVersioningConfiguration#OFF off} state. Once versioning is
+     * enabled for a bucket the status can never be reverted to
+     * {@link BucketVersioningConfiguration#OFF off}.
+     * </p>
+     *
+     * {@sample.xml ../../../doc/mule-module-s3.xml.sample s3:get-bucket-versioning-configuration}
+     * 
+     * @param bucketName The bucket whose versioning configuration will be retrieved.
+     * @return The bucket versioning configuration for the specified bucket.
+     */
+    @Processor
+    public BucketVersioningConfiguration getBucketVersioningConfiguration(String bucketName){
+    	return client.getBucketVersioningConfiguration(bucketName);
+    }
+    
     /**
      * Creates an http URI for the given object id. The useDefaultServer option
      * enables using default US Amazon server subdomain in the URI regardless of the
