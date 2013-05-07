@@ -758,16 +758,36 @@ Summary:
             
             
             
-            BucketWebsiteConfiguration</nobr>
+            BucketVersioningConfiguration</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#getBucketWebsiteConfiguration(java.lang.String)">getBucketWebsiteConfiguration</a></span>(String bucketName)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#getBucketVersioningConfiguration(java.lang.String)">getBucketVersioningConfiguration</a></span>(String bucketName)</nobr>
         
+        <div class="jd-descrdiv">Returns the bucket versioning configuration for the specified bucket.</div>
+  
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            BucketWebsiteConfiguration</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#getBucketWebsiteConfiguration(java.lang.String)">getBucketWebsiteConfiguration</a></span>(String bucketName)</nobr>
+        
+        <div class="jd-descrdiv">Returns the versioning configuration for the specified bucket.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -785,7 +805,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -803,7 +823,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -821,7 +841,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -837,7 +857,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -853,7 +873,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -869,7 +889,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -885,7 +905,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -901,7 +921,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -919,7 +939,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             abstract
             
@@ -1654,6 +1674,51 @@ Summary:
 </div>
 
 
+<A NAME="getBucketVersioningConfiguration(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        BucketVersioningConfiguration
+      </span>
+      <span class="sympad">getBucketVersioningConfiguration</span>
+      <span class="normal">(String bucketName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the bucket versioning configuration for the specified bucket.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>bucketName</td>
+          <td>The bucket versioning configuration for the specified bucket.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The bucket versioning configuration for the specified bucket.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="getBucketWebsiteConfiguration(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1679,15 +1744,20 @@ Summary:
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the versioning configuration for the specified bucket.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
           <th>bucketName</td>
-          <td></td>
+          <td>The bucket whose versioning configuration will be retrieved.</td>
         </tr>
       </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The bucket versioning configuration for the specified bucket.
+</li></ul>
   </div>
 
     </div>

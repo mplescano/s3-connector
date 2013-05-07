@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  CopyObjectMessageProcessor
+  GetBucketVersioningConfigurationMessageProcessor
 
 
 | Mule S3 Connector
@@ -255,7 +255,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractExpressionEvaluator.html">AbstractExpressionEvaluator</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;</li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CopyObjectMessageProcessor.html">CopyObjectMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CopyObjectMessageProcessor.html">CopyObjectMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CreateBucketMessageProcessor.html">CreateBucketMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CreateObjectMessageProcessor.html">CreateObjectMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CreateObjectPresignedUriMessageProcessor.html">CreateObjectPresignedUriMessageProcessor</a></li>
@@ -266,7 +266,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteObjectMessageProcessor.html">DeleteObjectMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteObjectsMessageProcessor.html">DeleteObjectsMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketPolicyMessageProcessor.html">GetBucketPolicyMessageProcessor</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html">GetBucketVersioningConfigurationMessageProcessor</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html">GetBucketVersioningConfigurationMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketWebsiteConfigurationMessageProcessor.html">GetBucketWebsiteConfigurationMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/GetObjectContentMessageProcessor.html">GetObjectContentMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/GetObjectMessageProcessor.html">GetObjectMessageProcessor</a></li>
@@ -467,7 +467,7 @@ Summary:
      
     
     class
-<h1>CopyObjectMessageProcessor</h1>
+<h1>GetBucketVersioningConfigurationMessageProcessor</h1>
 
 
 
@@ -561,7 +561,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.processors.CopyObjectMessageProcessor</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.processors.GetBucketVersioningConfigurationMessageProcessor</td>
     </tr>
     
 
@@ -577,7 +577,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>CopyObjectMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date)">copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map, java.util.Date, java.util.Date)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>GetBucketVersioningConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#getBucketVersioningConfiguration(java.lang.String)">getBucketVersioningConfiguration(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  
 </p>
 
@@ -780,118 +780,8 @@ org.mule.api.lifecycle.Stoppable
           protected
           
           
-          <a href="../../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_destinationAclType">_destinationAclType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_destinationBucketNameType">_destinationBucketNameType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_destinationKeyType">_destinationKeyType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          <a href="../../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a></nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_destinationStorageClassType">_destinationStorageClassType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Map&lt;String,&nbsp;String&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_destinationUserMetadataType">_destinationUserMetadataType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Date</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_modifiedSinceType">_modifiedSinceType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_sourceBucketNameType">_sourceBucketNameType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_sourceKeyType">_sourceKeyType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_sourceVersionIdType">_sourceVersionIdType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Date</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#_unmodifiedSinceType">_unmodifiedSinceType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#destinationAcl">destinationAcl</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#_bucketNameType">_bucketNameType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -902,95 +792,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#destinationBucketName">destinationBucketName</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#destinationKey">destinationKey</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#destinationStorageClass">destinationStorageClass</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#destinationUserMetadata">destinationUserMetadata</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#modifiedSince">modifiedSince</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#sourceBucketName">sourceBucketName</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#sourceKey">sourceKey</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#sourceVersionId">sourceVersionId</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#unmodifiedSince">unmodifiedSince</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#bucketName">bucketName</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -1177,7 +979,7 @@ org.mule.api.lifecycle.Stoppable
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#CopyObjectMessageProcessor()">CopyObjectMessageProcessor</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#GetBucketVersioningConfigurationMessageProcessor()">GetBucketVersioningConfigurationMessageProcessor</a></span>()</nobr>
         
   </td></tr>
 
@@ -1206,7 +1008,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
         
   </td></tr>
 
@@ -1222,7 +1024,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
         
         <div class="jd-descrdiv">Obtains the expression manager from the Mule context and initialises the connector.</div>
   
@@ -1240,7 +1042,7 @@ org.mule.api.lifecycle.Stoppable
             MuleEvent</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
         
         <div class="jd-descrdiv">Invokes the MessageProcessor.</div>
   
@@ -1258,9 +1060,9 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setDestinationAcl(java.lang.Object)">setDestinationAcl</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#setBucketName(java.lang.Object)">setBucketName</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Sets destinationAcl</div>
+        <div class="jd-descrdiv">Sets bucketName</div>
   
   </td></tr>
 
@@ -1276,79 +1078,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setDestinationBucketName(java.lang.Object)">setDestinationBucketName</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets destinationBucketName</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setDestinationKey(java.lang.Object)">setDestinationKey</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets destinationKey</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setDestinationStorageClass(java.lang.Object)">setDestinationStorageClass</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets destinationStorageClass</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setDestinationUserMetadata(java.lang.Object)">setDestinationUserMetadata</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets destinationUserMetadata</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
         
         <div class="jd-descrdiv">Sets flow construct</div>
   
@@ -1366,25 +1096,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setModifiedSince(java.lang.Object)">setModifiedSince</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets modifiedSince</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
         
         <div class="jd-descrdiv">Set the Mule context</div>
   
@@ -1392,24 +1104,6 @@ org.mule.api.lifecycle.Stoppable
 
 
 	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setSourceBucketName(java.lang.Object)">setSourceBucketName</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets sourceBucketName</div>
-  
-  </td></tr>
-
-
-	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
@@ -1420,10 +1114,8 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setSourceKey(java.lang.Object)">setSourceKey</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#start()">start</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Sets sourceKey</div>
-  
   </td></tr>
 
 
@@ -1438,59 +1130,7 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setSourceVersionId(java.lang.Object)">setSourceVersionId</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets sourceVersionId</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#setUnmodifiedSince(java.lang.Object)">setUnmodifiedSince</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets unmodifiedSince</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#start()">start</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/CopyObjectMessageProcessor.html#stop()">stop</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html#stop()">stop</a></span>()</nobr>
         
   </td></tr>
 
@@ -2521,37 +2161,7 @@ From interface
 
 
 
-<A NAME="_destinationAclType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
-      </span>
-        _destinationAclType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_destinationBucketNameType"></A>
+<A NAME="_bucketNameType"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2561,7 +2171,7 @@ From interface
          
         String
       </span>
-        _destinationBucketNameType
+        _bucketNameType
     </h4>
       <div class="api-level">
         
@@ -2581,247 +2191,7 @@ From interface
 
 
 
-<A NAME="_destinationKeyType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        _destinationKeyType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_destinationStorageClassType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        <a href="../../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a>
-      </span>
-        _destinationStorageClassType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_destinationUserMetadataType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Map&lt;String,&nbsp;String&gt;
-      </span>
-        _destinationUserMetadataType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_modifiedSinceType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Date
-      </span>
-        _modifiedSinceType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_sourceBucketNameType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        _sourceBucketNameType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_sourceKeyType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        _sourceKeyType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_sourceVersionIdType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        _sourceVersionIdType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_unmodifiedSinceType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Date
-      </span>
-        _unmodifiedSinceType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="destinationAcl"></A>
+<A NAME="bucketName"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2831,277 +2201,7 @@ From interface
          
         Object
       </span>
-        destinationAcl
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="destinationBucketName"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        destinationBucketName
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="destinationKey"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        destinationKey
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="destinationStorageClass"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        destinationStorageClass
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="destinationUserMetadata"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        destinationUserMetadata
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="modifiedSince"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        modifiedSince
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="sourceBucketName"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        sourceBucketName
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="sourceKey"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        sourceKey
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="sourceVersionId"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        sourceVersionId
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="unmodifiedSince"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        unmodifiedSince
+        bucketName
     </h4>
       <div class="api-level">
         
@@ -3130,7 +2230,7 @@ From interface
 
 
 
-<A NAME="CopyObjectMessageProcessor()"></A>
+<A NAME="GetBucketVersioningConfigurationMessageProcessor()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3142,7 +2242,7 @@ From interface
          
         
       </span>
-      <span class="sympad">CopyObjectMessageProcessor</span>
+      <span class="sympad">GetBucketVersioningConfigurationMessageProcessor</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -3296,7 +2396,7 @@ From interface
 </div>
 
 
-<A NAME="setDestinationAcl(java.lang.Object)"></A>
+<A NAME="setBucketName(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3308,7 +2408,7 @@ From interface
          
         void
       </span>
-      <span class="sympad">setDestinationAcl</span>
+      <span class="sympad">setBucketName</span>
       <span class="normal">(Object value)</span>
     </h4>
       <div class="api-level">
@@ -3321,171 +2421,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets destinationAcl</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setDestinationBucketName(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setDestinationBucketName</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets destinationBucketName</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setDestinationKey(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setDestinationKey</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets destinationKey</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setDestinationStorageClass(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setDestinationStorageClass</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets destinationStorageClass</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setDestinationUserMetadata(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setDestinationUserMetadata</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets destinationUserMetadata</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets bucketName</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -3542,47 +2478,6 @@ From interface
 </div>
 
 
-<A NAME="setModifiedSince(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setModifiedSince</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets modifiedSince</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="setMuleContext(org.mule.api.MuleContext)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3615,170 +2510,6 @@ From interface
         <tr>
           <th>context</td>
           <td>Mule context to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setSourceBucketName(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setSourceBucketName</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets sourceBucketName</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setSourceKey(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setSourceKey</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets sourceKey</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setSourceVersionId(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setSourceVersionId</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets sourceVersionId</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setUnmodifiedSince(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setUnmodifiedSince</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets unmodifiedSince</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
 </td>
         </tr>
       </table>

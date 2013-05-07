@@ -410,6 +410,17 @@ Summary:
 	 
     <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/s3-config.html#get-bucket-versioning-configuration">&lt;s3:get-bucket-versioning-configuration&gt;</a></nobr>
+        
+        <div class="jd-descrdiv"><p>
+ Returns the versioning configuration for the specified bucket.</div>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-bucket-website-configuration">&lt;s3:get-bucket-website-configuration&gt;</a></nobr>
         
         <div class="jd-descrdiv">Answers the website of the given bucket.</div>
@@ -418,7 +429,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-object">&lt;s3:get-object&gt;</a></nobr>
         
@@ -428,7 +439,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-object-content">&lt;s3:get-object-content&gt;</a></nobr>
         
@@ -439,7 +450,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#get-object-metadata">&lt;s3:get-object-metadata&gt;</a></nobr>
         
@@ -450,7 +461,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#list-buckets">&lt;s3:list-buckets&gt;</a></nobr>
         
@@ -461,7 +472,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#list-object-versions">&lt;s3:list-object-versions&gt;</a></nobr>
         
@@ -471,7 +482,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#list-objects">&lt;s3:list-objects&gt;</a></nobr>
         
@@ -481,7 +492,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-bucket-policy">&lt;s3:set-bucket-policy&gt;</a></nobr>
         
@@ -491,7 +502,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-bucket-versioning-status">&lt;s3:set-bucket-versioning-status&gt;</a></nobr>
         
@@ -501,7 +512,7 @@ Summary:
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-bucket-website-configuration">&lt;s3:set-bucket-website-configuration&gt;</a></nobr>
         
@@ -511,7 +522,7 @@ Summary:
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#set-object-storage-class">&lt;s3:set-object-storage-class&gt;</a></nobr>
         
@@ -2242,6 +2253,116 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
              <tr>
                 <td class="jd-descrcol">String</td>
                 <td class="jd-descrcol">the bucket policy, or null, if not set
+</td>
+             </tr>
+         </table>
+  </div>
+    
+  
+
+    </div>
+</div>
+
+
+<A NAME="get-bucket-versioning-configuration"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;s3:get-bucket-versioning-configuration&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p><p>
+ Returns the versioning configuration for the specified bucket.
+ </p>
+ <p>
+ A bucket's versioning configuration can be in one of three possible
+ states:
+  <ul>
+      <li><code><a href="null#OFF">OFF</a></code>
+      <li><code><a href="null#ENABLED">ENABLED</a></code>
+      <li><code><a href="null#SUSPENDED">SUSPENDED</a></code>
+  </ul>
+ </p>
+ <p>
+ By default, new buckets are in the
+ <code><a href="null#OFF">off</a></code> state. Once versioning is
+ enabled for a bucket the status can never be reverted to
+ <code><a href="null#OFF">off</a></code>.
+ </p>
+
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-versioning-configuration bucketName="my-bucket"/&gt;</pre></div></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">The bucket whose versioning configuration will be retrieved.</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+          
+              <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>accessKey</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                    
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>secretKey</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                    
+                
+          
+          
+        </table>
+  </div>
+  
+  
+      <div class="jd-tagdata">
+         <h5 class="jd-tagtitle">Returns</h5>
+         <table id="lconfig" class="jd-sumtable">
+             <tr>
+                <th>Return Type</th>
+                <th>Description</th>
+             </tr>
+             <tr>
+                <td class="jd-descrcol">BucketVersioningConfiguration</td>
+                <td class="jd-descrcol">The bucket versioning configuration for the specified bucket.
 </td>
              </tr>
          </table>
