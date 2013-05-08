@@ -14,15 +14,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-import com.amazonaws.services.s3.model.Bucket;
-import com.amazonaws.services.s3.model.BucketVersioningConfiguration;
-import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.Permission;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.amazonaws.services.s3.model.S3VersionSummary;
+import com.amazonaws.services.s3.model.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.mule.api.ConnectionException;
@@ -31,6 +23,7 @@ import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.s3.simpleapi.*;
+import org.mule.module.s3.simpleapi.Region;
 
 import java.io.InputStream;
 import java.net.URI;
@@ -543,7 +536,7 @@ public class S3Connector
      * @return an input stream to the objects contents
      */
     @Processor
-    public InputStream getObjectContent(String bucketName,
+    public S3ObjectInputStream getObjectContent(String bucketName,
                                         String key,
                                         @Optional String versionId,
                                         @Optional Date modifiedSince,

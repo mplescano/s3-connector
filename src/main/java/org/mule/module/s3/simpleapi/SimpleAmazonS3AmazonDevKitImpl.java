@@ -249,7 +249,7 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
     }
 
     // 4.3
-    public InputStream getObjectContent(@NotNull S3ObjectId objectId, @NotNull ConditionalConstraints conditionalConstraints)
+    public S3ObjectInputStream getObjectContent(@NotNull S3ObjectId objectId, @NotNull ConditionalConstraints conditionalConstraints)
     {
         Validate.notNull(objectId);
         S3Object object = getObject(objectId, conditionalConstraints);
