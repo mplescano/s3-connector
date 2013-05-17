@@ -12,18 +12,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.security.DigestInputStream;
-import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.UUID;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +22,9 @@ import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 
-public class SetBucketVersioningStatusTestCases extends S3TestParent {
+import com.amazonaws.services.s3.model.BucketVersioningConfiguration;
+
+public class BucketVersioningConfigurationTestCases extends S3TestParent {
 	
 	String bucketName;
 	
@@ -74,25 +67,42 @@ public class SetBucketVersioningStatusTestCases extends S3TestParent {
 	
     @Category({SanityTests.class, RegressionTests.class})
 	@Test    
-	public void testSetBucketVersioningStatus() {
+	public void testBucketVersioningConfigurationTestCases() {
     	
-		testObjects.putAll((HashMap<String,Object>) context.getBean("setBucketVersioningStatusObjectTestData"));
+		testObjects.putAll((HashMap<String,Object>) context.getBean("bucketVersioningConfigurationTestData"));
 
     	byte data[] = bucketName.getBytes();
     	testObjects.put("contentRef", data);
     	
 		try {
 
+			MessageProcessor getBucketVersioningConfigurationFlow = lookupFlowConstruct("get-bucket-versioning-configuration");
+			MuleEvent getBucketVersioningConfiguration = getBucketVersioningConfigurationFlow.process(getTestEvent(testObjects));
+			
+			BucketVersioningConfiguration bucketVersioningConfiguration = (BucketVersioningConfiguration) getBucketVersioningConfiguration.getMessage().getPayload();
+
+			assertEquals("OFF", bucketVersioningConfiguration.getStatus().toString().toUpperCase());
+
 			testObjects.put("versioningStatus", "ENABLED");
 			
 			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
-
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
-			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
-			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
-		
+			getBucketVersioningConfiguration = getBucketVersioningConfigurationFlow.process(getTestEvent(testObjects));
+			
+			bucketVersioningConfiguration = (BucketVersioningConfiguration) getBucketVersioningConfiguration.getMessage().getPayload();
+
+			assertEquals("ENABLED", bucketVersioningConfiguration.getStatus().toString().toUpperCase());
+			
+			testObjects.put("versioningStatus", "SUSPENDED");
+			
+			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
+			getBucketVersioningConfiguration = getBucketVersioningConfigurationFlow.process(getTestEvent(testObjects));
+			
+			bucketVersioningConfiguration = (BucketVersioningConfiguration) getBucketVersioningConfiguration.getMessage().getPayload();
+
+			assertEquals("SUSPENDED", bucketVersioningConfiguration.getStatus().toString().toUpperCase());
+	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

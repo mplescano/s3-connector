@@ -745,17 +745,17 @@
 		<entry key="userMetadata" value-ref="deleteFileObjectUserMetadata" />			
 	</util:map>
 	
-	<!-- set-bucket-versioning-status -->
+	<!-- get-bucket-versioning-configuration -->
 	
-	<util:map id="setBucketVersioningStatusObjectUserMetadata" map-class="java.util.HashMap"
+	<util:map id="bucketVersioningConfigurationUserMetadata" map-class="java.util.HashMap"
 		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
 		<entry key="usermetadatakey" value="userMetadataValue" />
 	</util:map>
 	
-	<util:map id="setBucketVersioningStatusObjectTestData" map-class="java.util.HashMap"
+	<util:map id="bucketVersioningConfigurationTestData" map-class="java.util.HashMap"
 		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
 		<entry key="key" value="byteArrayKey" />
-		<entry key="userMetadata" value-ref="setBucketVersioningStatusObjectUserMetadata" />			
+		<entry key="userMetadata" value-ref="bucketVersioningConfigurationUserMetadata" />			
 	</util:map>
 
 </beans>

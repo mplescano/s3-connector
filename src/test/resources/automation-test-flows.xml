@@ -214,4 +214,14 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
         </s3:set-object-storage-class>
     </flow>
     
+    <flow name="get-bucket-versioning-configuration" doc:name="get-bucket-versioning-configuration">
+        <s3:get-bucket-versioning-configuration config-ref="Amazon_S3" bucketName="#[payload.bucketName]" doc:name="Amazon S3"/>
+    </flow>
+    
+    <flow name="delete-objects" doc:name="delete-objects">
+         <s3:delete-objects config-ref="Amazon_S3" bucketName="#[payload.bucketName]" doc:name="Amazon S3">
+            <s3:keys ref="#[payload.keysReference]"/>
+        </s3:delete-objects>
+    </flow>
+
 </mule>

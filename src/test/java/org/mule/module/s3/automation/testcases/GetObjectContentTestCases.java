@@ -53,7 +53,7 @@ public class GetObjectContentTestCases extends S3TestParent {
 			MessageProcessor getObjectContentFlow = lookupFlowConstruct("get-object-content");
 			MuleEvent getObjectContentResponse = getObjectContentFlow.process(getTestEvent(testObjects));
 
-			InputStream actualObjectContent = (InputStream) getObjectContentResponse.getMessage().getPayload();
+			S3ObjectInputStream actualObjectContent = (S3ObjectInputStream) getObjectContentResponse.getMessage().getPayload();
 
 			assertTrue(IOUtils.contentEquals(expectedObjectContent, actualObjectContent));
 
