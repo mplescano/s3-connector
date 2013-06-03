@@ -1,0 +1,80 @@
+<!-- BEGIN_INCLUDE(s3:create-bucket) -->
+<s3:create-bucket bucketName="my-bucket" acl="PRIVATE"/>
+<!-- END_INCLUDE(s3:create-bucket) -->
+<!-- BEGIN_INCLUDE(s3:delete-bucket) -->
+<s3:delete-bucket bucketName="my-bucket" force="true"/>
+<!-- END_INCLUDE(s3:delete-bucket) -->
+<!-- BEGIN_INCLUDE(s3:delete-bucket-website-configuration) -->
+<s3:delete-bucket-website-configuration bucketName="my-bucket"/>
+<!-- END_INCLUDE(s3:delete-bucket-website-configuration) -->
+<!-- BEGIN_INCLUDE(s3:get-bucket-policy) -->
+<s3:get-bucket-policy bucketName="my-bucket"/>
+<!-- END_INCLUDE(s3:get-bucket-policy) -->
+<!-- BEGIN_INCLUDE(s3:set-bucket-policy) -->
+<s3:set-bucket-policy bucketName="my-bucket" policyText="your policy" />
+<!-- END_INCLUDE(s3:set-bucket-policy) -->
+<!-- BEGIN_INCLUDE(s3:delete-bucket-policy) -->
+<s3:delete-bucket-policy bucketName="my-bucket"/>
+<!-- END_INCLUDE(s3:delete-bucket-policy) -->
+<!-- BEGIN_INCLUDE(s3:set-bucket-website-configuration) -->
+<s3:set-bucket-website-configuration bucketName="my-bucket" suffix="index.html"
+                                     errorDocument="errorDocument.html" />
+<!-- END_INCLUDE(s3:set-bucket-website-configuration) -->
+<!-- BEGIN_INCLUDE(s3:get-bucket-website-configuration) -->
+<s3:get-bucket-website-configuration bucketName="my-bucket" />
+<!-- END_INCLUDE(s3:get-bucket-website-configuration) -->
+<!-- BEGIN_INCLUDE(s3:list-buckets) -->
+<s3:list-buckets />
+<!-- END_INCLUDE(s3:list-buckets) -->
+<!-- BEGIN_INCLUDE(s3:list-objects) -->
+<s3:list-objects bucketName="my-bucket" prefix="mk" />
+<!-- END_INCLUDE(s3:list-objects) -->
+<!-- BEGIN_INCLUDE(s3:list-object-versions) -->
+<s3:list-object-versions bucketName="my-bucket" />
+<!-- END_INCLUDE(s3:list-object-versions) -->
+<!-- BEGIN_INCLUDE(s3:create-object) -->
+<s3:create-object bucketName="my-bucket" key="helloWorld.txt" contentType="text/plain" />
+<!-- END_INCLUDE(s3:create-object) -->
+<!-- BEGIN_INCLUDE(s3:delete-object) -->
+<s3:delete-object bucketName="my-bucket" key="foo.gzip"/>
+<!-- END_INCLUDE(s3:delete-object) -->
+<!-- BEGIN_INCLUDE(s3:delete-objects) -->
+<s3:delete-objects bucketName="my-bucket">
+    <s3:keys>
+        <s3:key value="foo.gzip"/>
+        <s3:key value="bar.gzip"/>
+    </s3:keys>
+</s3:delete-objects>
+<!-- END_INCLUDE(s3:delete-objects) -->
+<!-- BEGIN_INCLUDE(s3:copy-object) -->
+<s3:copy-object sourceBucketName="my-bucket" sourceKey="foo.gzip" destinationKey="bar.gzip"
+                destinationStorageClass="STANDARD" />
+<!-- END_INCLUDE(s3:copy-object) -->
+<!-- BEGIN_INCLUDE(s3:set-object-storage-class) -->
+<s3:set-object-storage-class bucketName="my-bucket" key="foo.gzip" storageClass="REDUCED_REDUNDANCY"/>
+<!-- END_INCLUDE(s3:set-object-storage-class) -->
+<!-- BEGIN_INCLUDE(s3:copy-object) -->
+<s3:copy-object sourceBucketName="my-bucket" sourceKey="foo.gzip" destinationKey="bar.gzip"
+                destinationStorageClass="Private" />
+<!-- END_INCLUDE(s3:copy-object) -->
+<!-- BEGIN_INCLUDE(s3:create-object-presigned-uri) -->
+<s3:create-object-presigned-uri bucketName="my-bucket" key="bar.xml" method="GET" />
+<!-- END_INCLUDE(s3:create-object-presigned-uri) -->
+<!-- BEGIN_INCLUDE(s3:get-object-content) -->
+<s3:get-object-content bucketName="my-bucket" key="bar.xml"/>
+<!-- END_INCLUDE(s3:get-object-content) -->
+<!-- BEGIN_INCLUDE(s3:get-object) -->
+<s3:get-object bucketName="my-bucket" key="bar.xml"/>
+<!-- END_INCLUDE(s3:get-object) -->
+<!-- BEGIN_INCLUDE(s3:get-object-metadata) -->
+<s3:get-object-metadata bucketName="my-bucket" key="baz.bin" />
+<!-- END_INCLUDE(s3:get-object-metadata) -->
+<!-- BEGIN_INCLUDE(s3:set-bucket-versioning-status) -->
+<s3:set-bucket-versioning-status bucketName="my-bucket" versioningStatus="SUSPENDED" />
+<!-- END_INCLUDE(s3:set-bucket-versioning-status) -->
+<!-- BEGIN_INCLUDE(s3:get-bucket-versioning-configuration) -->
+<s3:get-bucket-versioning-configuration bucketName="my-bucket"/>
+<!-- END_INCLUDE(s3:get-bucket-versioning-configuration) -->
+<!-- BEGIN_INCLUDE(s3:create-object-uri) -->
+<s3:create-object-uri bucketName="my-bucket" key="baz.bin"/>
+<!-- END_INCLUDE(s3:create-object-uri) -->
