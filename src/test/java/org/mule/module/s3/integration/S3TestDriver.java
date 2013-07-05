@@ -15,6 +15,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mule.module.s3.AccessControlList.PRIVATE;
 
+import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
 import org.mule.module.s3.AccessControlList;
 import org.mule.module.s3.S3Connector;
 import org.mule.module.s3.StorageClass;
@@ -135,7 +136,9 @@ public class S3TestDriver
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
         connector.copyObject("camaraenclaromeco", "axis.jpg", null, bucketName, "axis.jpg",
             AccessControlList.PRIVATE, StorageClass.STANDARD, null, null, null);
-        connector.setBucketWebsiteConfiguration(bucketName, "axis.jpg", "axis.jpg");
+        BucketWebsiteConfiguration configuration = new BucketWebsiteConfiguration();
+        configuration.setErrorDocument("axis.jpg");
+        connector.setBucketWebsiteConfiguration(bucketName, configuration);
     }
 
 }

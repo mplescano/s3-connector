@@ -300,7 +300,7 @@ public class S3TestCase
     @Test
     public void setBucketWebsiteConfiguration() throws Exception
     {
-        connector.setBucketWebsiteConfiguration(MY_BUCKET, "suffix1", "error.do");
+        connector.setBucketWebsiteConfiguration(MY_BUCKET, new BucketWebsiteConfiguration("suffix1", "error.do"));
         verify(client).setBucketWebsiteConfiguration(eq(MY_BUCKET),
             refEq(new BucketWebsiteConfiguration("suffix1", "error.do")));
     }
@@ -323,7 +323,7 @@ public class S3TestCase
     @Test(expected = IllegalArgumentException.class)
     public void setBucketWebsiteConfigurationNoSuffix() throws Exception
     {
-        connector.setBucketWebsiteConfiguration(MY_BUCKET, null, "error.jsp");
+        connector.setBucketWebsiteConfiguration(MY_BUCKET, new BucketWebsiteConfiguration(null, "error.jsp"));
     }
 
     @Test

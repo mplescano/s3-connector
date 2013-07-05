@@ -98,8 +98,9 @@
     <flow name="WebsiteConfigCrud">
         <s3:get-bucket-website-configuration
                 bucketName="my-bucket"/>
-        <s3:set-bucket-website-configuration
-                bucketName="my-bucket" suffix="index.html" errorDocument="errorDocument.html"/>
+        <s3:set-bucket-website-configuration bucketName="my-bucket">
+            <s3:bucket-website-configuration ref="#[payload]" />
+        </s3:set-bucket-website-configuration>
         <s3:delete-bucket-website-configuration
                 bucketName="my-bucket"/>
     </flow>

@@ -17,8 +17,9 @@
 <s3:delete-bucket-policy bucketName="my-bucket"/>
 <!-- END_INCLUDE(s3:delete-bucket-policy) -->
 <!-- BEGIN_INCLUDE(s3:set-bucket-website-configuration) -->
-<s3:set-bucket-website-configuration bucketName="my-bucket" suffix="index.html"
-                                     errorDocument="errorDocument.html" />
+<s3:set-bucket-website-configuration bucketName="my-bucket">
+    <s3:bucket-website-configuration ref="#[payload]" />
+</s3:set-bucket-website-configuration>
 <!-- END_INCLUDE(s3:set-bucket-website-configuration) -->
 <!-- BEGIN_INCLUDE(s3:get-bucket-website-configuration) -->
 <s3:get-bucket-website-configuration bucketName="my-bucket" />

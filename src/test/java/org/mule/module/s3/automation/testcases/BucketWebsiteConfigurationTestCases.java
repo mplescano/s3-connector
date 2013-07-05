@@ -13,10 +13,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.UUID;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,20 +22,20 @@ import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 
-import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
 
 public class BucketWebsiteConfigurationTestCases extends S3TestParent {
-	
-	private String bucketName;
-	
-	@Before
+
+    @Before
 	public void setUp(){
+
+        String bucketName = UUID.randomUUID().toString();
 		
-		bucketName = UUID.randomUUID().toString();
-		
-		testObjects = (HashMap<String,Object>) context.getBean("bucketWebsiteConfigurationTestData");
+		testObjects = new HashMap<String, Object>();
+        BucketWebsiteConfiguration bucketWebsiteConfiguration =
+                (BucketWebsiteConfiguration) context.getBean("bucketWebsiteConfigurationTestData");
 		testObjects.put("bucketName", bucketName);
+        testObjects.put("bucketWebsiteConfiguration", bucketWebsiteConfiguration);
     	
 		try {
 
@@ -45,7 +43,6 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail();
 		}
@@ -58,10 +55,9 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 		try {
 				
 			MessageProcessor flow = lookupFlowConstruct("delete-bucket");
-			MuleEvent response = flow.process(getTestEvent(testObjects));
+			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 				e.printStackTrace();
 				fail();
 		}
@@ -83,11 +79,11 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 			
 			BucketWebsiteConfiguration bucketWebsiteConfiguration = (BucketWebsiteConfiguration) response.getMessage().getPayload();
 			
-			assertEquals(testObjects.get("suffix").toString(), bucketWebsiteConfiguration.getIndexDocumentSuffix());
+			assertEquals(((BucketWebsiteConfiguration) testObjects.get("bucketWebsiteConfiguration")).getIndexDocumentSuffix(),
+                    bucketWebsiteConfiguration.getIndexDocumentSuffix());
 			assertNull(bucketWebsiteConfiguration.getErrorDocument());
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail();
 		}
@@ -109,11 +105,12 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 			
 			BucketWebsiteConfiguration bucketWebsiteConfiguration = (BucketWebsiteConfiguration) response.getMessage().getPayload();
 			
-			assertEquals(testObjects.get("suffix").toString(), bucketWebsiteConfiguration.getIndexDocumentSuffix());
-			assertEquals(testObjects.get("errorDocument").toString(), bucketWebsiteConfiguration.getErrorDocument());
+			assertEquals(((BucketWebsiteConfiguration) testObjects.get("bucketWebsiteConfiguration")).getIndexDocumentSuffix(),
+                    bucketWebsiteConfiguration.getIndexDocumentSuffix());
+			assertEquals(((BucketWebsiteConfiguration) testObjects.get("bucketWebsiteConfiguration")).getErrorDocument(),
+                    bucketWebsiteConfiguration.getErrorDocument());
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail();
 		}
@@ -139,7 +136,6 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail();
 		}

@@ -19,7 +19,8 @@ import org.mule.module.s3.automation.testcases.*;
 
 @SuiteClasses({
 	
-	BucketPolicyTestCases.class, 
+	BucketPolicyTestCases.class,
+    BucketVersioningConfigurationTestCases.class,
 	BucketWebsiteConfigurationTestCases.class, 
 	CopyObjectTestCases.class, 
 	CreateBucketTestCases.class, 
@@ -34,7 +35,6 @@ import org.mule.module.s3.automation.testcases.*;
 	ListBucketsTestCases.class, 
 	ListObjectVersionsTestCases.class, 
 	ListObjectsTestCases.class, 
-	SetBucketVersioningStatusTestCases.class, 
 	SetObjectStorageClassTestCases.class
 	
 		})

@@ -60,11 +60,10 @@
 	
 	<!-- website-configuration -->	
 	
-	<util:map id="bucketWebsiteConfigurationTestData" map-class="java.util.HashMap"
-		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
-		<entry key="suffix" value="index.html" />
-		<entry key="errorDocument" value="404.html" />
-	</util:map>
+	<bean id="bucketWebsiteConfigurationTestData" map-class="com.amazonaws.services.s3.model.BucketWebsiteConfiguration">
+	    <property name="indexDocumentSuffix" value="index.html" />
+        <property name="errorDocument" value="404.html" />
+	</bean>
 
 	<!-- list-buckets -->	
 	

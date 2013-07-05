@@ -25,7 +25,6 @@ import org.mule.api.annotations.param.Optional;
 import org.mule.module.s3.simpleapi.*;
 import org.mule.module.s3.simpleapi.Region;
 
-import java.io.InputStream;
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
@@ -222,20 +221,13 @@ public class S3Connector
      * {@sample.xml ../../../doc/mule-module-s3.xml.sample s3:set-bucket-website-configuration}
      *
      * @param bucketName the target bucket's name
-     * @param suffix The document to serve when a directory is specified, relative to
-     *            the requested resource
-     * @param errorDocument the full path to error document the bucket will use as
-     *            error page for 4XX errors
+     * @param bucketWebsiteConfiguration bucket website configuration
      */
     @Processor
     public void setBucketWebsiteConfiguration(String bucketName,
-                                              String suffix,
-                                              @Optional String errorDocument)
+                                              BucketWebsiteConfiguration bucketWebsiteConfiguration)
     {
-        client.setBucketWebsiteConfiguration(bucketName,
-            errorDocument != null
-                                 ? new BucketWebsiteConfiguration(suffix, errorDocument)
-                                 : new BucketWebsiteConfiguration(suffix));
+        client.setBucketWebsiteConfiguration(bucketName, bucketWebsiteConfiguration);
     }
 
     /**
