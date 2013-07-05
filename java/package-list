@@ -1,3 +1,5 @@
+com.amazonaws.services.s3.model.holders
+com.amazonaws.services.s3.model.transformers
 org.mule.module.s3
 org.mule.module.s3.adapter
 org.mule.module.s3.adapters

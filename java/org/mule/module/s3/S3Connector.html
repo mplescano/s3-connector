@@ -202,6 +202,10 @@
               </div>
               <ul>
                 
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/amazonaws/services/s3/model/holders/package-summary.html">com.amazonaws.services.s3.model.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/amazonaws/services/s3/model/transformers/package-summary.html">com.amazonaws.services.s3.model.transformers</a></li>
     <li class="selected api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/package-summary.html">org.mule.module.s3</a></li>
     <li class="api apilevel-">
@@ -1226,7 +1230,7 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#setBucketWebsiteConfiguration(java.lang.String, java.lang.String, java.lang.String)">setBucketWebsiteConfiguration</a></span>(String bucketName, String suffix, String errorDocument)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)">setBucketWebsiteConfiguration</a></span>(String bucketName, BucketWebsiteConfiguration bucketWebsiteConfiguration)</nobr>
         
         <div class="jd-descrdiv">Sets the given bucket's website configuration.</div>
   
@@ -3498,7 +3502,7 @@ From class
 </div>
 
 
-<A NAME="setBucketWebsiteConfiguration(java.lang.String, java.lang.String, java.lang.String)"></A>
+<A NAME="setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3511,7 +3515,7 @@ From class
         void
       </span>
       <span class="sympad">setBucketWebsiteConfiguration</span>
-      <span class="normal">(String bucketName, String suffix, String errorDocument)</span>
+      <span class="normal">(String bucketName, BucketWebsiteConfiguration bucketWebsiteConfiguration)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -3538,14 +3542,8 @@ From class
           <td>The target bucket's name</td>
         </tr>
         <tr>
-          <th>suffix</td>
-          <td>The document to serve when a directory is specified, relative to
-            the requested resource</td>
-        </tr>
-        <tr>
-          <th>errorDocument</td>
-          <td>The full path to error document the bucket will use as
-            error page for 4XX errors
+          <th>bucketWebsiteConfiguration</td>
+          <td>Bucket website configuration
 </td>
         </tr>
       </table>

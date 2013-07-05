@@ -203,6 +203,10 @@
               <ul>
                 
     <li class="api apilevel-">
+  <a href="../../../../../../java/com/amazonaws/services/s3/model/holders/package-summary.html">com.amazonaws.services.s3.model.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/amazonaws/services/s3/model/transformers/package-summary.html">com.amazonaws.services.s3.model.transformers</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/package-summary.html">org.mule.module.s3</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/adapter/package-summary.html">org.mule.module.s3.adapter</a></li>
@@ -577,7 +581,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>SetBucketWebsiteConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#setBucketWebsiteConfiguration(java.lang.String, java.lang.String, java.lang.String)">setBucketWebsiteConfiguration(java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>SetBucketWebsiteConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)">setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  
 </p>
 
@@ -791,24 +795,13 @@ org.mule.api.lifecycle.Stoppable
           protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#_errorDocumentType">_errorDocumentType</a></td>
+          BucketWebsiteConfiguration</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#_bucketWebsiteConfigurationType">_bucketWebsiteConfigurationType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
       <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#_suffixType">_suffixType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
@@ -819,24 +812,13 @@ org.mule.api.lifecycle.Stoppable
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#errorDocument">errorDocument</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
       <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           protected
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#suffix">suffix</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#bucketWebsiteConfiguration">bucketWebsiteConfiguration</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -1122,9 +1104,9 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#setErrorDocument(java.lang.Object)">setErrorDocument</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#setBucketWebsiteConfiguration(java.lang.Object)">setBucketWebsiteConfiguration</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Sets errorDocument</div>
+        <div class="jd-descrdiv">Sets bucketWebsiteConfiguration</div>
   
   </td></tr>
 
@@ -1176,31 +1158,13 @@ org.mule.api.lifecycle.Stoppable
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#setSuffix(java.lang.Object)">setSuffix</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets suffix</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html#start()">start</a></span>()</nobr>
         
   </td></tr>
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -2271,7 +2235,7 @@ From interface
 
 
 
-<A NAME="_errorDocumentType"></A>
+<A NAME="_bucketWebsiteConfigurationType"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2279,39 +2243,9 @@ From interface
         protected 
          
          
-        String
+        BucketWebsiteConfiguration
       </span>
-        _errorDocumentType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_suffixType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        _suffixType
+        _bucketWebsiteConfigurationType
     </h4>
       <div class="api-level">
         
@@ -2361,7 +2295,7 @@ From interface
 
 
 
-<A NAME="errorDocument"></A>
+<A NAME="bucketWebsiteConfiguration"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2371,37 +2305,7 @@ From interface
          
         Object
       </span>
-        errorDocument
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="suffix"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        suffix
+        bucketWebsiteConfiguration
     </h4>
       <div class="api-level">
         
@@ -2637,7 +2541,7 @@ From interface
 </div>
 
 
-<A NAME="setErrorDocument(java.lang.Object)"></A>
+<A NAME="setBucketWebsiteConfiguration(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2649,7 +2553,7 @@ From interface
          
         void
       </span>
-      <span class="sympad">setErrorDocument</span>
+      <span class="sympad">setBucketWebsiteConfiguration</span>
       <span class="normal">(Object value)</span>
     </h4>
       <div class="api-level">
@@ -2662,7 +2566,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets errorDocument</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets bucketWebsiteConfiguration</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -2751,47 +2655,6 @@ From interface
         <tr>
           <th>context</td>
           <td>Mule context to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setSuffix(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setSuffix</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets suffix</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
 </td>
         </tr>
       </table>

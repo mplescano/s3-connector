@@ -3392,8 +3392,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
  to set the website configuration by writing a bucket policy granting them the
  S3:PutBucketWebsite permission.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-website-configuration bucketName="my-bucket" suffix="index.html"
-                                     errorDocument="errorDocument.html" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-website-configuration bucketName="my-bucket"&gt;
+    &lt;s3:bucket-website-configuration ref="#[payload]" /&gt;
+&lt;/s3:set-bucket-website-configuration&gt;</pre></div></p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3423,27 +3424,13 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
                 
                     <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>suffix</nobr></td>
+                        <td class="jd-linkcol"><nobr>bucketWebsiteConfiguration</nobr></td>
                         <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The document to serve when a directory is specified, relative to
-            the requested resource</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
-                
-                
-          
-                
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>errorDocument</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The full path to error document the bucket will use as
-            error page for 4XX errors
+                        <td class="jd-descrcol">Bucket website configuration
 </td>
-                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">BucketWebsiteConfiguration</td>
                         <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
+                        <td class="jd-descrcol"></td>
                     </tr>
                 
                 
@@ -3451,7 +3438,7 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
               <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
                 
-                    <tr class="alt-color api apilevel-" >
+                    <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>accessKey</nobr></td>
                         <td class="jd-descrcol"></td>
                         <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
@@ -3461,7 +3448,7 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                     </tr>
                     
                 
-                    <tr class=" api apilevel-" >
+                    <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>secretKey</nobr></td>
                         <td class="jd-descrcol"></td>
                         <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
