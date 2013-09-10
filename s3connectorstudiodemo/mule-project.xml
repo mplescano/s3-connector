@@ -2,4 +2,5 @@
 <mule-project xmlns="http://www.mulesoft.com/tooling/project" runtimeId="org.mule.servers.3.3.0.CE">
     <name>S3ConnectorStudioDemo</name>
     <description>This is a simple Mule Studio App using the S3 cloud connector</description>
+    <muleExtension name="Amazon S3" qualifier="org.mule.tooling.ui.contribution.s3"/>
 </mule-project>
