@@ -36,7 +36,7 @@ public class DeleteBucketTestCases extends S3TestParent {
 		testObjects = (HashMap<String,Object>) context.getBean("deleteBucketTestData");
 		testObjects.put("bucketName", bucketName);
     	
-		MessageProcessor flow = lookupFlowConstruct("create-bucket");
+		MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
     	
 		try {
 
@@ -58,10 +58,10 @@ public class DeleteBucketTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor deleteBucketFlow = lookupFlowConstruct("delete-bucket");
+			MessageProcessor deleteBucketFlow = lookupMessageProcessorConstruct("delete-bucket");
 			deleteBucketFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor listBucketsFlow = lookupFlowConstruct("list-buckets");
+			MessageProcessor listBucketsFlow = lookupMessageProcessorConstruct("list-buckets");
 			MuleEvent response = listBucketsFlow.process(getTestEvent(null));
 			
 			List<Bucket> buckets = (List<Bucket>) response.getMessage().getPayload();
@@ -101,21 +101,21 @@ public class DeleteBucketTestCases extends S3TestParent {
     	
 		try {
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
 			testObjects.put("userMetadata", updatedUserMetadata);
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 
-			MessageProcessor deleteBucketFlow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor deleteBucketFlow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
 			deleteBucketFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor listBucketsFlow = lookupFlowConstruct("list-buckets");
+			MessageProcessor listBucketsFlow = lookupMessageProcessorConstruct("list-buckets");
 			MuleEvent listBucketsResponse = listBucketsFlow.process(getTestEvent(null));
 			
 			List<Bucket> buckets = (List<Bucket>) listBucketsResponse.getMessage().getPayload();

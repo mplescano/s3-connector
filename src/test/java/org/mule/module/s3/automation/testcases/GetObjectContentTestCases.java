@@ -41,16 +41,16 @@ public class GetObjectContentTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 
-			MessageProcessor getObjectFlow = lookupFlowConstruct("get-object");
+			MessageProcessor getObjectFlow = lookupMessageProcessorConstruct("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
 			
 			S3Object s3object = (S3Object) getObjectResponse.getMessage().getPayload();
 			S3ObjectInputStream expectedObjectContent = s3object.getObjectContent();
 
-			MessageProcessor getObjectContentFlow = lookupFlowConstruct("get-object-content");
+			MessageProcessor getObjectContentFlow = lookupMessageProcessorConstruct("get-object-content");
 			MuleEvent getObjectContentResponse = getObjectContentFlow.process(getTestEvent(testObjects));
 
 			S3ObjectInputStream actualObjectContent = (S3ObjectInputStream) getObjectContentResponse.getMessage().getPayload();
@@ -81,15 +81,15 @@ public class GetObjectContentTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
 			createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			
-			MessageProcessor getObjectFlow = lookupFlowConstruct("get-object");
+			MessageProcessor getObjectFlow = lookupMessageProcessorConstruct("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
 			
 			S3Object s3object = (S3Object) getObjectResponse.getMessage().getPayload();
@@ -101,7 +101,7 @@ public class GetObjectContentTestCases extends S3TestParent {
 			
 			// get-object-content-optional-attributes-unmodified-since
 			
-			getObjectOptionalAttributesFlow = lookupFlowConstruct("get-object-content-optional-attributes-unmodified-since");
+			getObjectOptionalAttributesFlow = lookupMessageProcessorConstruct("get-object-content-optional-attributes-unmodified-since");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 			
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
@@ -113,12 +113,12 @@ public class GetObjectContentTestCases extends S3TestParent {
 			
 			testObjects.put("userMetadata", updatedUserMetadata);
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
 			// get-object-content-optional-attributes-version-id
 			
-			getObjectOptionalAttributesFlow = lookupFlowConstruct("get-object-content-optional-attributes-version-id");
+			getObjectOptionalAttributesFlow = lookupMessageProcessorConstruct("get-object-content-optional-attributes-version-id");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
@@ -127,7 +127,7 @@ public class GetObjectContentTestCases extends S3TestParent {
 
 			// get-object-content-optional-attributes-modified-since
 			
-			getObjectOptionalAttributesFlow = lookupFlowConstruct("get-object-content-optional-attributes-modified-since");
+			getObjectOptionalAttributesFlow = lookupMessageProcessorConstruct("get-object-content-optional-attributes-modified-since");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 			
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
@@ -152,7 +152,7 @@ public class GetObjectContentTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupFlowConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -168,7 +168,7 @@ public class GetObjectContentTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {

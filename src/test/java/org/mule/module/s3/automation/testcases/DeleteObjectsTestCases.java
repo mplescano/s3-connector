@@ -49,7 +49,7 @@ public class DeleteObjectsTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupFlowConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -65,7 +65,7 @@ public class DeleteObjectsTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -178,12 +178,12 @@ public class DeleteObjectsTestCases extends S3TestParent {
     			
     			testObjects.put("versioningStatus", "ENABLED");
     			
-    			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+    			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
     			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
     			
     		}
     			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
     		
     		if (versioning) {
@@ -197,10 +197,10 @@ public class DeleteObjectsTestCases extends S3TestParent {
 			
 			testObjects.put("keysReference", keyVersionList);
 			
-			MessageProcessor deleteObjectFlow = lookupFlowConstruct("delete-objects");
+			MessageProcessor deleteObjectFlow = lookupMessageProcessorConstruct("delete-objects");
 			deleteObjectFlow.process(getTestEvent(testObjects));
 		
-			MessageProcessor listObjectsFlow = lookupFlowConstruct("list-objects");
+			MessageProcessor listObjectsFlow = lookupMessageProcessorConstruct("list-objects");
 			MuleEvent listObjectsResponse = listObjectsFlow.process(getTestEvent(testObjects));
 			Iterable<S3ObjectSummary> s3ObjectsSummaries = (Iterable<S3ObjectSummary>) listObjectsResponse.getMessage().getPayload();
 		

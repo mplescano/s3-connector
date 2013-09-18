@@ -31,7 +31,7 @@ public class S3TestParent extends FunctionalTestCase {
 		return "automation-test-flows.xml";
 	}
 	
-    protected MessageProcessor lookupFlowConstruct(String name) {
+    protected MessageProcessor lookupMessageProcessorConstruct(String name) {
         return (MessageProcessor) muleContext.getRegistry().lookupFlowConstruct(name);
     }
 	

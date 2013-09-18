@@ -8,7 +8,6 @@
 
 package org.mule.module.s3.automation.testcases;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -16,23 +15,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
-import org.mule.api.MuleException;
 import org.mule.api.processor.MessageProcessor;
-
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
 
 public class SetObjectStorageClassTestCases extends S3TestParent {
 	
@@ -58,7 +49,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -74,7 +65,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		try {
 		
 			testObjects.put("storageClass", "REDUCED_REDUNDANCY");
-			MessageProcessor setObjectStorageClassFlow = lookupFlowConstruct("set-object-storage-class");
+			MessageProcessor setObjectStorageClassFlow = lookupMessageProcessorConstruct("set-object-storage-class");
 			setObjectStorageClassFlow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -90,7 +81,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		try {
 		
 			testObjects.put("storageClass", "STANDARD");
-			MessageProcessor setObjectStorageClassFlow = lookupFlowConstruct("set-object-storage-class");
+			MessageProcessor setObjectStorageClassFlow = lookupMessageProcessorConstruct("set-object-storage-class");
 			setObjectStorageClassFlow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -105,7 +96,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 		
 			if (versioning) {
@@ -132,7 +123,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupFlowConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -148,7 +139,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
