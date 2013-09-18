@@ -117,7 +117,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  DeleteBucketWebsiteConfigurationMessageProcessor
+  AbstractPagedConnectedProcessor
 
 
 | Mule S3 Connector
@@ -302,7 +302,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractExpressionEvaluator.html">AbstractExpressionEvaluator</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;</li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html">AbstractPagedConnectedProcessor</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html">AbstractPagedConnectedProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CopyObjectMessageProcessor.html">CopyObjectMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CreateBucketMessageProcessor.html">CreateBucketMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CreateObjectMessageProcessor.html">CreateObjectMessageProcessor</a></li>
@@ -310,7 +310,7 @@
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CreateObjectUriMessageProcessor.html">CreateObjectUriMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteBucketMessageProcessor.html">DeleteBucketMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteBucketPolicyMessageProcessor.html">DeleteBucketPolicyMessageProcessor</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html">DeleteBucketWebsiteConfigurationMessageProcessor</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html">DeleteBucketWebsiteConfigurationMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteObjectMessageProcessor.html">DeleteObjectMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteObjectsMessageProcessor.html">DeleteObjectsMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketPolicyMessageProcessor.html">GetBucketPolicyMessageProcessor</a></li>
@@ -451,13 +451,6 @@
   
   
 
-  
-   
-  
-  
-  
-  
-
 
 <div class="sum-details-links">
 
@@ -513,9 +506,9 @@ Summary:
     public
      
      
-    
+    abstract
     class
-<h1>DeleteBucketWebsiteConfigurationMessageProcessor</h1>
+<h1>AbstractPagedConnectedProcessor</h1>
 
 
 
@@ -532,17 +525,12 @@ Summary:
   
 
   
-    extends <a href="../../../../../../java/org/mule/module/s3/processors/AbstractConnectedProcessor.html">AbstractConnectedProcessor</a><br/>
+    extends AbstractDevkitBasedPageableMessageProcessor<br/>
   
   
   
 
   
-  
-      implements 
-      
-        MessageProcessor 
-      
   
   
 
@@ -587,7 +575,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractConnectedProcessor.html">org.mule.module.s3.processors.AbstractConnectedProcessor</a></td>
+        <td colspan="2" class="jd-inheritance-class-cell">org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor</td>
     </tr>
     
 
@@ -601,7 +589,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.processors.DeleteBucketWebsiteConfigurationMessageProcessor</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.processors.AbstractPagedConnectedProcessor</td>
     </tr>
     
 
@@ -615,11 +603,6 @@ Summary:
 
 <div class="jd-descr">
 
-
-<h2>Class Overview</h2>
-<p>DeleteBucketWebsiteConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#deleteBucketWebsiteConfiguration(java.lang.String)">deleteBucketWebsiteConfiguration(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
- 
-</p>
 
 
 
@@ -803,8 +786,6 @@ org.mule.api.lifecycle.Stoppable
 </td></tr>
 
 
-
-
 </table>
 
 
@@ -821,7 +802,29 @@ org.mule.api.lifecycle.Stoppable
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#_bucketNameType">_bucketNameType</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#_accessKeyType">_accessKeyType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#_secretKeyType">_secretKeyType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#accessKey">accessKey</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -832,7 +835,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#bucketName">bucketName</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#secretKey">secretKey</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -853,60 +856,27 @@ org.mule.api.lifecycle.Stoppable
 <tr class="api apilevel-" >
 <td colspan="12">
 
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.module.s3.processors.AbstractConnectedProcessor" class="jd-expando-trigger closed"
-          ><img id="inherited-fields-org.mule.module.s3.processors.AbstractConnectedProcessor-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>From class
-<a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html">org.mule.module.s3.processors.AbstractConnectedProcessor</a>
-<div id="inherited-fields-org.mule.module.s3.processors.AbstractConnectedProcessor">
-  <div id="inherited-fields-org.mule.module.s3.processors.AbstractConnectedProcessor-list"
+org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor
+<div id="inherited-fields-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor">
+  <div id="inherited-fields-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-fields-org.mule.module.s3.processors.AbstractConnectedProcessor-summary" style="display: none;">
+  <div id="inherited-fields-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
-          protected
+          private
           
           
           String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#_accessKeyType">_accessKeyType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#_secretKeyType">_secretKeyType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#accessKey">accessKey</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#secretKey">secretKey</a></td>
+          <td class="jd-linkcol">fetchSize</td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -1012,8 +982,6 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
 
 
 
-
-
 </table>
 
 
@@ -1035,7 +1003,7 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#DeleteBucketWebsiteConfigurationMessageProcessor(java.lang.String)">DeleteBucketWebsiteConfigurationMessageProcessor</a></span>(String operationName)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#AbstractPagedConnectedProcessor(java.lang.String)">AbstractPagedConnectedProcessor</a></span>(String operationName)</nobr>
         
   </td></tr>
 
@@ -1061,11 +1029,15 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
             
             
             
-            void</nobr>
+            Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#getAccessKey()">getAccessKey</a></span>()</nobr>
         
+        <div class="jd-descrdiv">Retrieves accessKey
+ 
+</div>
+  
   </td></tr>
 
 
@@ -1077,12 +1049,14 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
             
             
             
-            MuleEvent</nobr>
+            Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#doProcess(org.mule.api.MuleEvent)">doProcess</a></span>(MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#getSecretKey()">getSecretKey</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Invokes the MessageProcessor.</div>
+        <div class="jd-descrdiv">Retrieves secretKey
+ 
+</div>
   
   </td></tr>
 
@@ -1098,9 +1072,9 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#setAccessKey(java.lang.Object)">setAccessKey</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Obtains the expression manager from the Mule context and initialises the connector.</div>
+        <div class="jd-descrdiv">Sets accessKey</div>
   
   </td></tr>
 
@@ -1116,42 +1090,10 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#setBucketName(java.lang.Object)">setBucketName</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html#setSecretKey(java.lang.Object)">setSecretKey</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Sets bucketName</div>
+        <div class="jd-descrdiv">Sets secretKey</div>
   
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#start()">start</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html#stop()">stop</a></span>()</nobr>
-        
   </td></tr>
 
 
@@ -1172,19 +1114,19 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.s3.processors.AbstractConnectedProcessor" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.module.s3.processors.AbstractConnectedProcessor-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From class
 
-  <a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html">org.mule.module.s3.processors.AbstractConnectedProcessor</a>
+  org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor
 
-<div id="inherited-methods-org.mule.module.s3.processors.AbstractConnectedProcessor">
-  <div id="inherited-methods-org.mule.module.s3.processors.AbstractConnectedProcessor-list"
+<div id="inherited-methods-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor">
+  <div id="inherited-methods-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.module.s3.processors.AbstractConnectedProcessor-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.streaming.processor.AbstractDevkitBasedPageableMessageProcessor-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1194,38 +1136,30 @@ From class
         <td class="jd-typecol"><nobr>
             
             
+            final
             
             
-            
-            Object</nobr>
+            MuleEvent</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#getAccessKey()">getAccessKey</a></span>()</nobr>
+        <span class="sympad">doProcess</span>(MuleEvent arg0)</nobr>
         
-        <div class="jd-descrdiv">Retrieves accessKey
- 
-</div>
-  
   </td></tr>
 
 
 	 
     <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
+            abstract
             
             
             
             
-            
-            Object</nobr>
+            PagingDelegate&lt;?&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#getSecretKey()">getSecretKey</a></span>()</nobr>
+        <span class="sympad">getPagingDelegate</span>(MuleEvent arg0, PagingConfiguration arg1)</nobr>
         
-        <div class="jd-descrdiv">Retrieves secretKey
- 
-</div>
-  
   </td></tr>
 
 
@@ -1240,28 +1174,8 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#setAccessKey(java.lang.Object)">setAccessKey</a></span>(Object value)</nobr>
+        <span class="sympad">setFetchSize</span>(String arg0)</nobr>
         
-        <div class="jd-descrdiv">Sets accessKey</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/processors/AbstractConnectedProcessor.html#setSecretKey(java.lang.Object)">setSecretKey</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets secretKey</div>
-  
   </td></tr>
 
 
@@ -2225,48 +2139,6 @@ From interface
 </td></tr>
 
 
-
-<tr class="api apilevel-" >
-<td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.processor.MessageProcessor" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.processor.MessageProcessor-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.processor.MessageProcessor
-
-<div id="inherited-methods-org.mule.api.processor.MessageProcessor">
-  <div id="inherited-methods-org.mule.api.processor.MessageProcessor-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.processor.MessageProcessor-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            MuleEvent</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">process</span>(MuleEvent arg0)</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
 </table>
 
 
@@ -2299,7 +2171,7 @@ From interface
 
 
 
-<A NAME="_bucketNameType"></A>
+<A NAME="_accessKeyType"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2309,7 +2181,7 @@ From interface
          
         String
       </span>
-        _bucketNameType
+        _accessKeyType
     </h4>
       <div class="api-level">
         
@@ -2329,7 +2201,37 @@ From interface
 
 
 
-<A NAME="bucketName"></A>
+<A NAME="_secretKeyType"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        String
+      </span>
+        _secretKeyType
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="accessKey"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2339,7 +2241,37 @@ From interface
          
         Object
       </span>
-        bucketName
+        accessKey
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="secretKey"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        Object
+      </span>
+        secretKey
     </h4>
       <div class="api-level">
         
@@ -2368,7 +2300,7 @@ From interface
 
 
 
-<A NAME="DeleteBucketWebsiteConfigurationMessageProcessor(java.lang.String)"></A>
+<A NAME="AbstractPagedConnectedProcessor(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2380,7 +2312,7 @@ From interface
          
         
       </span>
-      <span class="sympad">DeleteBucketWebsiteConfigurationMessageProcessor</span>
+      <span class="sympad">AbstractPagedConnectedProcessor</span>
       <span class="normal">(String operationName)</span>
     </h4>
       <div class="api-level">
@@ -2423,7 +2355,7 @@ From interface
 
 
 
-<A NAME="dispose()"></A>
+<A NAME="getAccessKey()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2433,9 +2365,9 @@ From interface
          
          
          
-        void
+        Object
       </span>
-      <span class="sympad">dispose</span>
+      <span class="sympad">getAccessKey</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2448,13 +2380,15 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves accessKey
+ 
+</p></div>
 
     </div>
 </div>
 
 
-<A NAME="doProcess(org.mule.api.MuleEvent)"></A>
+<A NAME="getSecretKey()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2464,58 +2398,9 @@ From interface
          
          
          
-        MuleEvent
+        Object
       </span>
-      <span class="sympad">doProcess</span>
-      <span class="normal">(MuleEvent event)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Invokes the MessageProcessor.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>event</td>
-          <td>MuleEvent to be processed</td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="initialise()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">initialise</span>
+      <span class="sympad">getSecretKey</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2528,22 +2413,15 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Obtains the expression manager from the Mule context and initialises the connector. If a target object  has not been set already it will search the Mule registry for a default one.</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>InitialisationException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves secretKey
+ 
+</p></div>
 
     </div>
 </div>
 
 
-<A NAME="setBucketName(java.lang.Object)"></A>
+<A NAME="setAccessKey(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2555,7 +2433,7 @@ From interface
          
         void
       </span>
-      <span class="sympad">setBucketName</span>
+      <span class="sympad">setAccessKey</span>
       <span class="normal">(Object value)</span>
     </h4>
       <div class="api-level">
@@ -2568,7 +2446,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets bucketName</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets accessKey</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
@@ -2584,7 +2462,7 @@ From interface
 </div>
 
 
-<A NAME="start()"></A>
+<A NAME="setSecretKey(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2596,8 +2474,8 @@ From interface
          
         void
       </span>
-      <span class="sympad">start</span>
-      <span class="normal">()</span>
+      <span class="sympad">setSecretKey</span>
+      <span class="normal">(Object value)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2609,53 +2487,14 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets secretKey</p></div>
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
         <tr>
-            <th>MuleException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="stop()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">stop</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>MuleException</td>
-            <td></td>
+          <th>value</td>
+          <td>Value to set
+</td>
         </tr>
       </table>
   </div>
