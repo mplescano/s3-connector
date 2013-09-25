@@ -37,10 +37,10 @@ public class GetObjectMetadataTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 
-			MessageProcessor getObjectFlow = lookupMessageProcessorConstruct("get-object-metadata");
+			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object-metadata");
 			MuleEvent response = getObjectFlow.process(getTestEvent(testObjects));
 			
 			ObjectMetadata objectMetadata = (ObjectMetadata) response.getMessage().getPayload();
@@ -64,10 +64,10 @@ public class GetObjectMetadataTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
@@ -77,12 +77,12 @@ public class GetObjectMetadataTestCases extends S3TestParent {
 			
 			testObjects.put("userMetadata", updatedUserMetadata);
 			
-			createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
 			// get-object-optional-attributes-version-id
 			
-			getObjectOptionalAttributesFlow = lookupMessageProcessorConstruct("get-object-metadata-optional-attributes-version-id");
+			getObjectOptionalAttributesFlow = lookupMessageProcessor("get-object-metadata-optional-attributes-version-id");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 			
 			ObjectMetadata objectMetadata = (ObjectMetadata) getObjectOptionalAttributesResponse.getMessage().getPayload();
@@ -107,7 +107,7 @@ public class GetObjectMetadataTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -123,7 +123,7 @@ public class GetObjectMetadataTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {

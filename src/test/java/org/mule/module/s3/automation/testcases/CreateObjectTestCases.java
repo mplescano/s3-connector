@@ -46,7 +46,7 @@ public class CreateObjectTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class CreateObjectTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -93,7 +93,7 @@ public class CreateObjectTestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -124,7 +124,7 @@ public class CreateObjectTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects));
 			
 	    	URL url = new URL(urlString);
@@ -133,7 +133,7 @@ public class CreateObjectTestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
 			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -164,7 +164,7 @@ public class CreateObjectTestCases extends S3TestParent {
  			
  			testObjects.put("versioningStatus", "ENABLED");
  			
- 			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+ 			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
  			setBucketVersioningStatusFlow.process(getTestEvent(testObjects));
  			
  	    	URL url = new URL(urlString);
@@ -173,7 +173,7 @@ public class CreateObjectTestCases extends S3TestParent {
  	    	
  	    	testObjects.put("contentRef", inputStream);
 
- 			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+ 			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
  			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
  			
  			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -208,7 +208,7 @@ public class CreateObjectTestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -243,7 +243,7 @@ public class CreateObjectTestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-create-object-manually");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-create-object-manually");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -270,7 +270,7 @@ public class CreateObjectTestCases extends S3TestParent {
     	
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -292,7 +292,7 @@ public class CreateObjectTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -313,7 +313,7 @@ public class CreateObjectTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -334,7 +334,7 @@ public class CreateObjectTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-create-object-manually");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-create-object-manually");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -357,10 +357,10 @@ public class CreateObjectTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
 			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -383,10 +383,10 @@ public class CreateObjectTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
 			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -410,7 +410,7 @@ public class CreateObjectTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -437,10 +437,10 @@ public class CreateObjectTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
 			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -466,10 +466,10 @@ public class CreateObjectTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
 			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -493,7 +493,7 @@ public class CreateObjectTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-create-object-manually");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-create-object-manually");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -521,7 +521,7 @@ public class CreateObjectTestCases extends S3TestParent {
 			
 	    	testObjects.put("contentRef", temp);
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -552,10 +552,10 @@ public class CreateObjectTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
 			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -584,7 +584,7 @@ public class CreateObjectTestCases extends S3TestParent {
 			
 	    	testObjects.put("contentRef", temp);
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -613,7 +613,7 @@ public class CreateObjectTestCases extends S3TestParent {
 			
 	    	testObjects.put("contentRef", temp);
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-create-object-manually");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-create-object-manually");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -644,10 +644,10 @@ public class CreateObjectTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 			
 			assertFalse(response.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -679,7 +679,7 @@ public class CreateObjectTestCases extends S3TestParent {
 			testObjects.put("contentMd5", new String(encodedByteData, "UTF-8"));
 			testObjects.put("contentLength", Long.valueOf(content.getBytes("UTF-8").length));
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-optional-attributes");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-optional-attributes");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());
@@ -721,7 +721,7 @@ public class CreateObjectTestCases extends S3TestParent {
 			testObjects.put("contentMd5", new String(encodedByteData, "UTF-8"));
 			testObjects.put("contentLength", Long.valueOf(IOUtils.toByteArray(inputStream).length));
 
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-optional-attributes");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-optional-attributes");
 			MuleEvent response = createObjectFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());

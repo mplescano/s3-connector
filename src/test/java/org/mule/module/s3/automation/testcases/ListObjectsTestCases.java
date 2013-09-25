@@ -64,7 +64,7 @@ public class ListObjectsTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(initializationData));
 			
 			objectsKeyValues.add(initializationData.get("key").toString());
@@ -90,7 +90,7 @@ public class ListObjectsTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -106,7 +106,7 @@ public class ListObjectsTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -180,7 +180,7 @@ public class ListObjectsTestCases extends S3TestParent {
 	    	createObject(initializeInputStreamTestData(inputStream));
 	    	createObject(initializeStringTestData());
 	    	
-	    	MessageProcessor listObjectsFlow = lookupMessageProcessorConstruct("list-objects");
+	    	MessageProcessor listObjectsFlow = lookupMessageProcessor("list-objects");
 			MuleEvent listObjectsResponse = listObjectsFlow.process(getTestEvent(testObjects));
 			Iterable<S3ObjectSummary> s3ObjectsSummaries = (Iterable<S3ObjectSummary>) listObjectsResponse.getMessage().getPayload();
 			
@@ -226,7 +226,7 @@ public class ListObjectsTestCases extends S3TestParent {
 	    	createObject(initializeInputStreamTestData(inputStream));
 	    	createObject(initializeStringTestData());
 	    	
-	    	MessageProcessor listObjectsFlow = lookupMessageProcessorConstruct("list-objects-optional-attributes");
+	    	MessageProcessor listObjectsFlow = lookupMessageProcessor("list-objects-optional-attributes");
 			MuleEvent listObjectsResponse = listObjectsFlow.process(getTestEvent(testObjects));
 			Iterable<S3ObjectSummary> s3ObjectsSummaries = (Iterable<S3ObjectSummary>) listObjectsResponse.getMessage().getPayload();
 			

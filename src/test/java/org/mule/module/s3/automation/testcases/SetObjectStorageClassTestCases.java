@@ -49,7 +49,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -65,7 +65,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		try {
 		
 			testObjects.put("storageClass", "REDUCED_REDUNDANCY");
-			MessageProcessor setObjectStorageClassFlow = lookupMessageProcessorConstruct("set-object-storage-class");
+			MessageProcessor setObjectStorageClassFlow = lookupMessageProcessor("set-object-storage-class");
 			setObjectStorageClassFlow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -81,7 +81,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		try {
 		
 			testObjects.put("storageClass", "STANDARD");
-			MessageProcessor setObjectStorageClassFlow = lookupMessageProcessorConstruct("set-object-storage-class");
+			MessageProcessor setObjectStorageClassFlow = lookupMessageProcessor("set-object-storage-class");
 			setObjectStorageClassFlow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -96,7 +96,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 		
 			if (versioning) {
@@ -123,7 +123,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -139,7 +139,7 @@ public class SetObjectStorageClassTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {

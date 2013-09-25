@@ -65,7 +65,7 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupMessageProcessorConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(initializationData));
 			
 			objectsVersionIds.add(createObjectResponse.getMessage().getPayload().toString());		
@@ -93,7 +93,7 @@ public class ListObjectVersionsTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -109,7 +109,7 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -180,7 +180,7 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 			
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects));
 			
 	    	createObjectVersioningEnabled(initializeByteArrayTestData());
@@ -188,7 +188,7 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 	    	createObjectVersioningEnabled(initializeInputStreamTestData(inputStream));
 	    	createObjectVersioningEnabled(initializeStringTestData());
 	    	
-	    	MessageProcessor listObjectsFlow = lookupMessageProcessorConstruct("list-object-versions");
+	    	MessageProcessor listObjectsFlow = lookupMessageProcessor("list-object-versions");
 			MuleEvent listObjectsResponse = listObjectsFlow.process(getTestEvent(testObjects));
 			Iterable<S3VersionSummary> s3ObjectsSummaries = (Iterable<S3VersionSummary>) listObjectsResponse.getMessage().getPayload();
 			

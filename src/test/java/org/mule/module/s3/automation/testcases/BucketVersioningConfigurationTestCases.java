@@ -38,7 +38,7 @@ public class BucketVersioningConfigurationTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -54,7 +54,7 @@ public class BucketVersioningConfigurationTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public class BucketVersioningConfigurationTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor getBucketVersioningConfigurationFlow = lookupMessageProcessorConstruct("get-bucket-versioning-configuration");
+			MessageProcessor getBucketVersioningConfigurationFlow = lookupMessageProcessor("get-bucket-versioning-configuration");
 			MuleEvent getBucketVersioningConfiguration = getBucketVersioningConfigurationFlow.process(getTestEvent(testObjects));
 			
 			BucketVersioningConfiguration bucketVersioningConfiguration = (BucketVersioningConfiguration) getBucketVersioningConfiguration.getMessage().getPayload();
@@ -85,7 +85,7 @@ public class BucketVersioningConfigurationTestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessorConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
 			getBucketVersioningConfiguration = getBucketVersioningConfigurationFlow.process(getTestEvent(testObjects));

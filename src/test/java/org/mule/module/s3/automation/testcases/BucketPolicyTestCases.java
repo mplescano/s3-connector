@@ -35,7 +35,7 @@ public class BucketPolicyTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -51,7 +51,7 @@ public class BucketPolicyTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket");
 			MuleEvent response = flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -70,10 +70,10 @@ public class BucketPolicyTestCases extends S3TestParent {
         	    	
 		try {
 
-			MessageProcessor setBucketPolicyFlow = lookupMessageProcessorConstruct("set-bucket-policy");
+			MessageProcessor setBucketPolicyFlow = lookupMessageProcessor("set-bucket-policy");
 			setBucketPolicyFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor getBucketPolicyFlow = lookupMessageProcessorConstruct("get-bucket-policy");
+			MessageProcessor getBucketPolicyFlow = lookupMessageProcessor("get-bucket-policy");
 			MuleEvent response = getBucketPolicyFlow.process(getTestEvent(testObjects));
 			
 			String bucketPolicy = response.getMessage().getPayload().toString();
@@ -96,13 +96,13 @@ public class BucketPolicyTestCases extends S3TestParent {
         	    	
 		try {
 
-			MessageProcessor setBucketPolicyFlow = lookupMessageProcessorConstruct("set-bucket-policy");
+			MessageProcessor setBucketPolicyFlow = lookupMessageProcessor("set-bucket-policy");
 			setBucketPolicyFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor deleteBucketPolicyFlow = lookupMessageProcessorConstruct("delete-bucket-policy");
+			MessageProcessor deleteBucketPolicyFlow = lookupMessageProcessor("delete-bucket-policy");
 			deleteBucketPolicyFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor getBucketPolicyFlow = lookupMessageProcessorConstruct("get-bucket-policy");
+			MessageProcessor getBucketPolicyFlow = lookupMessageProcessor("get-bucket-policy");
 			MuleEvent response = getBucketPolicyFlow.process(getTestEvent(testObjects));
 			
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());

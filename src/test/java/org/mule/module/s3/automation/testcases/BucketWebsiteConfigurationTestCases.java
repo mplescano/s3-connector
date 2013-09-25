@@ -39,7 +39,7 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupMessageProcessorConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -54,7 +54,7 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupMessageProcessorConstruct("delete-bucket");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -68,13 +68,13 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 	@Test
 	public void testSetAndGetBucketWebsiteConfiguration() {
     	
-    	MessageProcessor setBucketWebsiteConfigurationFlow = lookupMessageProcessorConstruct("set-bucket-website-configuration");
+    	MessageProcessor setBucketWebsiteConfigurationFlow = lookupMessageProcessor("set-bucket-website-configuration");
       	
 		try {
 	
 			setBucketWebsiteConfigurationFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor getBucketWebsiteConfigurationFlow = lookupMessageProcessorConstruct("get-bucket-website-configuration");
+			MessageProcessor getBucketWebsiteConfigurationFlow = lookupMessageProcessor("get-bucket-website-configuration");
 			MuleEvent response = getBucketWebsiteConfigurationFlow.process(getTestEvent(testObjects));
 			
 			BucketWebsiteConfiguration bucketWebsiteConfiguration = (BucketWebsiteConfiguration) response.getMessage().getPayload();
@@ -94,13 +94,13 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 	@Test
 	public void testSetAndGetBucketWebsiteConfigurationOptionalAttributes() {
     	
-    	MessageProcessor setBucketWebsiteConfigurationFlow = lookupMessageProcessorConstruct("set-bucket-website-configuration-optional-attributes");
+    	MessageProcessor setBucketWebsiteConfigurationFlow = lookupMessageProcessor("set-bucket-website-configuration-optional-attributes");
       	
 		try {
 	
 			setBucketWebsiteConfigurationFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor getBucketWebsiteConfigurationFlow = lookupMessageProcessorConstruct("get-bucket-website-configuration");
+			MessageProcessor getBucketWebsiteConfigurationFlow = lookupMessageProcessor("get-bucket-website-configuration");
 			MuleEvent response = getBucketWebsiteConfigurationFlow.process(getTestEvent(testObjects));
 			
 			BucketWebsiteConfiguration bucketWebsiteConfiguration = (BucketWebsiteConfiguration) response.getMessage().getPayload();
@@ -121,16 +121,16 @@ public class BucketWebsiteConfigurationTestCases extends S3TestParent {
 	@Test
 	public void testDeleteBucketWebsiteConfiguration() {
     	
-    	MessageProcessor setBucketWebsiteConfigurationFlow = lookupMessageProcessorConstruct("set-bucket-website-configuration");
+    	MessageProcessor setBucketWebsiteConfigurationFlow = lookupMessageProcessor("set-bucket-website-configuration");
       	
 		try {
 	
 			setBucketWebsiteConfigurationFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor deleteBucketWebsiteConfigurationFlow = lookupMessageProcessorConstruct("delete-bucket-website-configuration");
+			MessageProcessor deleteBucketWebsiteConfigurationFlow = lookupMessageProcessor("delete-bucket-website-configuration");
 			deleteBucketWebsiteConfigurationFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor getBucketWebsiteConfigurationFlow = lookupMessageProcessorConstruct("get-bucket-website-configuration");
+			MessageProcessor getBucketWebsiteConfigurationFlow = lookupMessageProcessor("get-bucket-website-configuration");
 			MuleEvent response = getBucketWebsiteConfigurationFlow.process(getTestEvent(testObjects));
 			
 			assertEquals("{NullPayload}", response.getMessage().getPayload().toString());

@@ -12,13 +12,13 @@ import java.util.Map;
 
 import org.junit.BeforeClass;
 import org.mule.api.processor.MessageProcessor;
-import org.mule.tck.junit4.FunctionalTestCase;
+import org.mule.modules.tests.ConnectorTestCase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 
-public class S3TestParent extends FunctionalTestCase {
+public class S3TestParent extends ConnectorTestCase {
 	
 	protected static final String[] SPRING_CONFIG_FILES = new String[] {"AutomationSpringBeans.xml"};
 	protected static ApplicationContext context;
@@ -31,7 +31,7 @@ public class S3TestParent extends FunctionalTestCase {
 		return "automation-test-flows.xml";
 	}
 	
-    protected MessageProcessor lookupMessageProcessorConstruct(String name) {
+    protected MessageProcessor lookupMessageProcessor(String name) {
         return (MessageProcessor) muleContext.getRegistry().lookupFlowConstruct(name);
     }
 	
