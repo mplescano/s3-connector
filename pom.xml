@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.mule.tools.devkit</groupId>
         <artifactId>mule-devkit-parent</artifactId>
-        <version>3.5.0-SNAPSHOT</version>
+        <version>3.5.0-bighorn</version>
     </parent>
 
     <properties>
@@ -47,11 +47,6 @@
             <artifactId>log4j</artifactId>
             <version>1.2.14</version>
         </dependency>
-        <dependency>
-			<groupId>org.mule.modules</groupId>
-    		<artifactId>mule-connector-test</artifactId>
-    		<version>${project.parent.version}</version>
-		</dependency>
     </dependencies>
 
     <repositories>
