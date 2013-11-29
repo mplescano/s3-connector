@@ -41,7 +41,7 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupFlowConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -57,7 +57,7 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -88,10 +88,10 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri");
 			MuleEvent response = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) response.getMessage().getPayload()).toURL());
@@ -125,7 +125,7 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
 	    	URL url = new URL(urlString);
@@ -134,15 +134,15 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 	    	
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri-optional-attributes");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri-optional-attributes");
 			MuleEvent createObjectPresignedURIResponse = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) createObjectPresignedURIResponse.getMessage().getPayload()).toURL());
@@ -171,10 +171,10 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
     	
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri");
 			MuleEvent response = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) response.getMessage().getPayload()).toURL());
@@ -195,10 +195,10 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri");
 			MuleEvent response = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) response.getMessage().getPayload()).toURL());
@@ -225,10 +225,10 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 			
 	    	testObjects.put("contentRef", temp);
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri");
 			MuleEvent response = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -257,18 +257,18 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 			
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri-optional-attributes");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri-optional-attributes");
 			MuleEvent createObjectPresignedURIResponse = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) createObjectPresignedURIResponse.getMessage().getPayload()).toURL());
@@ -291,18 +291,18 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 			
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri-optional-attributes");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri-optional-attributes");
 			MuleEvent createObjectPresignedURIResponse = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) createObjectPresignedURIResponse.getMessage().getPayload()).toURL());
@@ -327,22 +327,22 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 			
 			testObjects.put("versioningStatus", "ENABLED");
 			
-			MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+			MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 			setBucketVersioningStatusFlow.process(getTestEvent(testObjects)); 
 			
 			temp = File.createTempFile("temp-file-name", ".tmp"); 
 			
 	    	testObjects.put("contentRef", temp);
 
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectPresignedURIFlow = lookupFlowConstruct("create-object-presigned-uri-optional-attributes");
+			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri-optional-attributes");
 			MuleEvent createObjectPresignedURIResponse = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) createObjectPresignedURIResponse.getMessage().getPayload()).toURL());

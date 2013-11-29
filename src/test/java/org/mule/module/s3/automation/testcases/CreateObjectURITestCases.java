@@ -42,7 +42,7 @@ public class CreateObjectURITestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupFlowConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -58,7 +58,7 @@ public class CreateObjectURITestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -89,10 +89,10 @@ public class CreateObjectURITestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) response.getMessage().getPayload()).toURL());
@@ -127,10 +127,10 @@ public class CreateObjectURITestCases extends S3TestParent {
 	    	
 	    	testObjects.put("contentRef", inputStream);
 
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri-optional-attributes");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri-optional-attributes");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			URI uri = (URI) response.getMessage().getPayload();
@@ -159,10 +159,10 @@ public class CreateObjectURITestCases extends S3TestParent {
     	
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) response.getMessage().getPayload()).toURL());
@@ -183,10 +183,10 @@ public class CreateObjectURITestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) response.getMessage().getPayload()).toURL());
@@ -213,10 +213,10 @@ public class CreateObjectURITestCases extends S3TestParent {
 			
 	    	testObjects.put("contentRef", temp);
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			assertNotNull(((URI) response.getMessage().getPayload()).toURL());
@@ -242,10 +242,10 @@ public class CreateObjectURITestCases extends S3TestParent {
     	
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri-optional-attributes");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri-optional-attributes");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			URI uri = (URI) response.getMessage().getPayload();
@@ -269,10 +269,10 @@ public class CreateObjectURITestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri-optional-attributes");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri-optional-attributes");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			URI uri = (URI) response.getMessage().getPayload();
@@ -302,10 +302,10 @@ public class CreateObjectURITestCases extends S3TestParent {
 			
 	    	testObjects.put("contentRef", temp);
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-none");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
-			MessageProcessor createObjectURIFlow = lookupFlowConstruct("create-object-uri-optional-attributes");
+			MessageProcessor createObjectURIFlow = lookupMessageProcessor("create-object-uri-optional-attributes");
 			MuleEvent response = createObjectURIFlow.process(getTestEvent(testObjects));
 			
 			URI uri = (URI) response.getMessage().getPayload();

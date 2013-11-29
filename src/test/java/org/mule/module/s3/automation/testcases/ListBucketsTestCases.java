@@ -50,7 +50,7 @@ public class ListBucketsTestCases extends S3TestParent {
 				
 				testObjects.put("bucketName", bucketName);
 				
-				MessageProcessor flow = lookupFlowConstruct("create-bucket");
+				MessageProcessor flow = lookupMessageProcessor("create-bucket");
 				flow.process(getTestEvent(testObjects));
 				
 			}
@@ -72,7 +72,7 @@ public class ListBucketsTestCases extends S3TestParent {
 				
 				testObjects.put("bucketName", generatedBucketNames.get(i).toString());
 				
-				MessageProcessor flow = lookupFlowConstruct("delete-bucket");
+				MessageProcessor flow = lookupMessageProcessor("delete-bucket");
 				flow.process(getTestEvent(testObjects));
 				
 			}
@@ -91,7 +91,7 @@ public class ListBucketsTestCases extends S3TestParent {
     	 	    	
 		try {
 
-			MessageProcessor listBucketsFlow = lookupFlowConstruct("list-buckets");
+			MessageProcessor listBucketsFlow = lookupMessageProcessor("list-buckets");
 			MuleEvent response = listBucketsFlow.process(getTestEvent(null));
 			
 			List<Bucket> buckets = (List<Bucket>) response.getMessage().getPayload();

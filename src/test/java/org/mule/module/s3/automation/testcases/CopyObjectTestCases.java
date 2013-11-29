@@ -18,10 +18,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +29,6 @@ import org.mule.api.processor.MessageProcessor;
 
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
 
 public class CopyObjectTestCases extends S3TestParent {
 	
@@ -44,7 +41,7 @@ public class CopyObjectTestCases extends S3TestParent {
 			
 			testObjects.put("key", testObjects.get("destinationKey").toString());
 			
-			MessageProcessor getObjectFlow = lookupFlowConstruct("get-object");
+			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
 			
 			S3Object s3object = (S3Object) getObjectResponse.getMessage().getPayload();
@@ -80,7 +77,7 @@ public class CopyObjectTestCases extends S3TestParent {
 		
 		try {
 		
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 	
 			String sourceKey = testObjects.get("key").toString();
@@ -89,7 +86,7 @@ public class CopyObjectTestCases extends S3TestParent {
 			testObjects.put("sourceKey", sourceKey);
 			testObjects.put("destinationKey", destinationKey);
 			
-			MessageProcessor copyObjectFlow = lookupFlowConstruct(flowName);
+			MessageProcessor copyObjectFlow = lookupMessageProcessor(flowName);
 			MuleEvent copyObjectResponse = copyObjectFlow.process(getTestEvent(testObjects));
 	
 			assertTrue(copyObjectResponse.getMessage().getPayload().toString().equals("{NullPayload}"));
@@ -110,17 +107,17 @@ public class CopyObjectTestCases extends S3TestParent {
 				
 				testObjects.put("versioningStatus", "ENABLED");
 				
-				MessageProcessor setBucketVersioningStatusFlow = lookupFlowConstruct("set-bucket-versioning-status");
+				MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
 				setBucketVersioningStatusFlow.process(getTestEvent(testObjects));
 				
-				MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+				MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 				MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 				
 				testObjects.put("sourceVersionId", (String) createObjectResponse.getMessage().getPayload());
 				
 			} else {
 				
-				MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+				MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 				MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
 				
 			}	
@@ -145,7 +142,7 @@ public class CopyObjectTestCases extends S3TestParent {
 			
 			testObjects.put("key", testObjects.get("destinationKey").toString());
 			
-			MessageProcessor getObjectFlow = lookupFlowConstruct("get-object");
+			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
 			
 			S3Object s3object = (S3Object) getObjectResponse.getMessage().getPayload();
@@ -169,7 +166,7 @@ public class CopyObjectTestCases extends S3TestParent {
 
 			testObjects.put("key", testObjects.get("destinationKey").toString());
 			
-			MessageProcessor getObjectFlow = lookupFlowConstruct("get-object");
+			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
 			
 			S3Object s3object = (S3Object) getObjectResponse.getMessage().getPayload();
@@ -202,7 +199,7 @@ public class CopyObjectTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor getObjectFlow = lookupFlowConstruct("get-object");
+			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
 			
 			s3object = (S3Object) getObjectResponse.getMessage().getPayload();
@@ -215,7 +212,7 @@ public class CopyObjectTestCases extends S3TestParent {
 			
 			testObjects.put("destinationKey", destinationKey + "UnmodifiedSinceCopy");
 			
-			copyObjectOptionalAttributesFlow = lookupFlowConstruct("copy-object-optional-attributes-unmodified-since");
+			copyObjectOptionalAttributesFlow = lookupMessageProcessor("copy-object-optional-attributes-unmodified-since");
 			copyObjectOptionalAttributesResponse = copyObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			String copyByUnmodifiedSinceVersionId = copyObjectOptionalAttributesResponse.getMessage().getPayload().toString();
@@ -227,14 +224,14 @@ public class CopyObjectTestCases extends S3TestParent {
 			
 			testObjects.put("userMetadata", updatedUserMetadata);
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
 			// copy-object-optional-attributes-modified-since
 
 			testObjects.put("destinationKey", destinationKey + "ModifiedSinceCopy");
 			
-			copyObjectOptionalAttributesFlow = lookupFlowConstruct("copy-object-optional-attributes-modified-since");
+			copyObjectOptionalAttributesFlow = lookupMessageProcessor("copy-object-optional-attributes-modified-since");
 			copyObjectOptionalAttributesResponse = copyObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			String copyByModifiedSinceVersionId = copyObjectOptionalAttributesResponse.getMessage().getPayload().toString();
@@ -246,7 +243,7 @@ public class CopyObjectTestCases extends S3TestParent {
 
 			testObjects.put("destinationKey", destinationKey + "VersionIdCopy");
 			
-			copyObjectOptionalAttributesFlow = lookupFlowConstruct("copy-object-optional-attributes-source-version-id");
+			copyObjectOptionalAttributesFlow = lookupMessageProcessor("copy-object-optional-attributes-source-version-id");
 			copyObjectOptionalAttributesResponse = copyObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			String copyBySourceVersionIdVersionId = copyObjectOptionalAttributesResponse.getMessage().getPayload().toString();
@@ -259,7 +256,7 @@ public class CopyObjectTestCases extends S3TestParent {
 			testObjects.put("destinationKey", destinationKey + "DestinationBucketCopy");
 			testObjects.put("destinationBucketName", testObjects.get("sourceBucketName").toString());
 			
-			copyObjectOptionalAttributesFlow = lookupFlowConstruct("copy-object-optional-attributes-destination-bucket");
+			copyObjectOptionalAttributesFlow = lookupMessageProcessor("copy-object-optional-attributes-destination-bucket");
 			copyObjectOptionalAttributesResponse = copyObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			String copyByDestinationBucketVersionId = copyObjectOptionalAttributesResponse.getMessage().getPayload().toString();
@@ -290,7 +287,7 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
 		
 		try {
 			
-			MessageProcessor getObjectFlow = lookupFlowConstruct("get-object");
+			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
 			
 			s3object = (S3Object) getObjectResponse.getMessage().getPayload();
@@ -303,7 +300,7 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
 			
 			testObjects.put("destinationKey", destinationKey + "UnmodifiedSinceCopy");
 			
-			copyObjectOptionalAttributesFlow = lookupFlowConstruct("copy-object-optional-attributes-unmodified-since");
+			copyObjectOptionalAttributesFlow = lookupMessageProcessor("copy-object-optional-attributes-unmodified-since");
 			copyObjectOptionalAttributesResponse = copyObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", copyObjectOptionalAttributesResponse.getMessage().getPayload().toString());
@@ -312,14 +309,14 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
 			
 			testObjects.put("userMetadata", updatedUserMetadata);
 			
-			createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
 			
 			// copy-object-optional-attributes-modified-since
 
 			testObjects.put("destinationKey", destinationKey + "ModifiedSinceCopy");
 			
-			copyObjectOptionalAttributesFlow = lookupFlowConstruct("copy-object-optional-attributes-modified-since");
+			copyObjectOptionalAttributesFlow = lookupMessageProcessor("copy-object-optional-attributes-modified-since");
 			copyObjectOptionalAttributesResponse = copyObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			assertEquals("{NullPayload}", copyObjectOptionalAttributesResponse.getMessage().getPayload().toString());
@@ -329,7 +326,7 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
 			testObjects.put("destinationKey", destinationKey + "DestinationBucketCopy");
 			testObjects.put("destinationBucketName", testObjects.get("sourceBucketName").toString());
 			
-			copyObjectOptionalAttributesFlow = lookupFlowConstruct("copy-object-optional-attributes-destination-bucket");
+			copyObjectOptionalAttributesFlow = lookupMessageProcessor("copy-object-optional-attributes-destination-bucket");
 			copyObjectOptionalAttributesResponse = copyObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 			
 			assertEquals("{NullPayload}", copyObjectOptionalAttributesResponse.getMessage().getPayload().toString());	
@@ -353,7 +350,7 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
     	
 		try {
 
-			MessageProcessor flow = lookupFlowConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -369,7 +366,7 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {

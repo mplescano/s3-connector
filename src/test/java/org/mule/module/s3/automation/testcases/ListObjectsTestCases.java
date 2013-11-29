@@ -17,14 +17,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,10 +29,6 @@ import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 
-import com.amazonaws.services.s3.model.Bucket;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 public class ListObjectsTestCases extends S3TestParent {
@@ -71,7 +64,7 @@ public class ListObjectsTestCases extends S3TestParent {
 		
 		try {
 			
-			MessageProcessor createObjectFlow = lookupFlowConstruct("create-object-child-elements-from-message");
+			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(initializationData));
 			
 			objectsKeyValues.add(initializationData.get("key").toString());
@@ -97,7 +90,7 @@ public class ListObjectsTestCases extends S3TestParent {
     	
 		try {
 
-			MessageProcessor flow = lookupFlowConstruct("create-bucket");
+			MessageProcessor flow = lookupMessageProcessor("create-bucket");
 			flow.process(getTestEvent(testObjects));
 	
 		} catch (Exception e) {
@@ -113,7 +106,7 @@ public class ListObjectsTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket-optional-attributes");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket-optional-attributes");
 			flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -187,7 +180,7 @@ public class ListObjectsTestCases extends S3TestParent {
 	    	createObject(initializeInputStreamTestData(inputStream));
 	    	createObject(initializeStringTestData());
 	    	
-	    	MessageProcessor listObjectsFlow = lookupFlowConstruct("list-objects");
+	    	MessageProcessor listObjectsFlow = lookupMessageProcessor("list-objects");
 			MuleEvent listObjectsResponse = listObjectsFlow.process(getTestEvent(testObjects));
 			Iterable<S3ObjectSummary> s3ObjectsSummaries = (Iterable<S3ObjectSummary>) listObjectsResponse.getMessage().getPayload();
 			
@@ -233,7 +226,7 @@ public class ListObjectsTestCases extends S3TestParent {
 	    	createObject(initializeInputStreamTestData(inputStream));
 	    	createObject(initializeStringTestData());
 	    	
-	    	MessageProcessor listObjectsFlow = lookupFlowConstruct("list-objects-optional-attributes");
+	    	MessageProcessor listObjectsFlow = lookupMessageProcessor("list-objects-optional-attributes");
 			MuleEvent listObjectsResponse = listObjectsFlow.process(getTestEvent(testObjects));
 			Iterable<S3ObjectSummary> s3ObjectsSummaries = (Iterable<S3ObjectSummary>) listObjectsResponse.getMessage().getPayload();
 			

@@ -37,7 +37,7 @@ public class CreateBucketTestCases extends S3TestParent {
 		
 		try {
 				
-			MessageProcessor flow = lookupFlowConstruct("delete-bucket");
+			MessageProcessor flow = lookupMessageProcessor("delete-bucket");
 			MuleEvent response = flow.process(getTestEvent(testObjects));
 			
 		} catch (Exception e) {
@@ -54,7 +54,7 @@ public class CreateBucketTestCases extends S3TestParent {
     	
     	testObjects.put("bucketName", UUID.randomUUID().toString());
     	
-		MessageProcessor flow = lookupFlowConstruct("create-bucket");
+		MessageProcessor flow = lookupMessageProcessor("create-bucket");
     	
 		try {
 
@@ -77,7 +77,7 @@ public class CreateBucketTestCases extends S3TestParent {
 
     	testObjects.put("bucketName", UUID.randomUUID().toString());
     	
-		MessageProcessor flow = lookupFlowConstruct("create-bucket");
+		MessageProcessor flow = lookupMessageProcessor("create-bucket");
     	
 		try {
 
