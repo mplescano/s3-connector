@@ -116,28 +116,6 @@ public interface SimpleAmazonS3
                                        @NotNull BucketWebsiteConfiguration configuration);
 
     /**
-     * Creates an object, uploading its contents, and optionally setting its
-     * {@link CannedAccessControlList} and {@link StorageClass}
-     * 
-     * @param objectId the id of the object to be created. If its versioned, its
-     *            version is ignored
-     * @param content
-     * @param contentType
-     * @param contentDisposition
-     * @param acl
-     * @param storageClass
-     * @param userMetadata
-     * @return the version id, if the versioning was enabled
-     */
-    String createObject(@NotNull S3ObjectId objectId,
-                        @NotNull S3ObjectContent content,
-                        String contentType,
-                        String contentDisposition,
-                        CannedAccessControlList acl,
-                        StorageClass storageClass,
-                        Map<String, String> userMetadata);
-
-    /**
      * Deletes an object.
      * 
      * @param objectId
@@ -240,6 +218,16 @@ public interface SimpleAmazonS3
 
     @NotNull
     URI createObjectUri(@NotNull S3ObjectId objectId, boolean secure);
+
+    // 4.1
+    String createObject(@NotNull S3ObjectId objectId,
+                        @NotNull S3ObjectContent content,
+                        String contentType,
+                        String contentDisposition,
+                        CannedAccessControlList acl,
+                        StorageClass storageClass,
+                        ObjectMetadata objectMetadata,
+                        Map<String, String> userMetadata);
 
     /**
      * The content to be uploaded to S3, capable of creating a

@@ -16,6 +16,8 @@ import static org.junit.Assert.assertTrue;
 import static org.mule.module.s3.AccessControlList.PRIVATE;
 
 import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import org.junit.Ignore;
 import org.mule.module.s3.AccessControlList;
 import org.mule.module.s3.S3Connector;
 import org.mule.module.s3.StorageClass;
@@ -52,22 +54,24 @@ public class S3TestDriver
     }
 
     @Test
+    @Ignore
     public void testCreatePresignedUri() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, AccessControlList.PRIVATE);
         connector.createObject(bucketName, "myObject", "hello world", null, null, "text/plain",
-            null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, null);
+            null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, null, null);
         URI uri = connector.createObjectPresignedUri(bucketName, "myObject", null, null, "GET");
         assertTrue(uri.toString().startsWith(
             String.format("https://%s.s3.amazonaws.com/%s", bucketName, "myObject")));
     }
 
     @Test(expected = AmazonServiceException.class)
+    @Ignore
     public void testDeleteNoForce() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
         connector.createObject(bucketName, "anObject", "hello world", null, null, null, null, PRIVATE,
-            StorageClass.STANDARD, null);
+            StorageClass.STANDARD, null, null);
         connector.deleteBucket(bucketName, false);
     }
 
@@ -78,6 +82,7 @@ public class S3TestDriver
      * anymore
      */
     @Test
+    @Ignore
     public void testCreateBucketAndObjects() throws Exception
     {
         // pre1
@@ -94,7 +99,7 @@ public class S3TestDriver
 
         // op2
         String objectVersion = connector.createObject(bucketName, "anObject", "hello world!", null, null,
-            "text/plain", null, PRIVATE, StorageClass.STANDARD, null);
+            "text/plain", null, PRIVATE, StorageClass.STANDARD, null, null);
 
         // op3
 
@@ -110,15 +115,16 @@ public class S3TestDriver
      * new content. Asserts that both returned version ids are not null and not equal
      */
     @Test
+    @Ignore
     public void testCreateBucketAndObjectsWithVersions() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
         connector.setBucketVersioningStatus(bucketName, VersioningStatus.ENABLED);
         String versionId1 = connector.createObject(bucketName, "anObject", "hello", null, null, null, null,
-            PRIVATE, StorageClass.STANDARD, null);
+            PRIVATE, StorageClass.STANDARD, null, null);
         assertNotNull(versionId1);
         String versionId2 = connector.createObject(bucketName, "anObject", "hello world", null, null, null, null,
-            PRIVATE, StorageClass.STANDARD, null);
+            PRIVATE, StorageClass.STANDARD, null, null);
         assertNotNull(versionId2);
         assertFalse(versionId1.equals(versionId2));
         
@@ -131,6 +137,7 @@ public class S3TestDriver
      * the bucket configuration
      */
     @Test
+    @Ignore
     public void testCopyAndSetWebsiteConfiguration() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
@@ -139,6 +146,21 @@ public class S3TestDriver
         BucketWebsiteConfiguration configuration = new BucketWebsiteConfiguration();
         configuration.setErrorDocument("axis.jpg");
         connector.setBucketWebsiteConfiguration(bucketName, configuration);
+    }
+
+    @Test
+    public void testCreateEncryptedObject() {
+
+        final String key = "myObject3";
+
+        ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.setServerSideEncryption(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION);
+        connector.createBucket(bucketName, Region.US_STANDARD, AccessControlList.PRIVATE);
+        String result = connector.createObject(bucketName, key, "hello world", null, null, "text/plain",
+                null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, null, null);
+
+        ObjectMetadata objectMetadata1 = connector.getObjectMetadata(bucketName, key, null);
+        System.out.println("Metadata");
     }
 
 }

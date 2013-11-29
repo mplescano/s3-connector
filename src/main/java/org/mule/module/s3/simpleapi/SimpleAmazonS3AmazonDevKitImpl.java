@@ -143,16 +143,21 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
     }
 
     // 4.1
+    @Override
     public String createObject(@NotNull S3ObjectId objectId,
                                @NotNull S3ObjectContent content,
                                String contentType,
                                String contentDisposition,
                                CannedAccessControlList acl,
                                StorageClass storageClass,
+                               ObjectMetadata objectMetadata,
                                Map<String, String> userMetadata)
     {
         Validate.notNull(content);
         PutObjectRequest request = content.createPutObjectRequest();
+        if (objectMetadata != null) {
+            request.setMetadata(objectMetadata);
+        }
         if (request.getMetadata() != null)
         {
             request.getMetadata().setContentType(contentType);
