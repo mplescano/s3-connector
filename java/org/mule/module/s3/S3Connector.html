@@ -797,7 +797,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, com.amazonaws.services.s3.model.ObjectMetadata, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, ObjectMetadata objectMetadata, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
         
         <div class="jd-descrdiv">Uploads an object to S3.</div>
   
@@ -2182,7 +2182,7 @@ From class
 </div>
 
 
-<A NAME="createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>)"></A>
+<A NAME="createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, com.amazonaws.services.s3.model.ObjectMetadata, java.util.Map<java.lang.String, java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2195,7 +2195,7 @@ From class
         String
       </span>
       <span class="sympad">createObject</span>
-      <span class="normal">(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, Map&lt;String,&nbsp;String&gt; userMetadata)</span>
+      <span class="normal">(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, ObjectMetadata objectMetadata, Map&lt;String,&nbsp;String&gt; userMetadata)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2256,6 +2256,10 @@ From class
         <tr>
           <th>storageClass</td>
           <td>The storage class of the new object</td>
+        </tr>
+        <tr>
+          <th>objectMetadata</td>
+          <td>Object Metadata for the request</td>
         </tr>
         <tr>
           <th>userMetadata</td>
