@@ -12,16 +12,13 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 
-import java.io.InputStream;
+import javax.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
-
-import javax.validation.constraints.NotNull;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
 
 public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
 {
@@ -142,17 +139,21 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         s3.setBucketWebsiteConfiguration(bucketName, configuration);
     }
 
-    // 4.1
+    @Override
     public String createObject(@NotNull S3ObjectId objectId,
                                @NotNull S3ObjectContent content,
                                String contentType,
                                String contentDisposition,
                                CannedAccessControlList acl,
                                StorageClass storageClass,
+                               ObjectMetadata objectMetadata,
                                Map<String, String> userMetadata)
     {
         Validate.notNull(content);
         PutObjectRequest request = content.createPutObjectRequest();
+        if (objectMetadata != null) {
+            request.setMetadata(objectMetadata);
+            }
         if (request.getMetadata() != null)
         {
             request.getMetadata().setContentType(contentType);
@@ -205,7 +206,8 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
                              @NotNull S3ObjectId destination,
                              @NotNull ConditionalConstraints conditionalConstraints,
                              CannedAccessControlList acl,
-                             StorageClass storageClass, 
+                             StorageClass storageClass,
+                             ObjectMetadata objectMetadata,
                              Map<String, String> userMetadata)
     {
         Validate.notNull(source);
@@ -218,11 +220,17 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         {
             request.setStorageClass(storageClass);
         }
-        if (userMetadata != null)
-        {
+
+        if (objectMetadata != null) {
+            request.setNewObjectMetadata(objectMetadata);
+            if (userMetadata != null) {
+                request.getNewObjectMetadata().setUserMetadata(userMetadata);
+            }
+        } else if (userMetadata != null){
             request.setNewObjectMetadata(new ObjectMetadata());
             request.getNewObjectMetadata().setUserMetadata(userMetadata);
         }
+
         conditionalConstraints.populate(request);
         return s3.copyObject(request).getVersionId();
     }

@@ -8,13 +8,13 @@
 
 package org.mule.module.s3.automation.testcases;
 
-import java.util.Map;
-
 import org.junit.BeforeClass;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Map;
 
 
 
