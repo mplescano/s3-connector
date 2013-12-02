@@ -115,26 +115,14 @@ public interface SimpleAmazonS3
     void setBucketWebsiteConfiguration(@NotNull String bucketName,
                                        @NotNull BucketWebsiteConfiguration configuration);
 
-    /**
-     * Creates an object, uploading its contents, and optionally setting its
-     * {@link CannedAccessControlList} and {@link StorageClass}
-     * 
-     * @param objectId the id of the object to be created. If its versioned, its
-     *            version is ignored
-     * @param content
-     * @param contentType
-     * @param contentDisposition
-     * @param acl
-     * @param storageClass
-     * @param userMetadata
-     * @return the version id, if the versioning was enabled
-     */
+    //4.1
     String createObject(@NotNull S3ObjectId objectId,
                         @NotNull S3ObjectContent content,
                         String contentType,
                         String contentDisposition,
                         CannedAccessControlList acl,
                         StorageClass storageClass,
+                        ObjectMetadata objectMetadata,
                         Map<String, String> userMetadata);
 
     /**
@@ -166,14 +154,15 @@ public interface SimpleAmazonS3
     /**
      * Copies a source object, with optional version, to a destination, with optional
      * destination object acl.
-     * 
+     *
      * @param source
      * @param destination the destination object. If this id is versioned, its
      *            version is ignored
-     * @param conditionalConstraints the constraints to be matched in order to proceed with copy. 
+     * @param conditionalConstraints the constraints to be matched in order to proceed with copy.
      *          If not matched, no copy is performed
      * @param acl
-     * @param destinationUserMetadata 
+     * @param objectMetadata
+     * @param destinationUserMetadata
      * @return the version id of the destination object, if versioning is enabled
      * @see AmazonS3#copyObject(com.amazonaws.services.s3.model.CopyObjectRequest)
      */
@@ -181,7 +170,8 @@ public interface SimpleAmazonS3
                       @NotNull S3ObjectId destination,
                       @NotNull ConditionalConstraints conditionalConstraints,
                       CannedAccessControlList acl, 
-                      StorageClass storageClass, 
+                      StorageClass storageClass,
+                      ObjectMetadata objectMetadata,
                       Map<String, String> destinationUserMetadata);
 
     /**
