@@ -322,7 +322,7 @@ public class S3Connector
      * @param contentDisposition the content disposition of the new object.
      * @param acl the access control list of the new object
      * @param storageClass the storage class of the new object
-     * @param encryption encryption type
+     * @param encryption encryption type. Supported value AES256
      * @param userMetadata a map of arbitrary object properties keys and values
      * @return the id of the created object, or null, if versioning is not enabled
      */
