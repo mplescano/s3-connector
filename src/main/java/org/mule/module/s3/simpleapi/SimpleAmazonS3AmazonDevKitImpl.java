@@ -146,19 +146,20 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
                                String contentDisposition,
                                CannedAccessControlList acl,
                                StorageClass storageClass,
-                               ObjectMetadata objectMetadata,
+                               String encryption,
                                Map<String, String> userMetadata)
     {
         Validate.notNull(content);
         PutObjectRequest request = content.createPutObjectRequest();
-        if (objectMetadata != null) {
-            request.setMetadata(objectMetadata);
-            }
+
         if (request.getMetadata() != null)
         {
             request.getMetadata().setContentType(contentType);
             if (StringUtils.isNotBlank(contentDisposition)) {
                 request.getMetadata().setContentDisposition(contentDisposition);
+            }
+            if (encryption != null) {
+                request.getMetadata().setServerSideEncryption(encryption);
             }
         }
         request.getMetadata().setUserMetadata(userMetadata);
@@ -207,7 +208,7 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
                              @NotNull ConditionalConstraints conditionalConstraints,
                              CannedAccessControlList acl,
                              StorageClass storageClass,
-                             ObjectMetadata objectMetadata,
+                             String encryption,
                              Map<String, String> userMetadata)
     {
         Validate.notNull(source);
@@ -221,12 +222,14 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
             request.setStorageClass(storageClass);
         }
 
-        if (objectMetadata != null) {
-            request.setNewObjectMetadata(objectMetadata);
+        if (encryption != null) {
+            request.setNewObjectMetadata(new ObjectMetadata());
+            request.getNewObjectMetadata().setServerSideEncryption(encryption);
             if (userMetadata != null) {
                 request.getNewObjectMetadata().setUserMetadata(userMetadata);
             }
-        } else if (userMetadata != null){
+        }
+        else if (userMetadata != null){
             request.setNewObjectMetadata(new ObjectMetadata());
             request.getNewObjectMetadata().setUserMetadata(userMetadata);
         }
