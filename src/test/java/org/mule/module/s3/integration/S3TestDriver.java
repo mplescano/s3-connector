@@ -152,7 +152,7 @@ public class S3TestDriver
         objectMetadata.setServerSideEncryption(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION);
         connector.createBucket(bucketName, Region.US_STANDARD, AccessControlList.PRIVATE);
         String result = connector.createObject(bucketName, key, "hello world", null, null, "text/plain",
-        null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, objectMetadata, null);
+        null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, "AES256", null);
 
         ObjectMetadata objectMetadata1 = connector.getObjectMetadata(bucketName, key, null);
         assertTrue(objectMetadata1.getServerSideEncryption() != null);
