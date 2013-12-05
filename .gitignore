@@ -8,3 +8,4 @@ target
 .checkstyle
 .springBeans
 .idea
+.DS_Store

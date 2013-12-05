@@ -322,7 +322,7 @@ public class S3Connector
      * @param contentDisposition the content disposition of the new object.
      * @param acl the access control list of the new object
      * @param storageClass the storage class of the new object
-     * @param objectMetadata Object Metadata for the request
+     * @param encryption Encryption method for server-side encryption. Supported value AES256.
      * @param userMetadata a map of arbitrary object properties keys and values
      * @return the id of the created object, or null, if versioning is not enabled
      */
@@ -336,12 +336,12 @@ public class S3Connector
                                @Optional String contentDisposition,
                                @Optional @Default("PRIVATE") AccessControlList acl,
                                @Optional @Default("STANDARD") StorageClass storageClass,
-                               @Optional ObjectMetadata objectMetadata,
-                               @Optional Map<String, String> userMetadata)
+                               @Optional Map<String, String> userMetadata,
+                               @Optional String encryption)
     {
         return client.createObject(new S3ObjectId(bucketName, key), S3ContentUtils.createContent(content,
             contentLength, contentMd5), contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
-            objectMetadata, userMetadata);
+                userMetadata, encryption);
     }
 
     /**
@@ -449,6 +449,7 @@ public class S3Connector
      * @param unmodifiedSince The unmodified constraint that restricts this request
      *            to executing only if the object has not been modified after this
      *            date. This constraint is specified but does not match, no copy is performed
+     * @param encryption Encryption method for server-side encryption. Supported value AES256.
      * @return the version id of the new object, or null, if versioning is not
      *         enabled
      */
@@ -462,7 +463,8 @@ public class S3Connector
                              @Optional @Default("STANDARD") StorageClass destinationStorageClass,
                              @Optional Map<String, String> destinationUserMetadata,  
                              @Optional Date modifiedSince, 
-                             @Optional Date unmodifiedSince)
+                             @Optional Date unmodifiedSince,
+                             @Optional String encryption)
     {
         return client.copyObject(
                 new S3ObjectId(sourceBucketName, sourceKey, sourceVersionId),
@@ -470,7 +472,8 @@ public class S3Connector
                 ConditionalConstraints.from(modifiedSince, unmodifiedSince),
                 destinationAcl.toS3Equivalent(),
                 destinationStorageClass.toS3Equivalent(),
-                destinationUserMetadata);
+                destinationUserMetadata,
+                encryption);
     }
 
     /**
