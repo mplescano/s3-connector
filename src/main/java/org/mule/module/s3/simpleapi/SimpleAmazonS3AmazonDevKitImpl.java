@@ -12,13 +12,16 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
 
-import javax.validation.constraints.NotNull;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
+
+import javax.validation.constraints.NotNull;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.Validate;
 
 public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
 {
@@ -147,20 +150,19 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
                                String contentDisposition,
                                CannedAccessControlList acl,
                                StorageClass storageClass,
-                               Map<String, String> userMetadata,
-                               String encryption)
+                               ObjectMetadata objectMetadata,
+                               Map<String, String> userMetadata)
     {
         Validate.notNull(content);
         PutObjectRequest request = content.createPutObjectRequest();
-
+        if (objectMetadata != null) {
+            request.setMetadata(objectMetadata);
+        }
         if (request.getMetadata() != null)
         {
             request.getMetadata().setContentType(contentType);
             if (StringUtils.isNotBlank(contentDisposition)) {
                 request.getMetadata().setContentDisposition(contentDisposition);
-            }
-            if (encryption != null) {
-                request.getMetadata().setServerSideEncryption(encryption);
             }
         }
         request.getMetadata().setUserMetadata(userMetadata);
@@ -209,8 +211,7 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
                              @NotNull ConditionalConstraints conditionalConstraints,
                              CannedAccessControlList acl,
                              StorageClass storageClass, 
-                             Map<String, String> userMetadata,
-                             String encryption)
+                             Map<String, String> userMetadata)
     {
         Validate.notNull(source);
         Validate.notNull(destination);
@@ -222,18 +223,11 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         {
             request.setStorageClass(storageClass);
         }
-
-        if (encryption != null) {
-            request.setNewObjectMetadata(new ObjectMetadata());
-            request.getNewObjectMetadata().setServerSideEncryption(encryption);
-            if (userMetadata != null) {
-                request.getNewObjectMetadata().setUserMetadata(userMetadata);
-            }
-        } else if (userMetadata != null){
+        if (userMetadata != null)
+        {
             request.setNewObjectMetadata(new ObjectMetadata());
             request.getNewObjectMetadata().setUserMetadata(userMetadata);
         }
-
         conditionalConstraints.populate(request);
         return s3.copyObject(request).getVersionId();
     }

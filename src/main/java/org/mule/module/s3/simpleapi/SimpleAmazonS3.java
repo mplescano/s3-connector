@@ -151,8 +151,7 @@ public interface SimpleAmazonS3
      * @param conditionalConstraints the constraints to be matched in order to proceed with copy. 
      *          If not matched, no copy is performed
      * @param acl
-     * @param destinationUserMetadata
-     * @param encryption Encryption method for server-side encryption. Supported value AES256.
+     * @param destinationUserMetadata 
      * @return the version id of the destination object, if versioning is enabled
      * @see AmazonS3#copyObject(com.amazonaws.services.s3.model.CopyObjectRequest)
      */
@@ -161,8 +160,7 @@ public interface SimpleAmazonS3
                       @NotNull ConditionalConstraints conditionalConstraints,
                       CannedAccessControlList acl, 
                       StorageClass storageClass, 
-                      Map<String, String> destinationUserMetadata,
-                      String encryption);
+                      Map<String, String> destinationUserMetadata);
 
     /**
      * Creates a presigned URL for accessing the object of the given id, with an
@@ -228,8 +226,8 @@ public interface SimpleAmazonS3
                         String contentDisposition,
                         CannedAccessControlList acl,
                         StorageClass storageClass,
-                        Map<String, String> userMetadata,
-                        String encryption);
+                        ObjectMetadata objectMetadata,
+                        Map<String, String> userMetadata);
 
     /**
      * The content to be uploaded to S3, capable of creating a

@@ -8,23 +8,31 @@
 
 package org.mule.module.s3;
 
-import com.amazonaws.HttpMethod;
-import com.amazonaws.services.s3.AmazonS3;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mule.module.s3.AccessControlList.PRIVATE;
+import static org.mule.module.s3.AccessControlList.PUBLIC_READ;
+import static org.mule.module.s3.AccessControlList.PUBLIC_READ_WRITE;
+
 import com.amazonaws.services.s3.model.*;
-import org.apache.commons.io.input.NullInputStream;
-import org.apache.commons.lang.ObjectUtils;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-import org.junit.Before;
-import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
-import org.mockito.Matchers;
 import org.mule.module.s3.simpleapi.Region;
-import org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent;
 import org.mule.module.s3.simpleapi.SimpleAmazonS3AmazonDevKitImpl;
 import org.mule.module.s3.simpleapi.VersioningStatus;
+import org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent;
 import org.mule.module.s3.simpleapi.content.FileS3ObjectContent;
-import org.mule.util.StringUtils;
+
+import static org.hamcrest.CoreMatchers.*;
+import com.amazonaws.HttpMethod;
+import com.amazonaws.services.s3.AmazonS3;
 
 import java.io.ByteArrayInputStream;
 import java.net.URI;
@@ -34,13 +42,14 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.argThat;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Matchers.refEq;
-import static org.mockito.Mockito.*;
-import static org.mule.module.s3.AccessControlList.*;
+import org.apache.commons.io.input.NullInputStream;
+import org.apache.commons.lang.ObjectUtils;
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Matchers;
+import org.mule.util.StringUtils;
 
 public class S3TestCase
 {
@@ -88,7 +97,7 @@ public class S3TestCase
         when(client.copyObject(argThat(matcher))).thenReturn(result);
 
         assertEquals("12", connector.copyObject(MY_BUCKET, MY_OBJECT, null, null, "myObject2", PUBLIC_READ,
-            org.mule.module.s3.StorageClass.STANDARD, null, null, null, null));
+            org.mule.module.s3.StorageClass.STANDARD, null, null, null));
     }
 
     @Test
@@ -105,7 +114,7 @@ public class S3TestCase
         when(client.copyObject(argThat(matcher))).thenReturn(result);
 
         assertEquals("12", connector.copyObject(MY_BUCKET, MY_OBJECT, "12", null, "myObject2", PRIVATE,
-                org.mule.module.s3.StorageClass.STANDARD, null, null, null, null));
+                org.mule.module.s3.StorageClass.STANDARD, null, null, null));
     }
 
     @Test
@@ -119,7 +128,7 @@ public class S3TestCase
         when(client.copyObject(argThat(matcher))).thenReturn(new CopyObjectResult());
 
         assertNull(connector.copyObject(MY_BUCKET, MY_OBJECT, null, "myBucket2", "myObject2", PRIVATE,
-            org.mule.module.s3.StorageClass.STANDARD, null, null, null, null));
+            org.mule.module.s3.StorageClass.STANDARD, null, null, null));
     }
 
     @Test
