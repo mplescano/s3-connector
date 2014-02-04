@@ -25,6 +25,7 @@ import org.mule.api.annotations.param.Optional;
 import org.mule.module.s3.simpleapi.*;
 import org.mule.module.s3.simpleapi.Region;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
@@ -324,7 +325,9 @@ public class S3Connector
      * @param storageClass the storage class of the new object
      * @param encryption encryption type. Supported value AES256
      * @param userMetadata a map of arbitrary object properties keys and values
+     * @param encoding optional parameter in case the content is an String
      * @return the id of the created object, or null, if versioning is not enabled
+     * @throws java.io.UnsupportedEncodingException if the file encoding is not supported
      */
     @Processor
     public String createObject(String bucketName,
@@ -337,10 +340,10 @@ public class S3Connector
                                @Optional @Default("PRIVATE") AccessControlList acl,
                                @Optional @Default("STANDARD") StorageClass storageClass,
                                @Optional String encryption,
-                               @Optional Map<String, String> userMetadata)
-    {
+                               @Optional Map<String, String> userMetadata,
+                               @Optional @Default("UTF-8") String encoding) throws UnsupportedEncodingException {
         return client.createObject(new S3ObjectId(bucketName, key), S3ContentUtils.createContent(content,
-            contentLength, contentMd5), contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
+            contentLength, contentMd5, encoding), contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
                 encryption, userMetadata);
     }
 

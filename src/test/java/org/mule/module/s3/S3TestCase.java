@@ -27,6 +27,7 @@ import org.mule.module.s3.simpleapi.content.FileS3ObjectContent;
 import org.mule.util.StringUtils;
 
 import java.io.ByteArrayInputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URL;
 import java.util.Arrays;
@@ -123,8 +124,7 @@ public class S3TestCase
     }
 
     @Test
-    public void createObjectSimple()
-    {
+    public void createObjectSimple() throws UnsupportedEncodingException {
         PutObjectRequest request = new PutObjectRequest(MY_BUCKET, MY_OBJECT, new NullInputStream(0),
             new ObjectMetadata());
         request.setCannedAcl(CannedAccessControlList.Private);
@@ -134,38 +134,36 @@ public class S3TestCase
         when(client.putObject(argThat(matcher))).thenReturn(new PutObjectResult());
 
         assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, "have a nice release", null, null, null, null,
-                PRIVATE, org.mule.module.s3.StorageClass.REDUCED_REDUNDANCY, null, null));
+                PRIVATE, org.mule.module.s3.StorageClass.REDUCED_REDUNDANCY, null, null, "UTF-8"));
     }
 
     @Test
-    public void createObjectStringParameter()
-    {
+    public void createObjectStringParameter() throws UnsupportedEncodingException {
         String content = "hello";
         when(
             client.putObject(argThat(new ContentMetadataMatcher(content.length(), "A5B69...", "text/plain")))).thenReturn(
             new PutObjectResult());
         assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, content, null, "A5B69...", "text/plain", null,
-            PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null, null));
+            PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null, null, "UTF-8"));
     }
 
     @Test
-    public void createObjectByteArrayParameter()
-    {
+    public void createObjectByteArrayParameter() throws UnsupportedEncodingException {
         byte[] content = "hello".getBytes();
         when(client.putObject(argThat(new ContentMetadataMatcher(content.length, "A5B69...", null)))).thenReturn(
             new PutObjectResult());
         assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, content, null, "A5B69...", null, null,
-            PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null, null));
+            PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null, null, "UTF-8"));
     }
 
     @Test
-    public void createObjectInputStreamParameter()
-    {
+    public void createObjectInputStreamParameter() throws UnsupportedEncodingException {
         long contentLength = 100L;
         when(client.putObject(argThat(new ContentMetadataMatcher(contentLength, "A5B69...", "text/plain")))).thenReturn(
             new PutObjectResult());
         assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, new NullInputStream(0), contentLength,
-            "A5B69...", "text/plain", "attachment; filename=database.dat", PUBLIC_READ_WRITE, org.mule.module.s3.StorageClass.STANDARD, null, null));
+            "A5B69...", "text/plain", "attachment; filename=database.dat", PUBLIC_READ_WRITE,
+                org.mule.module.s3.StorageClass.STANDARD, null, null, "UTF-8"));
     }
 
     @Test
@@ -179,7 +177,7 @@ public class S3TestCase
         PutObjectRequestMatcher matcher = new PutObjectRequestMatcher(CannedAccessControlList.PublicRead, com.amazonaws.services.s3.model.StorageClass.Standard);
         when(client.putObject(argThat(matcher))).thenReturn(new PutObjectResult());
         assertNull(connector.createObject(MY_BUCKET, MY_OBJECT, "have a nice release", null, null,
-                "text/plain", "attachment; filename=database.dat", PUBLIC_READ, org.mule.module.s3.StorageClass.STANDARD, null, null));
+                "text/plain", "attachment; filename=database.dat", PUBLIC_READ, org.mule.module.s3.StorageClass.STANDARD, null, null, "UTF-8"));
     }
 
     @Test
@@ -428,7 +426,7 @@ public class S3TestCase
     public void testContent() throws Exception
     {
         S3ObjectContent content = S3ContentUtils.createContent(
-            new ByteArrayInputStream(new byte[]{20, 30, 6}), null, null);
+            new ByteArrayInputStream(new byte[]{20, 30, 6}), null, null, "UTF-8");
         assertThat(content, instanceOf(FileS3ObjectContent.class));
         assertNotNull(content.createPutObjectRequest().getFile());
     }

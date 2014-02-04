@@ -8,6 +8,7 @@
 
 package org.mule.module.s3;
 
+import org.apache.commons.lang.StringUtils;
 import org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent;
 import org.mule.module.s3.simpleapi.content.FileS3ObjectContent;
 import org.mule.module.s3.simpleapi.content.InputStreamS3ObjectContent;
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 
 import org.apache.commons.httpclient.Header;
@@ -34,8 +36,8 @@ public final class S3ContentUtils
      * content length parameter is ignored. Also contentMD5 is ignored if content is
      * a file, too.
      */
-    public static S3ObjectContent createContent(Object content, Long contentLength, String contentMd5)
-    {
+    public static S3ObjectContent createContent(Object content, Long contentLength, String contentMd5,
+                                                String encoding) throws UnsupportedEncodingException {
         if (content instanceof InputStream)
         {
             InputStream streamContent = (InputStream) content;
@@ -53,7 +55,7 @@ public final class S3ContentUtils
         }
         if (content instanceof String)
         {
-            return createContent(contentMd5, (String) content);
+            return createContent(contentMd5, (String) content, encoding);
         }
         if (content instanceof byte[])
         {
@@ -96,19 +98,19 @@ public final class S3ContentUtils
 
     private static S3ObjectContent createContent(byte[] content, String contentMd5)
     {
-        return new InputStreamS3ObjectContent(new ByteArrayInputStream((byte[]) content),
+        return new InputStreamS3ObjectContent(new ByteArrayInputStream(content),
             (long) content.length, contentMd5);
     }
 
-    private static S3ObjectContent createContent(String contentMd5, String stringContent)
-    {
+    private static S3ObjectContent createContent(String contentMd5, String stringContent, String encoding)
+            throws UnsupportedEncodingException {
         return new InputStreamS3ObjectContent(new ByteArrayInputStream(stringContent.getBytes()),
-            (long) stringContent.length(), contentMd5);
+            (long) stringContent.getBytes(StringUtils.defaultIfEmpty(encoding, "UTF-8")).length, contentMd5);
     }
 
     private static S3ObjectContent createContent(InputStream content, Long contentLength, String contentMd5)
     {
-        return new InputStreamS3ObjectContent((InputStream) content, contentLength, contentMd5);
+        return new InputStreamS3ObjectContent(content, contentLength, contentMd5);
     }
 
     private static org.apache.commons.httpclient.HttpMethod getHttpMethod(Object inputStream)

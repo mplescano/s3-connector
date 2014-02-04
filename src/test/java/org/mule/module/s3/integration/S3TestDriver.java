@@ -23,6 +23,7 @@ import org.mule.module.s3.StorageClass;
 import org.mule.module.s3.simpleapi.Region;
 import org.mule.module.s3.simpleapi.VersioningStatus;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 
 import static org.junit.Assert.*;
@@ -44,28 +45,28 @@ public class S3TestDriver
     @After
     public void deleteTestBucket()
     {
-        connector.deleteBucket(bucketName, true);
+//        connector.deleteBucket(bucketName, true);
     }
 
-    @Test
+//    @Test
     @Ignore
     public void testCreatePresignedUri() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, AccessControlList.PRIVATE);
         connector.createObject(bucketName, "myObject", "hello world", null, null, "text/plain",
-            null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, null, null);
+            null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, null, null, "UTF-8");
         URI uri = connector.createObjectPresignedUri(bucketName, "myObject", null, null, "GET");
         assertTrue(uri.toString().startsWith(
                 String.format("https://%s.s3.amazonaws.com/%s", bucketName, "myObject")));
     }
 
-    @Test(expected = AmazonServiceException.class)
+//    @Test(expected = AmazonServiceException.class)
     @Ignore
     public void testDeleteNoForce() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
         connector.createObject(bucketName, "anObject", "hello world", null, null, null, null, PRIVATE,
-            StorageClass.STANDARD, null, null);
+            StorageClass.STANDARD, null, null, "UTF-8");
         connector.deleteBucket(bucketName, false);
     }
 
@@ -75,7 +76,7 @@ public class S3TestDriver
      * version is null (versioning disabled), and that the bucket is not empty
      * anymore
      */
-    @Test
+//    @Test
     @Ignore
     public void testCreateBucketAndObjects() throws Exception
     {
@@ -93,7 +94,7 @@ public class S3TestDriver
 
         // op2
         String objectVersion = connector.createObject(bucketName, "anObject", "hello world!", null, null,
-            "text/plain", null, PRIVATE, StorageClass.STANDARD, null, null);
+            "text/plain", null, PRIVATE, StorageClass.STANDARD, null, null, "UTF-8");
 
         // op3
 
@@ -108,17 +109,17 @@ public class S3TestDriver
      * Creates a bucket, enables versioning, adds an object and overrides it with a
      * new content. Asserts that both returned version ids are not null and not equal
      */
-    @Test
+//    @Test
     @Ignore
     public void testCreateBucketAndObjectsWithVersions() throws Exception
     {
         connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
         connector.setBucketVersioningStatus(bucketName, VersioningStatus.ENABLED);
         String versionId1 = connector.createObject(bucketName, "anObject", "hello", null, null, null, null,
-            PRIVATE, StorageClass.STANDARD, null, null);
+            PRIVATE, StorageClass.STANDARD, null, null, "UTF-8");
         assertNotNull(versionId1);
         String versionId2 = connector.createObject(bucketName, "anObject", "hello world", null, null, null, null,
-            PRIVATE, StorageClass.STANDARD, null, null);
+            PRIVATE, StorageClass.STANDARD, null, null, "UTF-8");
         assertNotNull(versionId2);
         assertFalse(versionId1.equals(versionId2));
         
@@ -130,7 +131,7 @@ public class S3TestDriver
      * Creates a new Bucket, copies an object from an other bucket to it, and sets
      * the bucket configuration
      */
-    @Test
+//    @Test
     @Ignore
     public void testCopyAndSetWebsiteConfiguration() throws Exception
     {
@@ -143,8 +144,8 @@ public class S3TestDriver
     }
 
 
-    @Test
-    public void testCreateEncryptedObject() {
+//    @Test
+    public void testCreateEncryptedObject() throws UnsupportedEncodingException {
 
         final String key = "myObject3";
 
@@ -152,10 +153,38 @@ public class S3TestDriver
         objectMetadata.setServerSideEncryption(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION);
         connector.createBucket(bucketName, Region.US_STANDARD, AccessControlList.PRIVATE);
         String result = connector.createObject(bucketName, key, "hello world", null, null, "text/plain",
-        null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, "AES256", null);
+        null, AccessControlList.PUBLIC_READ, StorageClass.STANDARD, "AES256", null, "UTF-8");
 
         ObjectMetadata objectMetadata1 = connector.getObjectMetadata(bucketName, key, null);
         assertTrue(objectMetadata1.getServerSideEncryption() != null);
         assertTrue(objectMetadata1.getServerSideEncryption().equals(ObjectMetadata.AES_256_SERVER_SIDE_ENCRYPTION));
+    }
+
+    /**
+     * Creates a bucket, and asserts that buckets count has now increased in 1, and
+     * that it is empty of objects. Then adds a new object and asserts that its
+     * version is null (versioning disabled), and that the bucket is not empty
+     * anymore
+     */
+    @Test
+    public void testCreateBucketAndObjectFromString() throws Exception
+    {
+        // pre1
+//        int bucketsCount = connector.listBuckets().size();
+
+        // op1
+        Bucket bucket = connector.createBucket(bucketName, Region.US_STANDARD, PRIVATE);
+
+        // pos1
+        assertNotNull(bucket);
+        assertEquals(bucketName, bucket.getName());
+
+        // op2
+        String objectVersion = connector.createObject(bucketName, "anObject", "äääcut", null, null,
+                "text/plain", null, PRIVATE, StorageClass.STANDARD, null, null, "UTF-8");
+
+        // pos2
+        assertNull(objectVersion);
+        assertTrue(connector.listObjects(bucketName, "").iterator().hasNext());
     }
 }
