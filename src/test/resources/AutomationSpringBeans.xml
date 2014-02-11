@@ -60,7 +60,7 @@
 	
 	<!-- website-configuration -->	
 	
-	<bean id="bucketWebsiteConfigurationTestData" map-class="com.amazonaws.services.s3.model.BucketWebsiteConfiguration">
+	<bean id="bucketWebsiteConfigurationTestData" class="com.amazonaws.services.s3.model.BucketWebsiteConfiguration">
 	    <property name="indexDocumentSuffix" value="index.html" />
         <property name="errorDocument" value="404.html" />
 	</bean>

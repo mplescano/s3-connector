@@ -51,7 +51,9 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     
     <flow name="set-bucket-website-configuration-optional-attributes" doc:name="set-bucket-website-configuration-optional-attributes">
-        <s3:set-bucket-website-configuration config-ref="Amazon_S3" bucketName="#[payload.bucketName]" suffix="#[payload.suffix]" doc:name="Set bucket website configuration" errorDocument="#[payload.errorDocument]"/>
+        <s3:set-bucket-website-configuration config-ref="Amazon_S3" bucketName="#[payload.bucketName]" doc:name="Set bucket website configuration">
+            <s3:bucket-website-configuration ref="#[payload.bucketWebsiteConfiguration]" />
+        </s3:set-bucket-website-configuration>
     </flow>
     
     <flow name="delete-bucket-website-configuration" doc:name="delete-bucket-website-configuration">
