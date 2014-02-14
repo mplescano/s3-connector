@@ -1,0 +1,1 @@
+http\://www.mulesoft.org/schema/mule/s3=org.mule.module.s3.config.S3NamespaceHandler

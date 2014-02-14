@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" prefix="s3" url="http://www.mulesoft.org/schema/mule/s3">
+  <global-cloud-connector connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Amazon S3" versions="[3.5.0,8.0.0]"></global-cloud-connector>
+  <nested abstract="true" localId="connection-pooling-profile" description="" caption="">
+    <label description="" caption="Define connection pool configuration" name="poolingProfileLabel"></label>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" description="Controls the maximum number of connections that can be borrowed from the pool at one time. When set to a negative value, there is no limit to the number of connections that may be active at one time. When maxActive is exceeded, the pool is said to be exhausted." caption="Max active" name="maxActive"></integer>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" description="Controls the maximum number of connections that can sit idle in the pool at any time. When set to a negative value, there is no limit to the number of connections that may be idle at one time." caption="Max idle" name="maxIdle"></integer>
+    <enum defaultValue="INITIALISE_ONE" alwaysFill="true" description="Determines how connections in a pool should be initialized. The possible values are: INITIALISE_NONE (will not load any connection into the pool on startup), INITIALISE_ONE (will load one initial connection into the pool on startup), or INITIALISE_ALL (will load all connections in the pool on startup)" caption="Initialisation policy" name="initialisationPolicy">
+      <option value="INITIALISE_NONE"></option>
+      <option value="INITIALISE_ONE"></option>
+      <option value="INITIALISE_ALL"></option>
+    </enum>
+    <enum defaultValue="WHEN_EXHAUSTED_GROW" alwaysFill="true" description="Specifies the behavior of the connection pool when the pool is exhausted. Possible values are: &quot;WHEN_EXHAUSTED_FAIL&quot;, which will throw a NoSuchElementException, &quot;WHEN_EXHAUSTED_WAIT&quot;, which will block by invoking Object.wait(long) until a new or idle object is available, or WHEN_EXHAUSTED_GROW, which will create a new connection and return it, essentially making maxActive meaningless. If a positive maxWait value is supplied, it will block for at most that many milliseconds, after which a NoSuchElementException will be thrown. If maxThreadWait is a negative value, it will block indefinitely." caption="Exhausted action" name="exhaustedAction">
+      <option value="WHEN_EXHAUSTED_WAIT"></option>
+      <option value="WHEN_EXHAUSTED_FAIL"></option>
+      <option value="WHEN_EXHAUSTED_GROW"></option>
+    </enum>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" description="When exhausted action is Wait (or block) this is the amount of time in milliseconds that the pool will wait before failing. Setting a negative value will block indefinitely until an idle instance becomes available." caption="Max wait" name="maxWait"></integer>
+    <integer step="0" min="0" defaultValue="1800000" fillLine="true" description="Determines the minimum amount of time a connection may sit idle in the pool before it is eligible for eviction. When non-positive, no connections will be evicted from the pool due to idle time alone." caption="Min eviction (ms)" name="minEvictionMillis"></integer>
+    <integer step="0" min="0" defaultValue="-1" fillLine="true" description="Specifies the number of milliseconds between runs of the connection evictor. When non-positive, no connection evictor is executed." caption="Eviction check interval (ms)" name="evictionCheckIntervalMillis"></integer>
+  </nested>
+  <nested abstract="true" localId="reconnectionStrategyElement" description="" caption="">
+    <label description="" caption="Define how mule should attempt to handle a connection failure" name="connectionLabel"></label>
+    <radioBoolean fillLine="true" description="Disable reconection strategy" caption="Do not use a Reconnection strategy" name="noReconnection"></radioBoolean>
+    <radioBoolean fillLine="true" description="A reconnection strategy that allows the user to configure how many times a reconnection should be attempted and how long to wait between attempts." caption="Standard Reconnection" name="standardReconnection"></radioBoolean>
+    <integer step="1" max="2147483647" min="1" defaultValue="2000" indented="true" controlled="standardReconnection" description="How often (in ms) to reconnect" caption="Frequency (ms)" name="reconnectionFrequency"></integer>
+    <integer step="1" max="2147483647" min="1" defaultValue="2" indented="true" controlled="standardReconnection,!reconnectForever" description="How many reconnection attempts to make" caption="Reconnection Attempts" name="reconnectionAttemps"></integer>
+    <boolean indented="true" controlled="standardReconnection" description="A reconnection strategy that retries an infinite number of times at the specified frequency." caption="Reconnect Forever" name="reconnectForever"></boolean>
+    <radioBoolean fillLine="true" description="A user-defined reconnection strategy." caption="Custom Reconnection" name="customReconnection"></radioBoolean>
+    <classname indented="true" controlled="customReconnection" description="A class that implements the RetryPolicyTemplate interface." caption="Class" name="class"></classname>
+    <childElement allowMultiple="true" controlled="customReconnection" description="Property elements." caption="Properties" name="http://www.springframework.org/schema/beans/property"></childElement>
+  </nested>
+  <global-cloud-connector connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/s3/parentConfig" abstract="false" image="icons/large/s3-connector-48x32.png" localId="config" icon="icons/small/s3-connector-24x16.png" description="Global Amazon S3 configuration information." caption="Amazon S3" versions="[3.5.0,8.0.0]">
+    <attribute-category description="S3 configuration properties." caption="General">
+      <group caption="Generic" id="s3GenericProperties">
+        <name required="true" description="Give a name to this configuration so it can be later referenced by config-ref." caption="Name" name="name"></name>
+      </group>
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="false" description="The optional proxy username." caption="Proxy Username" name="proxyUsername"></string>
+        <integer step="1" min="0" javaType="java.lang.Integer" required="false" description="The optional  proxy port." caption="Proxy Port" name="proxyPort"></integer>
+        <string javaType="java.lang.String" required="false" description="The optional  proxy port." caption="Proxy Host" name="proxyHost"></string>
+        <string javaType="java.lang.String" required="false" description="The optional  proxy password." caption="Proxy Password" name="proxyPassword"></string>
+        <integer step="1" min="0" defaultValue="50000" javaType="java.lang.Integer" required="false" description="The amount of time to wait (in milliseconds) when initially establishing
+a connection before giving up and timing out. A value of 0 means
+infinity, and is not recommended." caption="Connection Timeout" name="connectionTimeout"></integer>
+        <integer step="1" min="0" defaultValue="50000" javaType="java.lang.Integer" required="false" description="The amount of time to wait (in milliseconds) for data to be transfered
+over an established, open connection before the connection is timed out.
+A value of 0 means infinity, and is not recommended." caption="Socket Timeout" name="socketTimeout"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Pooling profile options." caption="Pooling Profile">
+      <group caption="Pooling Profile" id="poolingProfile">
+        <childElement inplace="true" description="" caption="" name="http://www.mulesoft.org/schema/mule/s3/connection-pooling-profile"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Reconnection options." caption="Reconnection">
+      <group caption="Strategies" id="reconnectionStrategies">
+        <childElement inplace="true" valuePersistence="org.mule.tooling.ui.modules.core.widgets.meta.HTTPTransactionValuePersistence" description="" caption="" name="http://www.mulesoft.org/schema/mule/core/reconnectionStrategyElement"></childElement>
+        <childElement allowedSubTypes="http://www.mulesoft.org/schema/mule/core/reconnect,http://www.mulesoft.org/schema/mule/core/reconnect-custom-strategy,http://www.mulesoft.org/schema/mule/core/reconnect-forever" allowSubTypes="true" visibleInDialog="false" description="" caption="" name="http://www.mulesoft.org/schema/mule/core/abstractReconnectionStrategy"></childElement>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector abstract="true" image="icons/large/s3-connector-48x32.png" localId="abstractS3ConnectorGeneric" icon="icons/small/s3-connector-24x16.png" description="Interact with S3." caption="Abstracts3connectorgeneric">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="abstractS3ConnectorGeneric">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/s3/config" required="true" description="Specify which configuration to use for this invocation." caption="Config Reference" name="config-ref"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" image="icons/large/s3-connector-48x32.png" localId="s3-connector" icon="icons/small/s3-connector-24x16.png" description="Amazon S3 (Simple Storage Service) is an online storage web service offered by Amazon Web Services. Amazon S3
+provides storage through web services interfaces (REST, SOAP, and BitTorrent)." caption="Amazon S3" aliasId="org.mule.tooling.ui.modules.core.pattern.s3" versions="[3.5.0,8.0.0]">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="s3ConnectorGeneric">
+        <modeSwitch alwaysCombo="true" description="Operation." caption="Operation" name="S3 operations to execute">
+          <mode modeLabel="Copy object" modeId="http://www.mulesoft.org/schema/mule/s3/copy-object"></mode>
+          <mode modeLabel="Create bucket" modeId="http://www.mulesoft.org/schema/mule/s3/create-bucket"></mode>
+          <mode modeLabel="Create object" modeId="http://www.mulesoft.org/schema/mule/s3/create-object"></mode>
+          <mode modeLabel="Create object presigned uri" modeId="http://www.mulesoft.org/schema/mule/s3/create-object-presigned-uri"></mode>
+          <mode modeLabel="Create object uri" modeId="http://www.mulesoft.org/schema/mule/s3/create-object-uri"></mode>
+          <mode modeLabel="Delete bucket" modeId="http://www.mulesoft.org/schema/mule/s3/delete-bucket"></mode>
+          <mode modeLabel="Delete bucket policy" modeId="http://www.mulesoft.org/schema/mule/s3/delete-bucket-policy"></mode>
+          <mode modeLabel="Delete bucket website configuration" modeId="http://www.mulesoft.org/schema/mule/s3/delete-bucket-website-configuration"></mode>
+          <mode modeLabel="Delete object" modeId="http://www.mulesoft.org/schema/mule/s3/delete-object"></mode>
+          <mode modeLabel="Delete objects" modeId="http://www.mulesoft.org/schema/mule/s3/delete-objects"></mode>
+          <mode modeLabel="Get bucket policy" modeId="http://www.mulesoft.org/schema/mule/s3/get-bucket-policy"></mode>
+          <mode modeLabel="Get bucket versioning configuration" modeId="http://www.mulesoft.org/schema/mule/s3/get-bucket-versioning-configuration"></mode>
+          <mode modeLabel="Get bucket website configuration" modeId="http://www.mulesoft.org/schema/mule/s3/get-bucket-website-configuration"></mode>
+          <mode modeLabel="Get object" modeId="http://www.mulesoft.org/schema/mule/s3/get-object"></mode>
+          <mode modeLabel="Get object content" modeId="http://www.mulesoft.org/schema/mule/s3/get-object-content"></mode>
+          <mode modeLabel="Get object metadata" modeId="http://www.mulesoft.org/schema/mule/s3/get-object-metadata"></mode>
+          <mode modeLabel="List buckets" modeId="http://www.mulesoft.org/schema/mule/s3/list-buckets"></mode>
+          <mode modeLabel="List object versions" modeId="http://www.mulesoft.org/schema/mule/s3/list-object-versions"></mode>
+          <mode modeLabel="List objects" modeId="http://www.mulesoft.org/schema/mule/s3/list-objects"></mode>
+          <mode modeLabel="Set bucket policy" modeId="http://www.mulesoft.org/schema/mule/s3/set-bucket-policy"></mode>
+          <mode modeLabel="Set bucket versioning status" modeId="http://www.mulesoft.org/schema/mule/s3/set-bucket-versioning-status"></mode>
+          <mode modeLabel="Set bucket website configuration" modeId="http://www.mulesoft.org/schema/mule/s3/set-bucket-website-configuration"></mode>
+          <mode modeLabel="Set object storage class" modeId="http://www.mulesoft.org/schema/mule/s3/set-object-storage-class"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="copy-object" icon="icons/small/s3-connector-24x16.png" caption="Copy Object">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="false" description="The destination object's bucket. If none provided, a local copy is performed, that is, it is copied within the same bucket." caption="Destination Bucket Name" name="destinationBucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The destination object's key." caption="Destination Key" name="destinationKey"></string>
+        <string javaType="java.lang.String" required="true" description="The source object's bucket." caption="Source Bucket Name" name="sourceBucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The source object's key." caption="Source Key" name="sourceKey"></string>
+        <string javaType="java.lang.String" required="false" description="The specific version of the source object to copy, if versioning is enabled. Left unspecified if the latest version is desired, or versioning is not enabled." caption="Source Version Id" name="sourceVersionId"></string>
+        <string javaType="java.util.Date" required="false" description="The modified constraint that restricts this request to executing only if the object has been modified after the specified date. This constraint is specified but does not match, no copy is performed." caption="Modified Since" name="modifiedSince"></string>
+        <string javaType="java.util.Date" required="false" description="The unmodified constraint that restricts this request to executing only if the object has not been modified after this date. This constraint is specified but does not match, no copy is performed." caption="Unmodified Since" name="unmodifiedSince"></string>
+        <string javaType="java.lang.String" required="false" description="Encryption method for server-side encryption. Supported value AES256." caption="Encryption" name="encryption"></string>
+        <enum allowsCustom="true" defaultValue="PRIVATE" javaType="org.mule.module.s3.AccessControlList" required="false" supportsExpressions="true" description="The acl of the destination object." caption="Destination Acl" name="destinationAcl">
+          <option value="AUTHENTICATED_READ"></option>
+          <option value="BUCKET_OWNER_FULL_CONTROL"></option>
+          <option value="BUCKET_OWNER_READ"></option>
+          <option value="LOG_DELIVERY_WRITE"></option>
+          <option value="PRIVATE"></option>
+          <option value="PUBLIC_READ"></option>
+          <option value="PUBLIC_READ_WRITE"></option>
+        </enum>
+        <enum allowsCustom="true" defaultValue="STANDARD" javaType="org.mule.module.s3.StorageClass" required="false" supportsExpressions="true" description="One of  enumerated values, defaults to." caption="Destination Storage Class" name="destinationStorageClass">
+          <option value="REDUCED_REDUNDANCY"></option>
+          <option value="STANDARD"></option>
+        </enum>
+        <element-controller-map mapName="destination-user-metadata" itemName="destination-user-metadatum" localName="copy-object-destination-user-metadata" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" required="false" description="The new metadata of the destination object, that if specified, overrides that copied from the source object." caption="Destination User Metadata"></element-controller-map>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.amazonaws.services.s3.model.Bucket" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="create-bucket" icon="icons/small/s3-connector-24x16.png" caption="Create Bucket">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The bucket to create. It must not exist yet." caption="Bucket Name" name="bucketName"></string>
+        <enum allowsCustom="true" defaultValue="PRIVATE" javaType="org.mule.module.s3.AccessControlList" required="false" supportsExpressions="true" description="The access control list of the new bucket." caption="Acl" name="acl">
+          <option value="AUTHENTICATED_READ"></option>
+          <option value="BUCKET_OWNER_FULL_CONTROL"></option>
+          <option value="BUCKET_OWNER_READ"></option>
+          <option value="LOG_DELIVERY_WRITE"></option>
+          <option value="PRIVATE"></option>
+          <option value="PUBLIC_READ"></option>
+          <option value="PUBLIC_READ_WRITE"></option>
+        </enum>
+        <enum allowsCustom="true" defaultValue="US_STANDARD" javaType="org.mule.module.s3.simpleapi.Region" required="false" supportsExpressions="true" description="The region where to create the new bucket." caption="Region" name="region">
+          <option value="AP_SINGAPORE"></option>
+          <option value="EU_IRELAND"></option>
+          <option value="US_STANDARD"></option>
+          <option value="US_WEST"></option>
+        </enum>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="create-object" icon="icons/small/s3-connector-24x16.png" caption="Create Object">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="false" description="The content disposition of the new object." caption="Content Disposition" name="contentDisposition"></string>
+        <string javaType="java.lang.String" required="false" description="The content type of the new object." caption="Content Type" name="contentType"></string>
+        <string javaType="java.lang.String" required="false" description="Encryption method for server-side encryption. Supported value AES256." caption="Encryption" name="encryption"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <string defaultValue="#[payload]" javaType="java.lang.Object" required="false" description="The content to be uploaded to S3, capable of creating a ." caption="Content Reference" name="content-ref"></string>
+        <integer step="1" min="0" javaType="java.lang.Long" required="false" description="The content length. If content is a InputStream, this parameter should be specified, as not doing so will introduce a performance loss as the contents will have to be persisted on disk before being uploaded. Otherwise, it is ignored. An exception to this rule are InputStreams returned by Mule Http Connector: if stream has Content-Length information, it will be used. In any case a content length of 0 is interpreted as an unspecified content length." caption="Content Length" name="contentLength"></integer>
+        <string javaType="java.lang.String" required="false" description="The content md5, encoded in base 64. If content is a file, it is ignored." caption="Content Md5" name="contentMd5"></string>
+        <enum allowsCustom="true" defaultValue="PRIVATE" javaType="org.mule.module.s3.AccessControlList" required="false" supportsExpressions="true" description="The access control list of the new object." caption="Acl" name="acl">
+          <option value="AUTHENTICATED_READ"></option>
+          <option value="BUCKET_OWNER_FULL_CONTROL"></option>
+          <option value="BUCKET_OWNER_READ"></option>
+          <option value="LOG_DELIVERY_WRITE"></option>
+          <option value="PRIVATE"></option>
+          <option value="PUBLIC_READ"></option>
+          <option value="PUBLIC_READ_WRITE"></option>
+        </enum>
+        <enum allowsCustom="true" defaultValue="STANDARD" javaType="org.mule.module.s3.StorageClass" required="false" supportsExpressions="true" description="The storage class of the new object." caption="Storage Class" name="storageClass">
+          <option value="REDUCED_REDUNDANCY"></option>
+          <option value="STANDARD"></option>
+        </enum>
+        <element-controller-map mapName="user-metadata" itemName="user-metadatum" localName="create-object-user-metadata" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" required="false" description="A map of arbitrary object properties keys and values." caption="User Metadata"></element-controller-map>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.net.URI" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="create-object-presigned-uri" icon="icons/small/s3-connector-24x16.png" caption="Create Object Presigned Uri">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <string javaType="java.lang.String" required="false" description="The specific version of the object to create the URI, if versioning is enabled. Left unspecified if the latest version is desired, or versioning is not enabled." caption="Version Id" name="versionId"></string>
+        <string javaType="java.util.Date" required="false" description="The time at which the returned pre-signed URL will expire." caption="Expiration" name="expiration"></string>
+        <string defaultValue="PUT" javaType="java.lang.String" required="false" description="The HTTP method verb to use for this URL." caption="Method" name="method"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.net.URI" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="create-object-uri" icon="icons/small/s3-connector-24x16.png" caption="Create Object Uri">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <boolean defaultValue="false" javaType="boolean" required="false" supportsExpressions="true" description="Whether to use http or https." caption="Secure" name="secure"></boolean>
+        <boolean defaultValue="false" javaType="boolean" required="false" supportsExpressions="true" description="If the default US Amazon server subdomain should be used in the URI regardless of the region." caption="Use Default Server" name="useDefaultServer"></boolean>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="delete-bucket" icon="icons/small/s3-connector-24x16.png" caption="Delete Bucket">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The bucket to delete." caption="Bucket Name" name="bucketName"></string>
+        <boolean defaultValue="false" javaType="boolean" required="false" supportsExpressions="true" description="Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario." caption="Force" name="force"></boolean>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="delete-bucket-policy" icon="icons/small/s3-connector-24x16.png" caption="Delete Bucket Policy">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The bucket whose policy to delete." caption="Bucket Name" name="bucketName"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="delete-bucket-website-configuration" icon="icons/small/s3-connector-24x16.png" caption="Delete Bucket Website Configuration">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The bucket whose policy to delete." caption="Bucket Name" name="bucketName"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="delete-object" icon="icons/small/s3-connector-24x16.png" caption="Delete Object">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <string javaType="java.lang.String" required="false" description="The specific version of the object to delete, if versioning is enabled. Left unspecified if the latest version is desired, or versioning is not enabled." caption="Version Id" name="versionId"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="delete-objects" icon="icons/small/s3-connector-24x16.png" caption="Delete Objects">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The objects bucket name." caption="Bucket Name" name="bucketName"></string>
+        <element-controller-listOfPojo listName="keys" itemName="key" localName="delete-objects-keys" javaType="java.util.List&lt;org.mule.module.s3.simpleapi.KeyVersion&gt;" description="The objects keys, version is optional." caption="Keys"></element-controller-listOfPojo>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="get-bucket-policy" icon="icons/small/s3-connector-24x16.png" caption="Get Bucket Policy">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The bucket whose policy to retrieve." caption="Bucket Name" name="bucketName"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.amazonaws.services.s3.model.BucketVersioningConfiguration" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="get-bucket-versioning-configuration" icon="icons/small/s3-connector-24x16.png" caption="Get Bucket Versioning Configuration">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The bucket whose versioning configuration will be retrieved." caption="Bucket Name" name="bucketName"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.amazonaws.services.s3.model.BucketWebsiteConfiguration" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="get-bucket-website-configuration" icon="icons/small/s3-connector-24x16.png" caption="Get Bucket Website Configuration">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The target bucket's name." caption="Bucket Name" name="bucketName"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.amazonaws.services.s3.model.S3Object" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="get-object" icon="icons/small/s3-connector-24x16.png" caption="Get Object">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <string javaType="java.lang.String" required="false" description="The specific version of the object to get its contents, if versioning is enabled. Left unspecified if the latest version is desired, or versioning is not enabled." caption="Version Id" name="versionId"></string>
+        <string javaType="java.util.Date" required="false" description="The modified constraint that restricts this request to executing only if the object has been modified after the specified date." caption="Modified Since" name="modifiedSince"></string>
+        <string javaType="java.util.Date" required="false" description="The unmodified constraint that restricts this request to executing only if the object has not been modified after this date." caption="Unmodified Since" name="unmodifiedSince"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.amazonaws.services.s3.model.S3ObjectInputStream" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="get-object-content" icon="icons/small/s3-connector-24x16.png" caption="Get Object Content">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <string javaType="java.lang.String" required="false" description="The specific version of the object to get its contents, if versioning is enabled, left unspecified if the latest version is desired, or versioning is not enabled." caption="Version Id" name="versionId"></string>
+        <string javaType="java.util.Date" required="false" description="The modified constraint that restricts this request to executing only if the object has been modified after the specified date." caption="Modified Since" name="modifiedSince"></string>
+        <string javaType="java.util.Date" required="false" description="The unmodified constraint that restricts this request to executing only if the object has not been modified after this date." caption="Unmodified Since" name="unmodifiedSince"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="com.amazonaws.services.s3.model.ObjectMetadata" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="get-object-metadata" icon="icons/small/s3-connector-24x16.png" caption="Get Object Metadata">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <string javaType="java.lang.String" required="false" description="The object metadata for the given bucketName and key." caption="Version Id" name="versionId"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;com.amazonaws.services.s3.model.Bucket&gt;" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="list-buckets" icon="icons/small/s3-connector-24x16.png" caption="List Buckets">
+    <attribute-category description="General." caption="General"></attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.Iterable&lt;com.amazonaws.services.s3.model.S3VersionSummary&gt;" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="list-object-versions" icon="icons/small/s3-connector-24x16.png" caption="List Object Versions">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The target bucket's name." caption="Bucket Name" name="bucketName"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.Iterable&lt;com.amazonaws.services.s3.model.S3ObjectSummary&gt;" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="list-objects" icon="icons/small/s3-connector-24x16.png" caption="List Objects">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The target bucket's name." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="false" description="The prefix of the objects to be listed. If unspecified, all objects are listed." caption="Prefix" name="prefix"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="set-bucket-policy" icon="icons/small/s3-connector-24x16.png" caption="Set Bucket Policy">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The bucket name." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The policy text." caption="Policy Text" name="policyText"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="set-bucket-versioning-status" icon="icons/small/s3-connector-24x16.png" caption="Set Bucket Versioning Status">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The target bucket name." caption="Bucket Name" name="bucketName"></string>
+        <enum allowsCustom="true" javaType="org.mule.module.s3.simpleapi.VersioningStatus" required="true" supportsExpressions="true" description="The version status to set." caption="Versioning Status" name="versioningStatus">
+          <option value="ENABLED"></option>
+          <option value="OFF"></option>
+          <option value="SUSPENDED"></option>
+        </enum>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="set-bucket-website-configuration" icon="icons/small/s3-connector-24x16.png" caption="Set Bucket Website Configuration">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The target bucket's name." caption="Bucket Name" name="bucketName"></string>
+        <childElement allowMultiple="false" inplace="true" javaType="com.amazonaws.services.s3.model.BucketWebsiteConfiguration" required="true" caption="Bucket Website Configuration Reference" name="http://www.mulesoft.org/schema/mule/s3/bucket-website-configuration"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="set-object-storage-class" icon="icons/small/s3-connector-24x16.png" caption="Set Object Storage Class">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The object's bucket name." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="true" description="The object's key." caption="Key" name="key"></string>
+        <enum allowsCustom="true" javaType="org.mule.module.s3.StorageClass" required="true" supportsExpressions="true" description="The storage class to set." caption="Storage Class" name="storageClass">
+          <option value="REDUCED_REDUNDANCY"></option>
+          <option value="STANDARD"></option>
+        </enum>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection." caption="Connection">
+      <group caption="Connection" id="connection">
+        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
+        <label caption=""></label>
+        <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
+        <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <nested xmlname="bucket-website-configuration" abstract="false" localId="bucket-website-configuration" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Bucket Website Configuration Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Index Document Suffix" name="indexDocumentSuffix"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Error Document" name="errorDocument"></string>
+    <childElement allowMultiple="false" inplace="true" javaType="com.amazonaws.services.s3.model.RedirectRule" controlled="complex" required="false" caption="Redirect All Requests To Reference" name="http://www.mulesoft.org/schema/mule/s3/redirect-all-requests-to"></childElement>
+    <element-controller-listOfPojo listName="routing-rules" itemName="routing-rule" localName="configurable-routing-rules" javaType="java.util.List&lt;com.amazonaws.services.s3.model.RoutingRule&gt;" controlled="complex" required="false" description="" caption="Routing Rules"></element-controller-listOfPojo>
+  </nested>
+  <nested xmlname="condition" abstract="false" localId="condition" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Condition Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Key Prefix Equals" name="keyPrefixEquals"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Http Error Code Returned Equals" name="httpErrorCodeReturnedEquals"></string>
+  </nested>
+  <nested xmlname="redirect" abstract="false" localId="redirect" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Redirect Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Host Name" name="hostName"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Replace Key Prefix With" name="replaceKeyPrefixWith"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Replace Key With" name="replaceKeyWith"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Http Redirect Code" name="httpRedirectCode"></string>
+  </nested>
+  <nested xmlname="redirect-all-requests-to" abstract="false" localId="redirect-all-requests-to" description="" caption="">
+    <radioBoolean fillLine="true" description="Provide a reference to a bean or use an expression" caption="Reference or expression" name="useReference"></radioBoolean>
+    <string controlled="useReference" description="" caption="Redirect All Requests To Reference" name="ref"></string>
+    <radioBoolean fillLine="true" description="Define this element's attributes" caption="Define attributes" name="complex"></radioBoolean>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Host Name" name="hostName"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Replace Key Prefix With" name="replaceKeyPrefixWith"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Replace Key With" name="replaceKeyWith"></string>
+    <string javaType="java.lang.String" controlled="complex" required="false" description="" caption="Http Redirect Code" name="httpRedirectCode"></string>
+  </nested>
+</namespace>
