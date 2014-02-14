@@ -21,7 +21,7 @@ import org.mule.config.i18n.CoreMessages;
 import org.mule.devkit.processor.ExpressionEvaluatorSupport;
 import org.mule.transformer.types.DataTypeFactory;
 
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:48:37-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:51:32-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class RoutingRuleExpressionHolderTransformer
     extends ExpressionEvaluatorSupport
     implements DiscoverableTransformer, MessageTransformer

@@ -8,7 +8,7 @@ import org.mule.module.s3.simpleapi.VersioningStatus;
 import org.mule.transformer.AbstractTransformer;
 import org.mule.transformer.types.DataTypeFactory;
 
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:48:37-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:51:32-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class VersioningStatusEnumTransformer
     extends AbstractTransformer
     implements DiscoverableTransformer

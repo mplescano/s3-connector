@@ -259,13 +259,21 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/agents/package-summary.html">org.mule.module.s3.agents</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/basic/package-summary.html">org.mule.module.s3.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connectivity/package-summary.html">org.mule.module.s3.connectivity</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/devkit/package-summary.html">org.mule.module.s3.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/oauth/package-summary.html">org.mule.module.s3.oauth</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/process/package-summary.html">org.mule.module.s3.process</a></li>
     <li class="selected api apilevel-">
@@ -292,6 +300,9 @@
     <li><h2>Classes</h2>
       <ul>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractConnectedProcessor.html">AbstractConnectedProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractExpressionEvaluator.html">AbstractExpressionEvaluator</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</li>
+        <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;</li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html">AbstractPagedConnectedProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CopyObjectMessageProcessor.html">CopyObjectMessageProcessor</a></li>
         <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/processors/CreateBucketMessageProcessor.html">CreateBucketMessageProcessor</a></li>
@@ -393,98 +404,110 @@
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
         <tr class=" api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html">AbstractPagedConnectedProcessor</a></td>
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractExpressionEvaluator.html">AbstractExpressionEvaluator</a></td>
               <td class="jd-descrcol" width="100%">&nbsp;</td>
           </tr>
         <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;</td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/AbstractPagedConnectedProcessor.html">AbstractPagedConnectedProcessor</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/CopyObjectMessageProcessor.html">CopyObjectMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CopyObjectMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date, java.lang.String)">copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map, java.util.Date, java.util.Date, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/CreateBucketMessageProcessor.html">CreateBucketMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateBucketMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#createBucket(java.lang.String, org.mule.module.s3.simpleapi.Region, org.mule.module.s3.AccessControlList)">createBucket(java.lang.String, org.mule.module.s3.simpleapi.Region, org.mule.module.s3.AccessControlList)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/CreateObjectMessageProcessor.html">CreateObjectMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateObjectMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)">createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/CreateObjectPresignedUriMessageProcessor.html">CreateObjectPresignedUriMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateObjectPresignedUriMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#createObjectPresignedUri(java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.lang.String)">createObjectPresignedUri(java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/CreateObjectUriMessageProcessor.html">CreateObjectUriMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">CreateObjectUriMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#createObjectUri(java.lang.String, java.lang.String, boolean, boolean)">createObjectUri(java.lang.String, java.lang.String, boolean, boolean)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteBucketMessageProcessor.html">DeleteBucketMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">DeleteBucketMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#deleteBucket(java.lang.String, boolean)">deleteBucket(java.lang.String, boolean)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteBucketPolicyMessageProcessor.html">DeleteBucketPolicyMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">DeleteBucketPolicyMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#deleteBucketPolicy(java.lang.String)">deleteBucketPolicy(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteBucketWebsiteConfigurationMessageProcessor.html">DeleteBucketWebsiteConfigurationMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">DeleteBucketWebsiteConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#deleteBucketWebsiteConfiguration(java.lang.String)">deleteBucketWebsiteConfiguration(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteObjectMessageProcessor.html">DeleteObjectMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">DeleteObjectMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#deleteObject(java.lang.String, java.lang.String, java.lang.String)">deleteObject(java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/DeleteObjectsMessageProcessor.html">DeleteObjectsMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">DeleteObjectsMessageProcessor invokes the org.mule.module.s3.S3Connector#deleteObjects(java.lang.String, java.util.List<org.mule.module.s3.simpleapi.KeyVersion>) method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketPolicyMessageProcessor.html">GetBucketPolicyMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetBucketPolicyMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#getBucketPolicy(java.lang.String)">getBucketPolicy(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketVersioningConfigurationMessageProcessor.html">GetBucketVersioningConfigurationMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetBucketVersioningConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#getBucketVersioningConfiguration(java.lang.String)">getBucketVersioningConfiguration(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/GetBucketWebsiteConfigurationMessageProcessor.html">GetBucketWebsiteConfigurationMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetBucketWebsiteConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#getBucketWebsiteConfiguration(java.lang.String)">getBucketWebsiteConfiguration(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/GetObjectContentMessageProcessor.html">GetObjectContentMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetObjectContentMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#getObjectContent(java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.util.Date)">getObjectContent(java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.util.Date)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/GetObjectMessageProcessor.html">GetObjectMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetObjectMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#getObject(java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.util.Date)">getObject(java.lang.String, java.lang.String, java.lang.String, java.util.Date, java.util.Date)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/GetObjectMetadataMessageProcessor.html">GetObjectMetadataMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">GetObjectMetadataMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#getObjectMetadata(java.lang.String, java.lang.String, java.lang.String)">getObjectMetadata(java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/ListBucketsMessageProcessor.html">ListBucketsMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">ListBucketsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#listBuckets()">listBuckets()</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/ListObjectsMessageProcessor.html">ListObjectsMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">ListObjectsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#listObjects(java.lang.String, java.lang.String)">listObjects(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/ListObjectVersionsMessageProcessor.html">ListObjectVersionsMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">ListObjectVersionsMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#listObjectVersions(java.lang.String)">listObjectVersions(java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/SetBucketPolicyMessageProcessor.html">SetBucketPolicyMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">SetBucketPolicyMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#setBucketPolicy(java.lang.String, java.lang.String)">setBucketPolicy(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/SetBucketVersioningStatusMessageProcessor.html">SetBucketVersioningStatusMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">SetBucketVersioningStatusMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#setBucketVersioningStatus(java.lang.String, org.mule.module.s3.simpleapi.VersioningStatus)">setBucketVersioningStatus(java.lang.String, org.mule.module.s3.simpleapi.VersioningStatus)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class=" api apilevel-" >
+        <tr class="alt-color api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/SetBucketWebsiteConfigurationMessageProcessor.html">SetBucketWebsiteConfigurationMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">SetBucketWebsiteConfigurationMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)">setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>
-        <tr class="alt-color api apilevel-" >
+        <tr class=" api apilevel-" >
               <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/s3/processors/SetObjectStorageClassMessageProcessor.html">SetObjectStorageClassMessageProcessor</a></td>
               <td class="jd-descrcol" width="100%">SetObjectStorageClassMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html#setObjectStorageClass(java.lang.String, java.lang.String, org.mule.module.s3.StorageClass)">setObjectStorageClass(java.lang.String, java.lang.String, org.mule.module.s3.StorageClass)</a></code> method in <code><a href="../../../../../../java/org/mule/module/s3/S3Connector.html">S3Connector</a></code>.&nbsp;</td>
           </tr>

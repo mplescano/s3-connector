@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><site><feature id="org.mule.tooling.ui.extension.s3" url="features/org.mule.tooling.ui.extension.s3_%VERSION%.jar" version="%VERSION%"><category name="%CATEGORY%"/></feature><category-def label="%CATEGORY%" name="%CATEGORY%"/></site>

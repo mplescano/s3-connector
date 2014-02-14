@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: S3
+Bundle-SymbolicName: org.mule.tooling.ui.extension.s3;singleton:=true
+Bundle-Version: %VERSION%
+Bundle-Activator: org.mule.tooling.ui.contribution.Activator
+Bundle-Vendor: MuleSoft, Inc.
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.mule.tooling.core;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Eclipse-BundleShape: dir

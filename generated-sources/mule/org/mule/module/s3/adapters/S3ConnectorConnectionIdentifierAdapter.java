@@ -10,7 +10,7 @@ import org.mule.module.s3.connection.Connection;
  * A <code>S3ConnectorConnectionIdentifierAdapter</code> is a wrapper around {@link S3Connector } that implements {@link org.mule.devkit.dynamic.api.helper.Connection} interface.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:48:37-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:51:32-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class S3ConnectorConnectionIdentifierAdapter
     extends S3ConnectorProcessAdapter
     implements Connection

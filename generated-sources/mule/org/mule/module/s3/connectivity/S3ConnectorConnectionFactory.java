@@ -12,7 +12,7 @@ import org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:48:37-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:51:32-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class S3ConnectorConnectionFactory implements KeyedPoolableObjectFactory
 {
 
