@@ -36,7 +36,7 @@ import org.mule.module.s3.processors.AbstractConnectedProcessor;
  * A {@code S3ConnectorConnectionManager} is a wrapper around {@link S3Connector } that adds connection management capabilities to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:51:32-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-19T08:20:24-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class S3ConnectorConnectionManager
     extends ExpressionEvaluatorSupport
     implements MetadataAware, MuleContextAware, ProcessAdapter<S3ConnectorConnectionIdentifierAdapter> , Capabilities, Disposable, Initialisable, Testable, ConnectionManager<S3ConnectorConnectionKey, S3ConnectorConnectionIdentifierAdapter>
@@ -74,7 +74,7 @@ public class S3ConnectorConnectionManager
     protected PoolingProfile connectionPoolingProfile;
     protected RetryPolicyTemplate retryPolicyTemplate;
     private final static String MODULE_NAME = "Amazon S3";
-    private final static String MODULE_VERSION = "2.6.2-SNAPSHOT";
+    private final static String MODULE_VERSION = "2.6.3-SNAPSHOT";
     private final static String DEVKIT_VERSION = "3.5.0-SNAPSHOT";
     private final static String DEVKIT_BUILD = "UNKNOWN_BUILDNUMBER";
     private final static String MIN_MULE_VERSION = "3.5";

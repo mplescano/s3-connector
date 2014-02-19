@@ -17,7 +17,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * A <code>S3ConnectorProcessAdapter</code> is a wrapper around {@link S3Connector } that enables custom processing strategies.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:51:32-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-19T08:20:24-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class S3ConnectorProcessAdapter
     extends S3ConnectorLifecycleAdapter
     implements ProcessAdapter<S3ConnectorCapabilitiesAdapter>

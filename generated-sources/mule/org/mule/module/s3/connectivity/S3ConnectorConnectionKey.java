@@ -8,7 +8,7 @@ import javax.annotation.Generated;
  * A tuple of connection parameters
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-14T11:51:32-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-19T08:20:24-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class S3ConnectorConnectionKey {
 
     /**
@@ -59,15 +59,13 @@ public class S3ConnectorConnectionKey {
         return this.secretKey;
     }
 
+    @Override
     public int hashCode() {
-        int hash = 1;
-        hash = (hash* 31);
-        if (this.accessKey!= null) {
-            hash += this.accessKey.hashCode();
-        }
-        return hash;
+        int result = ((this.accessKey!= null)?this.accessKey.hashCode(): 0);
+        return result;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
