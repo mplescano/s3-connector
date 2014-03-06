@@ -10,7 +10,7 @@ import org.mule.module.s3.S3Connector;
  * A <code>S3ConnectorMetadataAdapater</code> is a wrapper around {@link S3Connector } that adds support for querying metadata about the extension.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-03-06T06:25:51-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-03-06T08:16:30-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class S3ConnectorMetadataAdapater
     extends S3ConnectorCapabilitiesAdapter
     implements MetadataAware

@@ -1358,45 +1358,29 @@ other than US_STANDARD.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="AccessControlListEnumType">
+  <xs:simpleType name="RegionEnumType">
     <xs:annotation>
-      <xs:documentation>A wrapper over , as a workaround over mule cloud
-connector api issue regarding enums processing</xs:documentation>
+      <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="PRIVATE">
+          <xs:enumeration value="US_STANDARD">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="PUBLIC_READ">
+          <xs:enumeration value="US_WEST">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="PUBLIC_READ_WRITE">
+          <xs:enumeration value="EU_IRELAND">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="AUTHENTICATED_READ">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="LOG_DELIVERY_WRITE">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="BUCKET_OWNER_READ">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="BUCKET_OWNER_FULL_CONTROL">
+          <xs:enumeration value="AP_SINGAPORE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1462,29 +1446,45 @@ workaround over mule cloud connector api issue regarding enums processing</xs:do
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="RegionEnumType">
+  <xs:simpleType name="AccessControlListEnumType">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>A wrapper over , as a workaround over mule cloud
+connector api issue regarding enums processing</xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="US_STANDARD">
+          <xs:enumeration value="PRIVATE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="US_WEST">
+          <xs:enumeration value="PUBLIC_READ">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="EU_IRELAND">
+          <xs:enumeration value="PUBLIC_READ_WRITE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="AP_SINGAPORE">
+          <xs:enumeration value="AUTHENTICATED_READ">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="LOG_DELIVERY_WRITE">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="BUCKET_OWNER_READ">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="BUCKET_OWNER_FULL_CONTROL">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
