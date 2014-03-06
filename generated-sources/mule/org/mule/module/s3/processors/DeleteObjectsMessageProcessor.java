@@ -19,7 +19,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * DeleteObjectsMessageProcessor invokes the {@link org.mule.module.s3.S3Connector#deleteObjects(java.lang.String, java.util.List<org.mule.module.s3.simpleapi.KeyVersion>)} method in {@link S3Connector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-02-19T08:20:24-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-03-06T06:25:51-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class DeleteObjectsMessageProcessor
     extends AbstractConnectedProcessor
     implements MessageProcessor
