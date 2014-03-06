@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
  * A <code>S3ConnectorLifecycleAdapter</code> is a wrapper around {@link S3Connector } that adds lifecycle methods to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-03-06T11:25:08-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-03-06T11:28:06-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class S3ConnectorLifecycleAdapter
     extends S3ConnectorMetadataAdapater
     implements Disposable, Initialisable, Startable, Stoppable

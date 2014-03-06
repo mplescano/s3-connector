@@ -19,7 +19,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * SetBucketWebsiteConfigurationMessageProcessor invokes the {@link org.mule.module.s3.S3Connector#setBucketWebsiteConfiguration(java.lang.String, com.amazonaws.services.s3.model.BucketWebsiteConfiguration)} method in {@link S3Connector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-03-06T11:25:08-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-03-06T11:28:06-06:00", comments = "Build UNKNOWN_BUILDNUMBER")
 public class SetBucketWebsiteConfigurationMessageProcessor
     extends AbstractConnectedProcessor
     implements MessageProcessor
