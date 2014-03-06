@@ -21,7 +21,7 @@ Updated [AWS SDK for Java](http://aws.amazon.com/sdkforjava/) from [1.4.7](http:
 * Performance enhancements to string manipulation for Amazon S3 bucket name validation and URL encoding.
 * `RegionUtils` now correctly loads region metadata from the SDK jar when it is unable to connect to Amazon S3 to download the latest region metadata.
 * `RegionUtils` now retrieves the region metadata through HTTPS connection, and also validates all region endpoints.
-* Fix for Amazon S3 XML quote escaping
+* Fix for Amazon S3 XML quote escaping.
 * Fixed an issue where failed `InputStream` uploads were not being retried properly.
 * Fixed the bug that Amazon S3 client cannot handle key names starting with slash character.
 * `ProgressListener` callback is now executed in a separate single thread and no longer blocks the main transfer thread.
