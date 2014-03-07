@@ -1,5 +1,6 @@
 package org.mule.module.s3.automation.testcases;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,8 +20,20 @@ public class S3TestParent extends ConnectorTestCase {
 	}
 	
 	protected List<Bucket> bucketList() throws Exception {
-		return runFlowAndGetPayload("list-bucket");
+		return runFlowAndGetPayload("list-buckets");
 	}
 	
+	protected List<String> bucketListNames() throws Exception {
+		List<String> bucketListNames = new ArrayList<String>();
+		for (Bucket b : bucketList()) {
+			bucketListNames.add(b.getName());
+		}
+		return bucketListNames;
+	}
+	
+	protected void deleteBucket(String bucketName) throws Exception {
+		upsertOnTestRunMessage("bucketName", bucketName);
+		runFlowAndGetPayload("delete-bucket");
+	}
 
 }

@@ -21,8 +21,7 @@ public class CreateBucketTestCases extends S3TestParent {
 	
 	@After
 	public void deleteCreatedBucket() throws Exception {
-		// TODO Rename when framework is updated
-		runFlowAndGetPayload("delete-bucket");
+		deleteBucket(bucketName);
 	}
 	
 	@Test
