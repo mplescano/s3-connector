@@ -1358,6 +1358,35 @@ other than US_STANDARD.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:simpleType name="VersioningStatusEnumType">
+    <xs:annotation>
+      <xs:documentation>The posible versioning status.</xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="OFF">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="ENABLED">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SUSPENDED">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
   <xs:simpleType name="RegionEnumType">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -1392,24 +1421,20 @@ other than US_STANDARD.</xs:documentation>
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="VersioningStatusEnumType">
+  <xs:simpleType name="StorageClassEnumType">
     <xs:annotation>
-      <xs:documentation>The posible versioning status.</xs:documentation>
+      <xs:documentation>A wrapper over , as a
+workaround over mule cloud connector api issue regarding enums processing</xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="OFF">
+          <xs:enumeration value="STANDARD">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="ENABLED">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="SUSPENDED">
+          <xs:enumeration value="REDUCED_REDUNDANCY">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1460,31 +1485,6 @@ connector api issue regarding enums processing</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
           <xs:enumeration value="BUCKET_OWNER_FULL_CONTROL">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:simpleType>
-        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
-  <xs:simpleType name="StorageClassEnumType">
-    <xs:annotation>
-      <xs:documentation>A wrapper over , as a
-workaround over mule cloud connector api issue regarding enums processing</xs:documentation>
-    </xs:annotation>
-    <xs:union>
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="STANDARD">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="REDUCED_REDUNDANCY">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
