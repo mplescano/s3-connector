@@ -9,8 +9,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.amazonaws.services.s3.model.Bucket;
-
 public class ListBucketsTestCases extends S3TestParent {
 
 	private int bucketAmount;
@@ -42,10 +40,6 @@ public class ListBucketsTestCases extends S3TestParent {
 	// Create some buckets in S3, check if they are in the list
 	public void listBuckets() throws Exception {
 		generatedBucketNames = createManyBuckets(bucketAmount);
-		List<String> bucketListNames = new ArrayList<String>();
-		for (Bucket b : bucketList()) {
-			bucketListNames.add(b.getName());
-		}
-		assertTrue(bucketListNames.containsAll(generatedBucketNames));
+		assertTrue(bucketListNames().containsAll(generatedBucketNames));
 	}
 }
