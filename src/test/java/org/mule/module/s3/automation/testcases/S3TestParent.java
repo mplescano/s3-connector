@@ -1,5 +1,6 @@
 package org.mule.module.s3.automation.testcases;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.mule.modules.tests.ConnectorTestCase;
@@ -16,5 +17,10 @@ public class S3TestParent extends ConnectorTestCase {
 		upsertOnTestRunMessage("bucketName", bucketName);
 		return runFlowAndGetPayload("create-bucket");
 	}
+	
+	protected List<Bucket> bucketList() throws Exception {
+		return runFlowAndGetPayload("list-bucket");
+	}
+	
 
 }

@@ -42,9 +42,8 @@ public class ListBucketsTestCases extends S3TestParent {
 	// Create some buckets in S3, check if they are in the list
 	public void listBuckets() throws Exception {
 		generatedBucketNames = createManyBuckets(bucketAmount);
-		List<Bucket> bucketList = runFlowAndGetPayload("list-buckets");
 		List<String> bucketListNames = new ArrayList<String>();
-		for (Bucket b : bucketList) {
+		for (Bucket b : bucketList()) {
 			bucketListNames.add(b.getName());
 		}
 		assertTrue(bucketListNames.containsAll(generatedBucketNames));
