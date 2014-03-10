@@ -42,7 +42,7 @@ public class BucketVersioningConfigurationTestCases extends S3TestParent {
 	}
 	
 	@Test    
-	public void testBucketVersioningConfigurationTestCases() throws Exception {
+	public void testBucketVersioningConfiguration() throws Exception {
     	assertEquals("OFF", getVersioningConfiguration(bucketName));
     	setVersioningConfiguration("ENABLED");
     	assertEquals("ENABLED", getVersioningConfiguration(bucketName));
