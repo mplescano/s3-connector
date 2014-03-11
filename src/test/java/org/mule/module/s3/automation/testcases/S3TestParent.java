@@ -21,6 +21,8 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 public class S3TestParent extends ConnectorTestCase {
 
+	protected boolean versioningEnabled = false;
+	
 	protected String randomString() {
 		return UUID.randomUUID().toString();
 	}
@@ -64,6 +66,7 @@ public class S3TestParent extends ConnectorTestCase {
 	protected void enableVersioning() throws Exception {
 		upsertOnTestRunMessage("versioningStatus", "ENABLED");
 		runFlowAndGetPayload("set-bucket-versioning-status");
+		versioningEnabled = true;
 	}
 	
 	protected boolean isNullPayload(Object payload) {
