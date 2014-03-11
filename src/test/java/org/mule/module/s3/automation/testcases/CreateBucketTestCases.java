@@ -8,13 +8,12 @@
 
 package org.mule.module.s3.automation.testcases;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.amazonaws.services.s3.model.Bucket;
 
 public class CreateBucketTestCases extends S3TestParent {
 	
@@ -34,15 +33,17 @@ public class CreateBucketTestCases extends S3TestParent {
 	
 	@Test
 	public void createBucket() throws Exception {
-		Bucket createdBucket = createBucket(bucketName);
-		assertEquals(getTestRunMessageValue("bucketName"), createdBucket.getName());
+		assertFalse(bucketListNames().contains(bucketName));
+		createBucket(bucketName);
+		assertTrue(bucketListNames().contains(bucketName));
 	}
 	
 	@Test
 	public void createBucketWithOptionalAttributes() throws Exception {
+		assertFalse(bucketListNames().contains(bucketName));
 		upsertOnTestRunMessage("bucketName", bucketName);
-		Bucket createdBucket = runFlowAndGetPayload("create-bucket-optional-attributes");
-		assertEquals(getTestRunMessageValue("bucketName"), createdBucket.getName());
+		runFlowAndGetPayload("create-bucket-optional-attributes");
+		assertTrue(bucketListNames().contains(bucketName));
 	}
 	
 }

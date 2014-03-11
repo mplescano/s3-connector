@@ -10,6 +10,8 @@ package org.mule.module.s3.automation.testcases;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,12 +28,14 @@ public class DeleteBucketTestCases extends S3TestParent {
 	
 	@Test
 	public void deleteCreatedBucket() throws Exception {
+		assertTrue(bucketListNames().contains(bucketName));
 		deleteBucket(bucketName);
 		assertFalse(bucketListNames().contains(bucketName));
 	}
 	
 	@Test
 	public void deleteCreatedBucketOptionalAttributes() throws Exception {
+		assertTrue(bucketListNames().contains(bucketName));
 		upsertOnTestRunMessage("bucketName", bucketName);
 		runFlowAndGetPayload("delete-bucket-optional-attributes");
 		assertFalse(bucketListNames().contains(bucketName));
