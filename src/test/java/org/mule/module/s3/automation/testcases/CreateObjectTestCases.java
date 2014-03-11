@@ -25,7 +25,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class CreateObjectTestCases extends S3TestParent {
@@ -124,6 +123,7 @@ public class CreateObjectTestCases extends S3TestParent {
 		upsertOnTestRunMessage("contentLength",
 				Long.valueOf(content.getBytes("UTF-8").length));
 	}
+	
 	private void testString(String flow) throws Exception {
 		addStringToMessage();
 		runFlowCheckNullPayload(flow);
@@ -171,32 +171,27 @@ public class CreateObjectTestCases extends S3TestParent {
 			throws Exception {
 		testInputStream("create-object-child-elements-create-object-manually");
 	}
-
-	@Ignore
+	
 	@Test
 	public void createByteArrayObjectChildElementsNone() throws Exception {
 		testByteArray("create-object-child-elements-none");
 	}
 	
-	@Ignore
 	@Test
 	public void createByteArrayObjectChildElementsNoneVersioningEnabled() {
 		
 	}
 	
-	@Ignore
 	@Test
 	public void createByteArrayObjectChildElementsFromMessageVersioningEnabled() {
 		
 	}
 	
-	@Ignore
 	@Test
 	public void createByteArrayObjectChildElementsCreateObjectsManually() {
 		
 	}
 	
-	@Ignore
 	@Test
 	public void createByteArrayObjectChildElementsFromMessage()
 			throws Exception {
@@ -268,7 +263,6 @@ public class CreateObjectTestCases extends S3TestParent {
 		testStringOptionalAttributes("create-object-optional-attributes");
 	}
 
-	@Ignore
 	@Test
 	public void testCreateInputStreamObjectOptionalAttributes() throws Exception {
 		testInputStreamOptionalAttributes("create-object-optional-attributes");
