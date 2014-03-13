@@ -205,11 +205,16 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     </flow>
     
     <flow name="list-objects-optional-attributes" doc:name="list-objects-optional-attributes">
-        <s3:list-objects config-ref="Amazon_S3"    doc:name="List objects" bucketName="#[payload.bucketName]" prefix="#[payload.prefix]"/>
+        <s3:list-objects config-ref="Amazon_S3"    doc:name="List objects" bucketName="#[payload.bucketName]" prefix="#[payload.prefix]" marker="#[payload.marker]" delimiter="#[payload.delimiter]" maxKeys="#[payload.maxKeys]" encodingType="#[payload.encodingType]" />
     </flow>
     
     <flow name="list-object-versions" doc:name="list-objects-versions">
-        <s3:list-object-versions config-ref="Amazon_S3"    doc:name="List object versions" bucketName="#[payload.bucketName]">
+        <s3:list-object-versions config-ref="Amazon_S3"    doc:name="List object versions" bucketName="#[payload.bucketName]" >
+        </s3:list-object-versions>
+    </flow>
+    
+    <flow name="list-object-versions-optional-attributes" doc:name="list-objects-versions">
+        <s3:list-object-versions config-ref="Amazon_S3"    doc:name="List object versions" bucketName="#[payload.bucketName]" prefix="#[payload.prefix]" keyMarker="#[payload.keyMarker]" versionIdMarker="#[payload.versionIdMarker]" delimiter="#[payload.delimiter]" maxResults="#[payload.maxResults]">
         </s3:list-object-versions>
     </flow>
     
