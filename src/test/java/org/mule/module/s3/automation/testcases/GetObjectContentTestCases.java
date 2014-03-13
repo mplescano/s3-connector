@@ -8,7 +8,7 @@
 
 package org.mule.module.s3.automation.testcases;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -29,9 +29,9 @@ import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 
-import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.google.common.io.ByteSource;
 
 public class GetObjectContentTestCases extends S3TestParent {
 	
@@ -65,6 +65,17 @@ public class GetObjectContentTestCases extends S3TestParent {
 		
 	}
 	
+	/**
+	 * Utility method to compare InputStreams without modifying their content. Use this instead
+	 * of IOUtils.contentEquals.
+	 */
+	private void assertEqualStreams(InputStream stream1, InputStream stream2) throws IOException {
+		ByteSource bytes1 = ByteSource.wrap(IOUtils.toByteArray(stream1));
+		ByteSource bytes2 = ByteSource.wrap(IOUtils.toByteArray(stream2));
+		if (!bytes1.contentEquals(bytes2)) {
+			throw new AssertionError("Stream contents were not equal. Stream lengths were " + bytes1.size() + " and " + bytes2.size() + " respectively.");
+		}
+	}
 	
 	private void getObjectContentOptionalAttributesVerifications(Map<String, Object> testObjects, HashMap<String,Object> updatedUserMetadata){
 		
@@ -76,6 +87,9 @@ public class GetObjectContentTestCases extends S3TestParent {
 
  		S3ObjectInputStream expectedObjectContent;
  		S3ObjectInputStream actualObjectContent;
+ 		
+ 		ByteSource expectedBytes;
+ 		ByteSource actualBytes;
 		
 		testObjects.put("versioningStatus", "ENABLED");
 		
@@ -91,48 +105,48 @@ public class GetObjectContentTestCases extends S3TestParent {
 			
 			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
-			
 			S3Object s3object = (S3Object) getObjectResponse.getMessage().getPayload();
 			expectedObjectContent = s3object.getObjectContent();
-		 	ObjectMetadata objectMetadata = s3object.getObjectMetadata();
-			
-			testObjects.put("modifiedSince", (Date) objectMetadata.getLastModified());
-			testObjects.put("unmodifiedSince", (Date) objectMetadata.getLastModified());
+			expectedBytes = ByteSource.wrap(IOUtils.toByteArray(expectedObjectContent));
 			
 			// get-object-content-optional-attributes-unmodified-since
 			
+			Date lastModified = s3object.getObjectMetadata().getLastModified();
+			testObjects.put("unmodifiedSince", lastModified);
+			
 			getObjectOptionalAttributesFlow = lookupMessageProcessor("get-object-content-optional-attributes-unmodified-since");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
-			
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
+			actualBytes = ByteSource.wrap(IOUtils.toByteArray(actualObjectContent));
+			
+			assertTrue(expectedBytes.contentEquals(actualBytes));
 
-	
-			assertTrue(IOUtils.contentEquals(expectedObjectContent, actualObjectContent));
-			
-			// update the object
-			
-			testObjects.put("userMetadata", updatedUserMetadata);
-			
-			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
-			createObjectFlow.process(getTestEvent(testObjects));
-			
 			// get-object-content-optional-attributes-version-id
 			
 			getObjectOptionalAttributesFlow = lookupMessageProcessor("get-object-content-optional-attributes-version-id");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
-
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
-
-			assertTrue(IOUtils.contentEquals(expectedObjectContent, actualObjectContent));
-
+			actualBytes = ByteSource.wrap(IOUtils.toByteArray(actualObjectContent));
+			
+			assertTrue(expectedBytes.contentEquals(actualBytes));
+			
+			// update the object
+			
+			testObjects.put("userMetadata", updatedUserMetadata);
+			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
+			createObjectFlow.process(getTestEvent(testObjects));
+			
 			// get-object-content-optional-attributes-modified-since
+			
+			testObjects.put("modifiedSince", lastModified);
 			
 			getObjectOptionalAttributesFlow = lookupMessageProcessor("get-object-content-optional-attributes-modified-since");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
-			
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
-
-			assertTrue(IOUtils.contentEquals(expectedObjectContent, actualObjectContent));
+			actualBytes = ByteSource.wrap(IOUtils.toByteArray(actualObjectContent));
+			
+			assertTrue(expectedBytes.contentEquals(actualBytes));
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
