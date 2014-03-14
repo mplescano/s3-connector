@@ -437,6 +437,15 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <string javaType="java.lang.String" required="true" description="The target bucket's name." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="false" description="Causes keys that contain the same string between the prefix and the first occurrence of the delimiter to be rolled up into a single result element in the  list. These rolled-up keys are not returned elsewhere in the response. The most commonly used delimiter is &quot;/&quot;, which simulates a hierarchical organization similar to a file system directory structure." caption="Delimiter" name="delimiter"></string>
+        <string javaType="java.lang.String" required="false" description="Where in the sorted list of all versions in the specified bucket to begin returning results. Results are always ordered first lexicographically (i.e. alphabetically) and then from most recent version to least recent version. If a keyMarker is used without a versionIdMarker, results begin immediately after that key's last version. When a keyMarker is used with a versionIdMarker, results begin immediately after the version with the specified key and version ID." caption="Key Marker" name="keyMarker"></string>
+        <string javaType="java.lang.String" required="false" description="Optional parameter restricting the response to keys which begin with the specified prefix. You can use prefixes to separate a bucket into different sets of keys in a way similar to how a file system uses folders." caption="Prefix" name="prefix"></string>
+        <string javaType="java.lang.String" required="false" description="Where in the sorted list of all versions in the specified bucket to begin returning results. Results are always ordered first lexicographically (i.e. alphabetically) and then from most recent version to least recent version. A keyMarker must be specified when specifying a versionIdMarker. Results begin immediately after the version with the specified key and version ID." caption="Version Id Marker" name="versionIdMarker"></string>
+        <integer step="1" min="0" javaType="java.lang.Integer" required="false" description="The maximum number of results to include in the response." caption="Max Results" name="maxResults"></integer>
+        <enum allowsCustom="true" defaultValue="NOT_ENCODED" javaType="org.mule.module.s3.EncodingType" required="false" supportsExpressions="true" description="The encoding method to be applied on the response. An object key can contain any Unicode character; however, XML 1.0 parser cannot parse some characters, such as characters with an ASCII value from 0 to 10. For characters that are not supported in XML 1.0, you can add this parameter to request that Amazon S3 encode the keys in the response." caption="Encoding Type" name="encodingType">
+          <option value="NOT_ENCODED"></option>
+          <option value="URL"></option>
+        </enum>
       </group>
     </attribute-category>
     <attribute-category description="Connection." caption="Connection">
@@ -452,7 +461,14 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
     <attribute-category description="General." caption="General">
       <group caption="General" id="general">
         <string javaType="java.lang.String" required="true" description="The target bucket's name." caption="Bucket Name" name="bucketName"></string>
+        <string javaType="java.lang.String" required="false" description="Causes keys that contain the same string between a prefix and the first occurrence of the delimiter to be rolled up into a single result element. These rolled-up keys are not returned elsewhere in the response. The most commonly used delimiter is &quot;/&quot;, which simulates a hierarchical organization similar to a file system directory structure." caption="Delimiter" name="delimiter"></string>
+        <string javaType="java.lang.String" required="false" description="Where in the bucket to begin listing. The list will only include keys that occur lexicographically after the marker." caption="Marker" name="marker"></string>
         <string javaType="java.lang.String" required="false" description="The prefix of the objects to be listed. If unspecified, all objects are listed." caption="Prefix" name="prefix"></string>
+        <integer step="1" min="0" javaType="java.lang.Integer" required="false" description="The maximum number of keys to include in the response. If maxKeys is not specified, Amazon S3 will limit the number of results in the response." caption="Max Keys" name="maxKeys"></integer>
+        <enum allowsCustom="true" defaultValue="NOT_ENCODED" javaType="org.mule.module.s3.EncodingType" required="false" supportsExpressions="true" description="The encoding method to be applied on the response. An object key can contain any Unicode character; however, XML 1.0 parser cannot parse some characters, such as characters with an ASCII value from 0 to 10. For characters that are not supported in XML 1.0, you can add this parameter to request that Amazon S3 encode the keys in the response." caption="Encoding Type" name="encodingType">
+          <option value="NOT_ENCODED"></option>
+          <option value="URL"></option>
+        </enum>
       </group>
     </attribute-category>
     <attribute-category description="Connection." caption="Connection">

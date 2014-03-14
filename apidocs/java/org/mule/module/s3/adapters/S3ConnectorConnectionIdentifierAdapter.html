@@ -1907,9 +1907,10 @@ From class
             Iterable&lt;S3VersionSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#listObjectVersions(java.lang.String)">listObjectVersions</a></span>(String bucketName)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#listObjectVersions(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Integer, org.mule.module.s3.EncodingType)">listObjectVersions</a></span>(String bucketName, String prefix, String keyMarker, String versionIdMarker, String delimiter, Integer maxResults, <a href="../../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a> encodingType)</nobr>
         
-        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning enabled.</div>
+        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning
+ enabled.</div>
   
   </td></tr>
 
@@ -1925,7 +1926,7 @@ From class
             Iterable&lt;S3ObjectSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#listObjects(java.lang.String, java.lang.String)">listObjects</a></span>(String bucketName, String prefix)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#listObjects(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Integer, org.mule.module.s3.EncodingType)">listObjects</a></span>(String bucketName, String prefix, String marker, String delimiter, Integer maxKeys, <a href="../../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a> encodingType)</nobr>
         
         <div class="jd-descrdiv">Lazily lists all objects for a given prefix.</div>
   

@@ -909,10 +909,10 @@ Summary:
             
             
             
-            SimpleAmazonS3AmazonDevKitImpl.S3VersionSummaryIterable</nobr>
+            Iterable&lt;S3VersionSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3AmazonDevKitImpl.html#listObjectVersions(java.lang.String)">listObjectVersions</a></span>(String bucketName)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3AmazonDevKitImpl.html#listObjectVersions(com.amazonaws.services.s3.model.ListVersionsRequest)">listObjectVersions</a></span>(ListVersionsRequest request)</nobr>
         
   </td></tr>
 
@@ -928,7 +928,7 @@ Summary:
             Iterable&lt;S3ObjectSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3AmazonDevKitImpl.html#listObjects(java.lang.String, java.lang.String)">listObjects</a></span>(String bucketName, String prefix)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3AmazonDevKitImpl.html#listObjects(com.amazonaws.services.s3.model.ListObjectsRequest)">listObjects</a></span>(ListObjectsRequest request)</nobr>
         
   </td></tr>
 
@@ -1578,7 +1578,7 @@ From interface
             Iterable&lt;S3VersionSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#listObjectVersions(java.lang.String)">listObjectVersions</a></span>(String bucketName)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#listObjectVersions(com.amazonaws.services.s3.model.ListVersionsRequest)">listObjectVersions</a></span>(ListVersionsRequest request)</nobr>
         
   </td></tr>
 
@@ -1594,7 +1594,7 @@ From interface
             Iterable&lt;S3ObjectSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#listObjects(java.lang.String, java.lang.String)">listObjects</a></span>(String bucketName, String prefix)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#listObjects(com.amazonaws.services.s3.model.ListObjectsRequest)">listObjects</a></span>(ListObjectsRequest request)</nobr>
         
   </td></tr>
 
@@ -2675,7 +2675,7 @@ From interface
 </div>
 
 
-<A NAME="listObjectVersions(java.lang.String)"></A>
+<A NAME="listObjectVersions(com.amazonaws.services.s3.model.ListVersionsRequest)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2685,10 +2685,10 @@ From interface
          
          
          
-        SimpleAmazonS3AmazonDevKitImpl.S3VersionSummaryIterable
+        Iterable&lt;S3VersionSummary&gt;
       </span>
       <span class="sympad">listObjectVersions</span>
-      <span class="normal">(String bucketName)</span>
+      <span class="normal">(ListVersionsRequest request)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2705,7 +2705,7 @@ From interface
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>bucketName</td>
+          <th>request</td>
           <td></td>
         </tr>
       </table>
@@ -2715,7 +2715,7 @@ From interface
 </div>
 
 
-<A NAME="listObjects(java.lang.String, java.lang.String)"></A>
+<A NAME="listObjects(com.amazonaws.services.s3.model.ListObjectsRequest)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2728,7 +2728,7 @@ From interface
         Iterable&lt;S3ObjectSummary&gt;
       </span>
       <span class="sympad">listObjects</span>
-      <span class="normal">(String bucketName, String prefix)</span>
+      <span class="normal">(ListObjectsRequest request)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2745,11 +2745,7 @@ From interface
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>bucketName</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>prefix</td>
+          <th>request</td>
           <td></td>
         </tr>
       </table>

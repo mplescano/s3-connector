@@ -9,16 +9,17 @@ import org.mule.api.devkit.ProcessAdapter;
 import org.mule.api.devkit.ProcessTemplate;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.api.processor.MessageProcessor;
+import org.mule.module.s3.EncodingType;
 import org.mule.module.s3.S3Connector;
 import org.mule.module.s3.connectivity.S3ConnectorConnectionManager;
 import org.mule.security.oauth.callback.ProcessCallback;
 
 
 /**
- * ListObjectsMessageProcessor invokes the {@link org.mule.module.s3.S3Connector#listObjects(java.lang.String, java.lang.String)} method in {@link S3Connector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+ * ListObjectsMessageProcessor invokes the {@link org.mule.module.s3.S3Connector#listObjects(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Integer, org.mule.module.s3.EncodingType)} method in {@link S3Connector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-07T02:19:11-06:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-14T11:58:02-05:00", comments = "Build M4.1875.17b58a3")
 public class ListObjectsMessageProcessor
     extends AbstractConnectedProcessor
     implements MessageProcessor
@@ -28,6 +29,14 @@ public class ListObjectsMessageProcessor
     protected String _bucketNameType;
     protected Object prefix;
     protected String _prefixType;
+    protected Object marker;
+    protected String _markerType;
+    protected Object delimiter;
+    protected String _delimiterType;
+    protected Object maxKeys;
+    protected Integer _maxKeysType;
+    protected Object encodingType;
+    protected EncodingType _encodingTypeType;
 
     public ListObjectsMessageProcessor(String operationName) {
         super(operationName);
@@ -63,12 +72,48 @@ public class ListObjectsMessageProcessor
     }
 
     /**
+     * Sets delimiter
+     * 
+     * @param value Value to set
+     */
+    public void setDelimiter(Object value) {
+        this.delimiter = value;
+    }
+
+    /**
+     * Sets encodingType
+     * 
+     * @param value Value to set
+     */
+    public void setEncodingType(Object value) {
+        this.encodingType = value;
+    }
+
+    /**
+     * Sets marker
+     * 
+     * @param value Value to set
+     */
+    public void setMarker(Object value) {
+        this.marker = value;
+    }
+
+    /**
      * Sets prefix
      * 
      * @param value Value to set
      */
     public void setPrefix(Object value) {
         this.prefix = value;
+    }
+
+    /**
+     * Sets maxKeys
+     * 
+     * @param value Value to set
+     */
+    public void setMaxKeys(Object value) {
+        this.maxKeys = value;
     }
 
     /**
@@ -94,6 +139,10 @@ public class ListObjectsMessageProcessor
             moduleObject = findOrCreate(S3ConnectorConnectionManager.class, true, event);
             final String _transformedBucketName = ((String) evaluateAndTransform(getMuleContext(), event, ListObjectsMessageProcessor.class.getDeclaredField("_bucketNameType").getGenericType(), null, bucketName));
             final String _transformedPrefix = ((String) evaluateAndTransform(getMuleContext(), event, ListObjectsMessageProcessor.class.getDeclaredField("_prefixType").getGenericType(), null, prefix));
+            final String _transformedMarker = ((String) evaluateAndTransform(getMuleContext(), event, ListObjectsMessageProcessor.class.getDeclaredField("_markerType").getGenericType(), null, marker));
+            final String _transformedDelimiter = ((String) evaluateAndTransform(getMuleContext(), event, ListObjectsMessageProcessor.class.getDeclaredField("_delimiterType").getGenericType(), null, delimiter));
+            final Integer _transformedMaxKeys = ((Integer) evaluateAndTransform(getMuleContext(), event, ListObjectsMessageProcessor.class.getDeclaredField("_maxKeysType").getGenericType(), null, maxKeys));
+            final EncodingType _transformedEncodingType = ((EncodingType) evaluateAndTransform(getMuleContext(), event, ListObjectsMessageProcessor.class.getDeclaredField("_encodingTypeType").getGenericType(), null, encodingType));
             Object resultPayload;
             ProcessTemplate<Object, Object> processTemplate = ((ProcessAdapter<Object> ) moduleObject).getProcessTemplate();
             resultPayload = processTemplate.execute(new ProcessCallback<Object,Object>() {
@@ -110,7 +159,7 @@ public class ListObjectsMessageProcessor
                 public Object process(Object object)
                     throws Exception
                 {
-                    return ((S3Connector) object).listObjects(_transformedBucketName, _transformedPrefix);
+                    return ((S3Connector) object).listObjects(_transformedBucketName, _transformedPrefix, _transformedMarker, _transformedDelimiter, _transformedMaxKeys, _transformedEncodingType);
                 }
 
             }

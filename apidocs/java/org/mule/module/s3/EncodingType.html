@@ -117,7 +117,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
 <title>
 
-  AccessControlList
+  EncodingType
 
 
 | Mule S3 Connector
@@ -298,8 +298,8 @@
               
     <li><h2>Enums</h2>
       <ul>
-          <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></li>
-          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a></li>
       </ul>
     </li>
@@ -424,7 +424,7 @@ Summary:
     final 
     
     enum
-<h1>AccessControlList</h1>
+<h1>EncodingType</h1>
 
 
 
@@ -471,7 +471,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.AccessControlList</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.EncodingType</td>
     </tr>
     
 
@@ -487,8 +487,10 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>A wrapper over CannedAccessControlList, as a workaround over mule cloud
- connector api issue regarding enums processing
+<p>This enum is needed to display the proper options for encoding types in Studio.
+ Methods of the Amazon SDK for Java only receive a String. For an example,
+ see <code><a href="null#withEncodingType(java.lang.String)">withEncodingType(String)</a></code>
+
 </p>
 
 
@@ -532,50 +534,15 @@ Summary:
 
     
     <tr class="alt-color api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>&nbsp;</td>
-        <td class="jd-linkcol">AUTHENTICATED_READ&nbsp;</td>
+        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a>&nbsp;</td>
+        <td class="jd-linkcol">NOT_ENCODED&nbsp;</td>
         <td class="jd-descrcol" width="100%">&nbsp;</td>
     </tr>
     
     
     <tr class=" api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>&nbsp;</td>
-        <td class="jd-linkcol">BUCKET_OWNER_FULL_CONTROL&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>&nbsp;</td>
-        <td class="jd-linkcol">BUCKET_OWNER_READ&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-    <tr class=" api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>&nbsp;</td>
-        <td class="jd-linkcol">LOG_DELIVERY_WRITE&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>&nbsp;</td>
-        <td class="jd-linkcol">PRIVATE&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-    <tr class=" api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>&nbsp;</td>
-        <td class="jd-linkcol">PUBLIC_READ&nbsp;</td>
-        <td class="jd-descrcol" width="100%">&nbsp;</td>
-    </tr>
-    
-    
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>&nbsp;</td>
-        <td class="jd-linkcol">PUBLIC_READ_WRITE&nbsp;</td>
+        <td class="jd-descrcol"><a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a>&nbsp;</td>
+        <td class="jd-linkcol">URL&nbsp;</td>
         <td class="jd-descrcol" width="100%">&nbsp;</td>
     </tr>
     
@@ -598,9 +565,20 @@ Summary:
           <td class="jd-typecol"><nobr>
           private
           
+          final
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/s3/EncodingType.html#sdkValue">sdkValue</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
           
-          CannedAccessControlList</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../org/mule/module/s3/AccessControlList.html#s3Equivalent">s3Equivalent</a></td>
+          final
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../org/mule/module/s3/EncodingType.html#text">text</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -691,10 +669,10 @@ java.lang.Enum
             
             
             
-            CannedAccessControlList</nobr>
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/AccessControlList.html#toS3Equivalent()">toS3Equivalent</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/EncodingType.html#sdkValue()">sdkValue</a></span>()</nobr>
         
   </td></tr>
 
@@ -705,12 +683,12 @@ java.lang.Enum
             
             
             
-            static
             
-            <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></nobr>
+            
+            String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/AccessControlList.html#valueOf(java.lang.String)">valueOf</a></span>(String name)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/EncodingType.html#toString()">toString</a></span>()</nobr>
         
   </td></tr>
 
@@ -720,13 +698,29 @@ java.lang.Enum
         <td class="jd-typecol"><nobr>
             
             
+            
+            static
+            
+            <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/EncodingType.html#valueOf(java.lang.String)">valueOf</a></span>(String name)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
             final
             static
             
-            <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList[]</a></nobr>
+            <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType[]</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/AccessControlList.html#values()">values</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/EncodingType.html#values()">values</a></span>()</nobr>
         
   </td></tr>
 
@@ -1219,7 +1213,7 @@ From interface
 
 
 
-<A NAME="AUTHENTICATED_READ"></A>
+<A NAME="NOT_ENCODED"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1227,9 +1221,9 @@ From interface
         public 
         static 
         final 
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
+        <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a>
       </span>
-        AUTHENTICATED_READ
+        NOT_ENCODED
     </h4>
       <div class="api-level">
         
@@ -1249,7 +1243,7 @@ From interface
 
 
 
-<A NAME="BUCKET_OWNER_FULL_CONTROL"></A>
+<A NAME="URL"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1257,159 +1251,9 @@ From interface
         public 
         static 
         final 
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
+        <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a>
       </span>
-        BUCKET_OWNER_FULL_CONTROL
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="BUCKET_OWNER_READ"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
-      </span>
-        BUCKET_OWNER_READ
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="LOG_DELIVERY_WRITE"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
-      </span>
-        LOG_DELIVERY_WRITE
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="PRIVATE"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
-      </span>
-        PRIVATE
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="PUBLIC_READ"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
-      </span>
-        PUBLIC_READ
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="PUBLIC_READ_WRITE"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-        static 
-        final 
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
-      </span>
-        PUBLIC_READ_WRITE
+        URL
     </h4>
       <div class="api-level">
         
@@ -1442,17 +1286,47 @@ From interface
 
 
 
-<A NAME="s3Equivalent"></A>
+<A NAME="sdkValue"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         private 
          
-         
-        CannedAccessControlList
+        final 
+        String
       </span>
-        s3Equivalent
+        sdkValue
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="text"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+        final 
+        String
+      </span>
+        text
     </h4>
       <div class="api-level">
         
@@ -1489,7 +1363,7 @@ From interface
 
 
 
-<A NAME="toS3Equivalent()"></A>
+<A NAME="sdkValue()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1499,9 +1373,40 @@ From interface
          
          
          
-        CannedAccessControlList
+        String
       </span>
-      <span class="sympad">toS3Equivalent</span>
+      <span class="sympad">sdkValue</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="toString()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">toString</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1530,7 +1435,7 @@ From interface
          
          
          
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a>
+        <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a>
       </span>
       <span class="sympad">valueOf</span>
       <span class="normal">(String name)</span>
@@ -1570,7 +1475,7 @@ From interface
         final 
          
          
-        <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList[]</a>
+        <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType[]</a>
       </span>
       <span class="sympad">values</span>
       <span class="normal">()</span>
