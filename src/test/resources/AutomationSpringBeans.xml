@@ -533,6 +533,10 @@
 		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
 		<entry key="prefix" value="prefix/" />
 		<entry key="expectedResults" value="2" />
+		<entry key="marker" value="!" />
+		<entry key="delimiter" value="/" />
+		<entry key="maxKeys" value="1000" />
+		<entry key="encodingType" value="NOT_ENCODED" />
 	</util:map>
 	
 	<!-- list-objects input-stream -->
@@ -595,7 +599,9 @@
 	<util:map id="listObjectVersionsTestData" map-class="java.util.HashMap"
 		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
 		<entry key="prefix" value="prefix/" />
-		<entry key="expectedResults" value="2" />
+		<entry key="delimiter" value="/" />
+		<entry key="maxResults" value="3" />
+		<entry key="encodingType" value="NOT_ENCODED" />
 	</util:map>
 	
 	<!-- list-object-versions input-stream -->
@@ -622,7 +628,7 @@
 	
 	<util:map id="listObjectVersionsByteArrayObjectTestData" map-class="java.util.HashMap"
 		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
-		<entry key="key" value="byteArrayKey" />
+		<entry key="key" value="prefix/byteArrayKey" />
 		<entry key="userMetadata" value-ref="listObjectVersionsByteArrayObjectUserMetadata" />			
 	</util:map>
 	
@@ -649,7 +655,7 @@
 	
 	<util:map id="listObjectVersionsFileObjectTestData" map-class="java.util.HashMap"
 		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
-		<entry key="key" value="fileKey" />
+		<entry key="key" value="prefix/fileKey" />
 		<entry key="userMetadata" value-ref="listObjectVersionsFileObjectUserMetadata" />			
 	</util:map>
 

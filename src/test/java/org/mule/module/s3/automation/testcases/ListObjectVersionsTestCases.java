@@ -23,14 +23,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.sshd.common.util.IoUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
+import org.mule.api.MuleException;
 import org.mule.api.processor.MessageProcessor;
 
 import com.amazonaws.services.s3.model.S3VersionSummary;
+import com.amazonaws.services.s3.model.VersionListing;
 
 public class ListObjectVersionsTestCases extends S3TestParent {
 	
@@ -62,13 +65,11 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 	}
 	
 	private void createObjectVersioningEnabled(HashMap<String, Object> initializationData) {
-		
 		try {
 			
 			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(initializationData));
-			
-			objectsVersionIds.add(createObjectResponse.getMessage().getPayload().toString());		
+			objectsVersionIds.add(createObjectResponse.getMessage().getPayload().toString());
 			objectsKeyValues.add(initializationData.get("key").toString());
 			
 		} catch (Exception e) {
@@ -76,7 +77,6 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 			e.printStackTrace();
 			fail();
 		}
-		
 	}
 	
 	@Before
@@ -202,7 +202,6 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 				assertEquals(bucketName, s3VersionSummary.getBucketName());
 				assertTrue(objectsVersionIds.contains(s3VersionSummary.getVersionId()));
 				assertTrue(objectsKeyValues.contains(s3VersionSummary.getKey()));
-
 			}	
 			
 			assertEquals(Integer.parseInt("4"), objectCount);
@@ -218,5 +217,49 @@ public class ListObjectVersionsTestCases extends S3TestParent {
 		}
 
 	}
+    
+    @Test
+    public void testListObjectVersionsOptionalAttributes() throws MuleException, Exception {
+    	int objectCount = 0;
+    	File tempFile = null;
+    	InputStream stream = null;
+    	Iterable<S3VersionSummary> s3ObjectsSummaries = null;
+    	Iterator<S3VersionSummary> iterator;
+    	
+    	testObjects.put("versioningStatus", "ENABLED");
+		MessageProcessor setBucketVersioningStatusFlow = lookupMessageProcessor("set-bucket-versioning-status");
+		setBucketVersioningStatusFlow.process(getTestEvent(testObjects));
+		
+    	createObjectVersioningEnabled(initializeByteArrayTestData());
+    	createObjectVersioningEnabled(initializeFileTestData(tempFile));
+    	createObjectVersioningEnabled(initializeInputStreamTestData(stream));
+    	createObjectVersioningEnabled(initializeStringTestData());
+    	
+    	testObjects.put("versionIdMarker", objectsVersionIds.get(0));
+    	testObjects.put("keyMarker", objectsKeyValues.get(0));
+    	
+    	MessageProcessor listObjectsFlow = lookupMessageProcessor("list-object-versions-optional-attributes");
+		MuleEvent listObjectsResponse = listObjectsFlow.process(getTestEvent(testObjects));
+		try {
+			s3ObjectsSummaries = (Iterable<S3VersionSummary>) listObjectsResponse.getMessage().getPayload();
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();
+		} finally {
+			if (tempFile != null) { tempFile.delete(); }
+			if (stream != null) { IoUtils.closeQuietly(stream); }
+		}
+		
+		iterator = s3ObjectsSummaries.iterator();
+		while (iterator.hasNext()) {
+			S3VersionSummary versionSummary = iterator.next();
+			objectCount++;
+			assertEquals(bucketName, versionSummary.getBucketName());
+			assertTrue(objectsVersionIds.contains(versionSummary.getVersionId()));
+			assertTrue(objectsKeyValues.contains(versionSummary.getKey()));
+		}
+		
+		assertEquals(3, objectCount);
+    }
     
 }

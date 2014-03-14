@@ -11,6 +11,7 @@ package org.mule.module.s3.integration;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.BucketWebsiteConfiguration;
+import com.amazonaws.services.s3.model.ListVersionsRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3VersionSummary;
 import org.junit.After;
@@ -89,7 +90,7 @@ public class S3TestDriver
         assertNotNull(bucket);
         assertEquals(bucketName, bucket.getName());
         assertEquals(bucketsCount + 1, connector.listBuckets().size());
-        assertFalse(connector.listObjects(bucketName, "").iterator().hasNext());
+        assertFalse(connector.listObjects(bucketName, "", null, null, null, null).iterator().hasNext());
 
         // op2
         String objectVersion = connector.createObject(bucketName, "anObject", "hello world!", null, null,
@@ -101,7 +102,7 @@ public class S3TestDriver
 
         // pos2
         assertNull(objectVersion);
-        assertTrue(connector.listObjects(bucketName, "").iterator().hasNext());
+        assertTrue(connector.listObjects(bucketName, "", null, null, null, null).iterator().hasNext());
     }
 
     /**
@@ -122,7 +123,7 @@ public class S3TestDriver
         assertNotNull(versionId2);
         assertFalse(versionId1.equals(versionId2));
         
-        Iterable<S3VersionSummary> version = connector.listObjectVersions(bucketName);
+        Iterable<S3VersionSummary> version = connector.listObjectVersions(bucketName, null, null, null, null, null, null);
         assertTrue(version.iterator().hasNext());
     }
 

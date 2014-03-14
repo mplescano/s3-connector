@@ -265,39 +265,130 @@ public class S3Connector
     }
 
     /**
-     * Lazily lists all objects for a given prefix. As S3 does not limit in any way
-     * the number of objects, such listing can retrieve an arbitrary amount of
-     * objects, and may need to perform extra calls to the api while it is iterated.
-     *
-     * {@sample.xml ../../../doc/mule-module-s3.xml.sample s3:list-objects}
-     *
-     * @param bucketName the target bucket's name
-     * @param prefix the prefix of the objects to be listed. If unspecified, all
-     *            objects are listed
-     * @return An iterable
-     */
+	 * Lazily lists all objects for a given prefix. As S3 does not limit in any
+	 * way the number of objects, such listing can retrieve an arbitrary amount
+	 * of objects, and may need to perform extra calls to the api while it is
+	 * iterated.
+	 * 
+	 * {@sample.xml ../../../doc/mule-module-s3.xml.sample s3:list-objects}
+	 * 
+	 * @param bucketName
+	 *            the target bucket's name
+	 * @param prefix
+	 *            the prefix of the objects to be listed. If unspecified, all
+	 *            objects are listed
+	 * @param marker
+	 *            where in the bucket to begin listing. The list will only
+	 *            include keys that occur lexicographically after the marker
+	 * @param delimiter
+	 *            causes keys that contain the same string between a prefix and
+	 *            the first occurrence of the delimiter to be rolled up into a
+	 *            single result element. These rolled-up keys are not returned
+	 *            elsewhere in the response. The most commonly used delimiter is
+	 *            "/", which simulates a hierarchical organization similar to a
+	 *            file system directory structure.
+	 * @param maxKeys
+	 *            The maximum number of keys to include in the response. If
+	 *            maxKeys is not specified, Amazon S3 will limit the number of
+	 *            results in the response.
+	 * @param encodingType
+	 *            The encoding method to be applied on the response. An object
+	 *            key can contain any Unicode character; however, XML 1.0 parser
+	 *            cannot parse some characters, such as characters with an ASCII
+	 *            value from 0 to 10. For characters that are not supported in
+	 *            XML 1.0, you can add this parameter to request that Amazon S3
+	 *            encode the keys in the response.
+	 * @return An iterable
+	 */
     @Processor
     public Iterable<S3ObjectSummary> listObjects(String bucketName,
-                                                 @Optional String prefix)
+    		                                     @Optional String prefix,
+    		                                     @Optional String marker,
+    		                                     @Optional String delimiter,
+    		                                     @Optional Integer maxKeys,
+    		                                     @Default("NOT_ENCODED") EncodingType encodingType)
     {
-        return client.listObjects(bucketName, prefix);
+    	String encodingTypeString = null;
+    	if (encodingType != null) {
+    		encodingTypeString = encodingType.sdkValue();
+    	}
+    	ListObjectsRequest request = new ListObjectsRequest(bucketName,
+    			                                            prefix,
+    			                                            marker,
+    			                                            delimiter,
+    			                                            maxKeys)
+    	                                                    .withEncodingType(encodingTypeString);
+    	return client.listObjects(request);
     }
     
     /**
-     * Lazily lists all object versions for a given bucket that has versioning enabled.
-     * As S3 does not limit in any way
-     * the number of objects, such listing can retrieve an arbitrary amount of
-     * object versions, and may need to perform extra calls to the api while it is iterated.
-     *
-     * {@sample.xml ../../../doc/mule-module-s3.xml.sample s3:list-object-versions}
-     *
-     * @param bucketName the target bucket's name
-     * @return An iterable
-     */
+	 * Lazily lists all object versions for a given bucket that has versioning
+	 * enabled. As S3 does not limit in any way the number of objects, such
+	 * listing can retrieve an arbitrary amount of object versions, and may need
+	 * to perform extra calls to the api while it is iterated.
+	 * 
+	 * {@sample.xml ../../../doc/mule-module-s3.xml.sample
+	 * s3:list-object-versions}
+	 * 
+	 * @param bucketName
+	 *            the target bucket's name
+	 * @param prefix
+	 *            optional parameter restricting the response to keys which
+	 *            begin with the specified prefix. You can use prefixes to
+	 *            separate a bucket into different sets of keys in a way similar
+	 *            to how a file system uses folders.
+	 * @param keyMarker
+	 *            where in the sorted list of all versions in the specified
+	 *            bucket to begin returning results. Results are always ordered
+	 *            first lexicographically (i.e. alphabetically) and then from
+	 *            most recent version to least recent version. If a keyMarker is
+	 *            used without a versionIdMarker, results begin immediately
+	 *            after that key's last version. When a keyMarker is used with a
+	 *            versionIdMarker, results begin immediately after the version
+	 *            with the specified key and version ID.
+	 * @param versionIdMarker
+	 *            where in the sorted list of all versions in the specified
+	 *            bucket to begin returning results. Results are always ordered
+	 *            first lexicographically (i.e. alphabetically) and then from
+	 *            most recent version to least recent version. A keyMarker must
+	 *            be specified when specifying a versionIdMarker. Results begin
+	 *            immediately after the version with the specified key and
+	 *            version ID.
+	 * @param delimiter
+	 *            causes keys that contain the same string between the prefix
+	 *            and the first occurrence of the delimiter to be rolled up into
+	 *            a single result element in the
+	 *            {@link VersionListing#getCommonPrefixes()} list. These
+	 *            rolled-up keys are not returned elsewhere in the response. The
+	 *            most commonly used delimiter is "/", which simulates a
+	 *            hierarchical organization similar to a file system directory
+	 *            structure.
+	 * @param maxResults
+	 *            the maximum number of results to include in the response.
+	 * @param encodingType
+	 *            the encoding method to be applied on the response. An object
+	 *            key can contain any Unicode character; however, XML 1.0 parser
+	 *            cannot parse some characters, such as characters with an ASCII
+	 *            value from 0 to 10. For characters that are not supported in
+	 *            XML 1.0, you can add this parameter to request that Amazon S3
+	 *            encode the keys in the response.
+	 * @return An iterable
+	 */
     @Processor
-    public Iterable<S3VersionSummary> listObjectVersions(String bucketName)
+    public Iterable<S3VersionSummary> listObjectVersions(String bucketName,
+    		                                             @Optional String prefix,
+    		                                             @Optional String keyMarker,
+    		                                             @Optional String versionIdMarker,
+    		                                             @Optional String delimiter,
+    		                                             @Optional Integer maxResults,
+    		                                             @Default("NOT_ENCODED") EncodingType encodingType)
     {
-        return client.listObjectVersions(bucketName);
+    	String sdkEncoding = null;
+    	if (encodingType != null) {
+    		sdkEncoding = encodingType.sdkValue();
+    	}
+    	ListVersionsRequest request = new ListVersionsRequest(bucketName, prefix, keyMarker, versionIdMarker, delimiter, maxResults).withEncodingType(sdkEncoding);
+        return client.listObjectVersions(request);
     }
     
     /**

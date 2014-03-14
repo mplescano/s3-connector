@@ -74,12 +74,12 @@ public interface SimpleAmazonS3
      * @param bucketName
      */
     void deleteBucketAndObjects(@NotNull String bucketName);
-
+        
     @NotNull
-    Iterable<S3ObjectSummary> listObjects(@NotNull String bucketName, String prefix);
+	Iterable<S3ObjectSummary> listObjects(@NotNull ListObjectsRequest request);
     
     @NotNull
-    Iterable<S3VersionSummary> listObjectVersions(@NotNull String bucketName);
+    Iterable<S3VersionSummary> listObjectVersions(@NotNull ListVersionsRequest request);
     
     void deleteBucketPolicy(@NotNull String bucketName);
 
