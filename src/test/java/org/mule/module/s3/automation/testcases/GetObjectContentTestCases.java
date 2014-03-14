@@ -8,7 +8,7 @@
 
 package org.mule.module.s3.automation.testcases;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
@@ -32,6 +32,7 @@ import org.mule.api.processor.MessageProcessor;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
+import com.google.common.io.ByteSource;
 
 public class GetObjectContentTestCases extends S3TestParent {
 	
@@ -76,6 +77,9 @@ public class GetObjectContentTestCases extends S3TestParent {
 
  		S3ObjectInputStream expectedObjectContent;
  		S3ObjectInputStream actualObjectContent;
+ 		
+ 		ByteSource expectedBytes;
+ 		ByteSource actualBytes;
 		
 		testObjects.put("versioningStatus", "ENABLED");
 		
@@ -94,6 +98,7 @@ public class GetObjectContentTestCases extends S3TestParent {
 			
 			S3Object s3object = (S3Object) getObjectResponse.getMessage().getPayload();
 			expectedObjectContent = s3object.getObjectContent();
+			expectedBytes = ByteSource.wrap(IOUtils.toByteArray(expectedObjectContent));
 		 	ObjectMetadata objectMetadata = s3object.getObjectMetadata();
 			
 			testObjects.put("modifiedSince", (Date) objectMetadata.getLastModified());
@@ -105,9 +110,10 @@ public class GetObjectContentTestCases extends S3TestParent {
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 			
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
-
+			actualBytes = ByteSource.wrap(IOUtils.toByteArray(actualObjectContent));
+			
 	
-			assertTrue(IOUtils.contentEquals(expectedObjectContent, actualObjectContent));
+			assertTrue(expectedBytes.contentEquals(actualBytes));
 			
 			// update the object
 			
@@ -122,8 +128,9 @@ public class GetObjectContentTestCases extends S3TestParent {
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
-
-			assertTrue(IOUtils.contentEquals(expectedObjectContent, actualObjectContent));
+			actualBytes = ByteSource.wrap(IOUtils.toByteArray(actualObjectContent));
+			
+			assertTrue(expectedBytes.contentEquals(actualBytes));
 
 			// get-object-content-optional-attributes-modified-since
 			
@@ -131,8 +138,9 @@ public class GetObjectContentTestCases extends S3TestParent {
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
 			
 			actualObjectContent = (S3ObjectInputStream) getObjectOptionalAttributesResponse.getMessage().getPayload();
-
-			assertTrue(IOUtils.contentEquals(expectedObjectContent, actualObjectContent));
+			actualBytes = ByteSource.wrap(IOUtils.toByteArray(actualObjectContent));
+			
+			assertTrue(expectedBytes.contentEquals(actualBytes));
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -322,7 +330,7 @@ public class GetObjectContentTestCases extends S3TestParent {
  	    	URLConnection connection = url.openConnection();
  	    	inputStream = connection.getInputStream();	    
  	    	
- 	    	testObjects.put("contentRef", inputStream);
+ 	    	testObjects.put("contentRef", IOUtils.toByteArray(inputStream));
 
  	    	getObjectContentOptionalAttributesVerifications(testObjects, updatedUserMetadata);
  	
