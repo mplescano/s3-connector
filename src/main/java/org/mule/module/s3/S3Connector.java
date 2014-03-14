@@ -24,7 +24,10 @@ import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.s3.simpleapi.*;
 import org.mule.module.s3.simpleapi.Region;
+import org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent;
+import org.mule.module.s3.simpleapi.content.FileS3ObjectContent;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.Date;
 import java.util.List;
@@ -416,6 +419,7 @@ public class S3Connector
      * @param encryption Encryption method for server-side encryption. Supported value AES256.
      * @param userMetadata a map of arbitrary object properties keys and values
      * @return the id of the created object, or null, if versioning is not enabled
+     * @throws IOException if there are problems manipulating the File or InputStream content
      */
     @Processor
     public String createObject(String bucketName,
@@ -428,11 +432,15 @@ public class S3Connector
                                @Optional @Default("PRIVATE") AccessControlList acl,
                                @Optional @Default("STANDARD") StorageClass storageClass,
                                @Optional Map<String, String> userMetadata,
-                               @Optional String encryption)
+                               @Optional String encryption) throws IOException
     {
-        return client.createObject(new S3ObjectId(bucketName, key), S3ContentUtils.createContent(content,
-            contentLength, contentMd5), contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
+    	S3ObjectContent s3Content = S3ContentUtils.createContent(content, contentLength, contentMd5);
+        String response = client.createObject(new S3ObjectId(bucketName, key), s3Content, contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
                 userMetadata, encryption);
+        if (s3Content instanceof FileS3ObjectContent) {
+        	((FileS3ObjectContent) s3Content).delete();
+        }
+        return response;
     }
 
     /**
