@@ -1409,24 +1409,54 @@ other than US_STANDARD.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="VersioningStatusEnumType">
+  <xs:simpleType name="StorageClassEnumType">
     <xs:annotation>
-      <xs:documentation>The posible versioning status.</xs:documentation>
+      <xs:documentation>A wrapper over , as a
+workaround over mule cloud connector api issue regarding enums processing</xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="OFF">
+          <xs:enumeration value="STANDARD">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="ENABLED">
+          <xs:enumeration value="REDUCED_REDUNDANCY">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="SUSPENDED">
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="RegionEnumType">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="US_STANDARD">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="US_WEST">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="EU_IRELAND">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="AP_SINGAPORE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1488,31 +1518,6 @@ connector api issue regarding enums processing</xs:documentation>
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="StorageClassEnumType">
-    <xs:annotation>
-      <xs:documentation>A wrapper over , as a
-workaround over mule cloud connector api issue regarding enums processing</xs:documentation>
-    </xs:annotation>
-    <xs:union>
-      <xs:simpleType>
-        <xs:restriction base="xs:string">
-          <xs:enumeration value="STANDARD">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="REDUCED_REDUNDANCY">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-        </xs:restriction>
-      </xs:simpleType>
-      <xs:simpleType>
-        <xs:restriction xmlns:mule="http://www.mulesoft.org/schema/mule/core" base="mule:propertyPlaceholderType"></xs:restriction>
-      </xs:simpleType>
-    </xs:union>
-  </xs:simpleType>
   <xs:simpleType name="EncodingTypeEnumType">
     <xs:annotation>
       <xs:documentation>This enum is needed to display the proper options for encoding types in Studio.
@@ -1539,29 +1544,24 @@ see</xs:documentation>
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="RegionEnumType">
+  <xs:simpleType name="VersioningStatusEnumType">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>The posible versioning status.</xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="US_STANDARD">
+          <xs:enumeration value="OFF">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="US_WEST">
+          <xs:enumeration value="ENABLED">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="EU_IRELAND">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="AP_SINGAPORE">
+          <xs:enumeration value="SUSPENDED">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
