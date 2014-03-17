@@ -11,6 +11,7 @@ package org.mule.module.s3;
 import org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent;
 import org.mule.module.s3.simpleapi.content.FileS3ObjectContent;
 import org.mule.module.s3.simpleapi.content.InputStreamS3ObjectContent;
+import org.mule.module.s3.simpleapi.content.TempFileS3ObjectContent;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -49,11 +50,7 @@ public final class S3ContentUtils
                 return createContent(streamContent, Long.parseLong(contentLengthHeader.getValue()),
                     contentMd5);
             }
-            File tempFile = toTempFile(streamContent);
-            long streamLength = tempFile.length();
-            tempFile.delete();
-            return createContent(streamContent, streamLength, contentMd5);
-            
+            return createContent(streamContent, null, contentMd5);            
         }
         if (content instanceof String)
         {
@@ -112,6 +109,9 @@ public final class S3ContentUtils
 
     private static S3ObjectContent createContent(InputStream content, Long contentLength, String contentMd5)
     {
+    	if (contentLength == null) {
+    		return new TempFileS3ObjectContent(toTempFile(content));
+    	}
         return new InputStreamS3ObjectContent((InputStream) content, contentLength, contentMd5);
     }
 

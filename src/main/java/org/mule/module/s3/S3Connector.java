@@ -15,6 +15,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.*;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.mule.api.ConnectionException;
@@ -26,6 +27,7 @@ import org.mule.module.s3.simpleapi.*;
 import org.mule.module.s3.simpleapi.Region;
 import org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent;
 import org.mule.module.s3.simpleapi.content.FileS3ObjectContent;
+import org.mule.module.s3.simpleapi.content.TempFileS3ObjectContent;
 
 import java.io.IOException;
 import java.net.URI;
@@ -435,8 +437,12 @@ public class S3Connector
                                @Optional String encryption) throws IOException
     {
     	S3ObjectContent s3Content = S3ContentUtils.createContent(content, contentLength, contentMd5);
-        return client.createObject(new S3ObjectId(bucketName, key), s3Content, contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
+        String response = client.createObject(new S3ObjectId(bucketName, key), s3Content, contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
                 userMetadata, encryption);
+        if (s3Content instanceof TempFileS3ObjectContent) {
+        	((TempFileS3ObjectContent) s3Content).delete();
+        }
+        return response;
     }
 
     /**
