@@ -589,10 +589,11 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
     
     @Category({RegressionTests.class})
 	@Test
-	public void testCopyObjectOptionalAttributesVersionioningEnabled() {
+	public void testCopyObjectOptionalAttributesVersionioningEnabled() throws InterruptedException {
     	
     	initializeByteArrayTestData();
     	createObject(true);
+    	Thread.sleep(5000);
     	copyObjectOptionalAttributesVersioningEnabledVerifications();
     	copyObjectChildElementsFromMessageGetVerifications();
      
