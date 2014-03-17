@@ -435,12 +435,8 @@ public class S3Connector
                                @Optional String encryption) throws IOException
     {
     	S3ObjectContent s3Content = S3ContentUtils.createContent(content, contentLength, contentMd5);
-        String response = client.createObject(new S3ObjectId(bucketName, key), s3Content, contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
+        return client.createObject(new S3ObjectId(bucketName, key), s3Content, contentType, contentDisposition, acl.toS3Equivalent(), storageClass.toS3Equivalent(),
                 userMetadata, encryption);
-        if (s3Content instanceof FileS3ObjectContent) {
-        	((FileS3ObjectContent) s3Content).delete();
-        }
-        return response;
     }
 
     /**

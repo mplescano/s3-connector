@@ -49,7 +49,11 @@ public final class S3ContentUtils
                 return createContent(streamContent, Long.parseLong(contentLengthHeader.getValue()),
                     contentMd5);
             }
-            return createContent(toTempFile(streamContent));
+            File tempFile = toTempFile(streamContent);
+            long streamLength = tempFile.length();
+            tempFile.delete();
+            return createContent(streamContent, streamLength, contentMd5);
+            
         }
         if (content instanceof String)
         {
