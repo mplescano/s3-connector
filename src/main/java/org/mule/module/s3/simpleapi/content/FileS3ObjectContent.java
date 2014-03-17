@@ -21,7 +21,7 @@ import org.apache.commons.lang.Validate;
 
 public class FileS3ObjectContent implements S3ObjectContent
 {
-    private final File file;
+    protected final File file;
 
     public FileS3ObjectContent(@NotNull File file)
     {
@@ -34,9 +34,5 @@ public class FileS3ObjectContent implements S3ObjectContent
         PutObjectRequest request = new PutObjectRequest(null, null, file);
         request.setMetadata(new ObjectMetadata());
         return request;
-    }
-    
-    public boolean delete() {
-    	return this.file.delete();
     }
 }
