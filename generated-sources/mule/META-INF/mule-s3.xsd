@@ -1485,24 +1485,29 @@ connector api issue regarding enums processing</xs:documentation>
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="VersioningStatusEnumType">
+  <xs:simpleType name="RegionEnumType">
     <xs:annotation>
-      <xs:documentation>The posible versioning status.</xs:documentation>
+      <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="OFF">
+          <xs:enumeration value="US_STANDARD">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="ENABLED">
+          <xs:enumeration value="US_WEST">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="SUSPENDED">
+          <xs:enumeration value="EU_IRELAND">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="AP_SINGAPORE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1539,29 +1544,24 @@ workaround over mule cloud connector api issue regarding enums processing</xs:do
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="RegionEnumType">
+  <xs:simpleType name="VersioningStatusEnumType">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>The posible versioning status.</xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="US_STANDARD">
+          <xs:enumeration value="OFF">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="US_WEST">
+          <xs:enumeration value="ENABLED">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="EU_IRELAND">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="AP_SINGAPORE">
+          <xs:enumeration value="SUSPENDED">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
