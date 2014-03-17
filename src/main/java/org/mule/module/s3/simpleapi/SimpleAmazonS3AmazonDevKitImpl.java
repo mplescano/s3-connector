@@ -12,10 +12,12 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 
 import javax.validation.constraints.NotNull;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -59,14 +61,16 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         if (!s3.getBucketVersioningConfiguration(bucketName).getStatus().equals(
             BucketVersioningConfiguration.OFF))
         {
-            for (S3VersionSummary summary : listObjectVersions(bucketName))
+        	ListVersionsRequest request = new ListVersionsRequest().withBucketName(bucketName);
+            for (S3VersionSummary summary : listObjectVersions(request))
             {
                 s3.deleteVersion(bucketName, summary.getKey(), summary.getVersionId());
             }
         }
         else
         {
-            for (S3ObjectSummary summary : listObjects(bucketName, null))
+        	ListObjectsRequest request = new ListObjectsRequest().withBucketName(bucketName);
+            for (S3ObjectSummary summary : listObjects(request))
             {
                 s3.deleteObject(bucketName, summary.getKey());
             }
@@ -74,18 +78,17 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         deleteBucket(bucketName);
     }
 
-    public S3VersionSummaryIterable listObjectVersions(@NotNull String bucketName)
-    {
-        Validate.notEmpty(bucketName);
-        return new S3VersionSummaryIterable(bucketName);
-    }
-
-    // 2.3
-    public Iterable<S3ObjectSummary> listObjects(@NotNull String bucketName, String prefix)
-    {
-        Validate.notNull(bucketName);
-        return new S3ObjectSummaryIterable(bucketName, prefix);
-    }
+    @Override
+	public Iterable<S3VersionSummary> listObjectVersions(ListVersionsRequest request) {
+		Validate.notEmpty(request.getBucketName());
+		return new S3VersionSummaryIterable(request);
+	}
+    
+	@Override
+	public Iterable<S3ObjectSummary> listObjects(ListObjectsRequest request) {
+		Validate.notNull(request.getBucketName());
+		return new S3ObjectSummaryIterable(request);
+	}
 
     // 3.1.1
     public void deleteBucketPolicy(@NotNull String bucketName)
@@ -313,14 +316,12 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
     private class S3ObjectSummaryIterable extends S3SummaryIterable<S3ObjectSummary, ObjectListing>
     {
 
-        private String bucketName;
-        private String prefix;
-
-        public S3ObjectSummaryIterable(String bucketName, String prefix)
-        {
-            this.bucketName = bucketName;
-            this.prefix = prefix;
+        ListObjectsRequest request;
+        
+        public S3ObjectSummaryIterable(ListObjectsRequest request) {
+        	this.request = request;
         }
+        
 
         @Override
         protected Iterator<S3ObjectSummary> getSummariesIterator(ObjectListing summaryListing)
@@ -343,18 +344,18 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         @Override
         protected ObjectListing listSummaries()
         {
-            return s3.listObjects(bucketName, prefix);
+            return s3.listObjects(request);
         }
     }
 
     private class S3VersionSummaryIterable extends S3SummaryIterable<S3VersionSummary, VersionListing>
     {
 
-        private String bucketName;
+        private ListVersionsRequest request;
 
-        public S3VersionSummaryIterable(String bucketName)
+        public S3VersionSummaryIterable(ListVersionsRequest request)
         {
-            this.bucketName = bucketName;
+            this.request = request;
         }
 
         @Override
@@ -378,7 +379,7 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
         @Override
         protected VersionListing listSummaries()
         {
-            return s3.listVersions(bucketName, null);
+            return s3.listVersions(request);
         }
     }
 
@@ -459,4 +460,5 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
     	Validate.notNull(bucketName);
     	return s3.getBucketVersioningConfiguration(bucketName);
     }
+
 }

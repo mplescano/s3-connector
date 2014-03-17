@@ -147,7 +147,6 @@ public class GetObjectContentTestCases extends S3TestParent {
 			
 			assertTrue(expectedBytes.contentEquals(actualBytes));
 			
-			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -336,7 +335,7 @@ public class GetObjectContentTestCases extends S3TestParent {
  	    	URLConnection connection = url.openConnection();
  	    	inputStream = connection.getInputStream();	    
  	    	
- 	    	testObjects.put("contentRef", inputStream);
+ 	    	testObjects.put("contentRef", IOUtils.toByteArray(inputStream));
 
  	    	getObjectContentOptionalAttributesVerifications(testObjects, updatedUserMetadata);
  	

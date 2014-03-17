@@ -35,4 +35,8 @@ public class FileS3ObjectContent implements S3ObjectContent
         request.setMetadata(new ObjectMetadata());
         return request;
     }
+    
+    public boolean delete() {
+    	return this.file.delete();
+    }
 }
