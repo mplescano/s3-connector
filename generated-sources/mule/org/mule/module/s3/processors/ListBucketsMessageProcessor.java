@@ -18,7 +18,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * ListBucketsMessageProcessor invokes the {@link org.mule.module.s3.S3Connector#listBuckets()} method in {@link S3Connector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:18:49-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:21:48-05:00", comments = "Build M4.1875.17b58a3")
 public class ListBucketsMessageProcessor
     extends AbstractConnectedProcessor
     implements MessageProcessor

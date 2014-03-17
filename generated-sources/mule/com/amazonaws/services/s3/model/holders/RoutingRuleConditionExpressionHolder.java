@@ -3,7 +3,7 @@ package com.amazonaws.services.s3.model.holders;
 
 import javax.annotation.Generated;
 
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:18:49-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:21:48-05:00", comments = "Build M4.1875.17b58a3")
 public class RoutingRuleConditionExpressionHolder {
 
     protected Object keyPrefixEquals;
