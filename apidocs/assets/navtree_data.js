@@ -29,7 +29,7 @@ var NAVTREE_DATA =
 , "" ], [ "Classes", null, [ [ "ConditionalConstraints", "org/mule/module/s3/simpleapi/ConditionalConstraints.html", null, "" ], [ "KeyVersion", "org/mule/module/s3/simpleapi/KeyVersion.html", null, "" ], [ "S3ObjectId", "org/mule/module/s3/simpleapi/S3ObjectId.html", null, "" ], [ "SimpleAmazonS3AmazonDevKitImpl", "org/mule/module/s3/simpleapi/SimpleAmazonS3AmazonDevKitImpl.html", null, "" ] ]
 , "" ], [ "Enums", null, [ [ "Region", "org/mule/module/s3/simpleapi/Region.html", null, "" ], [ "VersioningStatus", "org/mule/module/s3/simpleapi/VersioningStatus.html", null, "" ] ]
 , "" ] ]
-, "" ], [ "org.mule.module.s3.simpleapi.content", "org/mule/module/s3/simpleapi/content/package-summary.html", [ [ "Classes", null, [ [ "FileS3ObjectContent", "org/mule/module/s3/simpleapi/content/FileS3ObjectContent.html", null, "" ], [ "InputStreamS3ObjectContent", "org/mule/module/s3/simpleapi/content/InputStreamS3ObjectContent.html", null, "" ] ]
+, "" ], [ "org.mule.module.s3.simpleapi.content", "org/mule/module/s3/simpleapi/content/package-summary.html", [ [ "Classes", null, [ [ "FileS3ObjectContent", "org/mule/module/s3/simpleapi/content/FileS3ObjectContent.html", null, "" ], [ "InputStreamS3ObjectContent", "org/mule/module/s3/simpleapi/content/InputStreamS3ObjectContent.html", null, "" ], [ "TempFileS3ObjectContent", "org/mule/module/s3/simpleapi/content/TempFileS3ObjectContent.html", null, "" ] ]
 , "" ] ]
 , "" ], [ "org.mule.module.s3.simpleapi.holders", "org/mule/module/s3/simpleapi/holders/package-summary.html", [ [ "Classes", null, [ [ "KeyVersionExpressionHolder", "org/mule/module/s3/simpleapi/holders/KeyVersionExpressionHolder.html", null, "" ] ]
 , "" ] ]

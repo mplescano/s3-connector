@@ -11,7 +11,7 @@ import org.mule.module.s3.S3Connector;
  * A <code>S3ConnectorCapabilitiesAdapter</code> is a wrapper around {@link S3Connector } that implements {@link org.mule.api.Capabilities} interface.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:00:49-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:18:49-05:00", comments = "Build M4.1875.17b58a3")
 public class S3ConnectorCapabilitiesAdapter
     extends S3Connector
     implements Capabilities

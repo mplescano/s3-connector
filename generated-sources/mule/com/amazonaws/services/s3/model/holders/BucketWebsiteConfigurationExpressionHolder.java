@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 import com.amazonaws.services.s3.model.RedirectRule;
 import com.amazonaws.services.s3.model.RoutingRule;
 
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:00:49-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-17T02:18:49-05:00", comments = "Build M4.1875.17b58a3")
 public class BucketWebsiteConfigurationExpressionHolder {
 
     protected Object indexDocumentSuffix;
