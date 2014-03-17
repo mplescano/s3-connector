@@ -100,6 +100,7 @@ public class GetObjectContentTestCases extends S3TestParent {
 			
 			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			
@@ -135,6 +136,7 @@ public class GetObjectContentTestCases extends S3TestParent {
 			testObjects.put("userMetadata", updatedUserMetadata);
 			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			// get-object-content-optional-attributes-modified-since
 			
