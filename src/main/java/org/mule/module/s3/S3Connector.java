@@ -15,6 +15,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.*;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.mule.api.ConnectionException;
@@ -779,6 +780,48 @@ public class S3Connector
             return client.createObjectUri(new S3ObjectId(bucketName, key), secure);
         }
     }
+    
+    /**
+     * Sets the cross origin configuration for the specified bucket.
+     * 
+     * @param bucketName
+     *            The name of the bucket for which to retrieve cross origin
+     *            configuration.
+     * @param bucketCrossOriginConfiguration
+     *            The new cross origin configuration for this bucket, which
+     *            completely replaces any existing configuration.
+     */
+    @Processor
+    public void setBucketCrossOriginConfiguration(String bucketName, List<CORSRule> rules) {
+    	client.setBucketCrossOriginConfiguration(bucketName, new BucketCrossOriginConfiguration(rules));
+    }
+    /*
+	/**
+	 * Gets the cross origin configuration for the specified bucket, or null if
+	 * no configuration has been established.
+	 * 
+	 * @param bucketName
+	 *            The name of the bucket for which to retrieve cross origin
+	 *            configuration.
+	 
+    @Processor
+    public BucketCrossOriginConfiguration getBucketCrossOriginConfiguration(String bucketName) {
+		return client.getBucketCrossOriginConfiguration(bucketName);
+    }
+    */
+    
+    
+	/**
+	 * Delete the cross origin configuration for the specified bucket.
+	 * 
+	 * @param bucketName
+	 *            The name of the bucket for which to retrieve cross origin
+	 *            configuration.
+	 */
+	@Processor
+	public void deleteBucketCors(String bucketName) {
+		client.deleteBucketCrossOriginConfiguration(bucketName);
+	}
 
     /**
      * Login to Amazon S3

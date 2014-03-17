@@ -461,4 +461,21 @@ public class SimpleAmazonS3AmazonDevKitImpl implements SimpleAmazonS3
     	return s3.getBucketVersioningConfiguration(bucketName);
     }
 
+	@Override
+	public BucketCrossOriginConfiguration getBucketCrossOriginConfiguration(
+			String bucketName) {
+		return s3.getBucketCrossOriginConfiguration(bucketName);
+	}
+
+	@Override
+	public void setBucketCrossOriginConfiguration(String bucketName,
+			BucketCrossOriginConfiguration bucketCrossOriginConfiguration) {
+		s3.setBucketCrossOriginConfiguration(bucketName, bucketCrossOriginConfiguration);
+	}
+
+	@Override
+	public void deleteBucketCrossOriginConfiguration(String bucketName) {
+		s3.deleteBucketCrossOriginConfiguration(bucketName);
+	}
+
 }

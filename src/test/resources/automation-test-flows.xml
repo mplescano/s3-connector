@@ -232,5 +232,11 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
             <s3:keys ref="#[payload.keysReference]"/>
         </s3:delete-objects>
     </flow>
+    
+    <flow name="set-bucket-cors" doc:name="set-bucket-cors">
+    	<s3:set-bucket-cross-origin-configuration config-ref="Amazon_S3" bucketName="#[payload.bucketName]" doc:name="Amazon S3">
+    		<s3:rules ref="#[payload.rulesReference]"/>
+    	</s3:set-bucket-cross-origin-configuration>
+    </flow>
 
 </mule>

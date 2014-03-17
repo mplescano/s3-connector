@@ -762,4 +762,23 @@
 		<entry key="userMetadata" value-ref="bucketVersioningConfigurationUserMetadata" />			
 	</util:map>
 
+	<bean id="corsTestData"
+		class="com.amazonaws.services.s3.model.BucketCrossOriginConfiguration"
+		scope="prototype">
+		<property name="rules" ref="corsRules" />
+	</bean>
+
+	<util:list id="corsRules" value-type="com.amazonaws.services.s3.model.CORSRule"
+		scope="prototype">
+		<ref bean="corsRule" />
+	</util:list>
+
+	<bean id="corsRule" class="com.amazonaws.services.s3.model.CORSRule"
+		scope="prototype">
+		<property name="id" value="myRule" />
+		<property name="maxAgeSeconds" value="1000" />
+	</bean>
+		
+	
+	
 </beans>

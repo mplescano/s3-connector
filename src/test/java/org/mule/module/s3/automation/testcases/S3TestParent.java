@@ -9,6 +9,7 @@
 package org.mule.module.s3.automation.testcases;
 
 import java.util.Map;
+import java.util.UUID;
 
 import org.junit.BeforeClass;
 import org.mule.api.processor.MessageProcessor;
@@ -24,7 +25,6 @@ public class S3TestParent extends ConnectorTestCase {
 	protected static ApplicationContext context;
 	protected Map<String,Object> setupData;
 	protected Map<String,Object> testObjects;
-
 	
 	@Override
 	protected String getConfigResources() {
@@ -37,9 +37,21 @@ public class S3TestParent extends ConnectorTestCase {
 	
     @BeforeClass
     public static void beforeClass(){
-    	
     	context = new ClassPathXmlApplicationContext(SPRING_CONFIG_FILES);
-    	
+    }
+    
+    protected String randomTestBucketName() {
+    	return UUID.randomUUID() + "-s3-automation";
+    }
+    
+    protected void createBucket(String bucketName) throws Exception {
+    	upsertOnTestRunMessage("bucketName", bucketName);
+    	runFlowAndGetPayload("create-bucket");
+    }
+    
+    protected void deleteBucket(String bucketName) throws Exception {
+    	upsertOnTestRunMessage("bucketName", bucketName);
+    	runFlowAndGetPayload("delete-bucket");
     }
 
 }

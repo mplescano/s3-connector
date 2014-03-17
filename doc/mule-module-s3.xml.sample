@@ -79,3 +79,20 @@
 <!-- BEGIN_INCLUDE(s3:create-object-uri) -->
 <s3:create-object-uri bucketName="my-bucket" key="baz.bin"/>
 <!-- END_INCLUDE(s3:create-object-uri) -->
+<!-- BEGIN_INCLUDE(s3:set-bucket-cross-origin-configuration) -->
+<s3:create-object-uri bucketName="my-bucket">
+	<s3:rules>
+		<s3:rule id="my-rule" max-age-seconds="100">
+			<s3:allowed-methods>
+				<s3:allowed-method allowed-method="GET"/>
+			</s3:allowed-methods>
+		</s3:rule>
+	</s3:rules>
+</s3:create-object>
+<!-- END_INCLUDE(s3:set-bucket-cross-origin-configuration) -->
+<!-- BEGIN_INCLUDE(s3:get-bucket-cross-origin-configuration) -->
+<s3:create-object-uri bucketName="my-bucket" key="baz.bin"/>
+<!-- END_INCLUDE(s3:get-bucket-cross-origin-configuration) -->
+<!-- BEGIN_INCLUDE(s3:delete-bucket-cross-origin-configuration) -->
+<s3:create-object-uri bucketName="my-bucket" key="baz.bin"/>
+<!-- END_INCLUDE(s3:delete-bucket-cross-origin-configuration) -->

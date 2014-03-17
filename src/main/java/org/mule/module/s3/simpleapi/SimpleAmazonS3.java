@@ -230,6 +230,48 @@ public interface SimpleAmazonS3
                         StorageClass storageClass,
                         Map<String, String> userMetadata,
                         String encryption);
+    
+	/**
+	 * Gets the cross origin configuration for the specified bucket, or null if
+	 * no configuration has been established.
+	 * 
+	 * @param bucketName
+	 *            The name of the bucket for which to retrieve cross origin
+	 *            configuration.
+	 */
+	public BucketCrossOriginConfiguration getBucketCrossOriginConfiguration(
+			String bucketName);
+
+	/**
+	 * Sets the cross origin configuration for the specified bucket.
+	 * 
+	 * @param bucketName
+	 *            The name of the bucket for which to retrieve cross origin
+	 *            configuration.
+	 * @param bucketCrossOriginConfiguration
+	 *            The new cross origin configuration for this bucket, which
+	 *            completely replaces any existing configuration.
+	 */
+	public void setBucketCrossOriginConfiguration(String bucketName,
+			BucketCrossOriginConfiguration bucketCrossOriginConfiguration);
+
+	/**
+	 * Delete the cross origin configuration for the specified bucket.
+	 * 
+	 * @param bucketName
+	 *            The name of the bucket for which to retrieve cross origin
+	 *            configuration.
+	 */
+	public void deleteBucketCrossOriginConfiguration(String bucketName);
+
+	/**
+	 * Gets the tagging configuration for the specified bucket, or null if no
+	 * configuration has been established.
+	 * 
+	 * @param bucketName
+	 *            The name of the bucket for which to retrieve tagging
+	 *            configuration.
+	 */
 
     /**
      * The content to be uploaded to S3, capable of creating a
