@@ -1,7 +1,7 @@
 Amazon S3 Anypoint Connector Release Notes
 ==========================================
 
-Date: 05-Mar-2014
+Date: 18-Mar-2014
 
 Version: 2.6.3
 
@@ -11,6 +11,10 @@ Supported Mule Runtime Versions: 3.4.x, 3.5.0
 
 New Features and Functionality
 ------------------------------
+
+Fixed an issue where uploading an InputStream object without specifying content length would create a temporary file that was never deleted.
+
+Added all optional parameters to `listObjects` and `listObjectVersions`.
 
 Updated directory structure and documentation according to certification guidelines.
 
