@@ -65,49 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -264,8 +221,6 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connectivity/package-summary.html">org.mule.module.s3.connectivity</a></li>
@@ -300,8 +255,6 @@
       <ul>
           <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorCapabilitiesAdapter.html">S3ConnectorCapabilitiesAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionManager.html">S3ConnectorConnectionManager</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionManager.ConnectionKey.html">S3ConnectorConnectionManager.ConnectionKey</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorLifecycleAdapter.html">S3ConnectorLifecycleAdapter</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorMetadataAdapater.html">S3ConnectorMetadataAdapater</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorProcessAdapter.html">S3ConnectorProcessAdapter</a></li>
@@ -440,7 +393,7 @@ Summary:
   
       implements 
       
-        Capabilities 
+        <a href="../../../../../../java/org/mule/module/s3/basic/Capabilities.html">Capabilities</a> 
       
   
   
@@ -780,7 +733,7 @@ Summary:
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.api.devkit.capability.ModuleCapability)">isCapableOf</a></span>(ModuleCapability capability)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/adapters/S3ConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.module.s3.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../java/org/mule/module/s3/basic/Capability.html">Capability</a> capability)</nobr>
         
         <div class="jd-descrdiv">Returns true if this module implements such capability
  
@@ -868,7 +821,7 @@ From class
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date)">copyObject</a></span>(String sourceBucketName, String sourceKey, String sourceVersionId, String destinationBucketName, String destinationKey, <a href="../../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> destinationAcl, <a href="../../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> destinationStorageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata, Date modifiedSince, Date unmodifiedSince)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date, java.lang.String)">copyObject</a></span>(String sourceBucketName, String sourceKey, String sourceVersionId, String destinationBucketName, String destinationKey, <a href="../../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> destinationAcl, <a href="../../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> destinationStorageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata, Date modifiedSince, Date unmodifiedSince, String encryption)</nobr>
         
         <div class="jd-descrdiv">Copies a source object to a new destination; to copy an object, the caller's
  account must have read access to the source object and write access to the
@@ -907,7 +860,7 @@ From class
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, com.amazonaws.services.s3.model.ObjectMetadata, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, ObjectMetadata objectMetadata, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, String encryption, Map&lt;String,&nbsp;String&gt; userMetadata, String encoding)</nobr>
         
         <div class="jd-descrdiv">Uploads an object to S3.</div>
   
@@ -1731,19 +1684,19 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.devkit.capability.Capabilities" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.devkit.capability.Capabilities-trigger"
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.s3.basic.Capabilities" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.s3.basic.Capabilities-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
           class="jd-expando-trigger-img" /></a>
 From interface
 
-  org.mule.api.devkit.capability.Capabilities
+  <a href="../../../../../../org/mule/module/s3/basic/Capabilities.html">org.mule.module.s3.basic.Capabilities</a>
 
-<div id="inherited-methods-org.mule.api.devkit.capability.Capabilities">
-  <div id="inherited-methods-org.mule.api.devkit.capability.Capabilities-list"
+<div id="inherited-methods-org.mule.module.s3.basic.Capabilities">
+  <div id="inherited-methods-org.mule.module.s3.basic.Capabilities-list"
         class="jd-inheritedlinks">
   </div>
-  <div id="inherited-methods-org.mule.api.devkit.capability.Capabilities-summary" style="display: none;">
+  <div id="inherited-methods-org.mule.module.s3.basic.Capabilities-summary" style="display: none;">
     <table class="jd-sumtable-expando">
     
 
@@ -1759,8 +1712,11 @@ From interface
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">isCapableOf</span>(ModuleCapability arg0)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/basic/Capabilities.html#isCapableOf(org.mule.module.s3.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../java/org/mule/module/s3/basic/Capability.html">Capability</a> capability)</nobr>
         
+        <div class="jd-descrdiv">Returns true if this module implements such
+ capability</div>
+  
   </td></tr>
 
 
@@ -1850,7 +1806,7 @@ From interface
 
 
 
-<A NAME="isCapableOf(org.mule.api.devkit.capability.ModuleCapability)"></A>
+<A NAME="isCapableOf(org.mule.module.s3.basic.Capability)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1863,7 +1819,7 @@ From interface
         boolean
       </span>
       <span class="sympad">isCapableOf</span>
-      <span class="normal">(ModuleCapability capability)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/basic/Capability.html">Capability</a> capability)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1883,9 +1839,14 @@ From interface
       <table class="jd-tagtable">
         <tr>
           <th>capability</td>
-          <td></td>
+          <td>The capability to test for</td>
         </tr>
       </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>True if it does, false otherwise
+</li></ul>
   </div>
 
     </div>

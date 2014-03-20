@@ -66,49 +66,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -271,7 +228,7 @@
           <th>Schema Version</th><td>2.0</td>
         </tr>
 <tr>
-          <th>Minimum Mule Version</th><td>3.5</td>
+          <th>Minimum Mule Version</th><td>3.4</td>
         </tr>
     </tbody></table>
   </div>
@@ -906,83 +863,10 @@ object versions, and may need to perform extra calls to the api while it is iter
 arrays and Files.&lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
   &lt;/xs:element&gt;
-  &lt;xs:complexType name=&quot;ObjectMetadataObjectType&quot;&gt;
-    &lt;xs:sequence&gt;
-      &lt;xs:element name=&quot;user-metadata&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;&gt;
-        &lt;xs:annotation&gt;
-          &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-        &lt;/xs:annotation&gt;
-        &lt;xs:complexType&gt;
-          &lt;xs:choice&gt;
-            &lt;xs:sequence&gt;
-              &lt;xs:element name=&quot;user-metadatum&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;&gt;
-                &lt;xs:complexType&gt;
-                  &lt;xs:simpleContent&gt;
-                    &lt;xs:extension base=&quot;xs:string&quot;&gt;
-                      &lt;xs:attribute name=&quot;value-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
-                      &lt;xs:attribute name=&quot;key&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
-                    &lt;/xs:extension&gt;
-                  &lt;/xs:simpleContent&gt;
-                &lt;/xs:complexType&gt;
-              &lt;/xs:element&gt;
-            &lt;/xs:sequence&gt;
-            &lt;xs:sequence&gt;
-              &lt;xs:any maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot; processContents=&quot;lax&quot;&gt;&lt;/xs:any&gt;
-            &lt;/xs:sequence&gt;
-          &lt;/xs:choice&gt;
-          &lt;xs:attribute name=&quot;ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:attribute&gt;
-        &lt;/xs:complexType&gt;
-      &lt;/xs:element&gt;
-    &lt;/xs:sequence&gt;
-    &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/s3&quot; name=&quot;httpExpiresDate&quot; use=&quot;optional&quot; type=&quot;dateTimeType&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/s3&quot; name=&quot;expirationTime&quot; use=&quot;optional&quot; type=&quot;dateTimeType&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;expirationTimeRuleId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/s3&quot; name=&quot;ongoingRestore&quot; use=&quot;optional&quot; type=&quot;booleanType&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/s3&quot; name=&quot;restoreExpirationTime&quot; use=&quot;optional&quot; type=&quot;dateTimeType&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-    &lt;xs:attribute name=&quot;ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
-      &lt;xs:annotation&gt;
-        &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
-      &lt;/xs:annotation&gt;
-    &lt;/xs:attribute&gt;
-  &lt;/xs:complexType&gt;
   &lt;xs:complexType name=&quot;CreateObjectType&quot;&gt;
     &lt;xs:complexContent&gt;
       &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
         &lt;xs:sequence&gt;
-          &lt;xs:element name=&quot;object-metadata&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;Object Metadata for the request&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-            &lt;xs:complexType&gt;
-              &lt;xs:complexContent&gt;
-                &lt;xs:extension xmlns=&quot;http://www.mulesoft.org/schema/mule/s3&quot; base=&quot;ObjectMetadataObjectType&quot;&gt;&lt;/xs:extension&gt;
-              &lt;/xs:complexContent&gt;
-            &lt;/xs:complexType&gt;
-          &lt;/xs:element&gt;
           &lt;xs:element name=&quot;user-metadata&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;&gt;
             &lt;xs:annotation&gt;
               &lt;xs:documentation&gt;a map of arbitrary object properties keys and values&lt;/xs:documentation&gt;
@@ -1061,6 +945,16 @@ arrays and Files.&lt;/xs:documentation&gt;
         &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/s3&quot; name=&quot;storageClass&quot; default=&quot;STANDARD&quot; use=&quot;optional&quot; type=&quot;StorageClassEnumType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the storage class of the new object&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;encryption&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;encryption type. Supported value AES256&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;encoding&quot; default=&quot;UTF-8&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;optional parameter in case the content is an String&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
         &lt;xs:attribute name=&quot;accessKey&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
@@ -1339,6 +1233,11 @@ bucket is specified, the same that the source bucket is used - local copy.&lt;/x
         &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/s3&quot; name=&quot;unmodifiedSince&quot; use=&quot;optional&quot; type=&quot;dateTimeType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;The unmodified constraint that restricts this request to executing only if the object has not been modified after this date. This constraint is specified but does not match, no copy is performed&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;encryption&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Encryption for object. Supported value AES256&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
         &lt;xs:attribute name=&quot;accessKey&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
@@ -1701,31 +1600,6 @@ other than US_STANDARD.&lt;/xs:documentation&gt;
       &lt;/xs:extension&gt;
     &lt;/xs:complexContent&gt;
   &lt;/xs:complexType&gt;
-  &lt;xs:simpleType name=&quot;StorageClassEnumType&quot;&gt;
-    &lt;xs:annotation&gt;
-      &lt;xs:documentation&gt;A wrapper over , as a
-workaround over mule cloud connector api issue regarding enums processing&lt;/xs:documentation&gt;
-    &lt;/xs:annotation&gt;
-    &lt;xs:union&gt;
-      &lt;xs:simpleType&gt;
-        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-          &lt;xs:enumeration value=&quot;STANDARD&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:enumeration&gt;
-          &lt;xs:enumeration value=&quot;REDUCED_REDUNDANCY&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:enumeration&gt;
-        &lt;/xs:restriction&gt;
-      &lt;/xs:simpleType&gt;
-      &lt;xs:simpleType&gt;
-        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
-      &lt;/xs:simpleType&gt;
-    &lt;/xs:union&gt;
-  &lt;/xs:simpleType&gt;
   &lt;xs:simpleType name=&quot;RegionEnumType&quot;&gt;
     &lt;xs:annotation&gt;
       &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
@@ -1749,35 +1623,6 @@ workaround over mule cloud connector api issue regarding enums processing&lt;/xs
             &lt;/xs:annotation&gt;
           &lt;/xs:enumeration&gt;
           &lt;xs:enumeration value=&quot;AP_SINGAPORE&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:enumeration&gt;
-        &lt;/xs:restriction&gt;
-      &lt;/xs:simpleType&gt;
-      &lt;xs:simpleType&gt;
-        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
-      &lt;/xs:simpleType&gt;
-    &lt;/xs:union&gt;
-  &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;VersioningStatusEnumType&quot;&gt;
-    &lt;xs:annotation&gt;
-      &lt;xs:documentation&gt;The posible versioning status.&lt;/xs:documentation&gt;
-    &lt;/xs:annotation&gt;
-    &lt;xs:union&gt;
-      &lt;xs:simpleType&gt;
-        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-          &lt;xs:enumeration value=&quot;OFF&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:enumeration&gt;
-          &lt;xs:enumeration value=&quot;ENABLED&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:enumeration&gt;
-          &lt;xs:enumeration value=&quot;SUSPENDED&quot;&gt;
             &lt;xs:annotation&gt;
               &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
@@ -1839,12 +1684,53 @@ connector api issue regarding enums processing&lt;/xs:documentation&gt;
       &lt;/xs:simpleType&gt;
     &lt;/xs:union&gt;
   &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;OnNoTokenPolicyEnumType&quot;&gt;
+  &lt;xs:simpleType name=&quot;VersioningStatusEnumType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;The posible versioning status.&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
     &lt;xs:union&gt;
       &lt;xs:simpleType&gt;
         &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-          &lt;xs:enumeration value=&quot;EXCEPTION&quot;&gt;&lt;/xs:enumeration&gt;
-          &lt;xs:enumeration value=&quot;STOP_FLOW&quot;&gt;&lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;OFF&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;ENABLED&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;SUSPENDED&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;StorageClassEnumType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;A wrapper over , as a
+workaround over mule cloud connector api issue regarding enums processing&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+          &lt;xs:enumeration value=&quot;STANDARD&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;REDUCED_REDUNDANCY&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
         &lt;/xs:restriction&gt;
       &lt;/xs:simpleType&gt;
       &lt;xs:simpleType&gt;

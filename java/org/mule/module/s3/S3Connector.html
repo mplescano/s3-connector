@@ -65,49 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -263,8 +220,6 @@
   <a href="../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
     <li class="api apilevel-">
@@ -758,7 +713,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date)">copyObject</a></span>(String sourceBucketName, String sourceKey, String sourceVersionId, String destinationBucketName, String destinationKey, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> destinationAcl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> destinationStorageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata, Date modifiedSince, Date unmodifiedSince)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date, java.lang.String)">copyObject</a></span>(String sourceBucketName, String sourceKey, String sourceVersionId, String destinationBucketName, String destinationKey, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> destinationAcl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> destinationStorageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata, Date modifiedSince, Date unmodifiedSince, String encryption)</nobr>
         
         <div class="jd-descrdiv">Copies a source object to a new destination; to copy an object, the caller's
  account must have read access to the source object and write access to the
@@ -797,7 +752,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, com.amazonaws.services.s3.model.ObjectMetadata, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, ObjectMetadata objectMetadata, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, String encryption, Map&lt;String,&nbsp;String&gt; userMetadata, String encoding)</nobr>
         
         <div class="jd-descrdiv">Uploads an object to S3.</div>
   
@@ -2017,7 +1972,7 @@ From class
 </div>
 
 
-<A NAME="copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date)"></A>
+<A NAME="copyObject(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.util.Date, java.util.Date, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2030,7 +1985,7 @@ From class
         String
       </span>
       <span class="sympad">copyObject</span>
-      <span class="normal">(String sourceBucketName, String sourceKey, String sourceVersionId, String destinationBucketName, String destinationKey, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> destinationAcl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> destinationStorageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata, Date modifiedSince, Date unmodifiedSince)</span>
+      <span class="normal">(String sourceBucketName, String sourceKey, String sourceVersionId, String destinationBucketName, String destinationKey, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> destinationAcl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> destinationStorageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata, Date modifiedSince, Date unmodifiedSince, String encryption)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2102,6 +2057,10 @@ From class
           <td>The unmodified constraint that restricts this request
             to executing only if the object has not been modified after this
             date. This constraint is specified but does not match, no copy is performed</td>
+        </tr>
+        <tr>
+          <th>encryption</td>
+          <td>Encryption for object. Supported value AES256</td>
         </tr>
       </table>
   </div>
@@ -2182,7 +2141,7 @@ From class
 </div>
 
 
-<A NAME="createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, com.amazonaws.services.s3.model.ObjectMetadata, java.util.Map<java.lang.String, java.lang.String>)"></A>
+<A NAME="createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2195,7 +2154,7 @@ From class
         String
       </span>
       <span class="sympad">createObject</span>
-      <span class="normal">(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, ObjectMetadata objectMetadata, Map&lt;String,&nbsp;String&gt; userMetadata)</span>
+      <span class="normal">(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, String encryption, Map&lt;String,&nbsp;String&gt; userMetadata, String encoding)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2258,19 +2217,32 @@ From class
           <td>The storage class of the new object</td>
         </tr>
         <tr>
-          <th>objectMetadata</td>
-          <td>Object Metadata for the request</td>
+          <th>encryption</td>
+          <td>Encryption type. Supported value AES256</td>
         </tr>
         <tr>
           <th>userMetadata</td>
           <td>A map of arbitrary object properties keys and values</td>
         </tr>
+        <tr>
+          <th>encoding</td>
+          <td>Optional parameter in case the content is an String</td>
+        </tr>
       </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>the id of the created object, or null, if versioning is not enabled
-</li></ul>
+      <ul class="nolist"><li>the id of the created object, or null, if versioning is not enabled</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>UnsupportedEncodingException</td>
+            <td>if the file encoding is not supported
+</td>
+        </tr>
+      </table>
   </div>
 
     </div>

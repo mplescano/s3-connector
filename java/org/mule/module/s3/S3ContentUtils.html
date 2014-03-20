@@ -65,49 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -263,8 +220,6 @@
   <a href="../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
     <li class="api apilevel-">
@@ -517,7 +472,7 @@ Summary:
             <a href="../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a></nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3ContentUtils.html#createContent(java.lang.Object, java.lang.Long, java.lang.String)">createContent</a></span>(Object content, Long contentLength, String contentMd5)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3ContentUtils.html#createContent(java.lang.Object, java.lang.Long, java.lang.String, java.lang.String)">createContent</a></span>(Object content, Long contentLength, String contentMd5, String encoding)</nobr>
         
         <div class="jd-descrdiv">Creates the <code><a href="../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a></code>.</div>
   
@@ -782,7 +737,7 @@ From class
 
 
 
-<A NAME="createContent(java.lang.Object, java.lang.Long, java.lang.String)"></A>
+<A NAME="createContent(java.lang.Object, java.lang.Long, java.lang.String, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -795,7 +750,7 @@ From class
         <a href="../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a>
       </span>
       <span class="sympad">createContent</span>
-      <span class="normal">(Object content, Long contentLength, String contentMd5)</span>
+      <span class="normal">(Object content, Long contentLength, String contentMd5, String encoding)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -825,6 +780,19 @@ From class
         <tr>
           <th>contentMd5</td>
           <td></td>
+        </tr>
+        <tr>
+          <th>encoding</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>UnsupportedEncodingException</td>
+            <td></td>
         </tr>
       </table>
   </div>

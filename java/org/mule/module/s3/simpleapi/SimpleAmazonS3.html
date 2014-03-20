@@ -65,49 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -263,8 +220,6 @@
   <a href="../../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/config/spring/package-summary.html">org.mule.module.s3.config.spring</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
     <li class="api apilevel-">
@@ -579,7 +534,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#copyObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.ConditionalConstraints, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.util.Map<java.lang.String, java.lang.String>)">copyObject</a></span>(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> source, <a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> destination, <a href="../../../../../../java/org/mule/module/s3/simpleapi/ConditionalConstraints.html">ConditionalConstraints</a> conditionalConstraints, CannedAccessControlList acl, StorageClass storageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#copyObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.ConditionalConstraints, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)">copyObject</a></span>(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> source, <a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> destination, <a href="../../../../../../java/org/mule/module/s3/simpleapi/ConditionalConstraints.html">ConditionalConstraints</a> conditionalConstraints, CannedAccessControlList acl, StorageClass storageClass, String encryption, Map&lt;String,&nbsp;String&gt; destinationUserMetadata)</nobr>
         
         <div class="jd-descrdiv">Copies a source object, with optional version, to a destination, with optional
  destination object acl.</div>
@@ -616,7 +571,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, com.amazonaws.services.s3.model.ObjectMetadata, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, String contentDisposition, CannedAccessControlList acl, StorageClass storageClass, ObjectMetadata objectMetadata, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/simpleapi/SimpleAmazonS3.html#createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)">createObject</a></span>(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, String contentDisposition, CannedAccessControlList acl, StorageClass storageClass, String encryption, Map&lt;String,&nbsp;String&gt; userMetadata)</nobr>
         
   </td></tr>
 
@@ -1046,7 +1001,7 @@ Summary:
 
 
 
-<A NAME="copyObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.ConditionalConstraints, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.util.Map<java.lang.String, java.lang.String>)"></A>
+<A NAME="copyObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.ConditionalConstraints, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1059,7 +1014,7 @@ Summary:
         String
       </span>
       <span class="sympad">copyObject</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> source, <a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> destination, <a href="../../../../../../java/org/mule/module/s3/simpleapi/ConditionalConstraints.html">ConditionalConstraints</a> conditionalConstraints, CannedAccessControlList acl, StorageClass storageClass, Map&lt;String,&nbsp;String&gt; destinationUserMetadata)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> source, <a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> destination, <a href="../../../../../../java/org/mule/module/s3/simpleapi/ConditionalConstraints.html">ConditionalConstraints</a> conditionalConstraints, CannedAccessControlList acl, StorageClass storageClass, String encryption, Map&lt;String,&nbsp;String&gt; destinationUserMetadata)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1087,7 +1042,7 @@ Summary:
         </tr>
         <tr>
           <th>conditionalConstraints</td>
-          <td>The constraints to be matched in order to proceed with copy. 
+          <td>The constraints to be matched in order to proceed with copy.
           If not matched, no copy is performed</td>
         </tr>
         <tr>
@@ -1097,6 +1052,10 @@ Summary:
         <tr>
           <th>storageClass</td>
           <td></td>
+        </tr>
+        <tr>
+          <th>encryption</td>
+          <td>Encryption for the object. Supported value AES256</td>
         </tr>
         <tr>
           <th>destinationUserMetadata</td>
@@ -1184,7 +1143,7 @@ Summary:
 </div>
 
 
-<A NAME="createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, com.amazonaws.services.s3.model.ObjectMetadata, java.util.Map<java.lang.String, java.lang.String>)"></A>
+<A NAME="createObject(org.mule.module.s3.simpleapi.S3ObjectId, org.mule.module.s3.simpleapi.SimpleAmazonS3.S3ObjectContent, java.lang.String, java.lang.String, com.amazonaws.services.s3.model.CannedAccessControlList, com.amazonaws.services.s3.model.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1197,7 +1156,7 @@ Summary:
         String
       </span>
       <span class="sympad">createObject</span>
-      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, String contentDisposition, CannedAccessControlList acl, StorageClass storageClass, ObjectMetadata objectMetadata, Map&lt;String,&nbsp;String&gt; userMetadata)</span>
+      <span class="normal">(<a href="../../../../../../java/org/mule/module/s3/simpleapi/S3ObjectId.html">S3ObjectId</a> objectId, <a href="../../../../../../java/org/mule/module/s3/simpleapi/SimpleAmazonS3.S3ObjectContent.html">SimpleAmazonS3.S3ObjectContent</a> content, String contentType, String contentDisposition, CannedAccessControlList acl, StorageClass storageClass, String encryption, Map&lt;String,&nbsp;String&gt; userMetadata)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1238,7 +1197,7 @@ Summary:
           <td></td>
         </tr>
         <tr>
-          <th>objectMetadata</td>
+          <th>encryption</td>
           <td></td>
         </tr>
         <tr>

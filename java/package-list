@@ -7,7 +7,6 @@ org.mule.module.s3.agents
 org.mule.module.s3.basic
 org.mule.module.s3.callback
 org.mule.module.s3.config
-org.mule.module.s3.config.spring
 org.mule.module.s3.connection
 org.mule.module.s3.connectivity
 org.mule.module.s3.devkit
