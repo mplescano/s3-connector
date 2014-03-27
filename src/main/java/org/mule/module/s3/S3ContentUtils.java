@@ -50,8 +50,7 @@ public final class S3ContentUtils
                 return createContent(streamContent, Long.parseLong(contentLengthHeader.getValue()),
                     contentMd5);
             }
-            return createContent(streamContent, null, contentMd5);
-            
+            return createContent(streamContent, null, contentMd5);            
         }
         if (content instanceof String)
         {

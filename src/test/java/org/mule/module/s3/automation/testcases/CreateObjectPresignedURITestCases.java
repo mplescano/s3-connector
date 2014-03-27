@@ -336,14 +336,16 @@ public class CreateObjectPresignedURITestCases extends S3TestParent {
 
 			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
-			
+			Thread.sleep(5000);
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			
 			createObjectFlow = lookupMessageProcessor("create-object-child-elements-none");
 			createObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			MessageProcessor createObjectPresignedURIFlow = lookupMessageProcessor("create-object-presigned-uri-optional-attributes");
 			MuleEvent createObjectPresignedURIResponse = createObjectPresignedURIFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			assertNotNull(((URI) createObjectPresignedURIResponse.getMessage().getPayload()).toURL());
 

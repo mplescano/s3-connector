@@ -41,6 +41,7 @@ public class GetObjectTestCases extends S3TestParent {
 			
 			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 
 			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent response = getObjectFlow.process(getTestEvent(testObjects));
@@ -77,12 +78,14 @@ public class GetObjectTestCases extends S3TestParent {
 			
 			MessageProcessor createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			MuleEvent createObjectResponse = createObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			testObjects.put("versionId", (String) createObjectResponse.getMessage().getPayload());
 			HashMap<String,Object> firstVersionMetadata = (HashMap<String,Object>) testObjects.get("userMetadata");
 			
 			MessageProcessor getObjectFlow = lookupMessageProcessor("get-object");
 			MuleEvent getObjectResponse = getObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			s3object = (S3Object) getObjectResponse.getMessage().getPayload();
 			objectMetadata = s3object.getObjectMetadata();
@@ -94,6 +97,7 @@ public class GetObjectTestCases extends S3TestParent {
 			
 			getObjectOptionalAttributesFlow = lookupMessageProcessor("get-object-optional-attributes-unmodified-since");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			s3object = (S3Object) getObjectOptionalAttributesResponse.getMessage().getPayload();
 			objectMetadata = s3object.getObjectMetadata();
@@ -108,11 +112,13 @@ public class GetObjectTestCases extends S3TestParent {
 			
 			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			// get-object-optional-attributes-version-id
 			
 				getObjectOptionalAttributesFlow = lookupMessageProcessor("get-object-optional-attributes-version-id");
 			getObjectOptionalAttributesResponse = getObjectOptionalAttributesFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			s3object = (S3Object) getObjectOptionalAttributesResponse.getMessage().getPayload();
 			objectMetadata = s3object.getObjectMetadata();

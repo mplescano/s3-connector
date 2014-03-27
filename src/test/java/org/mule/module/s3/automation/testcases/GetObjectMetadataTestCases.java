@@ -79,6 +79,7 @@ public class GetObjectMetadataTestCases extends S3TestParent {
 			
 			createObjectFlow = lookupMessageProcessor("create-object-child-elements-from-message");
 			createObjectFlow.process(getTestEvent(testObjects));
+			Thread.sleep(5000);
 			
 			// get-object-optional-attributes-version-id
 			

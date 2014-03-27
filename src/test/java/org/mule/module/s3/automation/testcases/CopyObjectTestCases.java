@@ -9,7 +9,6 @@
 package org.mule.module.s3.automation.testcases;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
@@ -590,10 +589,11 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
     
     @Category({RegressionTests.class})
 	@Test
-	public void testCopyObjectOptionalAttributesVersionioningEnabled() {
+	public void testCopyObjectOptionalAttributesVersionioningEnabled() throws InterruptedException {
     	
     	initializeByteArrayTestData();
     	createObject(true);
+    	Thread.sleep(5000);
     	copyObjectOptionalAttributesVersioningEnabledVerifications();
     	copyObjectChildElementsFromMessageGetVerifications();
      
@@ -601,10 +601,11 @@ private void copyObjectOptionalAttributesVersioningDisabledVerifications() {
     
     @Category({RegressionTests.class})
 	@Test
-	public void testCopyObjectOptionalAttributesVersionioningDisabled() {
+	public void testCopyObjectOptionalAttributesVersionioningDisabled() throws InterruptedException {
     	
     	initializeByteArrayTestData();
     	createObject(false);
+    	Thread.sleep(5000);
     	copyObjectOptionalAttributesVersioningDisabledVerifications();
     	copyObjectChildElementsFromMessageGetVerifications();
      
