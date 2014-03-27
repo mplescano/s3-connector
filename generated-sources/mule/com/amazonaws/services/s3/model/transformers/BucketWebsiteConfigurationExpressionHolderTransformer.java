@@ -21,7 +21,7 @@ import org.mule.config.i18n.CoreMessages;
 import org.mule.devkit.processor.ExpressionEvaluatorSupport;
 import org.mule.transformer.types.DataTypeFactory;
 
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-18T08:21:51-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-27T12:22:35-05:00", comments = "Build M4.1875.17b58a3")
 public class BucketWebsiteConfigurationExpressionHolderTransformer
     extends ExpressionEvaluatorSupport
     implements DiscoverableTransformer, MessageTransformer
