@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" prefix="s3" url="http://www.mulesoft.org/schema/mule/s3">
-  <global-cloud-connector connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Amazon S3" versions="[3.5.0,8.0.0]"></global-cloud-connector>
+  <global-cloud-connector extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Amazon S3" versions="[3.5.0,8.0.0]"></global-cloud-connector>
   <nested abstract="true" localId="connection-pooling-profile" description="" caption="">
-    <label description="" caption="Define connection pool configuration" name="poolingProfileLabel"></label>
-    <integer step="0" min="0" defaultValue="5" fillLine="true" description="Controls the maximum number of connections that can be borrowed from the pool at one time. When set to a negative value, there is no limit to the number of connections that may be active at one time. When maxActive is exceeded, the pool is said to be exhausted." caption="Max active" name="maxActive"></integer>
-    <integer step="0" min="0" defaultValue="5" fillLine="true" description="Controls the maximum number of connections that can sit idle in the pool at any time. When set to a negative value, there is no limit to the number of connections that may be idle at one time." caption="Max idle" name="maxIdle"></integer>
-    <enum defaultValue="INITIALISE_ONE" alwaysFill="true" description="Determines how connections in a pool should be initialized. The possible values are: INITIALISE_NONE (will not load any connection into the pool on startup), INITIALISE_ONE (will load one initial connection into the pool on startup), or INITIALISE_ALL (will load all connections in the pool on startup)" caption="Initialisation policy" name="initialisationPolicy">
+    <radioBoolean fillLine="true" description="Use default connection pool configuration." caption="Use default connection pool configuration" name="defaultPoolingProfile"></radioBoolean>
+    <radioBoolean fillLine="true" description="Define connection pool configuration." caption="Define connection pool configuration" name="customPoolingProfile"></radioBoolean>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" indented="true" controlled="customPoolingProfile" description="Controls the maximum number of connections that can be borrowed from the pool at one time. When set to a negative value, there is no limit to the number of connections that may be active at one time. When maxActive is exceeded, the pool is said to be exhausted." caption="Max active" name="maxActive"></integer>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" indented="true" controlled="customPoolingProfile" description="Controls the maximum number of connections that can sit idle in the pool at any time. When set to a negative value, there is no limit to the number of connections that may be idle at one time." caption="Max idle" name="maxIdle"></integer>
+    <enum defaultValue="INITIALISE_ONE" indented="true" controlled="customPoolingProfile" alwaysFill="true" description="Determines how connections in a pool should be initialized. The possible values are: INITIALISE_NONE (will not load any connection into the pool on startup), INITIALISE_ONE (will load one initial connection into the pool on startup), or INITIALISE_ALL (will load all connections in the pool on startup)" caption="Initialisation policy" name="initialisationPolicy">
       <option value="INITIALISE_NONE"></option>
       <option value="INITIALISE_ONE"></option>
       <option value="INITIALISE_ALL"></option>
     </enum>
-    <enum defaultValue="WHEN_EXHAUSTED_GROW" alwaysFill="true" description="Specifies the behavior of the connection pool when the pool is exhausted. Possible values are: &quot;WHEN_EXHAUSTED_FAIL&quot;, which will throw a NoSuchElementException, &quot;WHEN_EXHAUSTED_WAIT&quot;, which will block by invoking Object.wait(long) until a new or idle object is available, or WHEN_EXHAUSTED_GROW, which will create a new connection and return it, essentially making maxActive meaningless. If a positive maxWait value is supplied, it will block for at most that many milliseconds, after which a NoSuchElementException will be thrown. If maxThreadWait is a negative value, it will block indefinitely." caption="Exhausted action" name="exhaustedAction">
+    <enum defaultValue="WHEN_EXHAUSTED_GROW" indented="true" controlled="customPoolingProfile" alwaysFill="true" description="Specifies the behavior of the connection pool when the pool is exhausted. Possible values are: &quot;WHEN_EXHAUSTED_FAIL&quot;, which will throw a NoSuchElementException, &quot;WHEN_EXHAUSTED_WAIT&quot;, which will block by invoking Object.wait(long) until a new or idle object is available, or WHEN_EXHAUSTED_GROW, which will create a new connection and return it, essentially making maxActive meaningless. If a positive maxWait value is supplied, it will block for at most that many milliseconds, after which a NoSuchElementException will be thrown. If maxThreadWait is a negative value, it will block indefinitely." caption="Exhausted action" name="exhaustedAction">
       <option value="WHEN_EXHAUSTED_WAIT"></option>
       <option value="WHEN_EXHAUSTED_FAIL"></option>
       <option value="WHEN_EXHAUSTED_GROW"></option>
     </enum>
-    <integer step="0" min="0" defaultValue="5" fillLine="true" description="When exhausted action is Wait (or block) this is the amount of time in milliseconds that the pool will wait before failing. Setting a negative value will block indefinitely until an idle instance becomes available." caption="Max wait" name="maxWait"></integer>
-    <integer step="0" min="0" defaultValue="1800000" fillLine="true" description="Determines the minimum amount of time a connection may sit idle in the pool before it is eligible for eviction. When non-positive, no connections will be evicted from the pool due to idle time alone." caption="Min eviction (ms)" name="minEvictionMillis"></integer>
-    <integer step="0" min="0" defaultValue="-1" fillLine="true" description="Specifies the number of milliseconds between runs of the connection evictor. When non-positive, no connection evictor is executed." caption="Eviction check interval (ms)" name="evictionCheckIntervalMillis"></integer>
+    <integer step="0" min="0" defaultValue="5" fillLine="true" indented="true" controlled="customPoolingProfile" description="When exhausted action is Wait (or block) this is the amount of time in milliseconds that the pool will wait before failing. Setting a negative value will block indefinitely until an idle instance becomes available." caption="Max wait" name="maxWait"></integer>
+    <integer step="0" min="0" defaultValue="1800000" fillLine="true" indented="true" controlled="customPoolingProfile" description="Determines the minimum amount of time a connection may sit idle in the pool before it is eligible for eviction. When non-positive, no connections will be evicted from the pool due to idle time alone." caption="Min eviction (ms)" name="minEvictionMillis"></integer>
+    <integer step="0" min="0" defaultValue="-1" fillLine="true" indented="true" controlled="customPoolingProfile" description="Specifies the number of milliseconds between runs of the connection evictor. When non-positive, no connection evictor is executed." caption="Eviction check interval (ms)" name="evictionCheckIntervalMillis"></integer>
   </nested>
   <nested abstract="true" localId="reconnectionStrategyElement" description="" caption="">
     <label description="" caption="Define how mule should attempt to handle a connection failure" name="connectionLabel"></label>
@@ -33,7 +34,7 @@
   </nested>
   <global-cloud-connector connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/s3/parentConfig" abstract="false" image="icons/large/s3-connector-48x32.png" localId="config" icon="icons/small/s3-connector-24x16.png" description="Global Amazon S3 configuration information." caption="Amazon S3" versions="[3.5.0,8.0.0]">
     <attribute-category description="S3 configuration properties." caption="General">
-      <group caption="Generic" id="s3GenericProperties">
+      <group caption="Basic Settings" id="s3GenericProperties">
         <name required="true" description="Give a name to this configuration so it can be later referenced by config-ref." caption="Name" name="name"></name>
       </group>
       <group caption="Connection" id="connection">
@@ -55,7 +56,7 @@ A value of 0 means infinity, and is not recommended." caption="Socket Timeout" n
     </attribute-category>
     <attribute-category description="Pooling profile options." caption="Pooling Profile">
       <group caption="Pooling Profile" id="poolingProfile">
-        <childElement inplace="true" description="" caption="" name="http://www.mulesoft.org/schema/mule/s3/connection-pooling-profile"></childElement>
+        <childElement inplace="true" valuePersistence="org.mule.tooling.ui.modules.core.widgets.meta.PoolingProfileValuePersistence" description="" caption="" name="http://www.mulesoft.org/schema/mule/s3/connection-pooling-profile"></childElement>
       </group>
     </attribute-category>
     <attribute-category description="Reconnection options." caption="Reconnection">
@@ -67,15 +68,15 @@ A value of 0 means infinity, and is not recommended." caption="Socket Timeout" n
   </global-cloud-connector>
   <cloud-connector abstract="true" image="icons/large/s3-connector-48x32.png" localId="abstractS3ConnectorGeneric" icon="icons/small/s3-connector-24x16.png" description="Interact with S3." caption="Abstracts3connectorgeneric">
     <attribute-category description="General." caption="General">
-      <group caption="Generic" id="abstractS3ConnectorGeneric">
-        <globalRef requiredType="http://www.mulesoft.org/schema/mule/s3/config" required="true" description="Specify which configuration to use for this invocation." caption="Config Reference" name="config-ref"></globalRef>
+      <group caption="Basic Settings" id="abstractS3ConnectorGeneric">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/s3/config" required="true" description="Specify which configuration to use for this invocation." caption="Connector Configuration" name="config-ref"></globalRef>
       </group>
     </attribute-category>
   </cloud-connector>
   <cloud-connector extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" image="icons/large/s3-connector-48x32.png" localId="s3-connector" icon="icons/small/s3-connector-24x16.png" description="Amazon S3 (Simple Storage Service) is an online storage web service offered by Amazon Web Services. Amazon S3
 provides storage through web services interfaces (REST, SOAP, and BitTorrent)." caption="Amazon S3" aliasId="org.mule.tooling.ui.modules.core.pattern.s3" versions="[3.5.0,8.0.0]">
     <attribute-category description="General." caption="General">
-      <group caption="Generic" id="s3ConnectorGeneric">
+      <group caption="Basic Settings" id="s3ConnectorGeneric">
         <modeSwitch alwaysCombo="true" description="Operation." caption="Operation" name="S3 operations to execute">
           <mode modeLabel="Copy object" modeId="http://www.mulesoft.org/schema/mule/s3/copy-object"></mode>
           <mode modeLabel="Create bucket" modeId="http://www.mulesoft.org/schema/mule/s3/create-bucket"></mode>
@@ -131,10 +132,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <element-controller-map mapName="destination-user-metadata" itemName="destination-user-metadatum" localName="copy-object-destination-user-metadata" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" required="false" description="The new metadata of the destination object, that if specified, overrides that copied from the source object." caption="Destination User Metadata"></element-controller-map>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -161,10 +160,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         </enum>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -197,10 +194,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <element-controller-map mapName="user-metadata" itemName="user-metadatum" localName="create-object-user-metadata" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" required="false" description="A map of arbitrary object properties keys and values." caption="User Metadata"></element-controller-map>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -216,10 +211,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string defaultValue="PUT" javaType="java.lang.String" required="false" description="The HTTP method verb to use for this URL." caption="Method" name="method"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -234,10 +227,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <boolean defaultValue="false" javaType="boolean" required="false" supportsExpressions="true" description="If the default US Amazon server subdomain should be used in the URI regardless of the region." caption="Use Default Server" name="useDefaultServer"></boolean>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -250,10 +241,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <boolean defaultValue="false" javaType="boolean" required="false" supportsExpressions="true" description="Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario." caption="Force" name="force"></boolean>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -265,10 +254,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="true" description="The bucket whose policy to delete." caption="Bucket Name" name="bucketName"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -280,10 +267,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="true" description="The bucket whose policy to delete." caption="Bucket Name" name="bucketName"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -297,10 +282,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="false" description="The specific version of the object to delete, if versioning is enabled. Left unspecified if the latest version is desired, or versioning is not enabled." caption="Version Id" name="versionId"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -313,10 +296,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <element-controller-listOfPojo listName="keys" itemName="key" localName="delete-objects-keys" javaType="java.util.List&lt;org.mule.module.s3.simpleapi.KeyVersion&gt;" description="The objects keys, version is optional." caption="Keys"></element-controller-listOfPojo>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -328,10 +309,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="true" description="The bucket whose policy to retrieve." caption="Bucket Name" name="bucketName"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -343,10 +322,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="true" description="The bucket whose versioning configuration will be retrieved." caption="Bucket Name" name="bucketName"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -358,10 +335,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="true" description="The target bucket's name." caption="Bucket Name" name="bucketName"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -377,10 +352,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.util.Date" required="false" description="The unmodified constraint that restricts this request to executing only if the object has not been modified after this date." caption="Unmodified Since" name="unmodifiedSince"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -396,10 +369,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.util.Date" required="false" description="The unmodified constraint that restricts this request to executing only if the object has not been modified after this date." caption="Unmodified Since" name="unmodifiedSince"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -413,10 +384,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="false" description="The object metadata for the given bucketName and key." caption="Version Id" name="versionId"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -424,10 +393,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
   </cloud-connector>
   <cloud-connector returnType="java.util.List&lt;com.amazonaws.services.s3.model.Bucket&gt;" extends="http://www.mulesoft.org/schema/mule/s3/abstractS3ConnectorGeneric" abstract="true" image="icons/large/s3-connector-48x32.png" localId="list-buckets" icon="icons/small/s3-connector-24x16.png" caption="List Buckets">
     <attribute-category description="General." caption="General"></attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -448,10 +415,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         </enum>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -471,10 +436,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         </enum>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -487,10 +450,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <string javaType="java.lang.String" required="true" description="The policy text." caption="Policy Text" name="policyText"></string>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -507,10 +468,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         </enum>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -523,10 +482,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         <childElement allowMultiple="false" inplace="true" javaType="com.amazonaws.services.s3.model.BucketWebsiteConfiguration" required="true" caption="Bucket Website Configuration Reference" name="http://www.mulesoft.org/schema/mule/s3/bucket-website-configuration"></childElement>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>
@@ -543,10 +500,8 @@ provides storage through web services interfaces (REST, SOAP, and BitTorrent)." 
         </enum>
       </group>
     </attribute-category>
-    <attribute-category description="Connection." caption="Connection">
-      <group caption="Connection" id="connection">
-        <label caption="Use these fields to override the credentials defined in the Amazon S3 connector."></label>
-        <label caption=""></label>
+    <attribute-category description="Advanced." caption="Advanced">
+      <group caption="Connector Configuration Overrides" id="connector Configuration Overrides">
         <string javaType="java.lang.String" required="false" description="The access key provided by Amazon, needed for non annoynous operations." caption="Access Key" name="accessKey"></string>
         <string javaType="java.lang.String" required="false" description="The secrete key provided by Amazon, needed for non annoynous operations." caption="Secret Key" name="secretKey"></string>
       </group>

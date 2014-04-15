@@ -18,7 +18,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * DeleteObjectMessageProcessor invokes the {@link org.mule.module.s3.S3Connector#deleteObject(java.lang.String, java.lang.String, java.lang.String)} method in {@link S3Connector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-27T12:22:35-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-15T08:28:25-05:00", comments = "Build master.1915.dd1962d")
 public class DeleteObjectMessageProcessor
     extends AbstractConnectedProcessor
     implements MessageProcessor
@@ -106,7 +106,7 @@ public class DeleteObjectMessageProcessor
             final String _transformedBucketName = ((String) evaluateAndTransform(getMuleContext(), event, DeleteObjectMessageProcessor.class.getDeclaredField("_bucketNameType").getGenericType(), null, bucketName));
             final String _transformedKey = ((String) evaluateAndTransform(getMuleContext(), event, DeleteObjectMessageProcessor.class.getDeclaredField("_keyType").getGenericType(), null, key));
             final String _transformedVersionId = ((String) evaluateAndTransform(getMuleContext(), event, DeleteObjectMessageProcessor.class.getDeclaredField("_versionIdType").getGenericType(), null, versionId));
-            ProcessTemplate<Object, Object> processTemplate = ((ProcessAdapter<Object> ) moduleObject).getProcessTemplate();
+            final ProcessTemplate<Object, Object> processTemplate = ((ProcessAdapter<Object> ) moduleObject).getProcessTemplate();
             processTemplate.execute(new ProcessCallback<Object,Object>() {
 
 

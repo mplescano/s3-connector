@@ -15,12 +15,12 @@ import org.mule.module.s3.connection.ConnectionManager;
 import org.mule.module.s3.connection.UnableToAcquireConnectionException;
 import org.mule.module.s3.connection.UnableToReleaseConnectionException;
 import org.mule.module.s3.connectivity.S3ConnectorConnectionKey;
-import org.mule.module.s3.processors.AbstractConnectedProcessor;
+import org.mule.module.s3.processors.ConnectivityProcessor;
 import org.mule.security.oauth.callback.ProcessCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-27T12:22:35-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-15T08:28:25-05:00", comments = "Build master.1915.dd1962d")
 public class ManagedConnectionProcessInterceptor<T >
     extends ExpressionEvaluatorSupport
     implements ProcessInterceptor<T, S3ConnectorConnectionIdentifierAdapter>
@@ -44,11 +44,12 @@ public class ManagedConnectionProcessInterceptor<T >
         S3ConnectorConnectionIdentifierAdapter connection = null;
         S3ConnectorConnectionKey key = null;
         if (hasConnectionKeysOverride(messageProcessor)) {
-            final String _transformedAccessKey = ((String) evaluateAndTransform(muleContext, event, AbstractConnectedProcessor.class.getDeclaredField("_accessKeyType").getGenericType(), null, ((AbstractConnectedProcessor) messageProcessor).getAccessKey()));
+            ConnectivityProcessor connectivityProcessor = ((ConnectivityProcessor) messageProcessor);
+            final String _transformedAccessKey = ((String) evaluateAndTransform(muleContext, event, connectivityProcessor.typeFor("_accessKeyType"), null, connectivityProcessor.getAccessKey()));
             if (_transformedAccessKey == null) {
                 throw new UnableToAcquireConnectionException("Parameter accessKey in method connect can't be null because is not @Optional");
             }
-            final String _transformedSecretKey = ((String) evaluateAndTransform(muleContext, event, AbstractConnectedProcessor.class.getDeclaredField("_secretKeyType").getGenericType(), null, ((AbstractConnectedProcessor) messageProcessor).getSecretKey()));
+            final String _transformedSecretKey = ((String) evaluateAndTransform(muleContext, event, connectivityProcessor.typeFor("_secretKeyType"), null, connectivityProcessor.getSecretKey()));
             if (_transformedSecretKey == null) {
                 throw new UnableToAcquireConnectionException("Parameter secretKey in method connect can't be null because is not @Optional");
             }
@@ -108,13 +109,14 @@ public class ManagedConnectionProcessInterceptor<T >
      * @param messageProcessor
      *     the message processor to test against the keys
      * @return
+     *     true if any of the parameters in @Connect method annotated with @ConnectionKey was override in the XML, false otherwise  
      */
     private Boolean hasConnectionKeysOverride(MessageProcessor messageProcessor) {
-        if ((messageProcessor == null)||(!(messageProcessor instanceof AbstractConnectedProcessor))) {
+        if ((messageProcessor == null)||(!(messageProcessor instanceof ConnectivityProcessor))) {
             return false;
         }
-        AbstractConnectedProcessor abstractConnectedProcessor = ((AbstractConnectedProcessor) messageProcessor);
-        if (abstractConnectedProcessor.getAccessKey()!= null) {
+        ConnectivityProcessor connectivityProcessor = ((ConnectivityProcessor) messageProcessor);
+        if (connectivityProcessor.getAccessKey()!= null) {
             return true;
         }
         return false;

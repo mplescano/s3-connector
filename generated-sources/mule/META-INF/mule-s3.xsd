@@ -1409,21 +1409,29 @@ other than US_STANDARD.</xs:documentation>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:simpleType name="EncodingTypeEnumType">
+  <xs:simpleType name="RegionEnumType">
     <xs:annotation>
-      <xs:documentation>This enum is needed to display the proper options for encoding types in Studio.
-Methods of the Amazon SDK for Java only receive a String. For an example,
-see</xs:documentation>
+      <xs:documentation></xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="NOT_ENCODED">
+          <xs:enumeration value="US_STANDARD">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="URL">
+          <xs:enumeration value="US_WEST">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="EU_IRELAND">
+            <xs:annotation>
+              <xs:documentation></xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="AP_SINGAPORE">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
@@ -1539,29 +1547,21 @@ connector api issue regarding enums processing</xs:documentation>
       </xs:simpleType>
     </xs:union>
   </xs:simpleType>
-  <xs:simpleType name="RegionEnumType">
+  <xs:simpleType name="EncodingTypeEnumType">
     <xs:annotation>
-      <xs:documentation></xs:documentation>
+      <xs:documentation>This enum is needed to display the proper options for encoding types in Studio.
+Methods of the Amazon SDK for Java only receive a String. For an example,
+see</xs:documentation>
     </xs:annotation>
     <xs:union>
       <xs:simpleType>
         <xs:restriction base="xs:string">
-          <xs:enumeration value="US_STANDARD">
+          <xs:enumeration value="NOT_ENCODED">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>
           </xs:enumeration>
-          <xs:enumeration value="US_WEST">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="EU_IRELAND">
-            <xs:annotation>
-              <xs:documentation></xs:documentation>
-            </xs:annotation>
-          </xs:enumeration>
-          <xs:enumeration value="AP_SINGAPORE">
+          <xs:enumeration value="URL">
             <xs:annotation>
               <xs:documentation></xs:documentation>
             </xs:annotation>

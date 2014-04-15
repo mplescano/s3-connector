@@ -29,14 +29,13 @@ import org.mule.module.s3.S3Connector;
 import org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter;
 import org.mule.module.s3.connection.ConnectionManager;
 import org.mule.module.s3.connection.UnableToAcquireConnectionException;
-import org.mule.module.s3.processors.AbstractConnectedProcessor;
 
 
 /**
  * A {@code S3ConnectorConnectionManager} is a wrapper around {@link S3Connector } that adds connection management capabilities to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-27T12:22:35-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-15T08:28:25-05:00", comments = "Build master.1915.dd1962d")
 public class S3ConnectorConnectionManager
     extends ExpressionEvaluatorSupport
     implements MetadataAware, MuleContextAware, ProcessAdapter<S3ConnectorConnectionIdentifierAdapter> , Capabilities, Disposable, Initialisable, Testable, ConnectionManager<S3ConnectorConnectionKey, S3ConnectorConnectionIdentifierAdapter>
@@ -75,8 +74,8 @@ public class S3ConnectorConnectionManager
     protected RetryPolicyTemplate retryPolicyTemplate;
     private final static String MODULE_NAME = "Amazon S3";
     private final static String MODULE_VERSION = "2.6.4-SNAPSHOT";
-    private final static String DEVKIT_VERSION = "3.5.0-M4";
-    private final static String DEVKIT_BUILD = "M4.1875.17b58a3";
+    private final static String DEVKIT_VERSION = "3.5.0-SNAPSHOT";
+    private final static String DEVKIT_BUILD = "master.1915.dd1962d";
     private final static String MIN_MULE_VERSION = "3.5";
 
     /**
@@ -354,11 +353,11 @@ public class S3ConnectorConnectionManager
         throws Exception
     {
         if (event!= null) {
-            final String _transformedAccessKey = ((String) evaluateAndTransform(muleContext, event, AbstractConnectedProcessor.class.getDeclaredField("_accessKeyType").getGenericType(), null, getAccessKey()));
+            final String _transformedAccessKey = ((String) evaluateAndTransform(muleContext, event, this.getClass().getDeclaredField("accessKey").getGenericType(), null, getAccessKey()));
             if (_transformedAccessKey == null) {
                 throw new UnableToAcquireConnectionException("Parameter accessKey in method connect can't be null because is not @Optional");
             }
-            final String _transformedSecretKey = ((String) evaluateAndTransform(muleContext, event, AbstractConnectedProcessor.class.getDeclaredField("_secretKeyType").getGenericType(), null, getSecretKey()));
+            final String _transformedSecretKey = ((String) evaluateAndTransform(muleContext, event, this.getClass().getDeclaredField("secretKey").getGenericType(), null, getSecretKey()));
             if (_transformedSecretKey == null) {
                 throw new UnableToAcquireConnectionException("Parameter secretKey in method connect can't be null because is not @Optional");
             }
