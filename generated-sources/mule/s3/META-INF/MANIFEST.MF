@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Amazon S3
 Bundle-SymbolicName: org.mule.tooling.ui.contribution.s3.3.5.0;singleton:=true
-Bundle-Version: 2.6.4.201404150828
+Bundle-Version: 2.6.4.201404160950
 Bundle-Activator: org.mule.tooling.ui.contribution.S3Activator
 Bundle-Vendor: MuleSoft, Inc.
 Require-Bundle: org.eclipse.ui,

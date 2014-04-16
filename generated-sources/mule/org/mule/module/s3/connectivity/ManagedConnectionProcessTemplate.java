@@ -16,7 +16,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
 import org.mule.security.oauth.process.ProcessCallbackProcessInterceptor;
 import org.mule.security.oauth.process.RetryProcessInterceptor;
 
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-15T08:28:25-05:00", comments = "Build master.1915.dd1962d")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T09:50:33-05:00", comments = "Build master.1915.dd1962d")
 public class ManagedConnectionProcessTemplate<P >implements ProcessTemplate<P, S3ConnectorConnectionIdentifierAdapter>
 {
 

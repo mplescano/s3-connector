@@ -19,7 +19,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * SetObjectStorageClassMessageProcessor invokes the {@link org.mule.module.s3.S3Connector#setObjectStorageClass(java.lang.String, java.lang.String, org.mule.module.s3.StorageClass)} method in {@link S3Connector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-15T08:28:25-05:00", comments = "Build master.1915.dd1962d")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T09:50:33-05:00", comments = "Build master.1915.dd1962d")
 public class SetObjectStorageClassMessageProcessor
     extends AbstractConnectedProcessor
     implements MessageProcessor

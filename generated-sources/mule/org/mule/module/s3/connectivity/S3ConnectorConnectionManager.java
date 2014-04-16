@@ -35,7 +35,7 @@ import org.mule.module.s3.connection.UnableToAcquireConnectionException;
  * A {@code S3ConnectorConnectionManager} is a wrapper around {@link S3Connector } that adds connection management capabilities to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-15T08:28:25-05:00", comments = "Build master.1915.dd1962d")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T09:50:33-05:00", comments = "Build master.1915.dd1962d")
 public class S3ConnectorConnectionManager
     extends ExpressionEvaluatorSupport
     implements MetadataAware, MuleContextAware, ProcessAdapter<S3ConnectorConnectionIdentifierAdapter> , Capabilities, Disposable, Initialisable, Testable, ConnectionManager<S3ConnectorConnectionKey, S3ConnectorConnectionIdentifierAdapter>
