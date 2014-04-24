@@ -66,6 +66,49 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -154,7 +197,7 @@
       <a href="http://www.mulesoft.com" tabindex="-1">
       <img src="../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
       
-  <div id="search" >
+  <div id="searchContainer" >
       <div id="searchForm">
           <form accept-charset="utf-8" class="gsc-search-box" 
                 onsubmit="return submit_search()">
@@ -240,7 +283,7 @@ Summary:
           <th>Schema Version</th><td>2.0</td>
         </tr>
 <tr>
-          <th>Minimum Mule Version</th><td>3.4</td>
+          <th>Minimum Mule Version</th><td>3.5</td>
         </tr>
     </tbody></table>
   </div>
@@ -476,7 +519,8 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/s3-config.html#list-object-versions">&lt;s3:list-object-versions&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning enabled.</div>
+        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning
+ enabled.</div>
         
   </td></tr>
 
@@ -759,6 +803,11 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
 
 
 
+
+
+
+
+
 <!-- ========= MESSAGE PROCESSOR DETAIL ======== -->
 <!-- Message Processors -->
 <h2>Message Processors</h2>
@@ -781,7 +830,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Copies a source object to a new destination; to copy an object, the caller's
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Copies a source object to a new destination; to copy an object, the caller's
  account must have read access to the source object and write access to the
  destination bucket. By default, all object metadata for the source object are
  copied to the new destination object, unless new object metadata in the
@@ -790,7 +841,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
  bucket is specified, the same that the source bucket is used - local copy.
 
  <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:copy-object sourceBucketName="my-bucket" sourceKey="foo.gzip" destinationKey="bar.gzip"
-                destinationStorageClass="STANDARD" /&gt;</pre></div></p></div>
+                destinationStorageClass="STANDARD" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -807,132 +860,152 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>sourceBucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The source object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>sourceBucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The source object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>sourceKey</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The source object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>sourceKey</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The source object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>sourceVersionId</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the source object to copy, if
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>sourceVersionId</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the source object to copy, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>destinationBucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The destination object's bucket. If none
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>destinationBucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The destination object's bucket. If none
             provided, a local copy is performed, that is, it is copied within
             the same bucket.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>destinationKey</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The destination object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>destinationKey</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The destination object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>destinationAcl</nobr></td>
-                        <td class="jd-descrcol">PRIVATE</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The acl of the destination object.</td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>destinationAcl</nobr></td>
+                            <td class="jd-descrcol">PRIVATE</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The acl of the destination object.</td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>destinationStorageClass</nobr></td>
-                        <td class="jd-descrcol">STANDARD</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>One of <code><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></code> enumerated values, defaults to <code><a href="../java/org/mule/module/s3/StorageClass.html#STANDARD">STANDARD</a></code></td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>destinationStorageClass</nobr></td>
+                            <td class="jd-descrcol">STANDARD</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>One of <code><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></code> enumerated values, defaults to <code><a href="../java/org/mule/module/s3/StorageClass.html#STANDARD">STANDARD</a></code></td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
             executing only if the object has been modified after the specified
             date. This constraint is specified but does not match, no copy is performed</td>
-                        <td class="jd-descrcol">Date</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">Date</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
             to executing only if the object has not been modified after this
             date. This constraint is specified but does not match, no copy is performed</td>
-                        <td class="jd-descrcol">Date</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">Date</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>encryption</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Encryption for object. Supported value AES256</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>encryption</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Encryption method for server-side encryption. Supported value AES256.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -1013,10 +1086,13 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">String</td>
-                <td class="jd-descrcol">the version id of the new object, or null, if versioning is not
+                
+                    <td class="jd-descrcol">String</td>
+                    <td class="jd-descrcol">the version id of the new object, or null, if versioning is not
          enabled
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -1040,7 +1116,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Creates a new bucket; connector must not be configured as anonymous for this
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Creates a new bucket; connector must not be configured as anonymous for this
  operation to succeed. Bucket names must be unique across all of Amazon S3,
  that is, among all their users. Bucket ownership is similar to the ownership
  of Internet domain names. Within Amazon S3, only a single user owns each
@@ -1053,7 +1131,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
  make bucket create or delete calls in the high availability code path of an
  application. Create or delete buckets in a separate initialization or setup.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-bucket bucketName="my-bucket" acl="PRIVATE"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-bucket bucketName="my-bucket" acl="PRIVATE"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1070,38 +1150,44 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The bucket to create. It must not exist yet.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The bucket to create. It must not exist yet.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>region</nobr></td>
-                        <td class="jd-descrcol">US_STANDARD</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The region where to create the new bucket</td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/simpleapi/Region.html">Region</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>region</nobr></td>
+                            <td class="jd-descrcol">US_STANDARD</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The region where to create the new bucket</td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/simpleapi/Region.html">Region</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>acl</nobr></td>
-                        <td class="jd-descrcol">PRIVATE</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The access control list of the new bucket</td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>acl</nobr></td>
+                            <td class="jd-descrcol">PRIVATE</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The access control list of the new bucket</td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -1142,9 +1228,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">Bucket</td>
-                <td class="jd-descrcol">the non null, new Bucket
+                
+                    <td class="jd-descrcol">Bucket</td>
+                    <td class="jd-descrcol">the non null, new Bucket
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -1168,10 +1257,14 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Uploads an object to S3. Supported contents are InputStreams, Strings, byte
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Uploads an object to S3. Supported contents are InputStreams, Strings, byte
  arrays and Files.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object bucketName="my-bucket" key="helloWorld.txt" contentType="text/plain" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object bucketName="my-bucket" key="helloWorld.txt" contentType="text/plain" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1188,150 +1281,158 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>content</nobr></td>
-                        <td class="jd-descrcol">#[payload]</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content to be uploaded to S3, capable of creating a PutObjectRequest.</td>
-                        <td class="jd-descrcol">Object</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>content</nobr></td>
+                            <td class="jd-descrcol">#[payload]</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content to be uploaded to S3, capable of creating a PutObjectRequest.</td>
+                            <td class="jd-descrcol">Object</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>contentLength</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content length. If content is a InputStream,
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>contentLength</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content length. If content is a InputStream,
             this parameter should be specified, as not doing so will
             introduce a performance loss as the contents will have to be persisted on disk before being uploaded. 
             Otherwise, it is ignored. An exception to this 
             rule are InputStreams returned by Mule Http Connector: if stream has Content-Length 
             information, it will be used. 
             In any case a content length of 0 is interpreted as an unspecified content length</td>
-                        <td class="jd-descrcol">Long</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">Long</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>contentMd5</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content md5, encoded in base 64. If content is a file,
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>contentMd5</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content md5, encoded in base 64. If content is a file,
             it is ignored.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>contentType</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content type of the new object.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>contentType</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content type of the new object.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>contentDisposition</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content disposition of the new object.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>contentDisposition</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The content disposition of the new object.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>acl</nobr></td>
-                        <td class="jd-descrcol">PRIVATE</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The access control list of the new object</td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>acl</nobr></td>
+                            <td class="jd-descrcol">PRIVATE</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The access control list of the new object</td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>storageClass</nobr></td>
-                        <td class="jd-descrcol">STANDARD</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The storage class of the new object</td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
-                
-                
-          
-                
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>encryption</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Encryption type. Supported value AES256</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>storageClass</nobr></td>
+                            <td class="jd-descrcol">STANDARD</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The storage class of the new object</td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>encoding</nobr></td>
-                        <td class="jd-descrcol">UTF-8</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Optional parameter in case the content is an String</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>encryption</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Encryption method for server-side encryption. Supported value AES256.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
           
               <tr><th colspan="12">Connection Parameters<br/><span style="font-weight: 200;">This are only required if you didn't specified them at the configuration element. They are also useful for overriding the values of the configurations or even if you need to extract them from the Mule message since they support expression evaluation.</span></th></tr>
                 
-                    <tr class="alt-color api apilevel-" >
+                    <tr class=" api apilevel-" >
                         <td class="jd-linkcol"><nobr>accessKey</nobr></td>
                         <td class="jd-descrcol"></td>
                         <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The access key provided by Amazon, needed for non annoynous operations</td>
@@ -1341,7 +1442,7 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                     </tr>
                     
                 
-                    <tr class=" api apilevel-" >
+                    <tr class="alt-color api apilevel-" >
                         <td class="jd-linkcol"><nobr>secretKey</nobr></td>
                         <td class="jd-descrcol"></td>
                         <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>The secrete key provided by Amazon, needed for non annoynous operations</td>
@@ -1361,8 +1462,6 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
             <table id="lconfig" class="jd-sumtable">
               
               <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th></td>
-              
-                
               
                 
               
@@ -1406,8 +1505,11 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">String</td>
-                <td class="jd-descrcol">the id of the created object, or null, if versioning is not enabled</td>
+                
+                    <td class="jd-descrcol">String</td>
+                    <td class="jd-descrcol">the id of the created object, or null, if versioning is not enabled</td>
+                
+
              </tr>
          </table>
   </div>
@@ -1419,8 +1521,8 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
         <tr><th>Payload Class</th><th>Description</th></tr>
         
         <tr>
-            <td>UnsupportedEncodingException</td>
-            <td>if the file encoding is not supported
+            <td>IOException</td>
+            <td>if there are problems manipulating the File or InputStream content
 </td>
         </tr>
       </table>
@@ -1443,11 +1545,15 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Returns a pre-signed URL for accessing an Amazon S3 object. The pre-signed URL
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Returns a pre-signed URL for accessing an Amazon S3 object. The pre-signed URL
  can be shared to other users, allowing access to the resource without
  providing an account's AWS security credentials.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-presigned-uri bucketName="my-bucket" key="bar.xml" method="GET" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-presigned-uri bucketName="my-bucket" key="bar.xml" method="GET" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1464,64 +1570,74 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>versionId</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to create the URI, if
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>versionId</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to create the URI, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>expiration</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The time at which the returned pre-signed URL will expire.</td>
-                        <td class="jd-descrcol">Date</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>expiration</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The time at which the returned pre-signed URL will expire.</td>
+                            <td class="jd-descrcol">Date</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>method</nobr></td>
-                        <td class="jd-descrcol">PUT</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The HTTP method verb to use for this URL</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>method</nobr></td>
+                            <td class="jd-descrcol">PUT</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The HTTP method verb to use for this URL</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -1562,11 +1678,14 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">URI</td>
-                <td class="jd-descrcol">A non null pre-signed URI that can be used to access an Amazon S3
+                
+                    <td class="jd-descrcol">URI</td>
+                    <td class="jd-descrcol">A non null pre-signed URI that can be used to access an Amazon S3
          resource without requiring the user of the URL to know the account's
          AWS security credentials.
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -1590,14 +1709,18 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Creates an http URI for the given object id. The useDefaultServer option
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Creates an http URI for the given object id. The useDefaultServer option
  enables using default US Amazon server subdomain in the URI regardless of the
  region. The main benefit of such feature is that this operation does not need
  to hit the Amazon servers, but the drawback is that using the given URI as an
  URL to the resource have unnecessary latency penalties for standard regions
  other than US_STANDARD.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-uri bucketName="my-bucket" key="baz.bin"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:create-object-uri bucketName="my-bucket" key="baz.bin"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1614,51 +1737,59 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>useDefaultServer</nobr></td>
-                        <td class="jd-descrcol">false</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>If the default US Amazon server subdomain should be
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>useDefaultServer</nobr></td>
+                            <td class="jd-descrcol">false</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>If the default US Amazon server subdomain should be
             used in the URI regardless of the region.</td>
-                        <td class="jd-descrcol">boolean</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">boolean</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>secure</nobr></td>
-                        <td class="jd-descrcol">false</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Whether to use http or https</td>
-                        <td class="jd-descrcol">boolean</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>secure</nobr></td>
+                            <td class="jd-descrcol">false</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Whether to use http or https</td>
+                            <td class="jd-descrcol">boolean</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -1699,10 +1830,13 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">URI</td>
-                <td class="jd-descrcol">a non secure http URI to the object. Unlike the presigned URI, object
+                
+                    <td class="jd-descrcol">URI</td>
+                    <td class="jd-descrcol">a non secure http URI to the object. Unlike the presigned URI, object
          must have PUBLIC_READ or PUBLIC_READ_WRITE permission
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -1726,12 +1860,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Deletes the specified bucket. All objects (and all object versions, if
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Deletes the specified bucket. All objects (and all object versions, if
  versioning was ever enabled) in the bucket must be deleted before the bucket
  itself can be deleted; this restriction can be relaxed by specifying the 
  attribute  force="true".
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket bucketName="my-bucket" force="true"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket bucketName="my-bucket" force="true"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1748,27 +1886,31 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The bucket to delete</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The bucket to delete</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>force</nobr></td>
-                        <td class="jd-descrcol">false</td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>force</nobr></td>
+                            <td class="jd-descrcol">false</td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Optional true if the bucket must be deleted even if it is not empty, false if operation should fail in such scenario.
 </td>
-                        <td class="jd-descrcol">boolean</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">boolean</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -1821,11 +1963,15 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Deletes the bucket's policy. Only the owner of the bucket can delete the
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Deletes the bucket's policy. Only the owner of the bucket can delete the
  bucket policy. Bucket policies provide access control management at the bucket
  level for both the bucket resource and contained object resources.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-policy bucketName="my-bucket"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-policy bucketName="my-bucket"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1842,15 +1988,17 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The bucket whose policy to delete
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The bucket whose policy to delete
 </td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -1903,7 +2051,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Removes the website configuration for a bucket; this operation requires the
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Removes the website configuration for a bucket; this operation requires the
  DeleteBucketWebsite permission. By default, only the bucket owner can delete
  the website configuration attached to a bucket. However, bucket owners can
  grant other users permission to delete the website configuration by writing a
@@ -1911,7 +2061,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
  permission. Calling this operation on a bucket with no website configuration
  does not fail, but calling this operation a bucket that does not exist does.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-website-configuration bucketName="my-bucket"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-bucket-website-configuration bucketName="my-bucket"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -1928,15 +2080,17 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The bucket whose policy to delete
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The bucket whose policy to delete
 </td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -1989,7 +2143,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Deletes a given object, only the owner of the bucket containing the version
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Deletes a given object, only the owner of the bucket containing the version
  can perform this operation. If version is specified, versioning must be
  enabled, and once deleted, there is no method to restore such version.
  Otherwise, once deleted, the object can only be restored if versioning was
@@ -1997,7 +2153,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
  does not exist, Amazon S3 will return a success message instead of an error
  message.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-object bucketName="my-bucket" key="foo.gzip"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:delete-object bucketName="my-bucket" key="foo.gzip"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2014,41 +2172,47 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>versionId</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to delete, if versioning
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>versionId</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to delete, if versioning
             is enabled. Left unspecified if the latest version is desired, or
             versioning is not enabled.
 </td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -2101,7 +2265,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Deletes multiple objects in a single bucket from S3. Version of the keys is optional.
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Deletes multiple objects in a single bucket from S3. Version of the keys is optional.
  <p>
  In some cases, some objects will be successfully deleted, while some
  attempts will cause an error. If any object in the request cannot be
@@ -2113,7 +2279,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
         &lt;s3:key value="foo.gzip"/&gt;
         &lt;s3:key value="bar.gzip"/&gt;
     &lt;/s3:keys&gt;
-&lt;/s3:delete-objects&gt;</pre></div></p></div>
+&lt;/s3:delete-objects&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2130,14 +2298,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The objects bucket name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The objects bucket name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -2235,11 +2405,15 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Answers the policy for the given bucket. Only the owner of the bucket can
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Answers the policy for the given bucket. Only the owner of the bucket can
  retrieve it. If no policy has been set for the bucket, then a null policy text
  field will be returned.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-policy bucketName="my-bucket"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-policy bucketName="my-bucket"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2256,14 +2430,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The bucket whose policy to retrieve</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The bucket whose policy to retrieve</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -2304,9 +2480,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">String</td>
-                <td class="jd-descrcol">the bucket policy, or null, if not set
+                
+                    <td class="jd-descrcol">String</td>
+                    <td class="jd-descrcol">the bucket policy, or null, if not set
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -2330,7 +2509,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p><p>
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        <p>
  Returns the versioning configuration for the specified bucket.
  </p>
  <p>
@@ -2349,7 +2530,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
  <code><a href="null#OFF">off</a></code>.
  </p>
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-versioning-configuration bucketName="my-bucket"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-versioning-configuration bucketName="my-bucket"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2366,14 +2549,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The bucket whose versioning configuration will be retrieved.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The bucket whose versioning configuration will be retrieved.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -2414,9 +2599,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">BucketVersioningConfiguration</td>
-                <td class="jd-descrcol">The bucket versioning configuration for the specified bucket.
+                
+                    <td class="jd-descrcol">BucketVersioningConfiguration</td>
+                    <td class="jd-descrcol">The bucket versioning configuration for the specified bucket.
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -2440,13 +2628,17 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Answers the website of the given bucket. This operation requires the
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Answers the website of the given bucket. This operation requires the
  GetBucketWebsite permission. By default, only the bucket owner can read the
  bucket website configuration. However, bucket owners can allow other users to
  read the website configuration by writing a bucket policy granting them the
  GetBucketWebsite permission.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-website-configuration bucketName="my-bucket" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-bucket-website-configuration bucketName="my-bucket" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2463,14 +2655,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The target bucket's name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The target bucket's name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -2511,9 +2705,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">BucketWebsiteConfiguration</td>
-                <td class="jd-descrcol">a non null com.amazonaws.services.s3.model.BucketWebsiteConfiguration
+                
+                    <td class="jd-descrcol">BucketWebsiteConfiguration</td>
+                    <td class="jd-descrcol">a non null com.amazonaws.services.s3.model.BucketWebsiteConfiguration
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -2537,7 +2734,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the object stored in Amazon S3 under the specified bucket and key.
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Gets the object stored in Amazon S3 under the specified bucket and key.
  Returns null if the specified constraints weren't met. To get an object from
  Amazon S3, the caller must have <code><a href="null#Read">Read</a></code> access to the object.
  Callers should be very careful when using this method; the returned Amazon S3
@@ -2546,7 +2745,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
  the data and closes the stream. Regarding conditional get constraints, Amazon
  S3 will ignore any dates occurring in the future.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object bucketName="my-bucket" key="bar.xml"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object bucketName="my-bucket" key="bar.xml"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2563,68 +2764,78 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>versionId</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>versionId</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
             versioning is enabled. Left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
             executing only if the object has been modified after the specified
             date.</td>
-                        <td class="jd-descrcol">Date</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">Date</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
             to executing only if the object has not been modified after this
             date.</td>
-                        <td class="jd-descrcol">Date</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">Date</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -2665,9 +2876,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">S3Object</td>
-                <td class="jd-descrcol">the S3Object, or null, if conditional get constraints did not match
+                
+                    <td class="jd-descrcol">S3Object</td>
+                    <td class="jd-descrcol">the S3Object, or null, if conditional get constraints did not match
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -2691,13 +2905,17 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the content of an object stored in Amazon S3 under the specified bucket
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Gets the content of an object stored in Amazon S3 under the specified bucket
  and key. Returns null if the specified constraints weren't met. To get an
  object's content from Amazon S3, the caller must have <code><a href="null#Read">Read</a></code>
  access to the object. Regarding conditional get constraints, Amazon S3 will
  ignore any dates occurring in the future.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-content bucketName="my-bucket" key="bar.xml"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-content bucketName="my-bucket" key="bar.xml"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2714,68 +2932,78 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>versionId</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>versionId</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The specific version of the object to get its contents, if
             versioning is enabled, left unspecified if the latest version is
             desired, or versioning is not enabled.</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>modifiedSince</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The modified constraint that restricts this request to
             executing only if the object has been modified after the specified
             date.</td>
-                        <td class="jd-descrcol">Date</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">Date</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>unmodifiedSince</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The unmodified constraint that restricts this request
             to executing only if the object has not been modified after this
             date.</td>
-                        <td class="jd-descrcol">Date</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">Date</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -2816,9 +3044,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">S3ObjectInputStream</td>
-                <td class="jd-descrcol">an input stream to the objects contents
+                
+                    <td class="jd-descrcol">S3ObjectInputStream</td>
+                    <td class="jd-descrcol">an input stream to the objects contents
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -2842,11 +3073,15 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Gets the metadata for the specified Amazon S3 object without actually fetching
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Gets the metadata for the specified Amazon S3 object without actually fetching
  the object itself. This is useful in obtaining only the object metadata, and
  avoids wasting bandwidth on fetching the object data.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-metadata bucketName="my-bucket" key="baz.bin" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:get-object-metadata bucketName="my-bucket" key="baz.bin" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -2863,38 +3098,44 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>versionId</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The object metadata for the given bucketName and key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>versionId</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The object metadata for the given bucketName and key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -2935,9 +3176,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">ObjectMetadata</td>
-                <td class="jd-descrcol">the non null object metadata
+                
+                    <td class="jd-descrcol">ObjectMetadata</td>
+                    <td class="jd-descrcol">the non null object metadata
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -2961,12 +3205,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Answers a list of all Amazon S3 buckets that the authenticated sender of the
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Answers a list of all Amazon S3 buckets that the authenticated sender of the
  request owns. Users must authenticate with a valid AWS Access Key ID that is
  registered with Amazon S3. Anonymous requests cannot list buckets, and users
  cannot list buckets that they did not create.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-buckets /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-buckets /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3019,9 +3267,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">List&lt;Bucket&gt;</td>
-                <td class="jd-descrcol">a non null list of com.amazonaws.services.s3.model.Bucket
+                
+                    <td class="jd-descrcol">List&lt;Bucket&gt;</td>
+                    <td class="jd-descrcol">a non null list of com.amazonaws.services.s3.model.Bucket
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -3045,12 +3296,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Lazily lists all object versions for a given bucket that has versioning enabled.
- As S3 does not limit in any way
- the number of objects, such listing can retrieve an arbitrary amount of
- object versions, and may need to perform extra calls to the api while it is iterated.
-
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-object-versions bucketName="my-bucket" /&gt;</pre></div></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Lazily lists all object versions for a given bucket that has versioning
+ enabled. As S3 does not limit in any way the number of objects, such
+ listing can retrieve an arbitrary amount of object versions, and may need
+ to perform extra calls to the api while it is iterated.
+ 
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-object-versions bucketName="my-bucket" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3067,14 +3322,128 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The target bucket's name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The target bucket's name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>prefix</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Optional parameter restricting the response to keys which
+            begin with the specified prefix. You can use prefixes to
+            separate a bucket into different sets of keys in a way similar
+            to how a file system uses folders.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>keyMarker</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Where in the sorted list of all versions in the specified
+            bucket to begin returning results. Results are always ordered
+            first lexicographically (i.e. alphabetically) and then from
+            most recent version to least recent version. If a keyMarker is
+            used without a versionIdMarker, results begin immediately
+            after that key's last version. When a keyMarker is used with a
+            versionIdMarker, results begin immediately after the version
+            with the specified key and version ID.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>versionIdMarker</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Where in the sorted list of all versions in the specified
+            bucket to begin returning results. Results are always ordered
+            first lexicographically (i.e. alphabetically) and then from
+            most recent version to least recent version. A keyMarker must
+            be specified when specifying a versionIdMarker. Results begin
+            immediately after the version with the specified key and
+            version ID.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>delimiter</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Causes keys that contain the same string between the prefix
+            and the first occurrence of the delimiter to be rolled up into
+            a single result element in the
+            <code><a href="null#getCommonPrefixes()">getCommonPrefixes()</a></code> list. These
+            rolled-up keys are not returned elsewhere in the response. The
+            most commonly used delimiter is "/", which simulates a
+            hierarchical organization similar to a file system directory
+            structure.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>maxResults</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The maximum number of results to include in the response.</td>
+                            <td class="jd-descrcol">Integer</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>encodingType</nobr></td>
+                            <td class="jd-descrcol">NOT_ENCODED</td>
+                            <td class="jd-descrcol">The encoding method to be applied on the response. An object
+            key can contain any Unicode character; however, XML 1.0 parser
+            cannot parse some characters, such as characters with an ASCII
+            value from 0 to 10. For characters that are not supported in
+            XML 1.0, you can add this parameter to request that Amazon S3
+            encode the keys in the response.</td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/EncodingType.html">EncodingType</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -3115,9 +3484,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">Iterable&lt;S3VersionSummary&gt;</td>
-                <td class="jd-descrcol">An iterable
+                
+                    <td class="jd-descrcol">Iterable&lt;S3VersionSummary&gt;</td>
+                    <td class="jd-descrcol">An iterable
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -3141,11 +3513,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Lazily lists all objects for a given prefix. As S3 does not limit in any way
- the number of objects, such listing can retrieve an arbitrary amount of
- objects, and may need to perform extra calls to the api while it is iterated.
-
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-objects bucketName="my-bucket" prefix="mk" /&gt;</pre></div></p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Lazily lists all objects for a given prefix. As S3 does not limit in any
+ way the number of objects, such listing can retrieve an arbitrary amount
+ of objects, and may need to perform extra calls to the api while it is
+ iterated.
+ 
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:list-objects bucketName="my-bucket" prefix="mk" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3162,27 +3539,100 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The target bucket's name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The target bucket's name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>prefix</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The prefix of the objects to be listed. If unspecified, all
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>prefix</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The prefix of the objects to be listed. If unspecified, all
             objects are listed</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>marker</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Where in the bucket to begin listing. The list will only
+            include keys that occur lexicographically after the marker</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>delimiter</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>Causes keys that contain the same string between a prefix and
+            the first occurrence of the delimiter to be rolled up into a
+            single result element. These rolled-up keys are not returned
+            elsewhere in the response. The most commonly used delimiter is
+            "/", which simulates a hierarchical organization similar to a
+            file system directory structure.</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>maxKeys</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"><i>Optional.&nbsp;</i>The maximum number of keys to include in the response. If
+            maxKeys is not specified, Amazon S3 will limit the number of
+            results in the response.</td>
+                            <td class="jd-descrcol">Integer</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>encodingType</nobr></td>
+                            <td class="jd-descrcol">NOT_ENCODED</td>
+                            <td class="jd-descrcol">The encoding method to be applied on the response. An object
+            key can contain any Unicode character; however, XML 1.0 parser
+            cannot parse some characters, such as characters with an ASCII
+            value from 0 to 10. For characters that are not supported in
+            XML 1.0, you can add this parameter to request that Amazon S3
+            encode the keys in the response.</td>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/EncodingType.html">EncodingType</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -3223,9 +3673,12 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
                 <th>Description</th>
              </tr>
              <tr>
-                <td class="jd-descrcol">Iterable&lt;S3ObjectSummary&gt;</td>
-                <td class="jd-descrcol">An iterable
+                
+                    <td class="jd-descrcol">Iterable&lt;S3ObjectSummary&gt;</td>
+                    <td class="jd-descrcol">An iterable
 </td>
+                
+
              </tr>
          </table>
   </div>
@@ -3249,12 +3702,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the bucket's policy, overriding any previously set. Only the owner of the
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Sets the bucket's policy, overriding any previously set. Only the owner of the
  bucket can set a bucket policy. Bucket policies provide access control
  management at the bucket level for both the bucket resource and contained
  object resources. Only one policy can be specified per-bucket.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-policy bucketName="my-bucket" policyText="your policy" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-policy bucketName="my-bucket" policyText="your policy" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3271,27 +3728,31 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The bucket name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The bucket name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>policyText</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The policy text
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>policyText</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The policy text
 </td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
@@ -3344,12 +3805,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the versioning status for the given bucket. A bucket's versioning
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Sets the versioning status for the given bucket. A bucket's versioning
  configuration can be in one of three possible states: Off, Enabled and
  Suspended. By default, new buckets are in the Off state. Once versioning is
  enabled for a bucket the status can never be reverted to Off.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-versioning-status bucketName="my-bucket" versioningStatus="SUSPENDED" /&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-versioning-status bucketName="my-bucket" versioningStatus="SUSPENDED" /&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3366,27 +3831,31 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The target bucket name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The target bucket name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>versioningStatus</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The version status to set
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>versioningStatus</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The version status to set
 </td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/simpleapi/VersioningStatus.html">VersioningStatus</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/simpleapi/VersioningStatus.html">VersioningStatus</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -3439,7 +3908,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the given bucket's website configuration. This operation requires the
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Sets the given bucket's website configuration. This operation requires the
  PutBucketWebsite permission. By default, only the bucket owner can configure
  the website attached to a bucket. However, bucket owners can allow other users
  to set the website configuration by writing a bucket policy granting them the
@@ -3447,7 +3918,9 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
 
  <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-bucket-website-configuration bucketName="my-bucket"&gt;
     &lt;s3:bucket-website-configuration ref="#[payload]" /&gt;
-&lt;/s3:set-bucket-website-configuration&gt;</pre></div></p></div>
+&lt;/s3:set-bucket-website-configuration&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3464,27 +3937,31 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The target bucket's name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The target bucket's name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketWebsiteConfiguration</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">Bucket website configuration
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketWebsiteConfiguration</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">Bucket website configuration
 </td>
-                        <td class="jd-descrcol">BucketWebsiteConfiguration</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol">BucketWebsiteConfiguration</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
@@ -3537,12 +4014,16 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the Amazon S3 storage class for the given object. Changing the storage
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        Sets the Amazon S3 storage class for the given object. Changing the storage
  class of an object in a bucket that has enabled versioning creates a new
  version of the object with the new storage class. The existing version of the
  object preservers the previous storage class.
 
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-object-storage-class bucketName="my-bucket" key="foo.gzip" storageClass="REDUCED_REDUNDANCY"/&gt;</pre></div></p></div>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;s3:set-object-storage-class bucketName="my-bucket" key="foo.gzip" storageClass="REDUCED_REDUNDANCY"/&gt;</pre></div>
+      
+  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Attributes</h5>
 
@@ -3559,39 +4040,45 @@ attempts to reconnect only during business hours. Such a setting can prove usefu
           
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>bucketName</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's bucket name</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>bucketName</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's bucket name</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>key</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The object's key</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The object's key</td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
                 
                 
           
                 
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>storageClass</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">The storage class to set
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>storageClass</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">The storage class to set
 </td>
-                        <td class="jd-descrcol"><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
+                            <td class="jd-descrcol"><a href="../java/org/mule/module/s3/StorageClass.html">StorageClass</a></td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol"></td>
+                        </tr>
+                    
                 
                 
           
