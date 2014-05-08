@@ -78,7 +78,6 @@ public class S3Connector
      * A value of 0 means infinity, and is not recommended.
      */
     @Configurable
-    @Optional
     @Default("50000")
     private Integer socketTimeout;
 
@@ -88,7 +87,6 @@ public class S3Connector
      * infinity, and is not recommended.
      */
     @Configurable
-    @Optional
     @Default("50000")
     private Integer connectionTimeout;
     
@@ -117,8 +115,8 @@ public class S3Connector
      */
     @Processor
     public Bucket createBucket(String bucketName,
-                               @Optional @Default("US_STANDARD") Region region,
-                               @Optional @Default("PRIVATE") AccessControlList acl)
+                               @Default("US_STANDARD") Region region,
+                               @Default("PRIVATE") AccessControlList acl)
     {
         return client.createBucket(bucketName, region, acl.toS3Equivalent());
     }
@@ -136,7 +134,7 @@ public class S3Connector
      */
     @Processor
     public void deleteBucket(String bucketName,
-                             @Optional @Default("false") boolean force)
+                             @Default("false") boolean force)
     {
         if (force)
         {
@@ -426,13 +424,13 @@ public class S3Connector
     @Processor
     public String createObject(String bucketName,
                                String key,
-                               @Optional @Default("#[payload]") Object content,
+                               @Default("#[payload]") Object content,
                                @Optional Long contentLength,
                                @Optional String contentMd5,
                                @Optional String contentType,
                                @Optional String contentDisposition,
-                               @Optional @Default("PRIVATE") AccessControlList acl,
-                               @Optional @Default("STANDARD") StorageClass storageClass,
+                               @Default("PRIVATE") AccessControlList acl,
+                               @Default("STANDARD") StorageClass storageClass,
                                @Optional Map<String, String> userMetadata,
                                @Optional String encryption) throws IOException
     {
@@ -560,8 +558,8 @@ public class S3Connector
                              @Optional String sourceVersionId,
                              @Optional String destinationBucketName,
                              String destinationKey,
-                             @Optional @Default("PRIVATE") AccessControlList destinationAcl,
-                             @Optional @Default("STANDARD") StorageClass destinationStorageClass,
+                             @Default("PRIVATE") AccessControlList destinationAcl,
+                             @Default("STANDARD") StorageClass destinationStorageClass,
                              @Optional Map<String, String> destinationUserMetadata,  
                              @Optional Date modifiedSince, 
                              @Optional Date unmodifiedSince,
@@ -600,7 +598,7 @@ public class S3Connector
                                         String key,
                                         @Optional String versionId,
                                         @Optional Date expiration,
-                                        @Optional @Default("PUT") String method)
+                                        @Default("PUT") String method)
     {
         return client.createObjectPresignedUri(new S3ObjectId(bucketName, key, versionId), expiration,
                 toHttpMethod(method));
@@ -769,8 +767,8 @@ public class S3Connector
     @Processor
     public URI createObjectUri(String bucketName,
                                String key,
-                               @Optional @Default("false") boolean useDefaultServer,
-                               @Optional @Default("false") boolean secure)
+                               @Default("false") boolean useDefaultServer,
+                               @Default("false") boolean secure)
     {
         if (useDefaultServer)
         {
