@@ -5,7 +5,35 @@ Date: 07-May-2014
 
 Version: 2.6.4
 
+Supported API versions
+------------------------
 Supported API versions: [2006-03-01](http://docs.aws.amazon.com/AmazonS3/latest/API/IntroductionAPI.html)
+
+Supported Operations:
+
+* Copy Object
+* Create Bucket
+* Create Object
+* Create Object with a Presigned URI
+* Create Object URI
+* Delete a Bucket
+* Delete a Bucket Policy
+* Delete a Bucket Website Configuration
+* Delete a single Object
+* Delete multiple Objects
+* Get a Bucket Policy
+* Get a Bucket's Versioning Configuration
+* Get a Bucket's Website Configuration
+* Get an Object
+* Get an Object's Configuration
+* Get an Object's Metadata
+* List Buckets
+* List an Object's Versions
+* List Objects
+* Set a Bucket's Policy
+* Set a Bucket's Versioning Status
+* Set a Bucket's Website Configuration
+* Set an Object's Storage Class
 
 Supported Mule Runtime Versions: 3.4.x, 3.5.0
 
