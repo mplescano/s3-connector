@@ -65,49 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -198,7 +155,7 @@
       <a href="http://www.mulesoft.com" tabindex="-1">
       <img src="../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
       
-  <div id="searchContainer" >
+  <div id="search" >
       <div id="searchForm">
           <form accept-charset="utf-8" class="gsc-search-box" 
                 onsubmit="return submit_search()">
@@ -258,6 +215,10 @@
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/agents/package-summary.html">org.mule.module.s3.agents</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/s3/basic/package-summary.html">org.mule.module.s3.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
@@ -266,7 +227,7 @@
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/devkit/package-summary.html">org.mule.module.s3.devkit</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../java/org/mule/module/s3/pooling/package-summary.html">org.mule.module.s3.pooling</a></li>
+  <a href="../../../../../java/org/mule/module/s3/oauth/package-summary.html">org.mule.module.s3.oauth</a></li>
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/s3/process/package-summary.html">org.mule.module.s3.process</a></li>
     <li class="api apilevel-">
@@ -301,7 +262,6 @@
     <li><h2>Enums</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a></li>
-          <li class="api apilevel-"><a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a></li>
           <li class="api apilevel-"><a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a></li>
       </ul>
     </li>
@@ -792,7 +752,7 @@ Summary:
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, Map&lt;String,&nbsp;String&gt; userMetadata, String encryption)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)">createObject</a></span>(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, String encryption, Map&lt;String,&nbsp;String&gt; userMetadata, String encoding)</nobr>
         
         <div class="jd-descrdiv">Uploads an object to S3.</div>
   
@@ -1196,10 +1156,9 @@ Summary:
             Iterable&lt;S3VersionSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#listObjectVersions(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Integer, org.mule.module.s3.EncodingType)">listObjectVersions</a></span>(String bucketName, String prefix, String keyMarker, String versionIdMarker, String delimiter, Integer maxResults, <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a> encodingType)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#listObjectVersions(java.lang.String)">listObjectVersions</a></span>(String bucketName)</nobr>
         
-        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning
- enabled.</div>
+        <div class="jd-descrdiv">Lazily lists all object versions for a given bucket that has versioning enabled.</div>
   
   </td></tr>
 
@@ -1215,7 +1174,7 @@ Summary:
             Iterable&lt;S3ObjectSummary&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#listObjects(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Integer, org.mule.module.s3.EncodingType)">listObjects</a></span>(String bucketName, String prefix, String marker, String delimiter, Integer maxKeys, <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a> encodingType)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/s3/S3Connector.html#listObjects(java.lang.String, java.lang.String)">listObjects</a></span>(String bucketName, String prefix)</nobr>
         
         <div class="jd-descrdiv">Lazily lists all objects for a given prefix.</div>
   
@@ -2101,7 +2060,7 @@ From class
         </tr>
         <tr>
           <th>encryption</td>
-          <td>Encryption method for server-side encryption. Supported value AES256.</td>
+          <td>Encryption for object. Supported value AES256</td>
         </tr>
       </table>
   </div>
@@ -2182,7 +2141,7 @@ From class
 </div>
 
 
-<A NAME="createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)"></A>
+<A NAME="createObject(java.lang.String, java.lang.String, java.lang.Object, java.lang.Long, java.lang.String, java.lang.String, java.lang.String, org.mule.module.s3.AccessControlList, org.mule.module.s3.StorageClass, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2195,7 +2154,7 @@ From class
         String
       </span>
       <span class="sympad">createObject</span>
-      <span class="normal">(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, Map&lt;String,&nbsp;String&gt; userMetadata, String encryption)</span>
+      <span class="normal">(String bucketName, String key, Object content, Long contentLength, String contentMd5, String contentType, String contentDisposition, <a href="../../../../../java/org/mule/module/s3/AccessControlList.html">AccessControlList</a> acl, <a href="../../../../../java/org/mule/module/s3/StorageClass.html">StorageClass</a> storageClass, String encryption, Map&lt;String,&nbsp;String&gt; userMetadata, String encoding)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2258,12 +2217,16 @@ From class
           <td>The storage class of the new object</td>
         </tr>
         <tr>
+          <th>encryption</td>
+          <td>Encryption type. Supported value AES256</td>
+        </tr>
+        <tr>
           <th>userMetadata</td>
           <td>A map of arbitrary object properties keys and values</td>
         </tr>
         <tr>
-          <th>encryption</td>
-          <td>Encryption method for server-side encryption. Supported value AES256.</td>
+          <th>encoding</td>
+          <td>Optional parameter in case the content is an String</td>
         </tr>
       </table>
   </div>
@@ -2275,8 +2238,8 @@ From class
       <h5 class="jd-tagtitle">Throws</h5>
       <table class="jd-tagtable">  
         <tr>
-            <th>IOException</td>
-            <td>if there are problems manipulating the File or InputStream content
+            <th>UnsupportedEncodingException</td>
+            <td>if the file encoding is not supported
 </td>
         </tr>
       </table>
@@ -3354,7 +3317,7 @@ From class
 </div>
 
 
-<A NAME="listObjectVersions(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Integer, org.mule.module.s3.EncodingType)"></A>
+<A NAME="listObjectVersions(java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3367,7 +3330,7 @@ From class
         Iterable&lt;S3VersionSummary&gt;
       </span>
       <span class="sympad">listObjectVersions</span>
-      <span class="normal">(String bucketName, String prefix, String keyMarker, String versionIdMarker, String delimiter, Integer maxResults, <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a> encodingType)</span>
+      <span class="normal">(String bucketName)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -3379,11 +3342,11 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Lazily lists all object versions for a given bucket that has versioning
- enabled. As S3 does not limit in any way the number of objects, such
- listing can retrieve an arbitrary amount of object versions, and may need
- to perform extra calls to the api while it is iterated.
- 
+  <div class="jd-tagdata jd-tagdescr"><p>Lazily lists all object versions for a given bucket that has versioning enabled.
+ As S3 does not limit in any way
+ the number of objects, such listing can retrieve an arbitrary amount of
+ object versions, and may need to perform extra calls to the api while it is iterated.
+
  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
@@ -3391,58 +3354,6 @@ From class
         <tr>
           <th>bucketName</td>
           <td>The target bucket's name</td>
-        </tr>
-        <tr>
-          <th>prefix</td>
-          <td>Optional parameter restricting the response to keys which
-            begin with the specified prefix. You can use prefixes to
-            separate a bucket into different sets of keys in a way similar
-            to how a file system uses folders.</td>
-        </tr>
-        <tr>
-          <th>keyMarker</td>
-          <td>Where in the sorted list of all versions in the specified
-            bucket to begin returning results. Results are always ordered
-            first lexicographically (i.e. alphabetically) and then from
-            most recent version to least recent version. If a keyMarker is
-            used without a versionIdMarker, results begin immediately
-            after that key's last version. When a keyMarker is used with a
-            versionIdMarker, results begin immediately after the version
-            with the specified key and version ID.</td>
-        </tr>
-        <tr>
-          <th>versionIdMarker</td>
-          <td>Where in the sorted list of all versions in the specified
-            bucket to begin returning results. Results are always ordered
-            first lexicographically (i.e. alphabetically) and then from
-            most recent version to least recent version. A keyMarker must
-            be specified when specifying a versionIdMarker. Results begin
-            immediately after the version with the specified key and
-            version ID.</td>
-        </tr>
-        <tr>
-          <th>delimiter</td>
-          <td>Causes keys that contain the same string between the prefix
-            and the first occurrence of the delimiter to be rolled up into
-            a single result element in the
-            <code><a href="null#getCommonPrefixes()">getCommonPrefixes()</a></code> list. These
-            rolled-up keys are not returned elsewhere in the response. The
-            most commonly used delimiter is "/", which simulates a
-            hierarchical organization similar to a file system directory
-            structure.</td>
-        </tr>
-        <tr>
-          <th>maxResults</td>
-          <td>The maximum number of results to include in the response.</td>
-        </tr>
-        <tr>
-          <th>encodingType</td>
-          <td>The encoding method to be applied on the response. An object
-            key can contain any Unicode character; however, XML 1.0 parser
-            cannot parse some characters, such as characters with an ASCII
-            value from 0 to 10. For characters that are not supported in
-            XML 1.0, you can add this parameter to request that Amazon S3
-            encode the keys in the response.</td>
         </tr>
       </table>
   </div>
@@ -3456,7 +3367,7 @@ From class
 </div>
 
 
-<A NAME="listObjects(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Integer, org.mule.module.s3.EncodingType)"></A>
+<A NAME="listObjects(java.lang.String, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3469,7 +3380,7 @@ From class
         Iterable&lt;S3ObjectSummary&gt;
       </span>
       <span class="sympad">listObjects</span>
-      <span class="normal">(String bucketName, String prefix, String marker, String delimiter, Integer maxKeys, <a href="../../../../../java/org/mule/module/s3/EncodingType.html">EncodingType</a> encodingType)</span>
+      <span class="normal">(String bucketName, String prefix)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -3481,11 +3392,10 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Lazily lists all objects for a given prefix. As S3 does not limit in any
- way the number of objects, such listing can retrieve an arbitrary amount
- of objects, and may need to perform extra calls to the api while it is
- iterated.
- 
+  <div class="jd-tagdata jd-tagdescr"><p>Lazily lists all objects for a given prefix. As S3 does not limit in any way
+ the number of objects, such listing can retrieve an arbitrary amount of
+ objects, and may need to perform extra calls to the api while it is iterated.
+
  </p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
@@ -3498,35 +3408,6 @@ From class
           <th>prefix</td>
           <td>The prefix of the objects to be listed. If unspecified, all
             objects are listed</td>
-        </tr>
-        <tr>
-          <th>marker</td>
-          <td>Where in the bucket to begin listing. The list will only
-            include keys that occur lexicographically after the marker</td>
-        </tr>
-        <tr>
-          <th>delimiter</td>
-          <td>Causes keys that contain the same string between a prefix and
-            the first occurrence of the delimiter to be rolled up into a
-            single result element. These rolled-up keys are not returned
-            elsewhere in the response. The most commonly used delimiter is
-            "/", which simulates a hierarchical organization similar to a
-            file system directory structure.</td>
-        </tr>
-        <tr>
-          <th>maxKeys</td>
-          <td>The maximum number of keys to include in the response. If
-            maxKeys is not specified, Amazon S3 will limit the number of
-            results in the response.</td>
-        </tr>
-        <tr>
-          <th>encodingType</td>
-          <td>The encoding method to be applied on the response. An object
-            key can contain any Unicode character; however, XML 1.0 parser
-            cannot parse some characters, such as characters with an ASCII
-            value from 0 to 10. For characters that are not supported in
-            XML 1.0, you can add this parameter to request that Amazon S3
-            encode the keys in the response.</td>
         </tr>
       </table>
   </div>

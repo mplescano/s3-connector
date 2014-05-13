@@ -65,49 +65,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -198,7 +155,7 @@
       <a href="http://www.mulesoft.com" tabindex="-1">
       <img src="../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
       
-  <div id="searchContainer" >
+  <div id="search" >
       <div id="searchForm">
           <form accept-charset="utf-8" class="gsc-search-box" 
                 onsubmit="return submit_search()">
@@ -258,6 +215,10 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/agents/package-summary.html">org.mule.module.s3.agents</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/basic/package-summary.html">org.mule.module.s3.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/s3/callback/package-summary.html">org.mule.module.s3.callback</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
     <li class="selected api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
@@ -266,7 +227,7 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/devkit/package-summary.html">org.mule.module.s3.devkit</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/s3/pooling/package-summary.html">org.mule.module.s3.pooling</a></li>
+  <a href="../../../../../../java/org/mule/module/s3/oauth/package-summary.html">org.mule.module.s3.oauth</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/process/package-summary.html">org.mule.module.s3.process</a></li>
     <li class="api apilevel-">
@@ -555,12 +516,12 @@ Summary:
             
             
             
-            K</nobr>
+            PoolingProfile</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connection/ConnectionManager.html#getDefaultConnectionKey()">getDefaultConnectionKey</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connection/ConnectionManager.html#getConnectionPoolingProfile()">getConnectionPoolingProfile</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Retrieve the default connection key</div>
+        <div class="jd-descrdiv">Retrieve the connection pooling profile</div>
   
   </td></tr>
 
@@ -576,9 +537,9 @@ Summary:
             K</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connection/ConnectionManager.html#getEvaluatedConnectionKey(org.mule.api.MuleEvent)">getEvaluatedConnectionKey</a></span>(MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connection/ConnectionManager.html#getDefaultConnectionKey()">getDefaultConnectionKey</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Retrieve the connection key evaluated with the received mule event</div>
+        <div class="jd-descrdiv">Retrieve the default connection key</div>
   
   </td></tr>
 
@@ -616,6 +577,24 @@ Summary:
         <span class="sympad"><a href="../../../../../../org/mule/module/s3/connection/ConnectionManager.html#releaseConnection(K, C)">releaseConnection</a></span>(K connectorKey, C connector)</nobr>
         
         <div class="jd-descrdiv">Return a connection to the pool</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connection/ConnectionManager.html#setConnectionPoolingProfile(org.mule.config.PoolingProfile)">setConnectionPoolingProfile</a></span>(PoolingProfile value)</nobr>
+        
+        <div class="jd-descrdiv">Set the connection pooling profile</div>
   
   </td></tr>
 
@@ -776,6 +755,42 @@ Summary:
 </div>
 
 
+<A NAME="getConnectionPoolingProfile()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        PoolingProfile
+      </span>
+      <span class="sympad">getConnectionPoolingProfile</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve the connection pooling profile</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>PoolingProfile representing the pooling parameters
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
 <A NAME="getDefaultConnectionKey()"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -806,60 +821,6 @@ Summary:
       <h5 class="jd-tagtitle">Returns</h5>
       <ul class="nolist"><li>The default connection key
 </li></ul>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="getEvaluatedConnectionKey(org.mule.api.MuleEvent)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-        abstract 
-         
-        K
-      </span>
-      <span class="sympad">getEvaluatedConnectionKey</span>
-      <span class="normal">(MuleEvent event)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Retrieve the connection key evaluated with the received mule event</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>event</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>The default connection key
-</li></ul>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
   </div>
 
     </div>
@@ -948,6 +909,47 @@ Summary:
         <tr>
             <th>Exception</td>
             <td>If the connection cannot be returned
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setConnectionPoolingProfile(org.mule.config.PoolingProfile)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setConnectionPoolingProfile</span>
+      <span class="normal">(PoolingProfile value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set the connection pooling profile</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>PoolingProfile representing the pooling parameters
 </td>
         </tr>
       </table>
