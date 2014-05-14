@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<connector name="Amazon S3">
+    <properties>
+    <connectivity-support>false</connectivity-support>
+    <OAuth-authentication>false</OAuth-authentication>
+    <metadata>none</metadata>
+    <datasense-enabled>false</datasense-enabled>
+    <transformer>false</transformer>
+  </properties>
+    <simpleConfig>
+        <required caption="Name" group="Basic Settings" javaType="java.lang.String" name="name" type="name">MyConnection</required>
+        <required caption="Access Key" group="Connection" javaType="java.lang.String" name="accessKey" prefix="s3" type="string"></required>
+        <required caption="Secret Key" group="Connection" javaType="java.lang.String" name="secretKey" prefix="s3" type="string"></required>
+    </simpleConfig>
+    <message-processors>
+        <create-bucket name="Create bucket">
+            <datamapper input="Bucket" output="Region"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </create-bucket>
+        <delete-bucket name="Delete bucket">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </delete-bucket>
+        <delete-bucket-website-configuration name="Delete bucket website configuration">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </delete-bucket-website-configuration>
+        <get-bucket-policy name="Get bucket policy">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </get-bucket-policy>
+        <set-bucket-policy name="Set bucket policy">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Policy Text" group="General" javaType="java.lang.String" name="policyText" type="string">{&quot;Version&quot;:&quot;2008-10-17&quot;,&quot;Statement&quot;:[{&quot;Sid&quot;:&quot;AddPerm&quot;,&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;AWS&quot;:&quot;*&quot;},&quot;Action&quot;:&quot;s3:GetObject&quot;,&quot;Resource&quot;:&quot;arn:aws:s3:::0643025a-b87e-4548-bc07-423d5f4c520a/*&quot;}]}</required>
+            </attributes>
+            <childElements/>
+        </set-bucket-policy>
+        <delete-bucket-policy name="Delete bucket policy">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </delete-bucket-policy>
+        
+        <get-bucket-website-configuration name="Get bucket website configuration">
+            <datamapper input="BucketWebsiteConfiguration" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </get-bucket-website-configuration>
+        <list-buckets name="List buckets">
+            <datamapper input="List&lt;Bucket&gt;" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes/>
+            <childElements/>
+        </list-buckets>
+        <list-objects name="List objects">
+            <datamapper input="Iterable&lt;S3ObjectSummary&gt;" output="Integer"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </list-objects>
+        <list-object-versions name="List object versions">
+            <datamapper input="Iterable&lt;S3VersionSummary&gt;" output="Integer"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </list-object-versions>
+        <create-object name="Create object">
+            <datamapper input="" output="Object"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+            </attributes>
+            <childElements/>
+        </create-object>
+        <delete-object name="Delete object">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+            </attributes>
+            <childElements/>
+        </delete-object>
+        <delete-objects name="Delete objects">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </delete-objects>
+        <set-object-storage-class name="Set object storage class">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+                <required caption="Storage Class" group="General" javaType="org.mule.module.s3.StorageClass" name="storageClass" type="enum">REDUCED_REDUNDANCY</required>
+            </attributes>
+            <childElements/>
+        </set-object-storage-class>
+        <copy-object name="Copy object">
+            <datamapper input="" output="AccessControlList"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Source Bucket Name" group="General" javaType="java.lang.String" name="sourceBucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Source Key" group="General" javaType="java.lang.String" name="sourceKey" type="string">sourcekey</required>
+                <required caption="Destination Key" group="General" javaType="java.lang.String" name="destinationKey" type="string">destinationkey</required>
+            </attributes>
+            <childElements/>
+        </copy-object>
+        <create-object-presigned-uri name="Create object presigned uri">
+            <datamapper input="URI" output="Date"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+            </attributes>
+            <childElements/>
+        </create-object-presigned-uri>
+        <get-object-content name="Get object content">
+            <datamapper input="S3ObjectInputStream" output="Date"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+            </attributes>
+            <childElements/>
+        </get-object-content>
+        <get-object name="Get object">
+            <datamapper input="S3Object" output="Date"/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+            </attributes>
+            <childElements/>
+        </get-object>
+        <get-object-metadata name="Get object metadata">
+            <datamapper input="ObjectMetadata" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+            </attributes>
+            <childElements/>
+        </get-object-metadata>
+        <set-bucket-versioning-status name="Set bucket versioning status">
+            <datamapper input="" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Versioning Status" group="General" javaType="org.mule.module.s3.simpleapi.VersioningStatus" name="versioningStatus" type="enum">ENABLED</required>
+            </attributes>
+            <childElements/>
+        </set-bucket-versioning-status>
+        <get-bucket-versioning-configuration name="Get bucket versioning configuration">
+            <datamapper input="BucketVersioningConfiguration" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+            </attributes>
+            <childElements/>
+        </get-bucket-versioning-configuration>
+        <create-object-uri name="Create object uri">
+            <datamapper input="URI" output=""/>
+            <auto-paging>false</auto-paging>
+            <query-support>false</query-support>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string">0643025a-b87e-4548-bc07-423d5f4c520a</required>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string">key-ref</required>
+            </attributes>
+            <childElements/>
+        </create-object-uri>
+    </message-processors>
+</connector>

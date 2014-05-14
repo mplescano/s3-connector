@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<connector name="Amazon S3">
+    <global-config>
+        <config>
+            <attributes>
+                <optional caption="Name" group="Basic Settings" javaType="java.lang.String" name="name" type="name"/>
+                <optional caption="Proxy Username" group="General" javaType="java.lang.String" name="proxyUsername" type="string"/>
+                <optional caption="Proxy Port" group="General" javaType="java.lang.Integer" name="proxyPort" type="integer"/>
+                <optional caption="Proxy Password" group="General" javaType="java.lang.String" name="proxyPassword" type="string"/>
+                <optional caption="Proxy Host" group="General" javaType="java.lang.String" name="proxyHost" type="string"/>
+                <optional caption="Socket Timeout" default="50000" group="General" javaType="java.lang.Integer" name="socketTimeout" type="integer"/>
+                <optional caption="Connection Timeout" default="50000" group="General" javaType="java.lang.Integer" name="connectionTimeout" type="integer"/>
+                <optional caption="Access Key" group="Connection" javaType="java.lang.String" name="accessKey" type="string"/>
+                <optional caption="Secret Key" group="Connection" javaType="java.lang.String" name="secretKey" type="string"/>
+            </attributes>
+        </config>
+    </global-config>
+    <message-processors>
+        <create-bucket>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <optional caption="Region" default="US_STANDARD" group="General" javaType="org.mule.module.s3.simpleapi.Region" name="region" type="enum"/>
+                <optional caption="Acl" default="PRIVATE" group="General" javaType="org.mule.module.s3.AccessControlList" name="acl" type="enum"/>
+            </attributes>
+        </create-bucket>
+        <delete-bucket>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <optional caption="Force" default="false" group="General" javaType="boolean" name="force" type="boolean"/>
+            </attributes>
+        </delete-bucket>
+        <delete-bucket-website-configuration>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+            </attributes>
+        </delete-bucket-website-configuration>
+        <get-bucket-policy>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+            </attributes>
+        </get-bucket-policy>
+        <set-bucket-policy>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Policy Text" group="General" javaType="java.lang.String" name="policyText" type="string"/>
+            </attributes>
+        </set-bucket-policy>
+        <delete-bucket-policy>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+            </attributes>
+        </delete-bucket-policy>
+        <set-bucket-website-configuration>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+            </attributes>
+            <childElements>
+                <required group="General" name="bucket-website-configuration">
+                    <attributes caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                        <optional base="bucket-website-configuration" caption="Bucket Website Configuration Reference" javaType="java.lang.String" name="ref" type="string"/>
+                        <optional base="bucket-website-configuration" caption="Index Document Suffix" javaType="java.lang.String" name="indexDocumentSuffix" type="string"/>
+                        <optional base="bucket-website-configuration" caption="Error Document" javaType="java.lang.String" name="errorDocument" type="string"/>
+                        <optional base="bucket-website-configuration" caption="Bucket Website Configuration Reference" javaType="java.lang.String" name="ref" type="string"/>
+                    </attributes>
+                    <attributes caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                        <required caption="Bucket Website Configuration Reference" javaType="java.lang.String" name="ref" type="string"/>
+                    </attributes>
+                </required>
+            </childElements>
+        </set-bucket-website-configuration>
+        <get-bucket-website-configuration>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+            </attributes>
+        </get-bucket-website-configuration>
+        <list-buckets/>
+        <list-objects>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <optional caption="Prefix" group="General" javaType="java.lang.String" name="prefix" type="string"/>
+                <optional caption="Marker" group="General" javaType="java.lang.String" name="marker" type="string"/>
+                <optional caption="Delimiter" group="General" javaType="java.lang.String" name="delimiter" type="string"/>
+                <optional caption="Max Keys" group="General" javaType="java.lang.Integer" name="maxKeys" type="integer"/>
+                <optional caption="Encoding Type" default="NOT_ENCODED" group="General" javaType="org.mule.module.s3.EncodingType" name="encodingType" type="enum"/>
+            </attributes>
+        </list-objects>
+        <list-object-versions>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <optional caption="Prefix" group="General" javaType="java.lang.String" name="prefix" type="string"/>
+                <optional caption="Key Marker" group="General" javaType="java.lang.String" name="keyMarker" type="string"/>
+                <optional caption="Version Id Marker" group="General" javaType="java.lang.String" name="versionIdMarker" type="string"/>
+                <optional caption="Delimiter" group="General" javaType="java.lang.String" name="delimiter" type="string"/>
+                <optional caption="Max Results" group="General" javaType="java.lang.Integer" name="maxResults" type="integer"/>
+                <optional caption="Encoding Type" default="NOT_ENCODED" group="General" javaType="org.mule.module.s3.EncodingType" name="encodingType" type="enum"/>
+            </attributes>
+        </list-object-versions>
+        <create-object>
+            <attributes>
+                <optional caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <optional caption="Content Reference" default="#[payload]" group="General" javaType="java.lang.Object" name="content-ref" type="string"/>
+                <optional caption="Content Length" group="General" javaType="java.lang.Long" name="contentLength" type="integer"/>
+                <optional caption="Content Md5" group="General" javaType="java.lang.String" name="contentMd5" type="string"/>
+                <optional caption="Content Type" group="General" javaType="java.lang.String" name="contentType" type="string"/>
+                <optional caption="Content Disposition" group="General" javaType="java.lang.String" name="contentDisposition" type="string"/>
+                <optional caption="Acl" default="PRIVATE" group="General" javaType="org.mule.module.s3.AccessControlList" name="acl" type="enum"/>
+                <optional caption="Storage Class" default="STANDARD" group="General" javaType="org.mule.module.s3.StorageClass" name="storageClass" type="enum"/>
+                <optional caption="Encryption" group="General" javaType="java.lang.String" name="encryption" type="string"/>
+            </attributes>
+            <childElements/>
+        </create-object>
+        <delete-object>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <optional caption="Version Id" group="General" javaType="java.lang.String" name="versionId" type="string"/>
+            </attributes>
+        </delete-object>
+        <delete-objects>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+            </attributes>
+            <childElements/>
+        </delete-objects>
+        <set-object-storage-class>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <required caption="Storage Class" group="General" javaType="org.mule.module.s3.StorageClass" name="storageClass" type="enum"/>
+            </attributes>
+        </set-object-storage-class>
+        <copy-object>
+            <attributes>
+                <required caption="Source Bucket Name" group="General" javaType="java.lang.String" name="sourceBucketName" type="string"/>
+                <required caption="Source Key" group="General" javaType="java.lang.String" name="sourceKey" type="string"/>
+                <optional caption="Source Version Id" group="General" javaType="java.lang.String" name="sourceVersionId" type="string"/>
+                <optional caption="Destination Bucket Name" group="General" javaType="java.lang.String" name="destinationBucketName" type="string"/>
+                <required caption="Destination Key" group="General" javaType="java.lang.String" name="destinationKey" type="string"/>
+                <optional caption="Destination Acl" default="PRIVATE" group="General" javaType="org.mule.module.s3.AccessControlList" name="destinationAcl" type="enum"/>
+                <optional caption="Destination Storage Class" default="STANDARD" group="General" javaType="org.mule.module.s3.StorageClass" name="destinationStorageClass" type="enum"/>
+                <optional caption="Modified Since" group="General" javaType="java.util.Date" name="modifiedSince" type="string"/>
+                <optional caption="Unmodified Since" group="General" javaType="java.util.Date" name="unmodifiedSince" type="string"/>
+                <optional caption="Encryption" group="General" javaType="java.lang.String" name="encryption" type="string"/>
+            </attributes>
+            <childElements/>
+        </copy-object>
+        <create-object-presigned-uri>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <optional caption="Version Id" group="General" javaType="java.lang.String" name="versionId" type="string"/>
+                <optional caption="Expiration" group="General" javaType="java.util.Date" name="expiration" type="string"/>
+                <optional caption="Method" default="PUT" group="General" javaType="java.lang.String" name="method" type="string"/>
+            </attributes>
+        </create-object-presigned-uri>
+        <get-object-content>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <optional caption="Version Id" group="General" javaType="java.lang.String" name="versionId" type="string"/>
+                <optional caption="Modified Since" group="General" javaType="java.util.Date" name="modifiedSince" type="string"/>
+                <optional caption="Unmodified Since" group="General" javaType="java.util.Date" name="unmodifiedSince" type="string"/>
+            </attributes>
+        </get-object-content>
+        <get-object>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <optional caption="Version Id" group="General" javaType="java.lang.String" name="versionId" type="string"/>
+                <optional caption="Modified Since" group="General" javaType="java.util.Date" name="modifiedSince" type="string"/>
+                <optional caption="Unmodified Since" group="General" javaType="java.util.Date" name="unmodifiedSince" type="string"/>
+            </attributes>
+        </get-object>
+        <get-object-metadata>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <optional caption="Version Id" group="General" javaType="java.lang.String" name="versionId" type="string"/>
+            </attributes>
+        </get-object-metadata>
+        <set-bucket-versioning-status>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Versioning Status" group="General" javaType="org.mule.module.s3.simpleapi.VersioningStatus" name="versioningStatus" type="enum"/>
+            </attributes>
+        </set-bucket-versioning-status>
+        <get-bucket-versioning-configuration>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+            </attributes>
+        </get-bucket-versioning-configuration>
+        <create-object-uri>
+            <attributes>
+                <required caption="Bucket Name" group="General" javaType="java.lang.String" name="bucketName" type="string"/>
+                <required caption="Key" group="General" javaType="java.lang.String" name="key" type="string"/>
+                <optional caption="Use Default Server" default="false" group="General" javaType="boolean" name="useDefaultServer" type="boolean"/>
+                <optional caption="Secure" default="false" group="General" javaType="boolean" name="secure" type="boolean"/>
+            </attributes>
+        </create-object-uri>
+    </message-processors>
+    <inbound-endpoint/>
+    <outbound-endpoints/>
+</connector>
