@@ -1,41 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:email="http://www.mulesoft.org/schema/mule/email"
-	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:s3="http://www.mulesoft.org/schema/mule/s3"
+<mule xmlns:s3="http://www.mulesoft.org/schema/mule/s3" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans"
-	xmlns:debugger="http://www.mulesoft.org/schema/mule/debugger"
-	xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:file="http://www.mulesoft.org/schema/mule/file"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="EE-3.4.1"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/2.0/mule-s3.xsd
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd
-http://www.mulesoft.org/schema/mule/debugger http://www.mulesoft.org/schema/mule/debugger/current/mule-debugger.xsd
-http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
-    <context:property-placeholder location="classpath:s3Demo.properties"/>
-    <s3:config name="S3Config" accessKey="${s3.accessKey}" secretKey="${s3.secretKey}" doc:name="Amazon S3"/> 
-    
-    <flow name="demo" doc:name="demo">
-        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" path="demo" doc:name="HTTP"/>
-        <s3:create-bucket config-ref="S3Config" bucketName="${s3.newBucketName}" doc:name="Create bucket"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
-        <logger message="### create-bucket #[payload]" level="INFO" doc:name="Logger"/>
-        <http:outbound-endpoint exchange-pattern="request-response" host="www.mulesoft.org" port="80" path="sites/all/themes/mulesoft_community/logo.png" method="GET" doc:name="GET image"/>
-        <s3:create-object config-ref="S3Config" bucketName="${s3.newBucketName}" key="mulelogo2.jpg" acl="PUBLIC_READ" doc:name="Create object" contentDisposition="content"/>
-        <s3:list-objects config-ref="S3Config" bucketName="${s3.newBucketName}" doc:name="List objects"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
-        <logger message="### list-objects #[payload]" level="INFO" doc:name="Logger"/>
-        <s3:get-object-content config-ref="S3Config" bucketName="${s3.newBucketName}" key="mulelogo2.jpg" doc:name="Get object content"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
-        <logger message="### get-object-content #[payload]" level="INFO" doc:name="Logger"/>
-        <s3:delete-bucket config-ref="S3Config" bucketName="${s3.newBucketName}" doc:name="Delete bucket" force="true"/>
-        <set-payload value="Demo completed. Check logs." doc:name="Set Payload"/>
-    </flow>
-    
+http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/current/mule-s3.xsd">
+    <s3:config name="S3Config" doc:name="Amazon S3" accessKey="${s3.accessKey}" secretKey="${s3.secretKey}"/>
+
+	<flow name="demo" doc:name="demo">
+		<http:inbound-endpoint exchange-pattern="request-response"
+			host="localhost" port="8081" path="demo" doc:name="HTTP" />
+		<s3:create-bucket config-ref="S3Config" bucketName="${s3.newBucketName}"
+			doc:name="Create bucket" />
+		<json:object-to-json-transformer
+			doc:name="Object to JSON" />
+		<logger message="### create-bucket #[payload]" level="INFO"
+			doc:name="Logger" />
+		<http:outbound-endpoint exchange-pattern="request-response"
+			host="www.mulesoft.org" port="80"
+			path="sites/all/themes/mulesoft_community/logo.png" method="GET"
+			doc:name="GET image" />
+		<s3:create-object config-ref="S3Config" bucketName="${s3.newBucketName}"
+			key="mulelogo2.jpg" acl="PUBLIC_READ" doc:name="Create object"
+			contentDisposition="content" />
+		<s3:list-objects config-ref="S3Config" bucketName="${s3.newBucketName}"
+			doc:name="List objects" />
+		<json:object-to-json-transformer
+			doc:name="Object to JSON" />
+		<logger message="### list-objects #[payload]" level="INFO"
+			doc:name="Logger" />
+		<s3:get-object-content config-ref="S3Config"
+			bucketName="${s3.newBucketName}" key="mulelogo2.jpg" doc:name="Get object content" />
+		<json:object-to-json-transformer
+			doc:name="Object to JSON" />
+		<logger message="### get-object-content #[payload]" level="INFO"
+			doc:name="Logger" />
+		<s3:delete-bucket config-ref="S3Config" bucketName="${s3.newBucketName}"
+			doc:name="Delete bucket" force="true" />
+		<set-payload value="Demo completed. Check logs." doc:name="Set Payload" />
+	</flow>
+
 </mule>

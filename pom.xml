@@ -17,8 +17,6 @@
         <category>Community</category>
         <licensePath>LICENSE.md</licensePath>
         <devkit.studio.package.skip>false</devkit.studio.package.skip>
-        <testdata.plugin.version>1.1.2</testdata.plugin.version>
-        <testdata.apt.version>1.2.2</testdata.apt.version>
     </properties>
 
     <dependencies>
@@ -79,71 +77,4 @@
         </developerConnection>
         <url>http://github.com/mulesoft/s3-connector</url>
     </scm>
-    <profiles>
-        <profile>
-            <id>testdata-generator</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-
-            <dependencies>
-                <dependency>
-                    <groupId>com.mule.connectors.testdata</groupId>
-                    <artifactId>testdata-annotations-processor</artifactId>
-                    <version>${testdata.apt.version}</version>
-                </dependency>
-
-                <dependency>
-                    <groupId>com.mule.connectors.testdata</groupId>
-                    <artifactId>connector-testdata-maven-plugin</artifactId>
-                    <version>${testdata.plugin.version}</version>
-                </dependency>
-            </dependencies>
-
-            <properties>
-                <annotations-file>${project.build.directory}/generated-sources/apt/testdata-annotations-output.xml</annotations-file>
-            </properties>
-
-            <build>
-
-                <plugins>
-                    <plugin>
-                        <groupId>org.bsc.maven</groupId>
-                        <artifactId>maven-processor-plugin</artifactId>
-                        <version>2.2.4</version>
-                        <executions>
-                            <execution>
-                                <id>process</id>
-                                <goals>
-                                    <goal>process</goal>
-                                </goals>
-                                <configuration>
-                                    <processors>
-                                        <processor>com.mule.connectors.testdata.TestDataAnnotationsProcessor</processor>
-                                    </processors>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>com.mule.connectors.testdata</groupId>
-                        <artifactId>connector-testdata-maven-plugin</artifactId>
-                        <version>${testdata.plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>parse-test-data</id>
-                                <goals>
-                                    <goal>parse</goal>
-                                </goals>
-                                <configuration>
-                                    <annotationsFile>${project.build.directory}/generated-sources/apt/testdata-annotations-output.xml</annotationsFile>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

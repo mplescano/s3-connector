@@ -1,9 +1,9 @@
 Amazon S3 Anypoint Connector Release Notes
 ==========================================
 
-Date: 07-May-2014
+Date: 12-Jul-2014
 
-Version: 2.6.4
+Version: 2.8.1
 
 Supported API versions
 ------------------------
@@ -35,18 +35,23 @@ Supported Operations:
 * Set a Bucket's Website Configuration
 * Set an Object's Storage Class
 
-Supported Mule Runtime Versions: 3.4.x, 3.5.0
+Supported Mule Runtime Versions: 3.4.x, 3.5.x
 
 New Features and Functionality
 ------------------------------
 
-Tested for 3.5.0 release.
+Updated the Devkit & Tested for 3.5.1 release.
 
-Updated S3Connector.java for the latest versions of DevKit Annotations (e.g. removing @Default @Optional)
-Added Studio Interoperabilty Tests.
+Updated the AWS Java SDK from 1.7.2 to 1.7.13.
+
+Updated the demo project to support the latest 3.5.1 Anypoint Studio.
 
 Previous Release
 ------------------------------
+
+Updated S3Connector.java for the latest versions (3.5.0) of DevKit Annotations (e.g. removing @Default @Optional)
+
+Added Studio Interoperabilty Tests.
 
 Fixed an issue where uploading an InputStream object without specifying content length would create a temporary file that was never deleted.
 
