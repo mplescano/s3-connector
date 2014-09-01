@@ -117,7 +117,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  S3ConnectorConnectionKey
+  S3ConnectorManagedConnectionProcessInterceptor
 
 
 | Mule S3 Connector
@@ -261,13 +261,13 @@
   <a href="../../../../../../java/org/mule/module/s3/config/package-summary.html">org.mule.module.s3.config</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connection/package-summary.html">org.mule.module.s3.connection</a></li>
-    <li class="selected api apilevel-">
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/connectivity/package-summary.html">org.mule.module.s3.connectivity</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/devkit/package-summary.html">org.mule.module.s3.devkit</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/pooling/package-summary.html">org.mule.module.s3.pooling</a></li>
-    <li class="api apilevel-">
+    <li class="selected api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/process/package-summary.html">org.mule.module.s3.process</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/s3/processors/package-summary.html">org.mule.module.s3.processors</a></li>
@@ -292,10 +292,7 @@
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionFactory.html">S3ConnectorConnectionFactory</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html">S3ConnectorConnectionKey</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionManager.html">S3ConnectorConnectionManager</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorManagedConnectionProcessTemplate.html">S3ConnectorManagedConnectionProcessTemplate</a>&lt;P&gt;</li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html">S3ConnectorManagedConnectionProcessInterceptor</a>&lt;T&gt;</li>
       </ul>
     </li>
               
@@ -338,6 +335,20 @@
 <div id="api-info-block">
 
 
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
 
   
    
@@ -397,17 +408,26 @@ Summary:
      
     
     class
-<h1>S3ConnectorConnectionKey</h1>
+<h1>S3ConnectorManagedConnectionProcessInterceptor</h1>
 
 
 
-  
-    extends Object<br/>
   
   
   
 
   
+    extends ExpressionEvaluatorSupport<br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        ProcessInterceptor&lt;T,&nbsp;O&gt; 
+      
   
   
 
@@ -422,7 +442,7 @@ Summary:
 
     <tr>
         
-        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
@@ -430,7 +450,17 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.connectivity.S3ConnectorConnectionKey</td>
+        <td colspan="2" class="jd-inheritance-class-cell">org.mule.devkit.processor.ExpressionEvaluatorSupport</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.s3.process.S3ConnectorManagedConnectionProcessInterceptor&lt;T&gt;</td>
     </tr>
     
 
@@ -444,11 +474,6 @@ Summary:
 
 <div class="jd-descr">
 
-
-<h2>Class Overview</h2>
-<p>A tuple of connection parameters
- 
-</p>
 
 
 
@@ -502,9 +527,31 @@ Summary:
           <td class="jd-typecol"><nobr>
           private
           
+          final
+          <a href="../../../../../../java/org/mule/module/s3/connection/ConnectionManager.html">ConnectionManager</a>&lt;<a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html">S3ConnectorConnectionKey</a>,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt;</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html#connectionManager">connectionManager</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#accessKey">accessKey</a></td>
+          Logger</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html#logger">logger</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          final
+          MuleContext</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html#muleContext">muleContext</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -513,9 +560,9 @@ Summary:
           <td class="jd-typecol"><nobr>
           private
           
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#secretKey">secretKey</a></td>
+          final
+          ProcessInterceptor&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt;</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html#next">next</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -545,7 +592,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#S3ConnectorConnectionKey(java.lang.String, java.lang.String)">S3ConnectorConnectionKey</a></span>(String accessKey, String secretKey)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html#S3ConnectorManagedConnectionProcessInterceptor(org.mule.api.devkit.ProcessInterceptor<T, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.module.s3.connection.ConnectionManager<org.mule.module.s3.connectivity.S3ConnectorConnectionKey, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.MuleContext)">S3ConnectorManagedConnectionProcessInterceptor</a></span>(ProcessInterceptor&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; next, <a href="../../../../../../java/org/mule/module/s3/connection/ConnectionManager.html">ConnectionManager</a>&lt;<a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html">S3ConnectorConnectionKey</a>,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; connectionManager, MuleContext muleContext)</nobr>
         
   </td></tr>
 
@@ -571,10 +618,10 @@ Summary:
             
             
             
-            boolean</nobr>
+            T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#equals(java.lang.Object)">equals</a></span>(Object o)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html#execute(org.mule.security.oauth.callback.ProcessCallback<T, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)">execute</a></span>(ProcessCallback&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, <a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a> object, MessageProcessor messageProcessor, MuleEvent event)</nobr>
         
   </td></tr>
 
@@ -587,87 +634,11 @@ Summary:
             
             
             
-            String</nobr>
+            T</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#getAccessKey()">getAccessKey</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/process/S3ConnectorManagedConnectionProcessInterceptor.html#execute(org.mule.security.oauth.callback.ProcessCallback<T, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)">execute</a></span>(ProcessCallback&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, <a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a> object, Filter filter, MuleMessage message)</nobr>
         
-        <div class="jd-descrdiv">Retrieves accessKey
- 
-</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#getSecretKey()">getSecretKey</a></span>()</nobr>
-        
-        <div class="jd-descrdiv">Retrieves secretKey
- 
-</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            int</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#hashCode()">hashCode</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#setAccessKey(java.lang.String)">setAccessKey</a></span>(String value)</nobr>
-        
-        <div class="jd-descrdiv">Sets accessKey</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html#setSecretKey(java.lang.String)">setSecretKey</a></span>(String value)</nobr>
-        
-        <div class="jd-descrdiv">Sets secretKey</div>
-  
   </td></tr>
 
 
@@ -684,6 +655,240 @@ Summary:
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.devkit.processor.ExpressionEvaluatorSupport" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.devkit.processor.ExpressionEvaluatorSupport-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  org.mule.devkit.processor.ExpressionEvaluatorSupport
+
+<div id="inherited-methods-org.mule.devkit.processor.ExpressionEvaluatorSupport">
+  <div id="inherited-methods-org.mule.devkit.processor.ExpressionEvaluatorSupport-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.devkit.processor.ExpressionEvaluatorSupport-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">computeClassHierarchy</span>(Class arg0, List arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">evaluate</span>(TemplateParser.PatternInfo arg0, ExpressionManager arg1, MuleMessage arg2, Object arg3)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">evaluateAndTransform</span>(MuleContext arg0, MuleEvent arg1, Type arg2, String arg3, Object arg4)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">evaluateAndTransform</span>(MuleContext arg0, MuleMessage arg1, Type arg2, String arg3, Object arg4)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getAccessTokenId</span>(MuleEvent arg0, MessageProcessor arg1, OAuth2Manager&lt;?&gt; arg2)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isAssignableFrom</span>(Type arg0, Class arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isList</span>(Type arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isListClass</span>(Class arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isMap</span>(Type arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isMapClass</span>(Class arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">transform</span>(MuleContext arg0, MuleMessage arg1, Type arg2, String arg3, Object arg4)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">transform</span>(MuleMessage arg0, Type arg1, Object arg2)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">transform</span>(MuleContext arg0, MuleEvent arg1, Type arg2, String arg3, Object arg4)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
 
 
 <tr class="api apilevel-" >
@@ -887,6 +1092,64 @@ From class
 </td></tr>
 
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.devkit.ProcessInterceptor" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.devkit.ProcessInterceptor-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.devkit.ProcessInterceptor
+
+<div id="inherited-methods-org.mule.api.devkit.ProcessInterceptor">
+  <div id="inherited-methods-org.mule.api.devkit.ProcessInterceptor-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.devkit.ProcessInterceptor-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            T</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">execute</span>(ProcessCallback&lt;T,&nbsp;O&gt; arg0, O arg1, Filter arg2, MuleMessage arg3)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            T</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">execute</span>(ProcessCallback&lt;T,&nbsp;O&gt; arg0, O arg1, MessageProcessor arg2, MuleEvent arg3)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 </table>
 
 
@@ -919,17 +1182,17 @@ From class
 
 
 
-<A NAME="accessKey"></A>
+<A NAME="connectionManager"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         private 
          
-         
-        String
+        final 
+        <a href="../../../../../../java/org/mule/module/s3/connection/ConnectionManager.html">ConnectionManager</a>&lt;<a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html">S3ConnectorConnectionKey</a>,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt;
       </span>
-        accessKey
+        connectionManager
     </h4>
       <div class="api-level">
         
@@ -949,17 +1212,77 @@ From class
 
 
 
-<A NAME="secretKey"></A>
+<A NAME="logger"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+         
+        Logger
+      </span>
+        logger
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="muleContext"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         private 
          
-         
-        String
+        final 
+        MuleContext
       </span>
-        secretKey
+        muleContext
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="next"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+        final 
+        ProcessInterceptor&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt;
+      </span>
+        next
     </h4>
       <div class="api-level">
         
@@ -988,7 +1311,7 @@ From class
 
 
 
-<A NAME="S3ConnectorConnectionKey(java.lang.String, java.lang.String)"></A>
+<A NAME="S3ConnectorManagedConnectionProcessInterceptor(org.mule.api.devkit.ProcessInterceptor<T, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.module.s3.connection.ConnectionManager<org.mule.module.s3.connectivity.S3ConnectorConnectionKey, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.MuleContext)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1000,8 +1323,8 @@ From class
          
         
       </span>
-      <span class="sympad">S3ConnectorConnectionKey</span>
-      <span class="normal">(String accessKey, String secretKey)</span>
+      <span class="sympad">S3ConnectorManagedConnectionProcessInterceptor</span>
+      <span class="normal">(ProcessInterceptor&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; next, <a href="../../../../../../java/org/mule/module/s3/connection/ConnectionManager.html">ConnectionManager</a>&lt;<a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html">S3ConnectorConnectionKey</a>,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; connectionManager, MuleContext muleContext)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1018,11 +1341,15 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>accessKey</td>
+          <th>next</td>
           <td></td>
         </tr>
         <tr>
-          <th>secretKey</td>
+          <th>connectionManager</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>muleContext</td>
           <td></td>
         </tr>
       </table>
@@ -1047,7 +1374,7 @@ From class
 
 
 
-<A NAME="equals(java.lang.Object)"></A>
+<A NAME="execute(org.mule.security.oauth.callback.ProcessCallback<T, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1057,10 +1384,10 @@ From class
          
          
          
-        boolean
+        T
       </span>
-      <span class="sympad">equals</span>
-      <span class="normal">(Object o)</span>
+      <span class="sympad">execute</span>
+      <span class="normal">(ProcessCallback&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, <a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a> object, MessageProcessor messageProcessor, MuleEvent event)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1077,17 +1404,38 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>o</td>
+          <th>processCallback</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>object</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>messageProcessor</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>event</td>
           <td></td>
         </tr>
       </table>
   </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>
 
 
-<A NAME="getAccessKey()"></A>
+<A NAME="execute(org.mule.security.oauth.callback.ProcessCallback<T, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1097,76 +1445,10 @@ From class
          
          
          
-        String
+        T
       </span>
-      <span class="sympad">getAccessKey</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Retrieves accessKey
- 
-</p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getSecretKey()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getSecretKey</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Retrieves secretKey
- 
-</p></div>
-
-    </div>
-</div>
-
-
-<A NAME="hashCode()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        int
-      </span>
-      <span class="sympad">hashCode</span>
-      <span class="normal">()</span>
+      <span class="sympad">execute</span>
+      <span class="normal">(ProcessCallback&lt;T,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, <a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a> object, Filter filter, MuleMessage message)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1179,85 +1461,33 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="setAccessKey(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setAccessKey</span>
-      <span class="normal">(String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets accessKey</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
+          <th>processCallback</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>object</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>filter</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>message</td>
+          <td></td>
         </tr>
       </table>
   </div>
-
-    </div>
-</div>
-
-
-<A NAME="setSecretKey(java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setSecretKey</span>
-      <span class="normal">(String value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets secretKey</p></div>
   <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
         <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
+            <th>Exception</td>
+            <td></td>
         </tr>
       </table>
   </div>
