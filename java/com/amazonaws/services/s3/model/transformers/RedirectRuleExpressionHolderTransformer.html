@@ -1206,7 +1206,7 @@ org.mule.api.transformer.Converter
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../com/amazonaws/services/s3/model/transformers/RedirectRuleExpressionHolderTransformer.html#transform(java.lang.Object, java.lang.String)">transform</a></span>(Object src, String encoding)</nobr>
+        <span class="sympad"><a href="../../../../../../../com/amazonaws/services/s3/model/transformers/RedirectRuleExpressionHolderTransformer.html#transform(java.lang.Object)">transform</a></span>(Object src)</nobr>
         
   </td></tr>
 
@@ -1222,7 +1222,7 @@ org.mule.api.transformer.Converter
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../com/amazonaws/services/s3/model/transformers/RedirectRuleExpressionHolderTransformer.html#transform(java.lang.Object)">transform</a></span>(Object src)</nobr>
+        <span class="sympad"><a href="../../../../../../../com/amazonaws/services/s3/model/transformers/RedirectRuleExpressionHolderTransformer.html#transform(java.lang.Object, org.mule.api.MuleEvent)">transform</a></span>(Object src, MuleEvent event)</nobr>
         
   </td></tr>
 
@@ -1238,7 +1238,7 @@ org.mule.api.transformer.Converter
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../com/amazonaws/services/s3/model/transformers/RedirectRuleExpressionHolderTransformer.html#transform(java.lang.Object, org.mule.api.MuleEvent)">transform</a></span>(Object src, MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../../com/amazonaws/services/s3/model/transformers/RedirectRuleExpressionHolderTransformer.html#transform(java.lang.Object, java.lang.String)">transform</a></span>(Object src, String encoding)</nobr>
         
   </td></tr>
 
@@ -1464,7 +1464,7 @@ From class
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">transform</span>(MuleContext arg0, MuleMessage arg1, Type arg2, String arg3, Object arg4)</nobr>
+        <span class="sympad">transform</span>(MuleMessage arg0, Type arg1, Object arg2)</nobr>
         
   </td></tr>
 
@@ -1480,7 +1480,7 @@ From class
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">transform</span>(MuleMessage arg0, Type arg1, Object arg2)</nobr>
+        <span class="sympad">transform</span>(MuleContext arg0, MuleEvent arg1, Type arg2, String arg3, Object arg4)</nobr>
         
   </td></tr>
 
@@ -1496,7 +1496,7 @@ From class
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">transform</span>(MuleContext arg0, MuleEvent arg1, Type arg2, String arg3, Object arg4)</nobr>
+        <span class="sympad">transform</span>(MuleContext arg0, MuleMessage arg1, Type arg2, String arg3, Object arg4)</nobr>
         
   </td></tr>
 
@@ -1666,7 +1666,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -1682,7 +1682,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -1698,7 +1698,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -2052,7 +2052,7 @@ From interface
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">transform</span>(Object arg0, MuleEvent arg1)</nobr>
+        <span class="sympad">transform</span>(Object arg0, String arg1, MuleEvent arg2)</nobr>
         
   </td></tr>
 
@@ -2068,7 +2068,7 @@ From interface
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">transform</span>(Object arg0, String arg1, MuleEvent arg2)</nobr>
+        <span class="sympad">transform</span>(Object arg0, MuleEvent arg1)</nobr>
         
   </td></tr>
 
@@ -3397,59 +3397,6 @@ From interface
 </div>
 
 
-<A NAME="transform(java.lang.Object, java.lang.String)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        Object
-      </span>
-      <span class="sympad">transform</span>
-      <span class="normal">(Object src, String encoding)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>src</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>encoding</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>TransformerException</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="transform(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -3543,6 +3490,59 @@ From interface
       <table class="jd-tagtable">  
         <tr>
             <th>TransformerMessagingException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="transform(java.lang.Object, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Object
+      </span>
+      <span class="sympad">transform</span>
+      <span class="normal">(Object src, String encoding)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>src</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>encoding</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>TransformerException</td>
             <td></td>
         </tr>
       </table>

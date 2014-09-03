@@ -292,6 +292,7 @@
               
     <li><h2>Classes</h2>
       <ul>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/ManagedConnectionProcessTemplate.html">ManagedConnectionProcessTemplate</a>&lt;P&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionFactory.html">S3ConnectorConnectionFactory</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionKey.html">S3ConnectorConnectionKey</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/s3/connectivity/S3ConnectorConnectionManager.html">S3ConnectorConnectionManager</a></li>
@@ -570,7 +571,7 @@ Summary:
             P</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorManagedConnectionProcessTemplate.html#execute(org.mule.security.oauth.callback.ProcessCallback<P, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)">execute</a></span>(ProcessCallback&lt;P,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, Filter filter, MuleMessage message)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorManagedConnectionProcessTemplate.html#execute(org.mule.security.oauth.callback.ProcessCallback<P, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)">execute</a></span>(ProcessCallback&lt;P,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, MessageProcessor messageProcessor, MuleEvent event)</nobr>
         
   </td></tr>
 
@@ -586,7 +587,7 @@ Summary:
             P</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorManagedConnectionProcessTemplate.html#execute(org.mule.security.oauth.callback.ProcessCallback<P, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)">execute</a></span>(ProcessCallback&lt;P,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, MessageProcessor messageProcessor, MuleEvent event)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/s3/connectivity/S3ConnectorManagedConnectionProcessTemplate.html#execute(org.mule.security.oauth.callback.ProcessCallback<P, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)">execute</a></span>(ProcessCallback&lt;P,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, Filter filter, MuleMessage message)</nobr>
         
   </td></tr>
 
@@ -764,7 +765,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        <span class="sympad">wait</span>()</nobr>
         
   </td></tr>
 
@@ -780,7 +781,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>(long arg0)</nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
         
   </td></tr>
 
@@ -796,7 +797,7 @@ From class
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">wait</span>()</nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
         
   </td></tr>
 
@@ -995,63 +996,6 @@ From interface
 
 
 
-<A NAME="execute(org.mule.security.oauth.callback.ProcessCallback<P, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        P
-      </span>
-      <span class="sympad">execute</span>
-      <span class="normal">(ProcessCallback&lt;P,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, Filter filter, MuleMessage message)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>processCallback</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>filter</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>message</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
 <A NAME="execute(org.mule.security.oauth.callback.ProcessCallback<P, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.processor.MessageProcessor, org.mule.api.MuleEvent)"></A>
 
 <div class="jd-details api apilevel-"> 
@@ -1091,6 +1035,63 @@ From interface
         </tr>
         <tr>
           <th>event</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>Exception</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="execute(org.mule.security.oauth.callback.ProcessCallback<P, org.mule.module.s3.adapters.S3ConnectorConnectionIdentifierAdapter>, org.mule.api.routing.filter.Filter, org.mule.api.MuleMessage)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        P
+      </span>
+      <span class="sympad">execute</span>
+      <span class="normal">(ProcessCallback&lt;P,&nbsp;<a href="../../../../../../java/org/mule/module/s3/adapters/S3ConnectorConnectionIdentifierAdapter.html">S3ConnectorConnectionIdentifierAdapter</a>&gt; processCallback, Filter filter, MuleMessage message)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>processCallback</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>filter</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>message</td>
           <td></td>
         </tr>
       </table>
