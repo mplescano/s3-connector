@@ -10,6 +10,7 @@ package org.mule.module.s3;
 
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.HttpMethod;
+import com.amazonaws.Protocol;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
@@ -72,6 +73,25 @@ public class S3Connector
     @Optional
     private String proxyHost;
 
+    /**
+     * The optional  proxy domain
+     */
+    @Configurable
+    @Optional
+    private String proxyDomain;
+    
+    /**
+     * The optional  proxy workstation
+     */
+    @Configurable
+    @Optional
+    private String proxyWorkstation;
+    
+    /**
+     * 
+     */
+    private Protocol protocol;
+    
     /**
      * The amount of time to wait (in milliseconds) for data to be transfered
      * over an established, open connection before the connection is timed out.
@@ -783,16 +803,17 @@ public class S3Connector
     /**
      * Login to Amazon S3
      *
+     * @param s3Host The host of Amazon or compatible
      * @param accessKey The access key provided by Amazon, needed for non annoynous operations
      * @param secretKey The secrete key provided by Amazon, needed for non annoynous operations
      * @throws ConnectionException
      */
     @Connect
-    public synchronized void connect(@ConnectionKey String accessKey, String secretKey) throws ConnectionException
+    public synchronized void connect(@ConnectionKey String s3Host, String accessKey, String secretKey) throws ConnectionException
     {
         if (client == null)
         {
-            client = new SimpleAmazonS3AmazonDevKitImpl(createAmazonS3(accessKey, secretKey));
+            client = new SimpleAmazonS3AmazonDevKitImpl(createAmazonS3(s3Host, accessKey, secretKey));
         }
     }
 
@@ -819,7 +840,7 @@ public class S3Connector
      * 
      * @return a new {@link AmazonS3}
      */
-    private AmazonS3  createAmazonS3(String accessKey, String secretKey)
+    private AmazonS3  createAmazonS3(String s3Host, String accessKey, String secretKey)
     {
         ClientConfiguration clientConfig = new ClientConfiguration();
         if (proxyUsername != null)
@@ -838,6 +859,18 @@ public class S3Connector
         {
             clientConfig.setProxyHost(proxyHost);
         }
+        if (proxyDomain != null)
+        {
+            clientConfig.setProxyDomain(proxyDomain);
+        }
+        if (proxyWorkstation != null)
+        {
+            clientConfig.setProxyWorkstation(proxyWorkstation);
+        }
+        if (protocol != null) {
+            clientConfig.setProtocol(protocol);
+        }
+
         if (connectionTimeout != null)
         {
             clientConfig.setConnectionTimeout(connectionTimeout);
@@ -846,9 +879,12 @@ public class S3Connector
         {
             clientConfig.setSocketTimeout(socketTimeout);
         }
-
-        return new AmazonS3Client(createCredentials(accessKey, secretKey),
-            clientConfig);
+        AmazonS3 innerClient = new AmazonS3Client(createCredentials(accessKey, secretKey),
+                clientConfig);
+        if (StringUtils.isNotBlank(s3Host)) {
+            innerClient.setEndpoint(s3Host);
+        }
+        return innerClient;
     }
 
     private AWSCredentials createCredentials(String accessKey, String secretKey)
@@ -905,6 +941,31 @@ public class S3Connector
         this.proxyHost = proxyHost;
     }
 
+
+    public String getProxyDomain() {
+        return proxyDomain;
+    }
+
+    public void setProxyDomain(String proxyDomain) {
+        this.proxyDomain = proxyDomain;
+    }
+
+    public String getProxyWorkstation() {
+        return proxyWorkstation;
+    }
+    
+    public void setProxyWorkstation(String proxyWorkstation) {
+        this.proxyWorkstation = proxyWorkstation;
+    }
+    
+    public Protocol getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(Protocol protocol) {
+        this.protocol = protocol;
+    }
+    
     public Integer getSocketTimeout() {
         return socketTimeout;
     }
